@@ -1,4 +1,10 @@
 .todoapp {
     position: absolute;
-  }
+    width: 550px;
+}
+.info {
+  position: absolute;
+  bottom: 0;
+  width: 550px;
+}
   
