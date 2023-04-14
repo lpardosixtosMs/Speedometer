@@ -5,7 +5,6 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 import { App } from "./todo/app";
 import "todomvc-app-css/index.css";
 import "./big.css";
-import "./small.css";
 
 render(
     <HashRouter>
