@@ -15,7 +15,8 @@ render(
                     <Route path="*" element={<App />} />
                 </Routes>
             </HashRouter>
-        </section><footer class="info">
+        </section>
+        <footer class="info">
             <p>Click on input field to write your todo.</p>
             <p>At least two characters are needed to be a valid entry.</p>
             <p>Press 'enter' to add the todo.</p>
