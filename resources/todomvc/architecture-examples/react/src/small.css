@@ -1,5 +1,10 @@
-.todoapp {
+.absolutely-positioned-element {
   position: absolute;
+  width: 100%;
+  max-width: 550px;
+}
+
+.todoapp {
   width: 100%;
   max-width: 550px;
 }
