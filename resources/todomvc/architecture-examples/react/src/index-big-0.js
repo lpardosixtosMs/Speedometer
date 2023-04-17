@@ -29,4 +29,4 @@ render(
     todoHolder
 );
 
-document.getElementById("root-ish").appendChild(todoHolder);
+document.querySelector(".depth-0").appendChild(todoHolder);
