@@ -7,8 +7,11 @@ import "todomvc-app-css/index.css";
 import "./big.css";
 import "./small.css";
 
+const todoHolder = document.createElement("div");
+todoHolder.className = "absolutely-positioned-element";
+
 render(
-    <div class="absolutely-positioned-element">
+    <>
         <section className="todoapp" id="root">
             <HashRouter>
                 <Routes>
@@ -22,6 +25,8 @@ render(
             <p>Press 'enter' to add the todo.</p>
             <p>Double-click to edit a todo</p>
         </footer>
-    </div>,
-    document.getElementById("gen-10-0")
+    </>,
+    todoHolder
 );
+
+document.querySelector(".depth-10").appendChild(todoHolder);
