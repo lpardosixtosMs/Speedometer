@@ -8,18 +8,10 @@ import "./big.css";
 import "./small.css";
 
 render(
-    <div class="absolutely-positioned-element">
-        <HashRouter>
-            <Routes>
-                <Route path="*" element={<App />} />
-            </Routes>
-        </HashRouter>
-        <footer class="info">
-            <p>Click on input field to write your todo.</p>
-            <p>At least two characters are needed to be a valid entry.</p>
-            <p>Press 'enter' to add the todo.</p>
-            <p>Double-click to edit a todo</p>
-        </footer>
-    </div>,
+    <HashRouter>
+        <Routes>
+            <Route path="*" element={<App />} />
+        </Routes>
+    </HashRouter>,
     document.getElementById("root")
 );
