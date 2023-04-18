@@ -6,7 +6,7 @@ import { App } from "./todo/app";
 import "todomvc-app-css/index.css";
 import "./big.css";
 import "./small.css";
-import "./mail.css";
+// import "./mail.css";
 
 const todoHolder = document.createElement("div");
 todoHolder.className = "absolutely-positioned-element";

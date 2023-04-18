@@ -379,7 +379,7 @@ Suites.push({
 
 Suites.push({
     name: "TodoMVC-React-Mail",
-    url: "todomvc/architecture-examples/react/dist/big-0/index-mail.html",
+    url: "todomvc/architecture-examples/react/dist/big-0-css/index-mail.html",
     async prepare(page) {
         const element = await page.waitForElement(".new-todo");
         element.focus();
