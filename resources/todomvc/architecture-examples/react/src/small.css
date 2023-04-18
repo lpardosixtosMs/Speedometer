@@ -1,4 +1,12 @@
+.absolutely-positioned-element {
+  position: absolute;
+  width: 100%;
+  max-width: 550px;
+  top: 0;
+}
+
 .todoapp {
-    position: absolute;
-  }
+  width: 100%;
+  max-width: 550px;
+}
   
