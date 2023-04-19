@@ -62,8 +62,8 @@ module.exports = merge(common, {
         new HtmlWebpackPlugin({
             title: "ProductionMail",
             template: "public/index-mail.html",
-            filename: "big-0-css/index-mail.html",
-            chunks: ["big-0-css/app"],
+            filename: "mail/index.html",
+            chunks: ["mail/app"],
         }),
         new HtmlWebpackPlugin({
             title: "ProductionCSS",

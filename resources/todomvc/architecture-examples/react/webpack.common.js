@@ -4,6 +4,7 @@ module.exports = {
     entry: {
         app: "./src/index.js",
         "css/app": "./src/index-css.js",
+        "mail/app": "./src/index-mail.js",
         "big-0/app": "./src/index-big-0.js",
         "big-10/app": "./src/index-big-10.js",
         "big-30/app": "./src/index-big-30.js",
