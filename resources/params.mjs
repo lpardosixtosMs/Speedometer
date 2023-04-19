@@ -5,7 +5,7 @@ class Params {
     };
     developerMode = false;
     startAutomatically = false;
-    iterationCount = 100;
+    iterationCount = 10;
     suites = [];
 
     constructor(searchParams = undefined) {

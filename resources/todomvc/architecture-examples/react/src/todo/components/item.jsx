@@ -3,7 +3,7 @@ import classnames from "classnames";
 
 import { Input } from "./input";
 
-export const Item = memo(function Item({ todo, dispatch }) {
+export const Item = memo(function Item({ todo, dispatch, index }) {
     const [isWritable, setIsWritable] = useState(false);
     const { title, completed, id } = todo;
 
@@ -32,7 +32,7 @@ export const Item = memo(function Item({ todo, dispatch }) {
     );
 
     return (
-        <li className={classnames({ completed: todo.completed })} data-testid="todo-item">
+        <li className={classnames({ completed: todo.completed }) + ` li-${index}-0` + ` li-${index}-1`} data-testid="todo-item">
             <div className="view">
                 {isWritable ? (
                     <Input onSubmit={handleUpdate} label="Edit Todo Input" defaultValue={title} onBlur={handleBlur} />

@@ -1,0 +1,200 @@
+.header + .main > .toggle-all-container + * > .li-0-1 div { background-color: rgba(148, 148, 148, 0); transition-duration: 0ms; }
+.completed { background-color: rgba(148, 148, 148, 0.001); transition-duration: 0ms; }
+[data-random-attr-fa45e001] ~ .random-classname-63271ac5 + .completed + .li-1-1 { background-color: rgba(148, 148, 148, 0.002); transition-duration: 0ms; }
+.random-classname-9bd31a15 .random-classname-63271ac5 ~ .li-1-1 { background-color: rgba(148, 148, 148, 0.003); transition-duration: 0ms; }
+* { background-color: rgba(148, 148, 148, 0.004); transition-duration: 0ms; }
+.random-classname-73399455 + * + * * ~ * { background-color: rgba(148, 148, 148, 0.005); transition-duration: 0ms; }
+.li-3-0 { background-color: rgba(148, 148, 148, 0.006); transition-duration: 0ms; }
+.random-classname-2d787f43 + * + .completed { background-color: rgba(148, 148, 148, 0.007); transition-duration: 0ms; }
+.li-4-0 { background-color: rgba(148, 148, 148, 0.008); transition-duration: 0ms; }
+.non-matching-selector .non-matching-selector .non-matching-selector .non-matching-selector > .random-classname-c6c2b279 > .random-classname-9bf97fd3 .random-classname-33a87f37 .completed + .completed + .completed .completed { background-color: rgba(148, 148, 148, 0.009); transition-duration: 0ms; }
+.main .li-4-1 + .li-5-0 { background-color: rgba(148, 148, 148, 0.01); transition-duration: 0ms; }
+.false-sibling + * > .main * .li-5-0 { background-color: rgba(148, 148, 148, 0.011); transition-duration: 0ms; }
+* + .li-5-1 + .li-6-0 { background-color: rgba(148, 148, 148, 0.012); transition-duration: 0ms; }
+.random-classname-59636dc5 ~ .todo-list .completed ~ .li-6-1 { background-color: rgba(148, 148, 148, 0.013); transition-duration: 0ms; }
+div { background-color: rgba(148, 148, 148, 0.014); transition-duration: 0ms; }
+.random-classname-eb2a6b3f .li-7-1 .li-7-0 .completed { background-color: rgba(148, 148, 148, 0.015); transition-duration: 0ms; }
+.li-7-1 + .li-8-0 { background-color: rgba(148, 148, 148, 0.016); transition-duration: 0ms; }
+.random-classname-d6a61a7f .todo-list .li-5-0 ~ .li-8-1 { background-color: rgba(148, 148, 148, 0.017); transition-duration: 0ms; }
+.li-7-0 + .li-8-1 .completed + .completed .completed .completed { background-color: rgba(148, 148, 148, 0.018); transition-duration: 0ms; }
+.random-classname-74209353 + * + .li-9-0 { background-color: rgba(148, 148, 148, 0.019); transition-duration: 0ms; }
+.completed { background-color: rgba(148, 148, 148, 0.02); transition-duration: 0ms; }
+.random-classname-d65245ad + .todo-list > .li-10-0 { background-color: rgba(148, 148, 148, 0.021); transition-duration: 0ms; }
+.todo-list > * ~ .li-11-0 { background-color: rgba(148, 148, 148, 0.022); transition-duration: 0ms; }
+::before + * > * ~ * > div { background-color: rgba(148, 148, 148, 0.023); transition-duration: 0ms; }
+div > * + .main .li-12-1 { background-color: rgba(148, 148, 148, 0.024); transition-duration: 0ms; }
+.random-classname-8bcc56c5 .random-classname-92b4472f .random-classname-43c0cf6f > * > .li-12-1 { background-color: rgba(148, 148, 148, 0.025); transition-duration: 0ms; }
+.main .random-classname-338e2ad7 ~ .random-classname-b1f0b1e5 ~ .toggle-all-container ~ .todo-list > * { background-color: rgba(148, 148, 148, 0.026); transition-duration: 0ms; }
+[data-random-attr-f7967b05] + .completed ~ .completed { background-color: rgba(148, 148, 148, 0.027); transition-duration: 0ms; }
+.todo-list .li-14-1 { background-color: rgba(148, 148, 148, 0.028); transition-duration: 0ms; }
+* + .completed { background-color: rgba(148, 148, 148, 0.029); transition-duration: 0ms; }
+* > .main .toggle-all-container + .todo-list > * + .li-15-0 { background-color: rgba(148, 148, 148, 0.03); transition-duration: 0ms; }
+.li-15-0 { background-color: rgba(148, 148, 148, 0.031); transition-duration: 0ms; }
+.completed { background-color: rgba(148, 148, 148, 0.032); transition-duration: 0ms; }
+.random-classname-de85419f + div + div { background-color: rgba(148, 148, 148, 0.033); transition-duration: 0ms; }
+.random-classname-7134e52f > div > main .todo-list .li-16-0 + .li-17-0 { background-color: rgba(148, 148, 148, 0.034); transition-duration: 0ms; }
+.main > ul .completed { background-color: rgba(148, 148, 148, 0.035); transition-duration: 0ms; }
+.random-classname-bc3be55f + .toggle-all-container .toggle-all-container + .todo-list > .li-18-0 .li-18-1 { background-color: rgba(148, 148, 148, 0.036); transition-duration: 0ms; }
+.completed + .completed { background-color: rgba(148, 148, 148, 0.037); transition-duration: 0ms; }
+.todo-list > .completed { background-color: rgba(148, 148, 148, 0.038); transition-duration: 0ms; }
+* .li-19-1 { background-color: rgba(148, 148, 148, 0.039); transition-duration: 0ms; }
+* > .li-20-1 { background-color: rgba(148, 148, 148, 0.04); transition-duration: 0ms; }
+* ~ * div { background-color: rgba(148, 148, 148, 0.041); transition-duration: 0ms; }
+.li-20-0 + .completed { background-color: rgba(148, 148, 148, 0.042); transition-duration: 0ms; }
+.li-20-1 + .completed { background-color: rgba(148, 148, 148, 0.043); transition-duration: 0ms; }
+.completed { background-color: rgba(148, 148, 148, 0.044); transition-duration: 0ms; }
+.non-matching-selector .random-classname-9d795b5a + .random-classname-628e41db .non-matching-selector [data-random-attr-428fc847] > .random-classname-14bce411 .li-21-1 + div { background-color: rgba(148, 148, 148, 0.045); transition-duration: 0ms; }
+.li-23-1 { background-color: rgba(148, 148, 148, 0.046); transition-duration: 0ms; }
+.random-classname-414925a9 > .todo-list .li-16-0 + .li-17-1 ~ .li-23-0 { background-color: rgba(148, 148, 148, 0.047); transition-duration: 0ms; }
+.absolutely-positioned-element > .main > .todo-list > .li-23-1 + .completed .completed { background-color: rgba(148, 148, 148, 0.048); transition-duration: 0ms; }
+.random-classname-cf072cf7 .random-classname-ec188fc0 ~ * + .todo-list .completed { background-color: rgba(148, 148, 148, 0.049); transition-duration: 0ms; }
+* + .absolutely-positioned-element main .li-23-1 + * + .completed { background-color: rgba(148, 148, 148, 0.05); transition-duration: 0ms; }
+.completed + .completed { background-color: rgba(148, 148, 148, 0.051); transition-duration: 0ms; }
+.completed { background-color: rgba(148, 148, 148, 0.052); transition-duration: 0ms; }
+::slotted + .completed ~ .completed { background-color: rgba(148, 148, 148, 0.053); transition-duration: 0ms; }
+.main > .random-classname-b1f0b1e5 + [data-random-attr-c710b8e9] + .toggle-all-container + * > .completed { background-color: rgba(148, 148, 148, 0.054); transition-duration: 0ms; }
+.non-matching-selector .random-classname-737ea6eb .random-classname-f29ad75 + main div { background-color: rgba(148, 148, 148, 0.055); transition-duration: 0ms; }
+* > .absolutely-positioned-element .li-28-0 { background-color: rgba(148, 148, 148, 0.056); transition-duration: 0ms; }
+.random-classname-38d226cb + .todo-list > .li-28-0 { background-color: rgba(148, 148, 148, 0.057); transition-duration: 0ms; }
+.random-classname-1406fceb + div + main + .main > .todo-list > .li-29-1 { background-color: rgba(148, 148, 148, 0.058); transition-duration: 0ms; }
+.li-29-1 { background-color: rgba(148, 148, 148, 0.059); transition-duration: 0ms; }
+.todo-target-0 * .completed { background-color: rgba(148, 148, 148, 0.06); transition-duration: 0ms; }
+.non-matching-selector .random-classname-1d70f543 + main + * > * > .completed { background-color: rgba(148, 148, 148, 0.061); transition-duration: 0ms; }
+* [data-random-attr-c710b8e9] + * + .todo-list div + .li-31-1 { background-color: rgba(148, 148, 148, 0.062); transition-duration: 0ms; }
+* { background-color: rgba(148, 148, 148, 0.063); transition-duration: 0ms; }
+* ~ .header + * .completed + .completed ~ .li-32-1 { background-color: rgba(148, 148, 148, 0.064); transition-duration: 0ms; }
+.li-32-0 { background-color: rgba(148, 148, 148, 0.065); transition-duration: 0ms; }
+* > .absolutely-positioned-element div > .main > * > .li-33-0 { background-color: rgba(148, 148, 148, 0.066); transition-duration: 0ms; }
+.random-classname-22f4844b > .li-31-0 + .li-32-1 + .li-33-1 { background-color: rgba(148, 148, 148, 0.067); transition-duration: 0ms; }
+.todo-list .li-34-0 { background-color: rgba(148, 148, 148, 0.068); transition-duration: 0ms; }
+.todo-list > .li-34-1 { background-color: rgba(148, 148, 148, 0.069); transition-duration: 0ms; }
+* + .absolutely-positioned-element * > .todo-list div { background-color: rgba(148, 148, 148, 0.07); transition-duration: 0ms; }
+* { background-color: rgba(148, 148, 148, 0.071); transition-duration: 0ms; }
+.random-classname-7134e52f .todo-list > .random-classname-60e05939 ~ * ~ div + .li-36-1 { background-color: rgba(148, 148, 148, 0.072); transition-duration: 0ms; }
+.random-classname-c9b76d5 + .main .completed + .completed { background-color: rgba(148, 148, 148, 0.073); transition-duration: 0ms; }
+.completed ~ div + .li-37-1 { background-color: rgba(148, 148, 148, 0.074); transition-duration: 0ms; }
+.random-classname-63670c63 .random-classname-449ad00d .random-classname-78f17b33 ~ .li-30-0 ~ .li-37-0 { background-color: rgba(148, 148, 148, 0.075); transition-duration: 0ms; }
+* { background-color: rgba(148, 148, 148, 0.076); transition-duration: 0ms; }
+.completed { background-color: rgba(148, 148, 148, 0.077); transition-duration: 0ms; }
+* ~ .header ~ .main > ul > * + div { background-color: rgba(148, 148, 148, 0.078); transition-duration: 0ms; }
+.random-classname-36d54f4b > .todo-list > .li-39-0 { background-color: rgba(148, 148, 148, 0.079); transition-duration: 0ms; }
+.li-40-1 { background-color: rgba(148, 148, 148, 0.08); transition-duration: 0ms; }
+.random-classname-f4c9df67 > .random-classname-8c65a831 > .random-classname-5f737713 > .random-classname-7543b13 .random-classname-a839bd95 main * ~ .li-39-1 + * { background-color: rgba(148, 148, 148, 0.081); transition-duration: 0ms; }
+.random-classname-7134e52f * .li-40-1 + .li-41-0 { background-color: rgba(148, 148, 148, 0.082); transition-duration: 0ms; }
+.random-classname-4d171e63 ~ .random-classname-526cc8d > .todo-list > .li-41-1 { background-color: rgba(148, 148, 148, 0.083); transition-duration: 0ms; }
+.random-classname-1797b521 ~ .todo-list > .li-42-1 { background-color: rgba(148, 148, 148, 0.084); transition-duration: 0ms; }
+.li-16-1 ~ .li-42-0 { background-color: rgba(148, 148, 148, 0.085); transition-duration: 0ms; }
+* > .main * + * .li-42-0 + .li-43-0 { background-color: rgba(148, 148, 148, 0.086); transition-duration: 0ms; }
+.random-classname-e32e297d .random-classname-9470c909 .random-classname-96fc1c23 .non-matching-selector [data-random-attr-d4dc4867] div ~ .li-43-0 { background-color: rgba(148, 148, 148, 0.087); transition-duration: 0ms; }
+.absolutely-positioned-element main > div ~ * + ul > .completed { background-color: rgba(148, 148, 148, 0.088); transition-duration: 0ms; }
+.completed { background-color: rgba(148, 148, 148, 0.089); transition-duration: 0ms; }
+.completed { background-color: rgba(148, 148, 148, 0.09); transition-duration: 0ms; }
+.random-classname-1791ae03 .random-classname-17f07f25 ~ * > .li-44-0 + .li-45-0 { background-color: rgba(148, 148, 148, 0.091); transition-duration: 0ms; }
+.todo-target-0 * + .todo-list > div + div { background-color: rgba(148, 148, 148, 0.092); transition-duration: 0ms; }
+div ~ div ~ * .li-46-0 { background-color: rgba(148, 148, 148, 0.093); transition-duration: 0ms; }
+* > .completed { background-color: rgba(148, 148, 148, 0.094); transition-duration: 0ms; }
+.random-classname-8abc5b5f + .todo-list > .completed + .li-47-1 .li-47-1 { background-color: rgba(148, 148, 148, 0.095); transition-duration: 0ms; }
+.todo-target-0 div .toggle-all-container + * .completed + div { background-color: rgba(148, 148, 148, 0.096); transition-duration: 0ms; }
+.completed { background-color: rgba(148, 148, 148, 0.097); transition-duration: 0ms; }
+.li-45-1 ~ .li-48-0 + .li-49-1 { background-color: rgba(148, 148, 148, 0.098); transition-duration: 0ms; }
+div + .random-classname-6082f9f3 ~ ul > .li-41-1 ~ .li-49-0 { background-color: rgba(148, 148, 148, 0.099); transition-duration: 0ms; }
+.false-sibling + div > * > .todo-list > .li-50-1 .li-50-1 { background-color: rgba(148, 148, 148, 0.1); transition-duration: 0ms; }
+.main > .todo-list > .li-50-1 { background-color: rgba(148, 148, 148, 0.101); transition-duration: 0ms; }
+div + .false-sibling + div > * > .todo-list > .li-51-0 { background-color: rgba(148, 148, 148, 0.102); transition-duration: 0ms; }
+.random-classname-534ffc7f > .todo-list .completed + .li-1-1 + div ~ .completed { background-color: rgba(148, 148, 148, 0.103); transition-duration: 0ms; }
+* .main .li-52-0 { background-color: rgba(148, 148, 148, 0.104); transition-duration: 0ms; }
+* + div ~ .completed { background-color: rgba(148, 148, 148, 0.105); transition-duration: 0ms; }
+* > .todo-list > .li-53-0 { background-color: rgba(148, 148, 148, 0.106); transition-duration: 0ms; }
+:not(.non-matching-selector) .random-classname-8855812d + .main > .toggle-all-container ~ ul .li-47-1 ~ .li-53-1 { background-color: rgba(148, 148, 148, 0.107); transition-duration: 0ms; }
+.completed { background-color: rgba(148, 148, 148, 0.108); transition-duration: 0ms; }
+.random-classname-3f0faeff + main .li-54-0 { background-color: rgba(148, 148, 148, 0.109); transition-duration: 0ms; }
+.todo-target-0 .absolutely-positioned-element .main .todo-list > .li-55-0 { background-color: rgba(148, 148, 148, 0.11); transition-duration: 0ms; }
+.li-55-0 { background-color: rgba(148, 148, 148, 0.111); transition-duration: 0ms; }
+.random-classname-7134e52f .main .random-classname-7ef38bd3 + [data-random-attr-fa45e001] ~ .li-55-0 + .completed { background-color: rgba(148, 148, 148, 0.112); transition-duration: 0ms; }
+.non-matching-selector .random-classname-379859b .toggle-all-container + .todo-list .todo-list .todo-list > .completed { background-color: rgba(148, 148, 148, 0.113); transition-duration: 0ms; }
+* { background-color: rgba(148, 148, 148, 0.114); transition-duration: 0ms; }
+div { background-color: rgba(148, 148, 148, 0.115); transition-duration: 0ms; }
+* ~ * { background-color: rgba(148, 148, 148, 0.116); transition-duration: 0ms; }
+.random-classname-c400450b .random-classname-6082f9f3 + div ~ .todo-list > .li-58-1 { background-color: rgba(148, 148, 148, 0.117); transition-duration: 0ms; }
+.random-classname-7134e52f .absolutely-positioned-element > .main > .todo-list > .li-59-0 { background-color: rgba(148, 148, 148, 0.118); transition-duration: 0ms; }
+.absolutely-positioned-element .completed { background-color: rgba(148, 148, 148, 0.119); transition-duration: 0ms; }
+.li-11-1 ~ .li-33-0 ~ .li-48-1 ~ .li-58-1 + .li-59-0 + .li-60-0 { background-color: rgba(148, 148, 148, 0.12); transition-duration: 0ms; }
+* + .todo-list * ~ div { background-color: rgba(148, 148, 148, 0.121); transition-duration: 0ms; }
+.li-61-0 { background-color: rgba(148, 148, 148, 0.122); transition-duration: 0ms; }
+.random-classname-575bac1b ~ .todo-list > .li-61-1 { background-color: rgba(148, 148, 148, 0.123); transition-duration: 0ms; }
+.random-classname-73399455 + .header + main .completed + * { background-color: rgba(148, 148, 148, 0.124); transition-duration: 0ms; }
+.non-matching-selector > [data-random-attr-da83504d] .non-matching-selector .random-classname-82c1b40f * .completed .completed { background-color: rgba(148, 148, 148, 0.125); transition-duration: 0ms; }
+.random-classname-7134e52f .main .li-63-0 { background-color: rgba(148, 148, 148, 0.126); transition-duration: 0ms; }
+.li-63-0 { background-color: rgba(148, 148, 148, 0.127); transition-duration: 0ms; }
+* > .todo-list > * { background-color: rgba(148, 148, 148, 0.128); transition-duration: 0ms; }
+.random-classname-8bcc56c5 .random-classname-d018425d > .random-classname-813be57d + .random-classname-2154b9c9 + .main .todo-list .completed + .completed { background-color: rgba(148, 148, 148, 0.129); transition-duration: 0ms; }
+.li-15-1 ~ .li-20-0 ~ .li-23-1 ~ .completed + .completed + .li-65-0 { background-color: rgba(148, 148, 148, 0.13); transition-duration: 0ms; }
+MailUI .li-65-0 { background-color: rgba(148, 148, 148, 0.131); transition-duration: 0ms; }
+div { background-color: rgba(148, 148, 148, 0.132); transition-duration: 0ms; }
+.random-classname-ee43fd4b > div + div { background-color: rgba(148, 148, 148, 0.133); transition-duration: 0ms; }
+.li-67-0 { background-color: rgba(148, 148, 148, 0.134); transition-duration: 0ms; }
+.li-67-0 { background-color: rgba(148, 148, 148, 0.135); transition-duration: 0ms; }
+.completed { background-color: rgba(148, 148, 148, 0.136); transition-duration: 0ms; }
+.random-classname-9ef6bcfb .li-66-1 + .li-67-1 + .li-68-1 { background-color: rgba(148, 148, 148, 0.137); transition-duration: 0ms; }
+.li-14-1 ~ .completed ~ .li-66-0 + .completed + .completed + .li-69-1 { background-color: rgba(148, 148, 148, 0.138); transition-duration: 0ms; }
+* > main .li-69-0 { background-color: rgba(148, 148, 148, 0.139); transition-duration: 0ms; }
+.absolutely-positioned-element > .random-classname-5e569891 + div ~ .main > ul > .completed { background-color: rgba(148, 148, 148, 0.14); transition-duration: 0ms; }
+.random-classname-3b3659d9 + .completed + .completed .li-70-0 { background-color: rgba(148, 148, 148, 0.141); transition-duration: 0ms; }
+.completed + * .li-19-0 ~ * .completed .completed { background-color: rgba(148, 148, 148, 0.142); transition-duration: 0ms; }
+.completed { background-color: rgba(148, 148, 148, 0.143); transition-duration: 0ms; }
+.absolutely-positioned-element div + .random-classname-196d4e2d ~ * > .completed ~ div { background-color: rgba(148, 148, 148, 0.144); transition-duration: 0ms; }
+[data-random-attr-2a23e185] [data-random-attr-95743837] + * ~ .random-classname-8a2d7af7 ~ .todo-list > div { background-color: rgba(148, 148, 148, 0.145); transition-duration: 0ms; }
+.li-36-0 + .li-37-1 ~ .li-70-0 + .li-71-0 + * + .li-73-1 { background-color: rgba(148, 148, 148, 0.146); transition-duration: 0ms; }
+.todo-list > .li-73-1 { background-color: rgba(148, 148, 148, 0.147); transition-duration: 0ms; }
+.completed + div { background-color: rgba(148, 148, 148, 0.148); transition-duration: 0ms; }
+.li-5-1 + .li-6-1 ~ .li-74-0 { background-color: rgba(148, 148, 148, 0.149); transition-duration: 0ms; }
+.random-classname-7134e52f + .random-classname-60e05939 ~ .random-classname-63271ac5 + * + .completed ~ .li-75-0 { background-color: rgba(148, 148, 148, 0.15); transition-duration: 0ms; }
+.li-74-0 + .li-75-0 { background-color: rgba(148, 148, 148, 0.151); transition-duration: 0ms; }
+* > * + * { background-color: rgba(148, 148, 148, 0.152); transition-duration: 0ms; }
+.li-8-0 ~ .li-75-0 + .completed { background-color: rgba(148, 148, 148, 0.153); transition-duration: 0ms; }
+* > .random-classname-5e569891 ~ main .li-77-1 { background-color: rgba(148, 148, 148, 0.154); transition-duration: 0ms; }
+* > .main .todo-list .li-77-1 { background-color: rgba(148, 148, 148, 0.155); transition-duration: 0ms; }
+[data-random-attr-c710b8e9] + * + .todo-list .li-78-0 { background-color: rgba(148, 148, 148, 0.156); transition-duration: 0ms; }
+.random-classname-e8b81b61 > .main > .toggle-all-container ~ .todo-list > .li-78-1 .completed { background-color: rgba(148, 148, 148, 0.157); transition-duration: 0ms; }
+* .header + .main .completed + .li-22-1 ~ .li-79-1 { background-color: rgba(148, 148, 148, 0.158); transition-duration: 0ms; }
+.todo-list .li-79-1 { background-color: rgba(148, 148, 148, 0.159); transition-duration: 0ms; }
+.completed { background-color: rgba(148, 148, 148, 0.16); transition-duration: 0ms; }
+div { background-color: rgba(148, 148, 148, 0.161); transition-duration: 0ms; }
+.random-classname-6082f9f3 + .random-classname-91c27e9d ~ .todo-list > .completed ~ .completed { background-color: rgba(148, 148, 148, 0.162); transition-duration: 0ms; }
+.random-classname-c74dd607 + div ~ .completed ~ .li-80-0 + .li-81-0 { background-color: rgba(148, 148, 148, 0.163); transition-duration: 0ms; }
+ul > .li-82-0 { background-color: rgba(148, 148, 148, 0.164); transition-duration: 0ms; }
+main ul > * { background-color: rgba(148, 148, 148, 0.165); transition-duration: 0ms; }
+.todo-list > .li-83-1 { background-color: rgba(148, 148, 148, 0.166); transition-duration: 0ms; }
+.random-classname-15c5f703 + .random-classname-196d4e2d ~ .random-classname-db8b4b79 ~ .todo-list > .li-83-1 .completed { background-color: rgba(148, 148, 148, 0.167); transition-duration: 0ms; }
+.main > .random-classname-bc3be55f + .toggle-all-container + * .todo-list > .completed { background-color: rgba(148, 148, 148, 0.168); transition-duration: 0ms; }
+main + .main .li-83-1 + div { background-color: rgba(148, 148, 148, 0.169); transition-duration: 0ms; }
+div + .todo-list > * { background-color: rgba(148, 148, 148, 0.17); transition-duration: 0ms; }
+div { background-color: rgba(148, 148, 148, 0.171); transition-duration: 0ms; }
+ul > .li-86-1 { background-color: rgba(148, 148, 148, 0.172); transition-duration: 0ms; }
+.random-classname-dfff6d6f + .random-classname-8a2d7af7 ~ .todo-list * { background-color: rgba(148, 148, 148, 0.173); transition-duration: 0ms; }
+.li-87-0 { background-color: rgba(148, 148, 148, 0.174); transition-duration: 0ms; }
+.random-classname-2dfd7a8f ul > .li-87-0 { background-color: rgba(148, 148, 148, 0.175); transition-duration: 0ms; }
+.completed { background-color: rgba(148, 148, 148, 0.176); transition-duration: 0ms; }
+.li-88-1 { background-color: rgba(148, 148, 148, 0.177); transition-duration: 0ms; }
+.toggle-all-container + .todo-list .completed { background-color: rgba(148, 148, 148, 0.178); transition-duration: 0ms; }
+.random-classname-fb50e125 .li-47-0 ~ .li-89-1 { background-color: rgba(148, 148, 148, 0.179); transition-duration: 0ms; }
+* ~ [data-random-attr-c710b8e9] + * + .todo-list > .completed + .li-90-1 { background-color: rgba(148, 148, 148, 0.18); transition-duration: 0ms; }
+.li-90-1 { background-color: rgba(148, 148, 148, 0.181); transition-duration: 0ms; }
+div ~ .li-90-1 .completed .completed + * .completed { background-color: rgba(148, 148, 148, 0.182); transition-duration: 0ms; }
+.li-90-1 + .li-91-1 { background-color: rgba(148, 148, 148, 0.183); transition-duration: 0ms; }
+div { background-color: rgba(148, 148, 148, 0.184); transition-duration: 0ms; }
+.non-matching-selector .random-classname-8c65a831 .random-classname-5f737713 .non-matching-selector > .random-classname-4e3115bb .todo-list > .completed ~ .li-91-0 + .li-92-0 { background-color: rgba(148, 148, 148, 0.185); transition-duration: 0ms; }
+* > * .todo-list > .li-93-0 { background-color: rgba(148, 148, 148, 0.186); transition-duration: 0ms; }
+[data-random-attr-7727047f] > .random-classname-15c5f703 + * ~ * > div + .li-93-1 { background-color: rgba(148, 148, 148, 0.187); transition-duration: 0ms; }
+.li-92-0 + .li-93-1 + .li-94-1 { background-color: rgba(148, 148, 148, 0.188); transition-duration: 0ms; }
+.random-classname-5df41ed9 > .li-93-0 + .completed { background-color: rgba(148, 148, 148, 0.189); transition-duration: 0ms; }
+.toggle-all-container + * > div { background-color: rgba(148, 148, 148, 0.19); transition-duration: 0ms; }
+.todo-list > .li-95-0 { background-color: rgba(148, 148, 148, 0.191); transition-duration: 0ms; }
+.main > div + .todo-list .li-96-0 { background-color: rgba(148, 148, 148, 0.192); transition-duration: 0ms; }
+ul > div { background-color: rgba(148, 148, 148, 0.193); transition-duration: 0ms; }
+div + * > main > .todo-list > * .completed { background-color: rgba(148, 148, 148, 0.194); transition-duration: 0ms; }
+.li-97-0 { background-color: rgba(148, 148, 148, 0.195); transition-duration: 0ms; }
+.random-classname-d75c28c7 ~ .random-classname-1406fceb ~ main + .main > ul > .li-98-0 { background-color: rgba(148, 148, 148, 0.196); transition-duration: 0ms; }
+.non-matching-selector > .random-classname-e32e297d .random-classname-a39e01 .random-classname-95474979 > .li-97-1 + .li-98-1 { background-color: rgba(148, 148, 148, 0.197); transition-duration: 0ms; }
+.li-99-0 { background-color: rgba(148, 148, 148, 0.198); transition-duration: 0ms; }
+.completed + .li-99-0 { background-color: rgba(148, 148, 148, 0.199); transition-duration: 0ms; }

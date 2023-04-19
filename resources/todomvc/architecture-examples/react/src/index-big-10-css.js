@@ -4,7 +4,7 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 
 import { App } from "./todo/app";
 import "todomvc-app-css/index.css";
-import "./big.css";
+import "./big-10.css";
 import "./small.css";
 
 const todoHolder = document.createElement("div");
@@ -29,4 +29,4 @@ render(
     todoHolder
 );
 
-document.querySelector(".depth-10").appendChild(todoHolder);
+document.querySelector(".todo-target-10").appendChild(todoHolder);

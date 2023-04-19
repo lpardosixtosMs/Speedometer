@@ -4,9 +4,8 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 
 import { App } from "./todo/app";
 import "todomvc-app-css/index.css";
-import "./big.css";
+import "./big-0.css";
 import "./small.css";
-// import "./mail.css";
 
 const todoHolder = document.createElement("div");
 todoHolder.className = "absolutely-positioned-element";
@@ -30,4 +29,4 @@ render(
     todoHolder
 );
 
-document.querySelector(".depth-0").appendChild(todoHolder);
+document.querySelector(".todo-target-0").appendChild(todoHolder);
