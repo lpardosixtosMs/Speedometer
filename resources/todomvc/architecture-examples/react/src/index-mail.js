@@ -4,7 +4,6 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 
 import { App } from "./todo/app";
 import "todomvc-app-css/index.css";
-import "./big.css";
 import "./mail.css";
 
 const todoHolder = document.createElement("div");
