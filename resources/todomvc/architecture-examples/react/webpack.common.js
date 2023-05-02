@@ -12,6 +12,7 @@ module.exports = {
         "big-10-css/app": "./src/index-big-10-css.js",
         "big-30-css/app": "./src/index-big-30-css.js",
         "spectrum/app": "./src/index-spectrum.js",
+        "spectrum-matching/app": "./src/index-spectrum-matching.js",
     },
     output: {
         filename: "[name].bundle.js",

@@ -77,6 +77,12 @@ module.exports = merge(common, {
             filename: "spectrum/index.html",
             chunks: ["spectrum/app"],
         }),
+        new HtmlWebpackPlugin({
+            title: "ProductionSpectrumMatching",
+            template: "public/index-spectrum.html",
+            filename: "spectrum-matching/index.html",
+            chunks: ["spectrum-matching/app"],
+        }),
         new MiniCssExtractPlugin({
             filename: "[name].css",
             chunkFilename: "[id].css",
