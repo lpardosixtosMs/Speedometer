@@ -1,8 +1,7 @@
 import { LCG } from 'random-seedable';
+import { SEED, MAX_SELECTOR_LEN } from './params.js';
 
-const SEED = 4212021;
 const rando = new LCG(SEED);
-const MAX_SELECTOR_LEN = 7;
 
 const getClassname = (depth, index) => {
   switch (depth) {
@@ -164,11 +163,11 @@ export const genCss = () => {
   }
   const matchingCssRules = [];
   matchingSelectors.forEach((selector,i) => {
-    matchingCssRules.push(`${selector} { background-color: rgba(0,0,0,${i/1000}) }`);
+    matchingCssRules.push(`${selector} { background-color: rgba(140,140,140,${i/1000}) }`);
   });
   const nonMatchingCssRules = [];
   nonMatchingSelectors.forEach((selector,i) => {
-    nonMatchingCssRules.push(`${selector} { background-color: rgba(0,0,0,${i/1000}) }`);
+    nonMatchingCssRules.push(`${selector} { background-color: rgba(140,140,140,${i/1000}) }`);
   });
   return {matchingCss:matchingCssRules.join('\n'), nonMatchingCss:nonMatchingCssRules.join('\n')};
 }
