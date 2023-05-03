@@ -8,16 +8,18 @@
     "npm": ">=8.19.3"
   },
   "scripts": {
-    "build": "webpack --config webpack.common.js && node dist/app.bundle.js && postcss -o dist/app.min.css dist/app.css",
+    "generate-dom": "webpack --config generator.config.js && node generator-dist/app.bundle.js && purgecss -css generator-dist/app.css --content generator-dist/index.html --output=generator-dist/app.css && cp generator-dist/index.html src/react-todomvc/public/index.html && cp generator-dist/app.css src/react-todomvc/public/app.css  && cp generator-dist/logo.png src/react-todomvc/public/logo.png",
+    "build-todomvc": "webpack --config webpack.prod.js",
+    "build": "npm run generate-dom && npm run build-todomvc",
     "serve": "http-server ./dist -p 7002 -c-1 --cors"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
+    "@spectrum-css/actionbutton": "^3.0.35",
     "@spectrum-css/actiongroup": "^3.0.36",
     "@spectrum-css/actionmenu": "^4.0.23",
-    "@spectrum-css/actionbutton": "^3.0.35",
     "@spectrum-css/button": "10.0.3",
     "@spectrum-css/divider": "^2.0.34",
     "@spectrum-css/menu": "^4.0.26",
@@ -30,6 +32,7 @@
     "@spectrum-css/vars": "9.0.5",
     "@svgr/webpack": "7.0.0",
     "babel-loader": "^9.1.2",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^4.2.2",
     "cssnano": "^6.0.1",
@@ -40,13 +43,23 @@
     "postcss-cli": "^10.1.0",
     "postcss-dropunusedvars": "^1.2.1",
     "postcss-import": "15.1.0",
+    "postcss-loader": "^7.3.0",
     "postcss-varfallback": "^1.1.0",
+    "purgecss": "^5.0.0",
     "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.1",
+
+
+    "html-webpack-plugin": "^5.5.0"
   },
   "dependencies": {
     "random-seedable": "1.0.8",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+
+    "classnames": "^2.2.5",
+    "react-router-dom": "^6.8.2",
+    "todomvc-app-css": "^2.4.2",
+    "todomvc-common": "^1.0.5"
   }
 }

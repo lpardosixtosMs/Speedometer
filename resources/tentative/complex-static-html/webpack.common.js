@@ -1,10 +1,8 @@
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    mode: "development",
     entry: {
-        app: "./src/big-dom-generator/index.js",
+        app: "./src/react-todomvc/index.js",
     },
     output: {
         filename: "[name].bundle.js",
@@ -14,12 +12,6 @@ module.exports = {
     resolve: {
         extensions: [".js", ".jsx"],
     },
-    plugins: [
-        new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css",
-        }),
-    ],
     module: {
         rules: [
             {
@@ -36,19 +28,9 @@ module.exports = {
                 },
             },
             {
-                test: /\.css$/,
-                use: [MiniCssExtractPlugin.loader, "css-loader"],
-            },
-            {
-                test: /\.svg$/i,
-                issuer: /\.[jt]sx?$/,
-                use: ['@svgr/webpack'],
-            },
-            {
-                test: /\.png$/,
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: "asset/resource",
-            }
+            },
         ],
     },
-    target: "node",
 };
