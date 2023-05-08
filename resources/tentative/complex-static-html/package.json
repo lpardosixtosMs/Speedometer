@@ -11,7 +11,8 @@
     "generate-dom": "webpack --config generator.config.js && node generator-dist/app.bundle.js && purgecss -css generator-dist/app.css --content generator-dist/index.html --output=generator-dist/app.css && cp generator-dist/index.html src/react-todomvc/public/index.html && cp generator-dist/app.css src/react-todomvc/public/app.css  && cp generator-dist/logo.png src/react-todomvc/public/logo.png",
     "build-todomvc": "webpack --config webpack.prod.js",
     "build": "npm run generate-dom && npm run build-todomvc",
-    "serve": "http-server ./dist -p 7002 -c-1 --cors"
+    "serve": "http-server ./dist -p 7002 -c-1 --cors",
+    "serve-gen": "http-server ./generator-dist -p 7002 -c-1 --cors"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
