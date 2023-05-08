@@ -17,6 +17,10 @@ Importing the CSS from the Spectrum CSS library.
 @import "@spectrum-css/menu/dist/index-vars.css";
 @import "@spectrum-css/popover/dist/index-vars.css";
 @import "@spectrum-css/divider/dist/index-vars.css";
+@import "@spectrum-css/datepicker/dist/index-vars.css";
+@import "@spectrum-css/picker/dist/index-vars.css";
+@import "@spectrum-css/pickerbutton/dist/index-vars.css";
+@import "@spectrum-css/calendar/dist/index-vars.css";
 
 /*
 @spectrum-css overrides
@@ -33,7 +37,7 @@ Layout CSS for the UI.
 .main-ui {
     display: grid;
     grid-template-columns: 3% 22% 75%;
-    grid-template-rows: 5% 10% 85%;
+    grid-template-rows: 6% 8% 86%;
     height: 100vh;
 }
 
@@ -46,7 +50,7 @@ Layout CSS for the UI.
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    margin-bottom: 5px;
+    max-height: 50px;
 }
 
 .todo-area {
@@ -63,14 +67,29 @@ Layout CSS for the UI.
     grid-row-end: 3;
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: auto auto auto 1fr;
     align-items: center;
     gap: 5px;
     margin: 5px 0px;
     padding: 5px;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    overflow: hidden;
+    max-height: 40px;
+}
+
+.ribbon > .spectrum-ActionGroup > .spectrum-DatePicker > .spectrum-DatePicker-textfield {
+    --spectrum-textfield-border-color: rgb(0, 0, 0);
+    --spectrum-textfield-border-width: 1px;
+}
+
+.ribbon > .spectrum-ActionGroup > .spectrum-DatePicker > .spectrum-Popover {
+    position: absolute;
+    width: 280px;
+    top: 100%;
+    left: 0px;
+}
+
+.ribbon > .spectrum-ActionGroup > .spectrum-DatePicker > .spectrum-Popover > .spectrum-Calendar {
+    width: 280px;
 }
 
 .ribbon > .divider {

@@ -1,7 +1,3 @@
-import ProfileIcon from "./../assets/Smock_RealTimeCustomerProfile_18_N.svg";
-import SettingsIcon from "./../assets/Smock_Settings_18_N.svg";
-import BellIcon from "./../assets/Smock_Bell_18_N.svg";
-
 export const ActionButton = ({ Icon, label, quiet }) => {
     const text = label ? <span className="ui spectrum-ActionButton-label">{label}</span> : null;
     return (
