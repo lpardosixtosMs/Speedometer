@@ -15,7 +15,7 @@ export const TopBar = () => {
     return (
         <div className="ui top-bar">
             <img className="ui" src={SpeedometerLogo} alt="Speedometer Logo" height={40} />
-            <h2 className="ui spectrum-Heading spectrum-Heading--sizeXXL">TODO App</h2>
+            <h2 className="ui spectrum-Heading spectrum-Heading--sizeL">TODO App</h2>
             <div className={`ui search-area`}>
                 <SearchArea />
             </div>

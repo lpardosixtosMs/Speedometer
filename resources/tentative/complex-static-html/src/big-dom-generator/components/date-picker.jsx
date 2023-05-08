@@ -15,7 +15,7 @@ export const DatePicker = () => {
                 </div>
             </button>
 
-            <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom is-open">
+            <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom">
                 <div className="ui spectrum-Calendar">
                     <div className="ui spectrum-Calendar-header">
                         <div role="heading" aria-live="assertive" aria-atomic="true" className="ui spectrum-Calendar-title">
