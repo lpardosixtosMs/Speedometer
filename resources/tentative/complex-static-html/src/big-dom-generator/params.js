@@ -9,3 +9,6 @@ export const TARGET_SIZE = 3000;
 
 // Maximum length of a generated CSS selector.
 export const MAX_SELECTOR_LEN = 7;
+
+// Maximum depth for the open tree view items
+export const MAX_TREE_VIEW_ITEM_DEPTH = 15;
