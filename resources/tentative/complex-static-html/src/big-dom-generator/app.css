@@ -19,6 +19,14 @@ Importing the CSS from the Spectrum CSS library.
 @import "@spectrum-css/divider/dist/index-vars.css";
 
 /*
+@spectrum-css overrides
+*/
+
+[dir="ltr"] .spectrum-TreeView-itemIndicator{
+    margin-left: calc(-1 * var(--spectrum-treeview-item-affordance-size));
+}
+
+/*
 Layout CSS for the UI.
 */
 

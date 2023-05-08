@@ -15,7 +15,7 @@ const FolderWrapper = (props) => {
         children.push(<TreeItem key={i} nodeCount={nodeCount} random={random} numChildren={numChildren} maxBreadth={maxBreadth} maxDepth={maxDepth} childProb={childProb} currentDepth={currentDepth + 1} />);
 
     nodeCount.current = nodeCount.current + 1;
-    return <ul className="ui spectrum-TreeView spectrum-TreeView--sizeM">{children}</ul>;
+    return <ul className="ui spectrum-TreeView spectrum-TreeView--sizeS">{children}</ul>;
 };
 
 const TreeItem = (props) => {
@@ -26,8 +26,8 @@ const TreeItem = (props) => {
     return (
         <li className={`ui spectrum-TreeView-item ${children ? "is-open" : ""}`}>
             <a className="ui spectrum-TreeView-itemLink">
-                <ChevronRight className="ui spectrum-Icon spectrum-UIIcon-ChevronRight100 spectrum-TreeView-itemIndicator" />
-                <span className="ui just-span">{children ? "Sprint" : "Todo List"}</span>
+                <ChevronRight className="ui spectrum-Icon spectrum-UIIcon-ChevronRight100 spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon" />
+                <span className="ui just-span spectrum-TreeView-itemLabel">{children ? "Sprint" : "Todo List"}</span>
             </a>
             {children}
         </li>
