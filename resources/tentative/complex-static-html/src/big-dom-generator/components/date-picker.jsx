@@ -2,6 +2,7 @@ import ChevronRight from "../assets/Smock_ChevronRight_18_N.svg";
 import ChevronLeft from "../assets/Smock_ChevronLeft_18_N.svg";
 import AddIcon from "../assets/Smock_Add_18_N.svg";
 import { PopOver } from "./pop-over";
+import { ActionButton } from "./action-group";
 
 const DaysOfTheWeekHeadings = () => {
     const daysOfTheWeek = { Sunday: "S", Monday: "M", Tuesday: "T", Wednesday: "W", Thursday: "T", Friday: "F", Saturday: "S" };
@@ -65,13 +66,8 @@ const Calendar = () => {
                     March 2023
                 </div>
 
-                <button aria-label="Previous" aria-haspopup="false" aria-pressed="false" className="ui spectrum-ActionButton spectrum-ActionButton--sizeS spectrum-ActionButton--quiet spectrum-Calendar-prevMonth">
-                    <ChevronLeft className="ui spectrum-Icon spectrum-UIIcon-ChevronLeft100 spectrum-Icon--medium spectrum-ActionButton-icon" />
-                </button>
-
-                <button aria-label="Next" aria-haspopup="false" aria-pressed="false" className="ui spectrum-ActionButton spectrum-ActionButton--sizeS spectrum-ActionButton--quiet spectrum-Calendar-nextMonth">
-                    <ChevronRight className="ui spectrum-Icon spectrum-UIIcon-ChevronRight100 spectrum-Icon--medium spectrum-ActionButton-icon" />
-                </button>
+                <ActionButton Icon={ChevronLeft} quiet aria-label="Previous" aria-haspopup="false" aria-pressed="false" className="ui spectrum-ActionButton spectrum-ActionButton--sizeS spectrum-ActionButton--quiet spectrum-Calendar-prevMonth" />
+                <ActionButton Icon={ChevronRight} quiet aria-label="Next" aria-haspopup="false" aria-pressed="false" className="ui spectrum-ActionButton spectrum-ActionButton--sizeS spectrum-ActionButton--quiet spectrum-Calendar-nextMonth" />
             </div>
             <div role="grid" tabindex="0" aria-readonly="true" className="ui spectrum-Calendar-body" aria-disabled="false">
                 <table role="presentation" className="ui spectrum-Calendar-table">
@@ -100,7 +96,7 @@ export const DatePicker = () => {
                 </div>
             </button>
 
-            <PopOver role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom">
+            <PopOver role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom is-open">
                 <Calendar />
             </PopOver>
         </div>
