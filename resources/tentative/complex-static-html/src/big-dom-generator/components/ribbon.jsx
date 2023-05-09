@@ -4,6 +4,7 @@ import FilterIcon from "../assets/Smock_Filter_18_N.svg";
 import ViewListIcon from "../assets/Smock_ViewList_18_N.svg";
 import GraphTrendIcon from "../assets/Smock_GraphTrend_18_N.svg";
 import CalendarIcon from "../assets/Smock_Calendar_18_N.svg";
+import GraphGanttIcon from "../assets/Smock_GraphGantt_18_N.svg";
 import ClockIcon from "../assets/Smock_Clock_18_N.svg";
 import { ActionButton, ActionGroup } from "./action-group";
 import { DatePicker } from "./date-picker";
@@ -18,7 +19,7 @@ export const Ribbon = () => {
             <ActionGroup>
                 <ActionButton Icon={ClockIcon} label={"Send Reminder"} quiet />
                 <ActionButton Icon={ViewListIcon} label={"Backlog"} quiet />
-                <ActionButton Icon={GraphTrendIcon} quiet />
+                <ActionButton Icon={GraphTrendIcon} label={"Analytics"}  quiet />
             </ActionGroup>
             <Divider />
             <ActionGroup>
@@ -28,6 +29,7 @@ export const Ribbon = () => {
             <Divider />
             <ActionGroup>
                 <ActionButton Icon={CalendarIcon} label={"Calendar"} quiet />
+                <ActionButton Icon={GraphGanttIcon} label={"Timeline"} quiet />
                 <ActionButton Icon={FilterIcon} quiet />
             </ActionGroup>
             <Divider />

@@ -2,6 +2,60 @@ import ChevronRight from "../assets/Smock_ChevronRight_18_N.svg";
 import ChevronLeft from "../assets/Smock_ChevronLeft_18_N.svg";
 import AddIcon from "../assets/Smock_Add_18_N.svg";
 
+const DaysOfTheWeekHeadings = () => {
+    const daysOfTheWeek = { Sunday: "S", Monday: "M", Tuesday: "T", Wednesday: "W", Thursday: "T", Friday: "F", Saturday: "S" };
+
+    return Object.entries(daysOfTheWeek).map(([key, value]) => (
+        <th key={key} role="columnheader" scope="col" className="ui spectrum-Calendar-tableCell">
+            <abbr className="ui spectrum-Calendar-dayOfWeek" title={key}>
+                {value}
+            </abbr>
+        </th>
+    ));
+};
+
+const renderCalendarRows = () => {
+    const weekStarts = [new Date(2023, 1, 26), new Date(2023, 2, 5), new Date(2023, 2, 12), new Date(2023, 2, 19), new Date(2023, 2, 26)];
+
+    return weekStarts.map((weekStart) => (
+        <tr key={weekStart.toISOString()} role="row">
+            {renderCalendarCells(weekStart)}
+        </tr>
+    ));
+};
+
+const renderCalendarCells = (startDate) => {
+    const dates = [...Array(7)].map((_, i) => {
+        const date = new Date(startDate);
+        date.setDate(startDate.getDate() + i);
+        return date;
+    });
+
+    const renderCell = (date) => (
+        <td
+            key={date.toISOString()}
+            role="gridcell"
+            aria-invalid="false"
+            className="ui spectrum-Calendar-tableCell"
+            tabIndex="-1"
+            aria-disabled="false"
+            aria-selected="false"
+            title={date.toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            })}
+        >
+            <span role="presentation" className="ui spectrum-Calendar-date">
+                {date.getDate()}
+            </span>
+        </td>
+    );
+
+    return <>{dates.map(renderCell)}</>;
+};
+
 export const DatePicker = () => {
     return (
         <div aria-haspopup="dialog" className="ui spectrum-DatePicker spectrum-ActionGroup-item" aria-disabled="false" aria-readonly="false" aria-required="false">
@@ -33,231 +87,9 @@ export const DatePicker = () => {
                     <div role="grid" tabindex="0" aria-readonly="true" className="ui spectrum-Calendar-body" aria-disabled="false">
                         <table role="presentation" className="ui spectrum-Calendar-table">
                             <thead role="presentation">
-                                <tr role="row">
-                                    <th role="columnheader" scope="col" className="ui spectrum-Calendar-tableCell">
-                                        <abbr className="ui spectrum-Calendar-dayOfWeek" title="Sunday">
-                                            S
-                                        </abbr>
-                                    </th>
-                                    <th role="columnheader" scope="col" className="ui spectrum-Calendar-tableCell">
-                                        <abbr className="ui spectrum-Calendar-dayOfWeek" title="Monday">
-                                            M
-                                        </abbr>
-                                    </th>
-                                    <th role="columnheader" scope="col" className="ui spectrum-Calendar-tableCell">
-                                        <abbr className="ui spectrum-Calendar-dayOfWeek" title="Tuesday">
-                                            T
-                                        </abbr>
-                                    </th>
-                                    <th role="columnheader" scope="col" className="ui spectrum-Calendar-tableCell">
-                                        <abbr className="ui spectrum-Calendar-dayOfWeek" title="Wednesday">
-                                            W
-                                        </abbr>
-                                    </th>
-                                    <th role="columnheader" scope="col" className="ui spectrum-Calendar-tableCell">
-                                        <abbr className="ui spectrum-Calendar-dayOfWeek" title="Thursday">
-                                            T
-                                        </abbr>
-                                    </th>
-                                    <th role="columnheader" scope="col" className="ui spectrum-Calendar-tableCell">
-                                        <abbr className="ui spectrum-Calendar-dayOfWeek" title="Friday">
-                                            F
-                                        </abbr>
-                                    </th>
-                                    <th role="columnheader" scope="col" className="ui spectrum-Calendar-tableCell">
-                                        <abbr className="ui spectrum-Calendar-dayOfWeek" title="Saturday">
-                                            S
-                                        </abbr>
-                                    </th>
-                                </tr>
+                                <tr role="row">{DaysOfTheWeekHeadings()}</tr>
                             </thead>
-                            <tbody role="presentation">
-                                <tr role="row">
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Sunday, February 26, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            26
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Monday, February 27, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            27
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Tuesday, February 28, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            28
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Wednesday, March 1, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            1
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Thursday, March 2, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            2
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Friday, March 3, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            3
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Saturday, March 4, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            4
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr role="row">
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Sunday, March 5, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            5
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Monday, March 6, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            6
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Tuesday, March 7, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            7
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Wednesday, March 8, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            8
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Thursday, March 9, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            9
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Friday, March 10, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            10
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Saturday, March 11, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            11
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr role="row">
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Sunday, March 12, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            12
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Monday, March 13, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            13
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Tuesday, March 14, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            14
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Wednesday, March 15, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            15
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Thursday, March 16, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            16
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Friday, March 17, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            17
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Saturday, March 18, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            18
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr role="row">
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Sunday, March 19, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            19
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Monday, March 20, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            20
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Tuesday, March 21, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            21
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Wednesday, March 22, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            22
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Thursday, March 23, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            23
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Friday, March 24, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            24
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Saturday, March 25, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            25
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr role="row">
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Sunday, March 26, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            26
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Monday, March 27, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            27
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Tuesday, March 28, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            28
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Wednesday, March 29, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            29
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Thursday, March 30, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            30
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Friday, March 31, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            31
-                                        </span>
-                                    </td>
-                                    <td role="gridcell" aria-invalid="false" className="ui spectrum-Calendar-tableCell" tabindex="-1" aria-disabled="false" aria-selected="false" title="Saturday, April 1, 2023">
-                                        <span role="presentation" className="ui spectrum-Calendar-date">
-                                            1
-                                        </span>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <tbody role="presentation">{renderCalendarRows()}</tbody>
                         </table>
                     </div>
                 </div>

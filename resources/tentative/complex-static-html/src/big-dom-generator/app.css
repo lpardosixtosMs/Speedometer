@@ -21,6 +21,7 @@ Importing the CSS from the Spectrum CSS library.
 @import "@spectrum-css/picker/dist/index-vars.css";
 @import "@spectrum-css/pickerbutton/dist/index-vars.css";
 @import "@spectrum-css/calendar/dist/index-vars.css";
+@import "@spectrum-css/typography/dist/index-vars.css";
 
 /*
 @spectrum-css overrides
@@ -37,7 +38,7 @@ Layout CSS for the UI.
 .main-ui {
     display: grid;
     grid-template-columns: 3% 22% 75%;
-    grid-template-rows: 6% 8% 86%;
+    grid-template-rows: 6% 7% 87%;
     height: 100vh;
 }
 
@@ -79,6 +80,7 @@ Layout CSS for the UI.
 .ribbon > .spectrum-ActionGroup > .spectrum-DatePicker > .spectrum-DatePicker-textfield {
     --spectrum-textfield-border-color: rgb(0, 0, 0);
     --spectrum-textfield-border-width: 1px;
+    max-width: 115px;
 }
 
 .ribbon > .spectrum-ActionGroup > .spectrum-DatePicker > .spectrum-Popover {
