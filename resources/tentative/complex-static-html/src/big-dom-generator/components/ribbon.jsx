@@ -19,7 +19,7 @@ export const Ribbon = () => {
         <div className="ui ribbon">
             <ActionGroup>
                 <ActionButton Icon={ClockIcon} label={"Send Reminder"} quiet />
-                <PopOver numOptions={4} className="ui spectrum-Popover spectrum-Popover--bottom is-open" />
+                <PopOver numOptions={4} className="ui spectrum-Popover spectrum-Popover--bottom" />
                 <ActionButton Icon={ViewListIcon} label={"Backlog"} quiet />
                 <ActionButton Icon={GraphTrendIcon} label={"Analytics"} quiet />
             </ActionGroup>
@@ -33,7 +33,7 @@ export const Ribbon = () => {
                 <ActionButton Icon={CalendarIcon} quiet />
                 <ActionButton Icon={GraphGanttIcon} label={"Timeline"} quiet />
                 <ActionButton Icon={FilterIcon} quiet />
-                <PopOver numOptions={3} className="ui spectrum-Popover spectrum-Popover--bottom is-open" />
+                <PopOver numOptions={3} className="ui spectrum-Popover spectrum-Popover--bottom" />
             </ActionGroup>
             <Divider />
             <ActionGroup>

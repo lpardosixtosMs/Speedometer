@@ -7,7 +7,7 @@ export const ShowMore = () => {
     return (
         <div className="ui show-more">
             <ActionButton Icon={MoreIcon} quiet />
-            <PopOver numOptions={10} className="ui spectrum-Popover spectrum-Popover--bottom is-open" />
+            <PopOver numOptions={10} className="ui spectrum-Popover spectrum-Popover--bottom" />
         </div>
     );
 };

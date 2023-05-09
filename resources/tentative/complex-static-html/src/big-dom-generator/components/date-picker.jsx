@@ -98,7 +98,7 @@ export const DatePicker = () => {
                 </div>
             </button>
 
-            <PopOver role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom is-open">
+            <PopOver role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom">
                 <Calendar />
             </PopOver>
         </div>
