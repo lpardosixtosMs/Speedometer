@@ -1,18 +1,23 @@
-export const PopOver = ({numOptions}) => {
-    const children = [];
-    for (let i = 0; i < numOptions; i++) {
-        children.push((
-            <li key={i} className="ui spectrum-Menu-item" role="menuitem" tabIndex="0">
-                <span className="ui spectrum-Menu-itemLabel">Hidden Option {i}</span>
-            </li>
-        ));
+export const PopOver = ({ numOptions, children, ...rest }) => {
+    const options = [];
+    if (numOptions) {
+        for (let i = 0; i < numOptions; i++) {
+            options.push(
+                <li key={i} className="ui spectrum-Menu-item" role="menuitem" tabIndex="0">
+                    <span className="ui spectrum-Menu-itemLabel">Hidden Option {i}</span>
+                </li>
+            );
+        }
     }
 
     return (
-        <div className="ui spectrum-Popover spectrum-Popover--bottom">
-            <ul className="ui spectrum-Menu" role="menu">
-                {children}
-            </ul>
+        <div {...rest}>
+            {children}
+            {numOptions && (
+                <ul className="ui spectrum-Menu" role="menu">
+                    {options}
+                </ul>
+            )}
         </div>
     );
-}
+};

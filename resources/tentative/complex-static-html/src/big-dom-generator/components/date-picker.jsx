@@ -1,6 +1,7 @@
 import ChevronRight from "../assets/Smock_ChevronRight_18_N.svg";
 import ChevronLeft from "../assets/Smock_ChevronLeft_18_N.svg";
 import AddIcon from "../assets/Smock_Add_18_N.svg";
+import { PopOver } from "./pop-over";
 
 const DaysOfTheWeekHeadings = () => {
     const daysOfTheWeek = { Sunday: "S", Monday: "M", Tuesday: "T", Wednesday: "W", Thursday: "T", Friday: "F", Saturday: "S" };
@@ -56,6 +57,34 @@ const renderCalendarCells = (startDate) => {
     return <>{dates.map(renderCell)}</>;
 };
 
+const Calendar = () => {
+    return (
+        <div className="ui spectrum-Calendar">
+            <div className="ui spectrum-Calendar-header">
+                <div role="heading" aria-live="assertive" aria-atomic="true" className="ui spectrum-Calendar-title">
+                    March 2023
+                </div>
+
+                <button aria-label="Previous" aria-haspopup="false" aria-pressed="false" className="ui spectrum-ActionButton spectrum-ActionButton--sizeS spectrum-ActionButton--quiet spectrum-Calendar-prevMonth">
+                    <ChevronLeft className="ui spectrum-Icon spectrum-UIIcon-ChevronLeft100 spectrum-Icon--medium spectrum-ActionButton-icon" />
+                </button>
+
+                <button aria-label="Next" aria-haspopup="false" aria-pressed="false" className="ui spectrum-ActionButton spectrum-ActionButton--sizeS spectrum-ActionButton--quiet spectrum-Calendar-nextMonth">
+                    <ChevronRight className="ui spectrum-Icon spectrum-UIIcon-ChevronRight100 spectrum-Icon--medium spectrum-ActionButton-icon" />
+                </button>
+            </div>
+            <div role="grid" tabindex="0" aria-readonly="true" className="ui spectrum-Calendar-body" aria-disabled="false">
+                <table role="presentation" className="ui spectrum-Calendar-table">
+                    <thead role="presentation">
+                        <tr role="row">{DaysOfTheWeekHeadings()}</tr>
+                    </thead>
+                    <tbody role="presentation">{renderCalendarRows()}</tbody>
+                </table>
+            </div>
+        </div>
+    );
+};
+
 export const DatePicker = () => {
     return (
         <div aria-haspopup="dialog" className="ui spectrum-DatePicker spectrum-ActionGroup-item" aria-disabled="false" aria-readonly="false" aria-required="false">
@@ -69,31 +98,9 @@ export const DatePicker = () => {
                 </div>
             </button>
 
-            <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom">
-                <div className="ui spectrum-Calendar">
-                    <div className="ui spectrum-Calendar-header">
-                        <div role="heading" aria-live="assertive" aria-atomic="true" className="ui spectrum-Calendar-title">
-                            March 2023
-                        </div>
-
-                        <button aria-label="Previous" aria-haspopup="false" aria-pressed="false" className="ui spectrum-ActionButton spectrum-ActionButton--sizeS spectrum-ActionButton--quiet spectrum-Calendar-prevMonth">
-                            <ChevronLeft className="ui spectrum-Icon spectrum-UIIcon-ChevronLeft100 spectrum-Icon--medium spectrum-ActionButton-icon" />
-                        </button>
-
-                        <button aria-label="Next" aria-haspopup="false" aria-pressed="false" className="ui spectrum-ActionButton spectrum-ActionButton--sizeS spectrum-ActionButton--quiet spectrum-Calendar-nextMonth">
-                            <ChevronRight className="ui spectrum-Icon spectrum-UIIcon-ChevronRight100 spectrum-Icon--medium spectrum-ActionButton-icon" />
-                        </button>
-                    </div>
-                    <div role="grid" tabindex="0" aria-readonly="true" className="ui spectrum-Calendar-body" aria-disabled="false">
-                        <table role="presentation" className="ui spectrum-Calendar-table">
-                            <thead role="presentation">
-                                <tr role="row">{DaysOfTheWeekHeadings()}</tr>
-                            </thead>
-                            <tbody role="presentation">{renderCalendarRows()}</tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+            <PopOver role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom is-open">
+                <Calendar />
+            </PopOver>
         </div>
     );
 };

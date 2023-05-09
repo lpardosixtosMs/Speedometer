@@ -70,17 +70,18 @@ Layout CSS for the UI.
     grid-auto-flow: column;
     align-items: center;
     gap: 5px;
-    margin: 5px 0px;
+    margin: 5px 3px;
     padding: 5px;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-height: 40px;
 }
 
-.ribbon > .spectrum-ActionGroup > .spectrum-DatePicker > .spectrum-DatePicker-textfield {
+.ribbon > .spectrum-ActionGroup > .spectrum-DatePicker  > .spectrum-DatePicker-textfield {
     --spectrum-textfield-border-color: rgb(0, 0, 0);
     --spectrum-textfield-border-width: 1px;
-    max-width: 115px;
+    max-width: 160px;
+    display: flex;
 }
 
 .ribbon > .spectrum-ActionGroup > .spectrum-DatePicker > .spectrum-Popover {
@@ -96,10 +97,6 @@ Layout CSS for the UI.
 
 .ribbon > .divider {
     height: 75%;
-}
-
-.ribbon > .ribbon-group-flex-end {
-    justify-self: flex-end;
 }
 
 .tree-area {
