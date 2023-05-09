@@ -14,6 +14,18 @@ const Divider = () => {
     return <div className="ui divider spectrum-Divider spectrum-Divider--sizeS spectrum-Divider--vertical" />;
 };
 
+const Analytics = () => {
+    return (
+        <div className="ui spectrum-ProgressBar spectrum-Meter--sizeS is-positive" value="50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style={{ width: 200 }}>
+            <div className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS spectrum-ProgressBar-label">Storage Space</div>
+            <div className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS spectrum-ProgressBar-percentage">50%</div>
+            <div className="ui spectrum-ProgressBar-track">
+                <div className="ui spectrum-ProgressBar-fill" style={{ width: "50%" }}></div>
+            </div>
+        </div>
+    );
+};
+
 export const Ribbon = () => {
     return (
         <div className="ui ribbon">
@@ -22,6 +34,9 @@ export const Ribbon = () => {
                 <PopOver numOptions={4} className="ui spectrum-Popover spectrum-Popover--bottom" />
                 <ActionButton Icon={ViewListIcon} label={"Backlog"} quiet />
                 <ActionButton Icon={GraphTrendIcon} label={"Analytics"} quiet />
+                <PopOver className="ui spectrum-Popover spectrum-Popover--bottom">
+                    <Analytics />
+                </PopOver>
             </ActionGroup>
             <Divider />
             <ActionGroup>
@@ -33,7 +48,7 @@ export const Ribbon = () => {
                 <ActionButton Icon={CalendarIcon} quiet />
                 <ActionButton Icon={GraphGanttIcon} label={"Timeline"} quiet />
                 <ActionButton Icon={FilterIcon} quiet />
-                <PopOver numOptions={3} className="ui spectrum-Popover spectrum-Popover--bottom" />
+                <PopOver numOptions={3} className="ui spectrum-Popover spectrum-Popover--bottom is-open" />
             </ActionGroup>
             <Divider />
             <ActionGroup>

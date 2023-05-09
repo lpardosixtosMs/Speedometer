@@ -75,10 +75,10 @@ const Calendar = () => {
             </div>
             <div role="grid" tabindex="0" aria-readonly="true" className="ui spectrum-Calendar-body" aria-disabled="false">
                 <table role="presentation" className="ui spectrum-Calendar-table">
-                    <thead role="presentation">
+                    <thead role="presentation" className="ui">
                         <tr role="row">{DaysOfTheWeekHeadings()}</tr>
                     </thead>
-                    <tbody role="presentation">{renderCalendarRows()}</tbody>
+                    <tbody role="presentation" className="ui">{renderCalendarRows()}</tbody>
                 </table>
             </div>
         </div>
