@@ -22,7 +22,7 @@ export const TopBar = () => {
             <div className="ui top-bar-right">
                 <ActionGroup>
                     <ActionButton Icon={BellIcon} quite={false} />
-                    <PopOver  numOptions={NUM_OF_NOTIFICATIONS} className="ui spectrum-Popover spectrum-Popover--bottom"  />
+                    <PopOver numOptions={NUM_OF_NOTIFICATIONS} className="ui spectrum-Popover spectrum-Popover--bottom" />
                     <ActionButton Icon={SettingsIcon} quite={false} />
                     <PopOver numOptions={NUM_OF_SETTINGS} className="ui spectrum-Popover spectrum-Popover--bottom" />
                     <ActionButton Icon={ProfileIcon} quite={false} />
