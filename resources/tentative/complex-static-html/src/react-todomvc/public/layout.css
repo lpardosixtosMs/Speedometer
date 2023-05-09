@@ -12,7 +12,6 @@ body {
 
 .absolutely-positioned-element {
   justify-content: center;
-  min-height: 619px;
 }
 
 .todo-area{

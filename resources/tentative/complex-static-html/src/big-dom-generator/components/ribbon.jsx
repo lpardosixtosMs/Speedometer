@@ -9,6 +9,8 @@ import ClockIcon from "../assets/Smock_Clock_18_N.svg";
 import { ActionButton, ActionGroup } from "./action-group";
 import { DatePicker } from "./date-picker";
 import { PopOver } from "./pop-over";
+import ChevronUpIcon from "../assets/Smock_ChevronUp_18_N.svg";
+import ChevronDownIcon from "../assets/Smock_ChevronDown_18_N.svg";
 
 const Divider = () => {
     return <div className="ui divider spectrum-Divider spectrum-Divider--sizeS spectrum-Divider--vertical" />;
@@ -23,6 +25,34 @@ const Analytics = () => {
                 <div className="ui spectrum-ProgressBar-fill" style={{ width: "50%" }}></div>
             </div>
         </div>
+    );
+};
+
+const Stepper = () => {
+    return (
+        // style="--mod-actionbutton-icon-size:10px;"
+        <>
+            <label for="stepper-m" class="spectrum-FieldLabel spectrum-FieldLabel--sizeS">
+                Sprints
+            </label>
+            <div className="ui spectrum-Stepper">
+                {/* style="--spectrum-textfield-border-color:rgb(0,0,0);--spectrum-textfield-border-width:1px;" */}
+
+                <div className="ui spectrum-Textfield spectrum-Textfield--sizeM spectrum-Stepper-textfield" id="stepper-m">
+                    <input type="text" placeholder="1" autocomplete="" className="ui spectrum-Textfield-input spectrum-Stepper-input" />
+                </div>
+
+                <span className="ui spectrum-Stepper-buttons">
+                    <button aria-haspopup="false" aria-pressed="false" className="ui spectrum-ActionButton spectrum-ActionButton--sizeM spectrum-Stepper-stepUp">
+                        <ChevronUpIcon className="ui spectrum-Icon spectrum-UIIcon-ChevronUp100 spectrum-Icon--medium spectrum-ActionButton-icon" />
+                    </button>
+
+                    <button aria-haspopup="false" aria-pressed="false" className="ui spectrum-ActionButton spectrum-ActionButton--sizeM spectrum-Stepper-stepDown">
+                        <ChevronDownIcon className="ui spectrum-Icon spectrum-UIIcon-ChevronDown100 spectrum-Icon--medium spectrum-ActionButton-icon" />
+                    </button>
+                </span>
+            </div>
+        </>
     );
 };
 
@@ -48,7 +78,33 @@ export const Ribbon = () => {
                 <ActionButton Icon={CalendarIcon} quiet />
                 <ActionButton Icon={GraphGanttIcon} label={"Timeline"} quiet />
                 <ActionButton Icon={FilterIcon} quiet />
-                <PopOver numOptions={3} className="ui spectrum-Popover spectrum-Popover--bottom is-open" />
+                <PopOver className="ui spectrum-Popover spectrum-Popover--bottom">
+                    <div class="spectrum-Textfield">
+                        <label for="textfield-1" class="spectrum-FieldLabel spectrum-FieldLabel--sizeS">
+                            Name
+                        </label>
+                        <input id="textfield-1" type="text" name="field" value="Sprint one" class="spectrum-Textfield-input" pattern="[\w\s]+" aria-describedby="character-count-6" />
+                    </div>
+                    <Stepper />
+                    <div class="spectrum-TagGroup" role="list" aria-label="list">
+                        <div class="spectrum-Tag spectrum-Tag--sizeS spectrum-TagGroup-item" role="listitem">
+                            <span class="spectrum-Tag-label">Tag 1</span>
+                        </div>
+                        <div class="spectrum-Tag spectrum-Tag--sizeS spectrum-TagGroup-item is-invalid" role="listitem">
+                            <span class="spectrum-Tag-label">Tag 2</span>
+                        </div>
+                        <div class="spectrum-Tag spectrum-Tag--sizeS spectrum-TagGroup-item is-disabled" role="listitem">
+                            <span class="spectrum-Tag-label">Tag 2</span>
+                        </div>
+                    </div>
+                    <div class="spectrum-Switch spectrum-Switch--sizeS">
+                        <input type="checkbox" class="spectrum-Switch-input" id="switch-onoff-1" checked />
+                        <span class="spectrum-Switch-switch"></span>
+                        <label class="spectrum-Switch-label" for="switch-onoff-1">
+                            Completed Sprints
+                        </label>
+                    </div>
+                </PopOver>
             </ActionGroup>
             <Divider />
             <ActionGroup>

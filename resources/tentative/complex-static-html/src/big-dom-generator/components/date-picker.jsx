@@ -78,7 +78,9 @@ const Calendar = () => {
                     <thead role="presentation" className="ui">
                         <tr role="row">{DaysOfTheWeekHeadings()}</tr>
                     </thead>
-                    <tbody role="presentation" className="ui">{renderCalendarRows()}</tbody>
+                    <tbody role="presentation" className="ui">
+                        {renderCalendarRows()}
+                    </tbody>
                 </table>
             </div>
         </div>

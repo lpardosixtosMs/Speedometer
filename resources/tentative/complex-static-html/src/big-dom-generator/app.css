@@ -24,6 +24,11 @@ Importing the CSS from the Spectrum CSS library.
 @import "@spectrum-css/typography/dist/index-vars.css";
 @import "@spectrum-css/card/dist/index-vars.css";
 @import "@spectrum-css/progressbar/dist/index-vars.css";
+@import "@spectrum-css/stepper/dist/index-vars.css";
+@import "@spectrum-css/fieldlabel/dist/index-vars.css";
+@import "@spectrum-css/taggroup/dist/index-vars.css";
+@import "@spectrum-css/tag/dist/index-vars.css";
+@import "@spectrum-css/switch/dist/index-vars.css";
 
 /*
 @spectrum-css overrides
