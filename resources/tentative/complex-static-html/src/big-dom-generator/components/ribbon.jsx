@@ -16,43 +16,75 @@ const Divider = () => {
     return <div className="ui divider spectrum-Divider spectrum-Divider--sizeS spectrum-Divider--vertical" />;
 };
 
-const Analytics = () => {
+const AnalyticsPopOver = () => {
     return (
-        <div className="ui spectrum-ProgressBar spectrum-Meter--sizeS is-positive" value="50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style={{ width: 200 }}>
-            <div className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS spectrum-ProgressBar-label">Storage Space</div>
-            <div className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS spectrum-ProgressBar-percentage">50%</div>
-            <div className="ui spectrum-ProgressBar-track">
-                <div className="ui spectrum-ProgressBar-fill" style={{ width: "50%" }}></div>
+        <PopOver className="ui spectrum-Popover spectrum-Popover--bottom">
+            <div className="ui spectrum-ProgressBar spectrum-Meter--sizeS is-positive" value="50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                <div className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS spectrum-ProgressBar-label">Storage Space</div>
+                <div className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS spectrum-ProgressBar-percentage">50%</div>
+                <div className="ui spectrum-ProgressBar-track">
+                    <div className="ui spectrum-ProgressBar-fill"></div>
+                </div>
             </div>
-        </div>
+        </PopOver>
     );
 };
 
 const Stepper = () => {
     return (
-        // style="--mod-actionbutton-icon-size:10px;"
-        <>
-            <label for="stepper-m" class="spectrum-FieldLabel spectrum-FieldLabel--sizeS">
+        <div className="ui spectrum-Stepper">
+            <label for="stepper-m" className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS">
                 Sprints
             </label>
-            <div className="ui spectrum-Stepper">
-                {/* style="--spectrum-textfield-border-color:rgb(0,0,0);--spectrum-textfield-border-width:1px;" */}
-
-                <div className="ui spectrum-Textfield spectrum-Textfield--sizeM spectrum-Stepper-textfield" id="stepper-m">
-                    <input type="text" placeholder="1" autocomplete="" className="ui spectrum-Textfield-input spectrum-Stepper-input" />
-                </div>
-
-                <span className="ui spectrum-Stepper-buttons">
-                    <button aria-haspopup="false" aria-pressed="false" className="ui spectrum-ActionButton spectrum-ActionButton--sizeM spectrum-Stepper-stepUp">
-                        <ChevronUpIcon className="ui spectrum-Icon spectrum-UIIcon-ChevronUp100 spectrum-Icon--medium spectrum-ActionButton-icon" />
-                    </button>
-
-                    <button aria-haspopup="false" aria-pressed="false" className="ui spectrum-ActionButton spectrum-ActionButton--sizeM spectrum-Stepper-stepDown">
-                        <ChevronDownIcon className="ui spectrum-Icon spectrum-UIIcon-ChevronDown100 spectrum-Icon--medium spectrum-ActionButton-icon" />
-                    </button>
-                </span>
+            <div className="ui spectrum-Textfield spectrum-Textfield--sizeM spectrum-Stepper-textfield">
+                <input type="text" placeholder="1" autocomplete="" className="ui spectrum-Textfield-input spectrum-Stepper-input" id="stepper-m" />
             </div>
-        </>
+
+            <span className="ui spectrum-Stepper-buttons">
+                <ActionButton Icon={ChevronUpIcon} aria-haspopup="false" aria-pressed="false" className="ui spectrum-Stepper-stepUp" />
+                <ActionButton Icon={ChevronDownIcon} aria-haspopup="false" aria-pressed="false" className="ui spectrum-Stepper-stepDown" />
+            </span>
+        </div>
+    );
+};
+
+const TagGroup = () => {
+    const tags = [
+        { label: "Tag 1", className: "spectrum-Tag--sizeS" },
+        { label: "Tag 2", className: "spectrum-Tag--sizeS is-invalid" },
+        { label: "Tag 3", className: "spectrum-Tag--sizeS is-disabled" },
+    ];
+
+    return (
+        <div className="ui spectrum-TagGroup" role="list" aria-label="list">
+            {tags.map((tag, index) => (
+                <div className={`ui spectrum-Tag spectrum-TagGroup-item ${tag.className}`} role="listitem" key={index}>
+                    <span className="ui spectrum-Tag-label">{tag.label}</span>
+                </div>
+            ))}
+        </div>
+    );
+};
+
+const FilterPopOver = () => {
+    return (
+        <PopOver className="ui spectrum-Popover spectrum-Popover--bottom">
+            <div className="ui spectrum-Textfield">
+                <label for="textfield-1" className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS">
+                    Name
+                </label>
+                <input id="textfield-1" type="text" name="field" value="Sprint one" className="ui spectrum-Textfield-input" pattern="[\w\s]+" aria-describedby="character-count-6" />
+            </div>
+            <Stepper />
+            <TagGroup />
+            <div className="ui spectrum-Switch spectrum-Switch--sizeS">
+                <input type="checkbox" className="ui spectrum-Switch-input" id="switch-onoff-1" checked />
+                <span className="ui spectrum-Switch-switch"></span>
+                <label className="ui spectrum-Switch-label" for="switch-onoff-1">
+                    Completed Sprints
+                </label>
+            </div>
+        </PopOver>
     );
 };
 
@@ -64,9 +96,7 @@ export const Ribbon = () => {
                 <PopOver numOptions={4} className="ui spectrum-Popover spectrum-Popover--bottom" />
                 <ActionButton Icon={ViewListIcon} label={"Backlog"} quiet />
                 <ActionButton Icon={GraphTrendIcon} label={"Analytics"} quiet />
-                <PopOver className="ui spectrum-Popover spectrum-Popover--bottom">
-                    <Analytics />
-                </PopOver>
+                <AnalyticsPopOver />
             </ActionGroup>
             <Divider />
             <ActionGroup>
@@ -78,33 +108,7 @@ export const Ribbon = () => {
                 <ActionButton Icon={CalendarIcon} quiet />
                 <ActionButton Icon={GraphGanttIcon} label={"Timeline"} quiet />
                 <ActionButton Icon={FilterIcon} quiet />
-                <PopOver className="ui spectrum-Popover spectrum-Popover--bottom">
-                    <div class="spectrum-Textfield">
-                        <label for="textfield-1" class="spectrum-FieldLabel spectrum-FieldLabel--sizeS">
-                            Name
-                        </label>
-                        <input id="textfield-1" type="text" name="field" value="Sprint one" class="spectrum-Textfield-input" pattern="[\w\s]+" aria-describedby="character-count-6" />
-                    </div>
-                    <Stepper />
-                    <div class="spectrum-TagGroup" role="list" aria-label="list">
-                        <div class="spectrum-Tag spectrum-Tag--sizeS spectrum-TagGroup-item" role="listitem">
-                            <span class="spectrum-Tag-label">Tag 1</span>
-                        </div>
-                        <div class="spectrum-Tag spectrum-Tag--sizeS spectrum-TagGroup-item is-invalid" role="listitem">
-                            <span class="spectrum-Tag-label">Tag 2</span>
-                        </div>
-                        <div class="spectrum-Tag spectrum-Tag--sizeS spectrum-TagGroup-item is-disabled" role="listitem">
-                            <span class="spectrum-Tag-label">Tag 2</span>
-                        </div>
-                    </div>
-                    <div class="spectrum-Switch spectrum-Switch--sizeS">
-                        <input type="checkbox" class="spectrum-Switch-input" id="switch-onoff-1" checked />
-                        <span class="spectrum-Switch-switch"></span>
-                        <label class="spectrum-Switch-label" for="switch-onoff-1">
-                            Completed Sprints
-                        </label>
-                    </div>
-                </PopOver>
+                <FilterPopOver />
             </ActionGroup>
             <Divider />
             <ActionGroup>

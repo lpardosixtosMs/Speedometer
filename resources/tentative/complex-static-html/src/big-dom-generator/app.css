@@ -84,6 +84,18 @@ Layout CSS for the UI.
     max-height: 40px;
 }
 
+.ribbon > .divider {
+    height: 75%;
+}
+
+.ribbon > .spectrum-ActionGroup > .spectrum-Popover > .spectrum-ProgressBar {
+    width: 200px;
+}
+
+.ribbon > .spectrum-ActionGroup > .spectrum-Popover > .spectrum-ProgressBar-track > .spectrum-ProgressBar-fill {
+    width: 50%;
+}
+
 .ribbon > .spectrum-ActionGroup > .spectrum-DatePicker > .spectrum-DatePicker-textfield {
     --spectrum-textfield-border-color: rgb(0, 0, 0);
     --spectrum-textfield-border-width: 1px;
@@ -102,8 +114,19 @@ Layout CSS for the UI.
     width: 280px;
 }
 
-.ribbon > .divider {
-    height: 75%;
+.ribbon > .spectrum-ActionGroup > .spectrum-Popover > .spectrum-Stepper {
+    min-width: 100px;
+    --mod-actionbutton-icon-size: 10px;
+}
+
+.ribbon > .spectrum-ActionGroup > .spectrum-Popover > .spectrum-Stepper > .spectrum-Textfield {
+    --spectrum-textfield-border-color: rgb(0, 0, 0);
+    --spectrum-textfield-border-width: 1px;
+    min-width: 30px;
+}
+
+.ribbon > .spectrum-ActionGroup > .spectrum-Popover > .spectrum-Textfield > .spectrum-Textfield-input {
+    max-width: 150px;
 }
 
 .tree-area {

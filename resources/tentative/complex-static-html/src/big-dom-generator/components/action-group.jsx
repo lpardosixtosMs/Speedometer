@@ -1,8 +1,8 @@
-export const ActionButton = ({ Icon, label, quiet }) => {
+export const ActionButton = ({ Icon, label, quiet, ...rest }) => {
     const text = label ? <span className="ui spectrum-ActionButton-label">{label}</span> : null;
     return (
-        <button className={`ui spectrum-ActionButton spectrum-ActionButton--sizeM ${quiet ? "spectrum-ActionButton--quiet" : ""} spectrum-ActionGroup-item`}>
-            <Icon className="ui spectrum-Icon spectrum-Icon--sizeM spectrum-ActionButton-icon" focusable="false" aria-hidden="true" />
+        <button className={`ui spectrum-ActionButton spectrum-ActionButton--sizeM ${quiet ? "spectrum-ActionButton--quiet" : ""} spectrum-ActionGroup-item`} {...rest}>
+            {Icon && <Icon className="ui spectrum-Icon spectrum-Icon--sizeM spectrum-ActionButton-icon" focusable="false" aria-hidden="true" />}
             {text}
         </button>
     );
