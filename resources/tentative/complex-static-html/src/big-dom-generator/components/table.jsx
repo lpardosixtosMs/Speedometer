@@ -5,28 +5,28 @@ export const Table = () => {
     const rows = [
         {
             priority: "1 High",
-            status: "Row Item Alpha",
-            category: "Row Item Alpha",
+            status: "Available",
+            category: "Bug",
         },
         {
             priority: "1 High",
-            status: "Row Item Bravo",
-            category: "Row Item Bravo",
+            status: "Available",
+            category: "Bug",
         },
         {
             priority: "2 Medium",
-            status: "Row Item Charlie",
-            category: "Row Item Charlie",
+            status: "Available",
+            category: "Documentation",
         },
         {
             priority: "3 Low",
-            status: "Row Item Delta",
-            category: "Row Item Delta",
+            status: "Available",
+            category: "Feature Request",
         },
         {
             priority: "3 Low",
-            status: "Row Item Echo",
-            category: "Row Item Echo",
+            status: "Available",
+            category: "Feature Request",
         },
     ];
 
@@ -42,7 +42,7 @@ export const Table = () => {
                             </span>
                         </label>
                     </th>
-                    <th className="ui spectrum-Table-headCell is-sortable is-sorted-desc" aria-sort="descending" tabindex="0">
+                    <th className="ui spectrum-Table-headCell is-sortable is-sorted-desc" aria-sort="descending" tabIndex="0">
                         Priority
                         <ArrowDownIcon className="ui spectrum-Icon spectrum-Table-sortedIcon" focusable="false" aria-hidden="true" />
                     </th>
@@ -55,7 +55,7 @@ export const Table = () => {
                     <tr className="ui spectrum-Table-row" tabIndex="0" key={index}>
                         <td className="ui spectrum-Table-cell spectrum-Table-checkboxCell">
                             <label className="ui spectrum-Checkbox spectrum-Checkbox--sizeM spectrum-Table-checkbox">
-                                <input type="checkbox" className="ui spectrum-Checkbox-input" title="Select" checked={index === 1 || index === 2} />
+                                <input type="checkbox" className="ui spectrum-Checkbox-input" title="Select" defaultChecked={index === 1 || index === 2} />
                                 <span className="ui spectrum-Checkbox-box">
                                     <CheckmarkIcon className="ui spectrum-Icon spectrum-UIIcon-Checkmark100 spectrum-Checkbox-checkmark" focusable="false" aria-hidden="true" />
                                 </span>

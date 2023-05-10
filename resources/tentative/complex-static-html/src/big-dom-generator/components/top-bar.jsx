@@ -13,7 +13,7 @@ import SpeedometerLogo from "./../assets/logo.png";
 const ContextualHelp = () => {
     return (
         <>
-            <ActionButton Icon={HelpIcon} quite={false} />
+            <ActionButton Icon={HelpIcon} quiet={false} />
             <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom-start spectrum-ContextualHelp-popover">
                 <div className="ui">
                     <h2 className="ui spectrum-ContextualHelp-heading">Todo help</h2>
@@ -70,7 +70,7 @@ const Notifications = () => {
                 </label>
 
                 <label className="ui spectrum-Checkbox spectrum-Checkbox--sizeM spectrum-FieldGroup-item">
-                    <input type="checkbox" className="ui spectrum-Checkbox-input" id="checkbox-3" checked />
+                    <input type="checkbox" className="ui spectrum-Checkbox-input" id="checkbox-3" defaultChecked={true} />
                     <span className="ui spectrum-Checkbox-box">
                         <CheckmarkIcon className="ui spectrum-Icon spectrum-UIIcon-Checkmark100 spectrum-Checkbox-checkmark" />
                     </span>
@@ -92,13 +92,13 @@ export const TopBar = () => {
             <div className="ui top-bar-right">
                 <ActionGroup>
                     <ContextualHelp />
-                    <ActionButton Icon={BellIcon} quite={false} />
+                    <ActionButton Icon={BellIcon} quiet={false} />
                     <VerticalPopOver>
                         <Notifications />
                     </VerticalPopOver>
-                    <ActionButton Icon={SettingsIcon} quite={false} />
+                    <ActionButton Icon={SettingsIcon} quiet={false} />
                     <OptionsPopOver numOptions={numSettings} />
-                    <ActionButton Icon={ProfileIcon} quite={false} />
+                    <ActionButton Icon={ProfileIcon} quiet={false} />
                     <ProfileCardPopOver />
                 </ActionGroup>
             </div>

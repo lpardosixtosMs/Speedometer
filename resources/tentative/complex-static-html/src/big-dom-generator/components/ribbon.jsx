@@ -41,11 +41,11 @@ const AnalyticsPopOver = () => {
 const Stepper = () => {
     return (
         <div className="ui spectrum-Stepper">
-            <label for="stepper-m" className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS">
+            <label htmlFor="stepper-m" className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS">
                 Sprints
             </label>
             <div className="ui spectrum-Textfield spectrum-Textfield--sizeM spectrum-Stepper-textfield">
-                <input type="text" placeholder="1" autocomplete="" className="ui spectrum-Textfield-input spectrum-Stepper-input" id="stepper-m" />
+                <input type="text" placeholder="1" autoComplete="" className="ui spectrum-Textfield-input spectrum-Stepper-input" id="stepper-m" />
             </div>
 
             <span className="ui spectrum-Stepper-buttons">
@@ -78,17 +78,17 @@ const FilterPopOver = () => {
     return (
         <VerticalPopOver>
             <div className="ui spectrum-Textfield">
-                <label for="textfield-1" className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS">
+                <label htmlFor="textfield-1" className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS">
                     Name
                 </label>
-                <input id="textfield-1" type="text" name="field" value="Sprint one" className="ui spectrum-Textfield-input" pattern="[\w\s]+" aria-describedby="character-count-6" />
+                <input id="textfield-1" type="text" name="field" defaultValue="Sprint one" className="ui spectrum-Textfield-input" pattern="[\w\s]+" aria-describedby="character-count-6" />
             </div>
             <Stepper />
             <TagGroup />
             <div className="ui spectrum-Switch spectrum-Switch--sizeS">
-                <input type="checkbox" className="ui spectrum-Switch-input" id="switch-onoff-1" checked />
+                <input type="checkbox" className="ui spectrum-Switch-input" id="switch-onoff-1" defaultChecked={true} />
                 <span className="ui spectrum-Switch-switch"></span>
-                <label className="ui spectrum-Switch-label" for="switch-onoff-1">
+                <label className="ui spectrum-Switch-label" htmlFor="switch-onoff-1">
                     Completed Sprints
                 </label>
             </div>

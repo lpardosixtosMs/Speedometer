@@ -68,7 +68,7 @@ const Calendar = () => {
                 <ActionButton Icon={ChevronLeft} quiet aria-label="Previous" aria-haspopup="false" aria-pressed="false" className="ui spectrum-ActionButton spectrum-ActionButton--sizeS spectrum-ActionButton--quiet spectrum-Calendar-prevMonth" />
                 <ActionButton Icon={ChevronRight} quiet aria-label="Next" aria-haspopup="false" aria-pressed="false" className="ui spectrum-ActionButton spectrum-ActionButton--sizeS spectrum-ActionButton--quiet spectrum-Calendar-nextMonth" />
             </div>
-            <div role="grid" tabindex="0" aria-readonly="true" className="ui spectrum-Calendar-body" aria-disabled="false">
+            <div role="grid" tabIndex="0" aria-readonly="true" className="ui spectrum-Calendar-body" aria-disabled="false">
                 <table role="presentation" className="ui spectrum-Calendar-table">
                     <thead role="presentation" className="ui">
                         <tr role="row">{DaysOfTheWeekHeadings()}</tr>
@@ -86,7 +86,7 @@ export const DatePicker = () => {
     return (
         <div aria-haspopup="dialog" className="ui spectrum-DatePicker spectrum-ActionGroup-item" aria-disabled="false" aria-readonly="false" aria-required="false">
             <div className="ui spectrum-Textfield spectrum-Textfield--sizeM spectrum-DatePicker-textfield">
-                <input type="text" placeholder="New Sprint" value="" name="field" autocomplete="" className="ui spectrum-Textfield-input spectrum-DatePicker-input" />
+                <input type="text" placeholder="New Sprint" defaultValue="" name="field" autoComplete="" className="ui spectrum-Textfield-input spectrum-DatePicker-input" />
             </div>
 
             <button aria-haspopup="listbox" className="ui spectrum-PickerButton spectrum-PickerButton--icononly spectrum-PickerButton--right spectrum-PickerButton--sizeM spectrum-DatePicker-button">
