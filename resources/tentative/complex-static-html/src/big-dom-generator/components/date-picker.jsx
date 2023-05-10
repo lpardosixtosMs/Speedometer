@@ -1,7 +1,6 @@
 import ChevronRight from "../assets/Smock_ChevronRight_18_N.svg";
 import ChevronLeft from "../assets/Smock_ChevronLeft_18_N.svg";
 import AddIcon from "../assets/Smock_Add_18_N.svg";
-import { PopOver } from "./pop-over";
 import { ActionButton } from "./action-group";
 
 const DaysOfTheWeekHeadings = () => {
@@ -96,9 +95,9 @@ export const DatePicker = () => {
                 </div>
             </button>
 
-            <PopOver role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom">
+            <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom">
                 <Calendar />
-            </PopOver>
+            </div>
         </div>
     );
 };

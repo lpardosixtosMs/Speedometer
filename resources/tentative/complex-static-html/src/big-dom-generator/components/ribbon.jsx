@@ -6,9 +6,9 @@ import GraphTrendIcon from "../assets/Smock_GraphTrend_18_N.svg";
 import CalendarIcon from "../assets/Smock_Calendar_18_N.svg";
 import GraphGanttIcon from "../assets/Smock_GraphGantt_18_N.svg";
 import ClockIcon from "../assets/Smock_Clock_18_N.svg";
-import { ActionButton, ActionGroup } from "./action-group";
+import { ActionButton, ActionGroup, ActionItem, ActionGroupVertical } from "./action-group";
 import { DatePicker } from "./date-picker";
-import { PopOver } from "./pop-over";
+import { OptionsPopOver, VerticalPopOver } from "./pop-over";
 import ChevronUpIcon from "../assets/Smock_ChevronUp_18_N.svg";
 import ChevronDownIcon from "../assets/Smock_ChevronDown_18_N.svg";
 
@@ -16,17 +16,30 @@ const Divider = () => {
     return <div className="ui divider spectrum-Divider spectrum-Divider--sizeS spectrum-Divider--vertical" />;
 };
 
-const AnalyticsPopOver = () => {
+const ProgressBar = ({teamNumber, value}) => {
     return (
-        <PopOver className="ui spectrum-Popover spectrum-Popover--bottom">
-            <div className="ui spectrum-ProgressBar spectrum-Meter--sizeS is-positive" value="50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                <div className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS spectrum-ProgressBar-label">Storage Space</div>
-                <div className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS spectrum-ProgressBar-percentage">50%</div>
-                <div className="ui spectrum-ProgressBar-track">
-                    <div className="ui spectrum-ProgressBar-fill"></div>
-                </div>
+        <div className="ui spectrum-ProgressBar spectrum-Meter--sizeS is-negative" value={value} role="progressbar" aria-valuenow={value} aria-valuemin="0" aria-valuemax="100">
+            <div className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS spectrum-ProgressBar-label">Team {teamNumber} progress</div>
+            <div className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS spectrum-ProgressBar-percentage">{value}%</div>
+            <div className="ui spectrum-ProgressBar-track">
+                <div className="ui spectrum-ProgressBar-fill" style={{width: value.toString() + "%"}}></div>
             </div>
-        </PopOver>
+        </div>
+    );
+}
+
+const AnalyticsPopOver = () => {
+    const children = [];
+    const numProgressBars = 5;
+    for (let i = 0; i < numProgressBars; i++) {
+        children.push(
+            <ProgressBar key = {i} teamNumber={i} value={((i+1)*10)%100}/>
+        );
+    }
+    return (
+        <VerticalPopOver >
+            {children}
+        </VerticalPopOver>
     );
 };
 
@@ -68,7 +81,7 @@ const TagGroup = () => {
 
 const FilterPopOver = () => {
     return (
-        <PopOver className="ui spectrum-Popover spectrum-Popover--bottom">
+        <VerticalPopOver>
             <div className="ui spectrum-Textfield">
                 <label for="textfield-1" className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeS">
                     Name
@@ -84,7 +97,7 @@ const FilterPopOver = () => {
                     Completed Sprints
                 </label>
             </div>
-        </PopOver>
+        </VerticalPopOver>
     );
 };
 
@@ -93,7 +106,7 @@ export const Ribbon = () => {
         <div className="ui ribbon">
             <ActionGroup>
                 <ActionButton Icon={ClockIcon} label={"Send Reminder"} quiet />
-                <PopOver numOptions={4} className="ui spectrum-Popover spectrum-Popover--bottom" />
+                <OptionsPopOver numOptions={4}/>
                 <ActionButton Icon={ViewListIcon} label={"Backlog"} quiet />
                 <ActionButton Icon={GraphTrendIcon} label={"Analytics"} quiet />
                 <AnalyticsPopOver />

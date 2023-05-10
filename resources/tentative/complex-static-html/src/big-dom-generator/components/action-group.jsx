@@ -1,3 +1,7 @@
+export const ActionItem  = ({children}) => {
+    return <div className="ui spectrum-ActionGroup-item">{children}</div>;
+}
+
 export const ActionButton = ({ Icon, label, quiet, ...rest }) => {
     const text = label ? <span className="ui spectrum-ActionButton-label">{label}</span> : null;
     return (
@@ -10,4 +14,8 @@ export const ActionButton = ({ Icon, label, quiet, ...rest }) => {
 
 export const ActionGroup = ({ children }) => {
     return <div className="ui spectrum-ActionGroup spectrum-ActionGroup--compact spectrum-ActionGroup--sizeM">{children}</div>;
+};
+
+export const ActionGroupVertical = ({ children }) => {
+    return <div className="ui spectrum-ActionGroup spectrum-ActionGroup--vertical spectrum-ActionGroup--sizeS">{children}</div>;
 };
