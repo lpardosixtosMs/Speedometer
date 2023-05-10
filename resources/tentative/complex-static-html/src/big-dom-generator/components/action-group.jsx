@@ -1,6 +1,6 @@
-export const ActionItem  = ({children}) => {
+export const ActionItem = ({ children }) => {
     return <div className="ui spectrum-ActionGroup-item">{children}</div>;
-}
+};
 
 export const ActionButton = ({ Icon, label, quiet, ...rest }) => {
     const text = label ? <span className="ui spectrum-ActionButton-label">{label}</span> : null;

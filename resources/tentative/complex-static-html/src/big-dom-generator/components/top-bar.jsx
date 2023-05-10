@@ -1,6 +1,6 @@
 import { SearchArea } from "./search-area";
 import { ActionButton, ActionGroup } from "./action-group";
-import { OptionsPopOver } from "./pop-over";
+import { OptionsPopOver, VerticalPopOver } from "./pop-over";
 
 import ProfileIcon from "./../assets/Smock_RealTimeCustomerProfile_18_N.svg";
 import SettingsIcon from "./../assets/Smock_Settings_18_N.svg";
@@ -34,12 +34,12 @@ const ProfileCardPopOver = () => {
                         <div className="ui spectrum-Card-title spectrum-Heading spectrum-Heading--sizeXS">John Doe</div>
                     </div>
                     <div className="ui spectrum-Card-content">
-                        <div className="ui spectrum-Card-subtitle spectrum-Detail spectrum-Detail--sizeXS"><p>jdoe</p></div>
+                        <div className="ui spectrum-Card-subtitle spectrum-Detail spectrum-Detail--sizeXS">
+                            <p>jdoe</p>
+                        </div>
                     </div>
                 </div>
-                <a className="ui spectrum-Card-footer">
-                    Sign in with a different account
-                </a>
+                <a className="ui spectrum-Card-footer">Sign in with a different account</a>
             </div>
         </div>
     );
@@ -82,16 +82,10 @@ const Notifications = () => {
 };
 
 export const TopBar = () => {
-<<<<<<< HEAD
-    const NUM_OF_SETTINGS = 5;
-=======
-    const numNotifications = 10;
     const numSettings = 5;
->>>>>>> Refactor PopOver logic
     return (
         <div className="ui top-bar">
             <img className="ui" src={SpeedometerLogo} alt="Speedometer Logo for TODO App" height={40} />
-            <h2 className="ui spectrum-Heading spectrum-Heading--sizeL">TODO App</h2>
             <div className={`ui search-area`}>
                 <SearchArea />
             </div>
@@ -99,17 +93,13 @@ export const TopBar = () => {
                 <ActionGroup>
                     <ContextualHelp />
                     <ActionButton Icon={BellIcon} quite={false} />
-<<<<<<< HEAD
-                    <PopOver className="ui spectrum-Popover spectrum-Popover--bottom" role="dialog">
+                    <VerticalPopOver>
                         <Notifications />
-                    </PopOver>
-=======
-                    <OptionsPopOver numOptions={numNotifications} />
->>>>>>> Refactor PopOver logic
+                    </VerticalPopOver>
                     <ActionButton Icon={SettingsIcon} quite={false} />
-                    <OptionsPopOver numOptions={numSettings}/>
+                    <OptionsPopOver numOptions={numSettings} />
                     <ActionButton Icon={ProfileIcon} quite={false} />
-                    <ProfileCardPopOver/>
+                    <ProfileCardPopOver />
                 </ActionGroup>
             </div>
         </div>

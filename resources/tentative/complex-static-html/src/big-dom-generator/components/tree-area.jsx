@@ -49,6 +49,7 @@ export const TreeArea = (props) => {
     const childProb = CHILD_PROB;
     return (
         <div className="ui tree-area">
+            <h4 className="ui spectrum-Heading spectrum-Heading--sizeXS">Sprints</h4>
             <FolderWrapper nodeCount={nodeCount} random={random} maxBreadth={maxBreadth} maxDepth={maxDepth} childProb={childProb} currentDepth={0} />
         </div>
     );

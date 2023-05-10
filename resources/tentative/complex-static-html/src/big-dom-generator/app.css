@@ -157,6 +157,7 @@ Layout CSS for the UI.
     grid-row-end: 4;
     background-color: white;
     overflow-y: scroll;
+    padding-left: 5px;
 }
 
 .task-list-icon {
