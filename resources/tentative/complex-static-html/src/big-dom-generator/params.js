@@ -11,4 +11,4 @@ export const TARGET_SIZE = 3000;
 export const MAX_SELECTOR_LEN = 7;
 
 // Maximum depth for the open tree view items
-export const MAX_TREE_VIEW_ITEM_DEPTH = 15;
+export const MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH = 15;

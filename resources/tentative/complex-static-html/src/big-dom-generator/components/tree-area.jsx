@@ -1,6 +1,6 @@
 import { LCG } from "random-seedable";
 import { useRef } from "react";
-import { SEED, MAX_DEPTH, MAX_BREADTH, CHILD_PROB, TARGET_SIZE, MAX_TREE_VIEW_ITEM_DEPTH } from "./../params";
+import { SEED, MAX_DEPTH, MAX_BREADTH, CHILD_PROB, TARGET_SIZE, MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH } from "./../params";
 import ChevronRight from "./../assets/Smock_ChevronRight_18_N.svg";
 
 const FolderWrapper = (props) => {
@@ -23,7 +23,7 @@ const TreeItem = (props) => {
     nodeCount.current = nodeCount.current + 4;
     // Choose whether to have children.
     const children = random.coin(childProb) ? <FolderWrapper nodeCount={nodeCount} random={random} maxBreadth={maxBreadth} maxDepth={maxDepth} childProb={childProb} currentDepth={currentDepth + 1} /> : null;
-    const treeViewItemIsOpen = children && currentDepth < MAX_TREE_VIEW_ITEM_DEPTH ? "is-open" : "";
+    const treeViewItemIsOpen = children && currentDepth < MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH ? "is-open" : "";
     return (
         <li className={`ui spectrum-TreeView-item ${treeViewItemIsOpen}`}>
             <a className="ui spectrum-TreeView-itemLink">
