@@ -26,7 +26,7 @@ const ContextualHelp = () => {
 
 const ProfileCardPopOver = () => {
     return (
-        <div className="ui spectrum-Popover spectrum-Popover--bottom-start" role="dialog">
+        <div className="ui spectrum-Popover spectrum-Popover--bottom-start" role="dialog" style={{right: '10px'}}>
             <div className="ui spectrum-Card spectrum-Card--sizeS" tabIndex="0" role="figure">
                 <div className="ui spectrum-Card-coverPhoto"></div>
                 <div className="ui spectrum-Card-body">
