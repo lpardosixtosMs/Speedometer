@@ -96,9 +96,9 @@ export const TopBar = () => {
                         <Notifications />
                     </PopOver>
                     <ActionButton Icon={SettingsIcon} quite={false} />
-                    <PopOver numOptions={NUM_OF_SETTINGS} className="ui spectrum-Popover spectrum-Popover--bottom is-open" role="dialog" />
+                    <PopOver numOptions={NUM_OF_SETTINGS} className="ui spectrum-Popover spectrum-Popover--bottom" role="dialog" />
                     <ActionButton Icon={ProfileIcon} quite={false} />
-                    <PopOver className="ui spectrum-Popover spectrum-Popover--bottom-start is-open" role="dialog">
+                    <PopOver className="ui spectrum-Popover spectrum-Popover--bottom-start" role="dialog">
                         <ProfileCard />
                     </PopOver>
                 </ActionGroup>
