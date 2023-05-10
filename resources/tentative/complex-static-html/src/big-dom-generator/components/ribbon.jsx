@@ -6,11 +6,12 @@ import GraphTrendIcon from "../assets/Smock_GraphTrend_18_N.svg";
 import CalendarIcon from "../assets/Smock_Calendar_18_N.svg";
 import GraphGanttIcon from "../assets/Smock_GraphGantt_18_N.svg";
 import ClockIcon from "../assets/Smock_Clock_18_N.svg";
-import { ActionButton, ActionGroup, ActionItem, ActionGroupVertical } from "./action-group";
+import { ActionButton, ActionGroup } from "./action-group";
 import { DatePicker } from "./date-picker";
 import { OptionsPopOver, VerticalPopOver } from "./pop-over";
 import ChevronUpIcon from "../assets/Smock_ChevronUp_18_N.svg";
 import ChevronDownIcon from "../assets/Smock_ChevronDown_18_N.svg";
+import { Table } from "./table";
 
 const Divider = () => {
     return <div className="ui divider spectrum-Divider spectrum-Divider--sizeS spectrum-Divider--vertical" />;
@@ -102,6 +103,9 @@ export const Ribbon = () => {
                 <ActionButton Icon={ClockIcon} label={"Send Reminder"} quiet />
                 <OptionsPopOver numOptions={4} />
                 <ActionButton Icon={ViewListIcon} label={"Backlog"} quiet />
+                <VerticalPopOver>
+                    <Table />
+                </VerticalPopOver>
                 <ActionButton Icon={GraphTrendIcon} label={"Analytics"} quiet />
                 <AnalyticsPopOver />
             </ActionGroup>

@@ -39,6 +39,7 @@ Importing the CSS from the Spectrum CSS library.
 @import "@spectrum-css/closebutton/dist/index-vars.css";
 @import "@spectrum-css/modal/dist/index-vars.css";
 @import "@spectrum-css/helptext/dist/index-vars.css";
+@import "@spectrum-css/table/dist/index-vars.css";
 
 /*
 @spectrum-css overrides

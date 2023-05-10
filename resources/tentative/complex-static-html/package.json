@@ -48,6 +48,7 @@
     "@spectrum-css/search": "5.0.10",
     "@spectrum-css/stepper": "^4.0.23",
     "@spectrum-css/switch": "^3.0.31",
+    "@spectrum-css/table": "^4.0.46",
     "@spectrum-css/tag": "^5.0.26",
     "@spectrum-css/taggroup": "^3.3.39",
     "@spectrum-css/textfield": "^4.1.15",
