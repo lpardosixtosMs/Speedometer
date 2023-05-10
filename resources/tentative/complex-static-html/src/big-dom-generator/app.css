@@ -29,6 +29,13 @@ Importing the CSS from the Spectrum CSS library.
 @import "@spectrum-css/taggroup/dist/index-vars.css";
 @import "@spectrum-css/tag/dist/index-vars.css";
 @import "@spectrum-css/switch/dist/index-vars.css";
+@import "@spectrum-css/fieldgroup/dist/index-vars.css";
+@import "@spectrum-css/checkbox/dist/index-vars.css";
+@import "@spectrum-css/asset/dist/index-vars.css";
+@import "@spectrum-css/dialog/dist/index-vars.css";
+@import "@spectrum-css/radio/dist/index-vars.css";
+@import "@spectrum-css/quickaction/dist/index-vars.css";
+
 
 /*
 @spectrum-css overrides
@@ -61,8 +68,7 @@ Layout CSS for the UI.
     max-height: 50px;
 }
 
-.top-bar > .top-bar-right > .spectrum-ActionGroup > .spectrum-Popover > div {
-    max-width: 150px;
+.top-bar > .top-bar-right > .spectrum-ActionGroup > .spectrum-Popover > .spectrum-Card {
     padding: 10px;
     top: 30px;
 }

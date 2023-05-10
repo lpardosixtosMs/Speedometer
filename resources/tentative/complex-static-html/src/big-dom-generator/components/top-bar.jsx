@@ -6,6 +6,7 @@ import ProfileIcon from "./../assets/Smock_RealTimeCustomerProfile_18_N.svg";
 import SettingsIcon from "./../assets/Smock_Settings_18_N.svg";
 import BellIcon from "./../assets/Smock_Bell_18_N.svg";
 import HelpIcon from "../assets/Smock_Help_18_N.svg";
+import CheckmarkIcon from "../assets/Smock_Checkmark_18_N.svg";
 
 import SpeedometerLogo from "./../assets/logo.png";
 
@@ -42,8 +43,43 @@ const ProfileCard = () => {
     );
 };
 
+const Notifications = () => {
+    return (
+        <div className="ui spectrum-FieldGroup spectrum-FieldGroup--toplabel spectrum-FieldGroup--vertical" role="group" aria-labelledby="checkboxgroup-label-1">
+            <div className="ui spectrum-FieldLabel spectrum-FieldLabel--sizeM" id="checkboxgroup-label-1">
+                Notifications
+            </div>
+
+            <div className="ui spectrum-FieldGroupInputLayout" aria-describedby="helptext-checkbox-1">
+                <label className="ui spectrum-Checkbox spectrum-Checkbox--sizeM spectrum-FieldGroup-item">
+                    <input type="checkbox" className="ui spectrum-Checkbox-input" id="checkbox-0" />
+                    <span className="ui spectrum-Checkbox-box">
+                        <CheckmarkIcon className="ui spectrum-Icon spectrum-UIIcon-Checkmark100 spectrum-Checkbox-checkmark" />
+                    </span>
+                    <span className="ui spectrum-Checkbox-label">Checkbox</span>
+                </label>
+
+                <label className="ui spectrum-Checkbox spectrum-Checkbox--sizeM spectrum-FieldGroup-item">
+                    <input type="checkbox" className="ui spectrum-Checkbox-input" id="checkbox-2" />
+                    <span className="ui spectrum-Checkbox-box">
+                        <CheckmarkIcon className="ui spectrum-Icon spectrum-UIIcon-Checkmark100 spectrum-Checkbox-checkmark" />
+                    </span>
+                    <span className="ui spectrum-Checkbox-label">Checkbox</span>
+                </label>
+
+                <label className="ui spectrum-Checkbox spectrum-Checkbox--sizeM spectrum-FieldGroup-item">
+                    <input type="checkbox" className="ui spectrum-Checkbox-input" id="checkbox-3" checked />
+                    <span className="ui spectrum-Checkbox-box">
+                        <CheckmarkIcon className="ui spectrum-Icon spectrum-UIIcon-Checkmark100 spectrum-Checkbox-checkmark" />
+                    </span>
+                    <span className="ui spectrum-Checkbox-label">Checkbox</span>
+                </label>
+            </div>
+        </div>
+    );
+};
+
 export const TopBar = () => {
-    const NUM_OF_NOTIFICATIONS = 10;
     const NUM_OF_SETTINGS = 5;
     return (
         <div className="ui top-bar">
@@ -56,11 +92,13 @@ export const TopBar = () => {
                 <ActionGroup>
                     <ContextualHelp />
                     <ActionButton Icon={BellIcon} quite={false} />
-                    <PopOver numOptions={NUM_OF_NOTIFICATIONS} className="ui spectrum-Popover spectrum-Popover--bottom" role="dialog" />
+                    <PopOver className="ui spectrum-Popover spectrum-Popover--bottom" role="dialog">
+                        <Notifications />
+                    </PopOver>
                     <ActionButton Icon={SettingsIcon} quite={false} />
-                    <PopOver numOptions={NUM_OF_SETTINGS} className="ui spectrum-Popover spectrum-Popover--bottom" role="dialog" />
+                    <PopOver numOptions={NUM_OF_SETTINGS} className="ui spectrum-Popover spectrum-Popover--bottom is-open" role="dialog" />
                     <ActionButton Icon={ProfileIcon} quite={false} />
-                    <PopOver className="ui spectrum-Popover spectrum-Popover--bottom-start" role="dialog">
+                    <PopOver className="ui spectrum-Popover spectrum-Popover--bottom-start is-open" role="dialog">
                         <ProfileCard />
                     </PopOver>
                 </ActionGroup>
