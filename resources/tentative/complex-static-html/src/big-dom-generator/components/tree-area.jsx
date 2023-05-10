@@ -2,6 +2,7 @@ import { LCG } from "random-seedable";
 import { useRef } from "react";
 import { SEED, MAX_DEPTH, MAX_BREADTH, CHILD_PROB, TARGET_SIZE, MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH } from "./../params";
 import ChevronRight from "./../assets/Smock_ChevronRight_18_N.svg";
+import TaskListIcon from "./../assets/Smock_TaskList_18_N.svg";
 
 const FolderWrapper = (props) => {
     const { nodeCount, random, maxDepth, maxBreadth, childProb, currentDepth } = props;
@@ -27,7 +28,12 @@ const TreeItem = (props) => {
     return (
         <li className={`ui spectrum-TreeView-item ${treeViewItemIsOpen}`}>
             <a className="ui spectrum-TreeView-itemLink">
-                <ChevronRight className="ui spectrum-Icon spectrum-UIIcon-ChevronRight100 spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon" />
+                {children ? (
+                    <ChevronRight className="ui spectrum-Icon spectrum-UIIcon-ChevronRight100 spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon" />
+                ) : (
+                    <TaskListIcon className="ui task-list-icon spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon spectrum-Icon--sizeM" />
+                )}
+
                 <span className="ui just-span spectrum-TreeView-itemLabel">{children ? "Sprint" : "Todo List"}</span>
             </a>
             {children}
