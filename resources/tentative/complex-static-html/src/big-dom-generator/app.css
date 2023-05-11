@@ -90,13 +90,13 @@ Layout CSS for the UI.
     max-height: 50px;
 }
 
-.top-bar > .top-bar-right > .spectrum-ActionGroup > .spectrum-Popover > div {
+.top-bar-right .spectrum-Popover > div {
     max-width: 150px;
     padding: 10px;
     top: 30px;
 }
 
-.top-bar > .top-bar-right > .spectrum-ActionGroup > .spectrum-Popover > .spectrum-Card {
+.profile-card {
     padding: 10px;
     top: 30px;
 }
