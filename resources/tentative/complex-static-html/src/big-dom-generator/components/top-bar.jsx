@@ -15,7 +15,7 @@ const ContextualHelp = () => {
         <>
             <ActionButton Icon={HelpIcon} quiet={false} />
             <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom-start spectrum-ContextualHelp-popover">
-                <div className="ui">
+                <div className="ui context-help-popover-body">
                     <h2 className="ui spectrum-ContextualHelp-heading">Todo help</h2>
                     <p className="ui spectrum-ContextualHelp-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
