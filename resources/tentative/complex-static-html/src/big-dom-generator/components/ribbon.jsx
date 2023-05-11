@@ -10,7 +10,6 @@ import CutIcon from "../assets/Smock_Cut_18_N.svg";
 import FilterIcon from "../assets/Smock_Filter_18_N.svg";
 import ViewListIcon from "../assets/Smock_ViewList_18_N.svg";
 import GraphTrendIcon from "../assets/Smock_GraphTrend_18_N.svg";
-import CalendarIcon from "../assets/Smock_Calendar_18_N.svg";
 import GraphGanttIcon from "../assets/Smock_GraphGantt_18_N.svg";
 import ClockIcon from "../assets/Smock_Clock_18_N.svg";
 
@@ -38,7 +37,6 @@ export const Ribbon = () => {
             </ActionGroup>
             <Divider />
             <ActionGroup>
-                <ActionButton Icon={CalendarIcon} quiet />
                 <ActionButton Icon={GraphGanttIcon} label={"Timeline"} quiet />
                 <ActionButton Icon={FilterIcon} quiet />
                 <FilterPopOver />
