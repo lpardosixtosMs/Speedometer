@@ -133,7 +133,7 @@ Suites.push({
 });
 
 Suites.push({
-    name: "TodoMVC-React-Big-Hidden",
+    name: "TodoMVC-React-Big",
     url: "tentative/complex-static-html/dist-hidden/index.html",
     async prepare(page) {
         const element = await page.waitForElement(".new-todo");
