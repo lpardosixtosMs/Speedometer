@@ -14,7 +14,7 @@ const ContextualHelp = () => {
     return (
         <>
             <ActionButton Icon={HelpIcon} quiet={false} />
-            <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom-start spectrum-ContextualHelp-popover">
+            <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom-start spectrum-ContextualHelp-popover is-open">
                 <div className="ui context-help-popover-body">
                     <h2 className="ui spectrum-ContextualHelp-heading">Todo help</h2>
                     <p className="ui spectrum-ContextualHelp-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -26,7 +26,7 @@ const ContextualHelp = () => {
 
 const ProfileCardPopOver = () => {
     return (
-        <div className="ui spectrum-Popover spectrum-Popover--bottom-start profile-card-popover" role="dialog">
+        <div className="ui spectrum-Popover spectrum-Popover--bottom-start profile-card-popover is-open" role="dialog">
             <div className="ui spectrum-Card spectrum-Card--sizeS" tabIndex="0" role="figure">
                 <div className="ui spectrum-Card-coverPhoto"></div>
                 <div className="ui spectrum-Card-body">

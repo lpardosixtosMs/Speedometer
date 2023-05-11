@@ -24,7 +24,7 @@ export const OptionsPopOver = ({ numOptions }) => {
     }
 
     return (
-        <div className="ui spectrum-Popover spectrum-Popover--bottom" style={{ marginTop: "25px", padding: "5px" }}>
+        <div className="ui spectrum-Popover spectrum-Popover--bottom is-open" style={{ marginTop: "25px", padding: "5px" }}>
             <ul className="ui spectrum-Menu" role="menu">
                 {options}
             </ul>
