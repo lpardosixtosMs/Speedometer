@@ -1,7 +1,8 @@
+import { ActionButton } from "./action-group";
+
 import ChevronRight from "../assets/Smock_ChevronRight_18_N.svg";
 import ChevronLeft from "../assets/Smock_ChevronLeft_18_N.svg";
 import AddIcon from "../assets/Smock_Add_18_N.svg";
-import { ActionButton } from "./action-group";
 
 const DaysOfTheWeekHeadings = () => {
     const daysOfTheWeek = { Sunday: "S", Monday: "M", Tuesday: "T", Wednesday: "W", Thursday: "T", Friday: "F", Saturday: "S" };
@@ -99,7 +100,7 @@ export const DatePicker = () => {
                 </div>
             </button>
 
-            <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom is-open">
+            <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom">
                 <Calendar />
             </div>
         </div>

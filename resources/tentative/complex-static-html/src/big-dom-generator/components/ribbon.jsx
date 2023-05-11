@@ -1,3 +1,8 @@
+import { ActionButton, ActionGroup } from "./action-group";
+import { DatePicker } from "./date-picker";
+import { OptionsPopOver, VerticalPopOver } from "./pop-over";
+import { Table } from "./table";
+
 import DeleteIcon from "../assets/Smock_Delete_18_N.svg";
 import CutIcon from "../assets/Smock_Cut_18_N.svg";
 import FilterIcon from "../assets/Smock_Filter_18_N.svg";
@@ -6,12 +11,8 @@ import GraphTrendIcon from "../assets/Smock_GraphTrend_18_N.svg";
 import CalendarIcon from "../assets/Smock_Calendar_18_N.svg";
 import GraphGanttIcon from "../assets/Smock_GraphGantt_18_N.svg";
 import ClockIcon from "../assets/Smock_Clock_18_N.svg";
-import { ActionButton, ActionGroup } from "./action-group";
-import { DatePicker } from "./date-picker";
-import { OptionsPopOver, VerticalPopOver } from "./pop-over";
 import ChevronUpIcon from "../assets/Smock_ChevronUp_18_N.svg";
 import ChevronDownIcon from "../assets/Smock_ChevronDown_18_N.svg";
-import { Table } from "./table";
 
 const Divider = () => {
     return <div className="ui divider spectrum-Divider spectrum-Divider--sizeS spectrum-Divider--vertical" />;

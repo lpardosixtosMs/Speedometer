@@ -1,6 +1,7 @@
 import { LCG } from "random-seedable";
 import { useRef } from "react";
 import { SEED, MAX_DEPTH, MAX_BREADTH, CHILD_PROB, TARGET_SIZE, MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH } from "./../params";
+
 import ChevronRight from "./../assets/Smock_ChevronRight_18_N.svg";
 import TaskListIcon from "./../assets/Smock_TaskList_18_N.svg";
 
