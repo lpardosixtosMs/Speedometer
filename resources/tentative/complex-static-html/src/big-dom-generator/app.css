@@ -90,15 +90,16 @@ Layout CSS for the UI.
     max-height: 50px;
 }
 
-.top-bar-right .spectrum-Popover > div {
+.context-help-popover-body {
     max-width: 150px;
     padding: 10px;
     top: 30px;
 }
 
-.profile-card {
-    padding: 10px;
+.profile-card-popover {
+    padding: 5px;
     top: 30px;
+    width: 150px;
 }
 
 .todo-area {
