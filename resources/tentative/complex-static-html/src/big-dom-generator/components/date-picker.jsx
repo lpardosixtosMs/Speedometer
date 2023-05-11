@@ -15,46 +15,52 @@ const DaysOfTheWeekHeadings = () => {
     ));
 };
 
-const renderCalendarRows = () => {
-    const weekStarts = [new Date(2023, 1, 26), new Date(2023, 2, 5), new Date(2023, 2, 12), new Date(2023, 2, 19), new Date(2023, 2, 26)];
-
-    return weekStarts.map((weekStart) => (
-        <tr key={weekStart.toISOString()} role="row">
-            {renderCalendarCells(weekStart)}
-        </tr>
-    ));
-};
-
-const renderCalendarCells = (startDate) => {
+const CalendarRow = ({weekStart}) => {
     const dates = [...Array(7)].map((_, i) => {
-        const date = new Date(startDate);
-        date.setDate(startDate.getDate() + i);
+        const date = new Date(weekStart);
+        date.setDate(weekStart.getDate() + i);
         return date;
     });
+    
+    const children = dates.map((date, index) => {
+        return (
+            <td
+                key={index}
+                role="gridcell"
+                aria-invalid="false"
+                className="ui spectrum-Calendar-tableCell"
+                tabIndex="-1"
+                aria-disabled="false"
+                aria-selected="false"
+                title={date.toLocaleDateString("en-US", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                })}
+            >
+                <span role="presentation" className="ui spectrum-Calendar-date">
+                    {date.getDate()}
+                </span>
+            </td>
+        );
+    });
 
-    const renderCell = (date) => (
-        <td
-            key={date.toISOString()}
-            role="gridcell"
-            aria-invalid="false"
-            className="ui spectrum-Calendar-tableCell"
-            tabIndex="-1"
-            aria-disabled="false"
-            aria-selected="false"
-            title={date.toLocaleDateString("en-US", {
-                weekday: "long",
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-            })}
-        >
-            <span role="presentation" className="ui spectrum-Calendar-date">
-                {date.getDate()}
-            </span>
-        </td>
+    return (
+        <tr role="row" className="ui">
+            {children}
+        </tr>
     );
+}
 
-    return <>{dates.map(renderCell)}</>;
+const CalendarBody = () => {
+    const weekStarts = [new Date(2023, 1, 26), new Date(2023, 2, 5), new Date(2023, 2, 12), new Date(2023, 2, 19), new Date(2023, 2, 26)];
+    const children  = weekStarts.map((weekStart, index) => <CalendarRow key={index} weekStart={weekStart} />);
+    return (
+        <tbody role="presentation" className="ui">
+            {children}
+        </tbody>
+    );
 };
 
 const Calendar = () => {
@@ -73,9 +79,7 @@ const Calendar = () => {
                     <thead role="presentation" className="ui">
                         <tr role="row">{DaysOfTheWeekHeadings()}</tr>
                     </thead>
-                    <tbody role="presentation" className="ui">
-                        {renderCalendarRows()}
-                    </tbody>
+                    <CalendarBody />
                 </table>
             </div>
         </div>
@@ -95,7 +99,7 @@ export const DatePicker = () => {
                 </div>
             </button>
 
-            <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom">
+            <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom is-open">
                 <Calendar />
             </div>
         </div>
