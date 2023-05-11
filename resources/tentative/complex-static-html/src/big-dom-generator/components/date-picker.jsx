@@ -16,13 +16,13 @@ const DaysOfTheWeekHeadings = () => {
     ));
 };
 
-const CalendarRow = ({weekStart}) => {
+const CalendarRow = ({ weekStart }) => {
     const dates = [...Array(7)].map((_, i) => {
         const date = new Date(weekStart);
         date.setDate(weekStart.getDate() + i);
         return date;
     });
-    
+
     const children = dates.map((date, index) => {
         return (
             <td
@@ -52,11 +52,11 @@ const CalendarRow = ({weekStart}) => {
             {children}
         </tr>
     );
-}
+};
 
 const CalendarBody = () => {
     const weekStarts = [new Date(2023, 1, 26), new Date(2023, 2, 5), new Date(2023, 2, 12), new Date(2023, 2, 19), new Date(2023, 2, 26)];
-    const children  = weekStarts.map((weekStart, index) => <CalendarRow key={index} weekStart={weekStart} />);
+    const children = weekStarts.map((weekStart, index) => <CalendarRow key={index} weekStart={weekStart} />);
     return (
         <tbody role="presentation" className="ui">
             {children}
@@ -66,7 +66,7 @@ const CalendarBody = () => {
 
 const Calendar = () => {
     return (
-        <div className="ui spectrum-Calendar" style={{width: "280px"}}>
+        <div className="ui spectrum-Calendar" style={{ width: "280px" }}>
             <div className="ui spectrum-Calendar-header">
                 <div role="heading" aria-live="assertive" aria-atomic="true" className="ui spectrum-Calendar-title">
                     March 2023
