@@ -100,7 +100,7 @@ export const DatePicker = () => {
                 </div>
             </button>
 
-            <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom date-picker-popover is-open">
+            <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom date-picker-popover">
                 <Calendar />
             </div>
         </div>
