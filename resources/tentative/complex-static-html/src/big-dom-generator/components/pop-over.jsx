@@ -7,7 +7,7 @@ export const VerticalPopOver = ({ children }) => {
         </div>
     ));
     return (
-        <div className="ui spectrum-Popover spectrum-Popover--bottom-right is-open" style={{ marginTop: "25px", padding: "5px" }}>
+        <div className="ui spectrum-Popover spectrum-Popover--bottom-right" style={{ marginTop: "25px", padding: "5px" }}>
             <div className="ui spectrum-ActionGroup spectrum-ActionGroup--vertical spectrum-ActionGroup--sizeS">{actionItems}</div>
         </div>
     );
