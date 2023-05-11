@@ -66,7 +66,7 @@ const CalendarBody = () => {
 
 const Calendar = () => {
     return (
-        <div className="ui spectrum-Calendar">
+        <div className="ui spectrum-Calendar" style={{width: "280px"}}>
             <div className="ui spectrum-Calendar-header">
                 <div role="heading" aria-live="assertive" aria-atomic="true" className="ui spectrum-Calendar-title">
                     March 2023
@@ -100,7 +100,7 @@ export const DatePicker = () => {
                 </div>
             </button>
 
-            <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom">
+            <div role="presentation" className="ui spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom date-picker-popover">
                 <Calendar />
             </div>
         </div>

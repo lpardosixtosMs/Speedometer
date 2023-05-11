@@ -49,6 +49,24 @@ Importing the CSS from the Spectrum CSS library.
     margin-left: calc(-1 * var(--spectrum-treeview-item-affordance-size));
 }
 
+.spectrum-DatePicker-textfield {
+    --spectrum-textfield-border-color: rgb(0, 0, 0);
+    --spectrum-textfield-border-width: 1px;
+    max-width: 158px;
+    display: flex;
+}
+
+.spectrum-Stepper {
+    min-width: 100px;
+    --mod-actionbutton-icon-size: 10px;
+}
+
+.ribbon .spectrum-Stepper > .spectrum-Textfield {
+    --spectrum-textfield-border-color: rgb(0, 0, 0);
+    --spectrum-textfield-border-width: 1px;
+    min-width: 30px;
+}
+
 /*
 Layout CSS for the UI.
 */
@@ -106,48 +124,22 @@ Layout CSS for the UI.
     max-height: 40px;
 }
 
-.ribbon > .divider {
+.ribbon-divider {
     height: 75%;
 }
 
-.ribbon > .spectrum-ActionGroup > .spectrum-Popover > .spectrum-ProgressBar {
+.analytics-bar {
     width: 200px;
 }
 
-.ribbon > .spectrum-ActionGroup > .spectrum-Popover > .spectrum-ProgressBar-track > .spectrum-ProgressBar-fill {
-    width: 50%;
-}
-
-.ribbon > .spectrum-ActionGroup > .spectrum-DatePicker > .spectrum-DatePicker-textfield {
-    --spectrum-textfield-border-color: rgb(0, 0, 0);
-    --spectrum-textfield-border-width: 1px;
-    max-width: 158px;
-    display: flex;
-}
-
-.ribbon > .spectrum-ActionGroup > .spectrum-DatePicker > .spectrum-Popover {
+.date-picker-popover {
     position: absolute;
     width: 280px;
     top: 100%;
     left: 0px;
 }
 
-.ribbon > .spectrum-ActionGroup > .spectrum-DatePicker > .spectrum-Popover > .spectrum-Calendar {
-    width: 280px;
-}
-
-.ribbon > .spectrum-ActionGroup > .spectrum-Popover > .spectrum-Stepper {
-    min-width: 100px;
-    --mod-actionbutton-icon-size: 10px;
-}
-
-.ribbon > .spectrum-ActionGroup > .spectrum-Popover > .spectrum-Stepper > .spectrum-Textfield {
-    --spectrum-textfield-border-color: rgb(0, 0, 0);
-    --spectrum-textfield-border-width: 1px;
-    min-width: 30px;
-}
-
-.ribbon > .spectrum-ActionGroup > .spectrum-Popover > .spectrum-Textfield > .spectrum-Textfield-input {
+.filter-input {
     max-width: 150px;
 }
 
