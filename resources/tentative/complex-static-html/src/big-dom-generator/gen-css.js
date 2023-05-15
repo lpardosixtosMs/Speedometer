@@ -213,7 +213,7 @@ export const genCss = () => {
     // TODO: Choose a better color for the todoMVC theme.
     const matchingCssRules = [];
     matchingSelectors.forEach((selector, i) => {
-        random.shuffle(cssProperties, true)
+        random.shuffle(cssProperties, true);
         matchingCssRules.push(`${selector} { 
             ${cssProperties[0]}: rgba(140,140,140,${i / 1000}); 
             ${cssProperties[1]}: rgba(140,140,140,${i / 1000});
@@ -221,7 +221,7 @@ export const genCss = () => {
     });
     const nonMatchingCssRules = [];
     nonMatchingSelectors.forEach((selector, i) => {
-        random.shuffle(cssProperties, true)
+        random.shuffle(cssProperties, true);
         nonMatchingCssRules.push(`${selector} { 
             ${cssProperties[0]}: rgba(140,140,140,${i / 1000}); 
             ${cssProperties[1]}: rgba(140,140,140,${i / 1000});
