@@ -196,7 +196,7 @@ const buildNonMatchingSelector = (depth, index, oldCombinator, selLen, badSelect
     return buildNonMatchingSelector(nextDepth, nextIndex, combinator, selLen + 1, badSelector) + selector + oldCombinator;
 };
 
-const props = ["accent-color", "border-bottom-color", "border-color", "border-left-color", "border-right-color", "border-top-color", "column-rule-color", "outline-color", "text-decoration-color"];
+const cssProperties = ["accent-color", "border-bottom-color", "border-color", "border-left-color", "border-right-color", "border-top-color", "column-rule-color", "outline-color", "text-decoration-color"];
 
 // Returns a random 200 matching selectors and 200 non-matching selectors targeted at the todoMVC items.
 export const genCss = () => {
@@ -213,20 +213,18 @@ export const genCss = () => {
     // TODO: Choose a better color for the todoMVC theme.
     const matchingCssRules = [];
     matchingSelectors.forEach((selector, i) => {
-        let propOne = random.choice(props);
-        let propTwo = random.choice(props);
+        random.shuffle(cssProperties, true)
         matchingCssRules.push(`${selector} { 
-            ${propOne}: rgba(140,140,140,${i / 1000}); 
-            ${propTwo}: rgba(140,140,140,${i / 1000});
+            ${cssProperties[0]}: rgba(140,140,140,${i / 1000}); 
+            ${cssProperties[1]}: rgba(140,140,140,${i / 1000});
         }`);
     });
     const nonMatchingCssRules = [];
     nonMatchingSelectors.forEach((selector, i) => {
-        let propOne = random.choice(props);
-        let propTwo = random.choice(props);
+        random.shuffle(cssProperties, true)
         nonMatchingCssRules.push(`${selector} { 
-            ${propOne}: rgba(140,140,140,${i / 1000}); 
-            ${propTwo}: rgba(140,140,140,${i / 1000});
+            ${cssProperties[0]}: rgba(140,140,140,${i / 1000}); 
+            ${cssProperties[1]}: rgba(140,140,140,${i / 1000});
         }`);
     });
     return { matchingCss: matchingCssRules.join("\n"), nonMatchingCss: nonMatchingCssRules.join("\n") };
