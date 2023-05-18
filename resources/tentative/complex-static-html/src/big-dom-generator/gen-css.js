@@ -133,6 +133,7 @@ const getRandomSiblingElementBefore = (element) => {
     return random.choice(validChildren);
 };
 
+// Returns the next depth based on the given combinator and current depth.
 const getNextDepth = (combinator, depth) => {
     switch (combinator) {
         case Combinator.DESCENDANT:
@@ -147,7 +148,6 @@ const getNextDepth = (combinator, depth) => {
     }
 };
 
-// Returns a random combinator chosen so that the generated selector is valid.
 const chooseCombinator = (depth, index) => {
     const selectors = [Combinator.DESCENDANT, Combinator.CHILD];
     if (index > 0 && depth !== 7) {
@@ -157,6 +157,7 @@ const chooseCombinator = (depth, index) => {
     return random.choice(selectors);
 };
 
+// Returns a random option from the given options array, weighted by the corresponding probabilities in the probs array.
 const randomWeighted = (options, probs) => {
     const randNum = random.float();
     let accumProb = 0;
@@ -169,17 +170,18 @@ const randomWeighted = (options, probs) => {
     return options[options.length - 1];
 };
 
+// Builds a matching selector for the given element.
 const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) => {
     // prettier-ignore
     if (selLen >= maxLen) 
         return "";
 
+    // Get a random selector for the element.
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
     const selector = getSelector(element);
     // prettier-ignore
-    if (!depth) {
+    if (!depth)
         return `${selector}${oldCombinator}`;
-    }
 
     const children = Array.from(element.parentElement.children);
     const index = children.indexOf(element);
@@ -187,9 +189,12 @@ const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) =>
 
     const nextDepth = getNextDepth(combinator, depth);
     const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
+
+    // Recurse with the next element and depth, and append the selector and old combinator.
     return buildMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, maxLen) + selector + oldCombinator;
 };
 
+// Builds a non-matching selector for the given element.
 const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSelector) => {
     // prettier-ignore
     if (!depth)
@@ -198,7 +203,6 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSele
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
     const selector = getSelector(element);
     if (selLen === badSelector) {
-        // pick a random classname from the children of the element
         const wrongSelector = getClassname(random.choice(Array.from(element.children)));
         return selector + wrongSelector + oldCombinator;
     }
@@ -210,6 +214,8 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSele
     const combinator = chooseCombinator(depth, index);
     const nextDepth = getNextDepth(combinator, depth);
     const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
+
+    // Recurse with the next element and depth, and append the selector and old combinator.
     return buildNonMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, badSelector) + selector + oldCombinator;
 };
 
@@ -229,14 +235,20 @@ const getInitialDepth = (element) => {
     return 5;
 };
 
+// The CSS properties to use in the generated CSS rules.
 const cssProperties = ["accent-color", "border-bottom-color", "border-color", "border-left-color", "border-right-color", "border-top-color", "column-rule-color", "outline-color", "text-decoration-color"];
+
+// The CSS pseudo-classes to use in the generated CSS rules.
 const cssPseudoClasses = [":hover", ":focus", ":active"];
 
+// Generates CSS rules for matching and non-matching selectors.
 export const genCss = () => {
     const matchingSelectors = [];
     const nonMatchingSelectors = [];
     addTodoItems(NUM_TODOS_TO_INSERT_IN_HTML);
     const elements = document.querySelectorAll(".main li");
+
+    // Generate matching and non-matching selectors for each element.
     elements.forEach((element) => {
         const chooseFrom = [element, element.firstChild, element.firstChild.firstChild, element.firstChild.lastChild];
         // Add `.targeted` to the matching selectors to match only the todoMVC items.
@@ -246,20 +258,19 @@ export const genCss = () => {
         nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[3], getInitialDepth(chooseFrom[3]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${getRandomPseudoClass(chooseFrom[3])}`);
     });
 
-    const matchingCssRules = matchingSelectors.map((selector, i) => {
-        random.shuffle(cssProperties, true);
-        return `${selector} {
-            ${cssProperties[0]}: rgba(140,0,0,${i / 1000});
-            ${cssProperties[1]}: rgba(140,0,0,${i / 1000});
-        }`;
-    });
+    // Generate CSS rules for the matching and non-matching selectors.
+    const generateCssRules = (selectors) => {
+        return selectors.map((selector, i) => {
+            random.shuffle(cssProperties, true);
+            return `${selector} {
+                    ${cssProperties[0]}: rgba(140,0,0,${i / 1000});
+                    ${cssProperties[1]}: rgba(140,0,0,${i / 1000});
+                }`;
+        });
+    };
 
-    const nonMatchingCssRules = nonMatchingSelectors.map((selector, i) => {
-        random.shuffle(cssProperties, true);
-        return `${selector} {
-            ${cssProperties[0]}: rgba(140,0,0,${i / 1000});
-            ${cssProperties[1]}: rgba(140,0,0,${i / 1000});
-        }`;
-    });
+    const matchingCssRules = generateCssRules(matchingSelectors);
+    const nonMatchingCssRules = generateCssRules(nonMatchingSelectors);
+
     return { matchingCss: matchingCssRules.join("\n"), nonMatchingCss: nonMatchingCssRules.join("\n") };
 };
