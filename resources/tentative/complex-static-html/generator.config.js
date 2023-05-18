@@ -62,7 +62,11 @@ module.exports = {
                 generator: {
                   filename: '[name][ext]',
                 },
-            }
+            },
+            {
+                test: /\.node$/,
+                use: 'node-loader',
+            },
         ],
     },
     target: "node",
