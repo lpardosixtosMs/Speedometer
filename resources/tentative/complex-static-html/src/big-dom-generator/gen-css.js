@@ -1,9 +1,15 @@
-import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE } from "./params.js";
+import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML } from "./params.js";
 import { LCG } from "random-seedable";
 import { JSDOM } from "jsdom";
 
 const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
-const NUM_TODO_ITEMS = 100;
+
+const Combinator = {
+    DESCENDANT: " ",
+    CHILD: " > ",
+    ADJACENT_SIBLING: " + ",
+    GENERAL_SIBLING: " ~ ",
+};
 
 const html = `
     <div class="main-ui">
@@ -51,8 +57,8 @@ const dom = new JSDOM(html);
 const { document } = dom.window;
 const todoList = document.querySelector(".todo-list");
 
-const addTodoItems = (NUM_TODO_ITEMS) => {
-    for (let i = 0; i < NUM_TODO_ITEMS; i++) {
+const addTodoItems = (NUM_TODOS_TO_INSERT_IN_HTML) => {
+    for (let i = 0; i < NUM_TODOS_TO_INSERT_IN_HTML; i++) {
         const li = document.createElement("li");
         li.className = `li-${i}-0 targeted`;
         li.setAttribute("data-testid", "todo-item");
@@ -95,9 +101,9 @@ const getClassname = (element) => {
     }
 };
 
-function getElementType(element) {
+const getElementType = (element) => {
     return element.nodeName.toLowerCase();
-}
+};
 
 const getElementAtDepth = (combinator, element, currentDepth, depth) => {
     let currentElement = element;
@@ -108,6 +114,17 @@ const getElementAtDepth = (combinator, element, currentDepth, depth) => {
     return getRandomElement(combinator, currentElement);
 };
 
+const getRandomElement = (combinator, element) => {
+    if (combinator === Combinator.CHILD) {
+        return element;
+    } else if (combinator === Combinator.ADJACENT_SIBLING) {
+        return element.previousElementSibling;
+    } else if (combinator === Combinator.GENERAL_SIBLING) {
+        return getRandomSiblingElementBefore(element);
+    }
+    return element;
+};
+
 const getRandomSiblingElementBefore = (element) => {
     const parent = element.parentElement;
     const children = Array.from(parent.children);
@@ -116,25 +133,14 @@ const getRandomSiblingElementBefore = (element) => {
     return random.choice(validChildren);
 };
 
-const getRandomElement = (combinator, element) => {
-    if (combinator === " > ") {
-        return element;
-    } else if (combinator === " + ") {
-        return element.previousElementSibling;
-    } else if (combinator === " ~ ") {
-        return getRandomSiblingElementBefore(element);
-    }
-    return element;
-};
-
 const getNextDepth = (combinator, depth) => {
     switch (combinator) {
-        case " ":
+        case Combinator.DESCENDANT:
             return random.randRange(0, depth);
-        case " > ":
+        case Combinator.CHILD:
             return depth - 1;
-        case " + ":
-        case " ~ ":
+        case Combinator.ADJACENT_SIBLING:
+        case Combinator.GENERAL_SIBLING:
             return depth;
         default:
             throw new Error(`Invalid combinator: ${combinator}`);
@@ -143,10 +149,10 @@ const getNextDepth = (combinator, depth) => {
 
 // Returns a random combinator chosen so that the generated selector is valid.
 const chooseCombinator = (depth, index) => {
-    const selectors = [" ", " > "];
+    const selectors = [Combinator.DESCENDANT, Combinator.CHILD];
     if (index > 0 && depth !== 7) {
-        selectors.push(" + ");
-        selectors.push(" ~ ");
+        selectors.push(Combinator.ADJACENT_SIBLING);
+        selectors.push(Combinator.GENERAL_SIBLING);
     }
     return random.choice(selectors);
 };
@@ -163,7 +169,6 @@ const randomWeighted = (options, probs) => {
     return options[options.length - 1];
 };
 
-// .todo-area > .todoholder > * > .main .view-4 ~ .toggle
 const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) => {
     // prettier-ignore
     if (selLen >= maxLen) 
@@ -230,7 +235,7 @@ const cssPseudoClasses = [":hover", ":focus", ":active"];
 export const genCss = () => {
     const matchingSelectors = [];
     const nonMatchingSelectors = [];
-    addTodoItems(NUM_TODO_ITEMS);
+    addTodoItems(NUM_TODOS_TO_INSERT_IN_HTML);
     const elements = document.querySelectorAll(".main li");
     elements.forEach((element) => {
         const chooseFrom = [element, element.firstChild, element.firstChild.firstChild, element.firstChild.lastChild];
@@ -241,21 +246,20 @@ export const genCss = () => {
         nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[3], getInitialDepth(chooseFrom[3]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${getRandomPseudoClass(chooseFrom[3])}`);
     });
 
-    const matchingCssRules = [];
-    matchingSelectors.forEach((selector, i) => {
+    const matchingCssRules = matchingSelectors.map((selector, i) => {
         random.shuffle(cssProperties, true);
-        matchingCssRules.push(`${selector} {
-        ${cssProperties[0]}: rgba(140,0,0,${i / 1000});
-        ${cssProperties[1]}: rgba(140,0,0,${i / 1000});
-    }`);
+        return `${selector} {
+            ${cssProperties[0]}: rgba(140,0,0,${i / 1000});
+            ${cssProperties[1]}: rgba(140,0,0,${i / 1000});
+        }`;
     });
-    const nonMatchingCssRules = [];
-    nonMatchingSelectors.forEach((selector, i) => {
+
+    const nonMatchingCssRules = nonMatchingSelectors.map((selector, i) => {
         random.shuffle(cssProperties, true);
-        nonMatchingCssRules.push(`${selector} {
-        ${cssProperties[0]}: rgba(140,0,0,${i / 1000});
-        ${cssProperties[1]}: rgba(140,0,0,${i / 1000});
-     }`);
+        return `${selector} {
+            ${cssProperties[0]}: rgba(140,0,0,${i / 1000});
+            ${cssProperties[1]}: rgba(140,0,0,${i / 1000});
+        }`;
     });
     return { matchingCss: matchingCssRules.join("\n"), nonMatchingCss: nonMatchingCssRules.join("\n") };
 };
