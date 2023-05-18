@@ -1,6 +1,7 @@
 const path = require("path");
 const glob = require("glob");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require("webpack");
 
 module.exports = {
     mode: "development",
@@ -20,6 +21,7 @@ module.exports = {
           filename: "[name].css",
           chunkFilename: "[id].css",
       }),
+      new webpack.IgnorePlugin({ resourceRegExp: /canvas/ })
   ],
     module: {
         rules: [
@@ -62,11 +64,7 @@ module.exports = {
                 generator: {
                   filename: '[name][ext]',
                 },
-            },
-            {
-                test: /\.node$/,
-                use: 'node-loader',
-            },
+            }
         ],
     },
     target: "node",

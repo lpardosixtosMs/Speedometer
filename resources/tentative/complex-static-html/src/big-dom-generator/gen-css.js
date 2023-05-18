@@ -1,6 +1,7 @@
 import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML } from "./params.js";
 import { LCG } from "random-seedable";
-import { JSDOM } from "jsdom";
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
 const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
 
@@ -241,6 +242,17 @@ const cssProperties = ["accent-color", "border-bottom-color", "border-color", "b
 // The CSS pseudo-classes to use in the generated CSS rules.
 const cssPseudoClasses = [":hover", ":focus", ":active"];
 
+// Generate CSS rules for the matching and non-matching selectors.
+const generateCssRules = (selectors) => {
+    return selectors.map((selector, i) => {
+        random.shuffle(cssProperties, true);
+        return `${selector} {
+                    ${cssProperties[0]}: rgba(140,140,140,${i / 1000});
+                    ${cssProperties[1]}: rgba(140,140,140,${i / 1000});
+                }`;
+    });
+};
+
 // Generates CSS rules for matching and non-matching selectors.
 export const genCss = () => {
     const matchingSelectors = [];
@@ -257,17 +269,6 @@ export const genCss = () => {
         nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[2], getInitialDepth(chooseFrom[2]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${getRandomPseudoClass(chooseFrom[2])}`);
         nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[3], getInitialDepth(chooseFrom[3]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${getRandomPseudoClass(chooseFrom[3])}`);
     });
-
-    // Generate CSS rules for the matching and non-matching selectors.
-    const generateCssRules = (selectors) => {
-        return selectors.map((selector, i) => {
-            random.shuffle(cssProperties, true);
-            return `${selector} {
-                    ${cssProperties[0]}: rgba(140,0,0,${i / 1000});
-                    ${cssProperties[1]}: rgba(140,0,0,${i / 1000});
-                }`;
-        });
-    };
 
     const matchingCssRules = generateCssRules(matchingSelectors);
     const nonMatchingCssRules = generateCssRules(nonMatchingSelectors);
