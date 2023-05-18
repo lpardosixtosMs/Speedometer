@@ -272,5 +272,6 @@ export const genCss = () => {
     const matchingCssRules = generateCssRules(matchingSelectors);
     const nonMatchingCssRules = generateCssRules(nonMatchingSelectors);
 
-    return { matchingCss: matchingCssRules.join("\n"), nonMatchingCss: nonMatchingCssRules.join("\n") };
+    const allCssRules = matchingCssRules.concat(nonMatchingCssRules);
+    return allCssRules.join("\n");
 };
