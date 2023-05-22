@@ -134,7 +134,6 @@ const getRandomSiblingElementBefore = (element) => {
     return random.choice(validChildren);
 };
 
-// Returns the next depth based on the given combinator and current depth.
 const getNextDepth = (combinator, depth) => {
     switch (combinator) {
         case Combinator.DESCENDANT:
@@ -171,10 +170,9 @@ const randomWeighted = (options, probs) => {
     return options[options.length - 1];
 };
 
-// Builds a matching selector for the given element.
 const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) => {
     // prettier-ignore
-    if (selLen >= maxLen) 
+    if (selLen >= maxLen)
         return "";
 
     // Get a random selector for the element.
@@ -195,7 +193,6 @@ const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) =>
     return buildMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, maxLen) + selector + oldCombinator;
 };
 
-// Builds a non-matching selector for the given element.
 const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSelector) => {
     // prettier-ignore
     if (!depth)
@@ -236,10 +233,7 @@ const getInitialDepth = (element) => {
     return 5;
 };
 
-// The CSS properties to use in the generated CSS rules.
 const cssProperties = ["accent-color", "border-bottom-color", "border-color", "border-left-color", "border-right-color", "border-top-color", "column-rule-color", "outline-color", "text-decoration-color"];
-
-// The CSS pseudo-classes to use in the generated CSS rules.
 const cssPseudoClasses = [":hover", ":focus", ":active"];
 
 // Generate CSS rules for the matching and non-matching selectors.
