@@ -11,6 +11,8 @@ const Combinator = {
     GENERAL_SIBLING: " ~ ",
 };
 
+// The generator assumes the page has the following structure,
+// and it needs to be updated if the structure changes.
 const html = `
     <div class="main-ui">
         <div class="show-more"/>
@@ -44,7 +46,7 @@ const html = `
                     <button class="clear-completed">Clear completed</button>
                 </footer>
             </section>
-      </div>
+        </div>
     </div>`;
 
 const dom = new JSDOM(html);
@@ -120,6 +122,7 @@ const getNextDepth = (combinator, depth) => {
 
 const chooseCombinator = (depth, index) => {
     const selectors = [Combinator.DESCENDANT, Combinator.CHILD];
+    // prettier-ignore
     if (index > 0 && depth !== 7)
         selectors.push(Combinator.ADJACENT_SIBLING, Combinator.GENERAL_SIBLING);
 
