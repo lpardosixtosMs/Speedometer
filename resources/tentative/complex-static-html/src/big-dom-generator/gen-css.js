@@ -1,4 +1,4 @@
-import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML } from "./params.js";
+import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML, TARGETED_CLASS } from "./params.js";
 import { LCG } from "random-seedable";
 import { JSDOM } from "jsdom";
 
@@ -193,7 +193,6 @@ const getInitialDepth = (element) => {
     return element.tagName === "DIV" ? 6 : 5;
 };
 
-const cssProperties = ["accent-color", "border-bottom-color", "border-color", "border-left-color", "border-right-color", "border-top-color", "column-rule-color", "outline-color", "text-decoration-color"];
 
 // Generate CSS rules for the matching and non-matching selectors.
 const generateCssRules = (selectors) => {
@@ -206,8 +205,7 @@ const generateCssRules = (selectors) => {
     });
 };
 
-// Generates CSS rules for matching and non-matching selectors.
-const TARGETED_CLASS = ".targeted";
+const cssProperties = ["accent-color", "border-bottom-color", "border-color", "border-left-color", "border-right-color", "border-top-color", "column-rule-color", "outline-color", "text-decoration-color"];
 
 export const genCss = () => {
     const matchingSelectors = [];
