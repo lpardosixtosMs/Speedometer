@@ -238,12 +238,12 @@ export const genCss = () => {
     const elements = document.querySelectorAll(".main li");
 
     elements.forEach((element) => {
-        const chooseFrom = [element, element.firstChild, element.firstChild.firstChild, element.firstChild.lastChild];
+        const chooseFrom = random.coin(0.1) ? [element.firstChild.firstChild, element.firstChild.lastChild] : [element, element.firstChild];
         // Add `.targeted` to the matching selectors to match only the todoMVC items.
         matchingSelectors.push(`${buildMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${getRandomPseudoClass(chooseFrom[0])}.targeted`);
         matchingSelectors.push(`${buildMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${getRandomPseudoClass(chooseFrom[1])}.targeted`);
-        nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[2], getInitialDepth(chooseFrom[2]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${getRandomPseudoClass(chooseFrom[2])}`);
-        nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[3], getInitialDepth(chooseFrom[3]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${getRandomPseudoClass(chooseFrom[3])}`);
+        nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${getRandomPseudoClass(chooseFrom[0])}`);
+        nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${getRandomPseudoClass(chooseFrom[1])}`);
     });
 
     const matchingCssRules = generateCssRules(matchingSelectors);
