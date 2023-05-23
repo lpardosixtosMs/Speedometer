@@ -1,7 +1,6 @@
 import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML } from "./params.js";
 import { LCG } from "random-seedable";
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
+import { JSDOM } from "jsdom";
 
 const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
 
@@ -45,12 +44,6 @@ const html = `
                     <button class="clear-completed">Clear completed</button>
                 </footer>
             </section>
-            <footer class="info">
-            <p>Click on input field to write your todo.</p>
-            <p>At least two characters are needed to be a valid entry.</p>
-            <p>Press 'enter' to add the todo.</p>
-            <p>Double-click to edit a todo</p>
-            </footer>
       </div>
     </div>`;
 
@@ -68,22 +61,6 @@ const addTodoItems = (NUM_TODOS_TO_INSERT_IN_HTML) => {
         const div = document.createElement("div");
         div.className = `view-${i} targeted`;
 
-        const input = document.createElement("input");
-        input.className = "toggle";
-        input.setAttribute("type", "checkbox");
-        input.setAttribute("data-testid", "todo-item-toggle");
-
-        const label = document.createElement("label");
-        label.className = "view-label";
-        label.innerHTML = "wasd";
-
-        const button = document.createElement("button");
-        button.className = "destroy";
-        button.setAttribute("data-testid", "todo-item-button");
-
-        div.appendChild(input);
-        div.appendChild(label);
-        div.appendChild(button);
         li.appendChild(div);
         todoList.appendChild(li);
     }
@@ -201,10 +178,6 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSele
     return buildNonMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, badSelector) + selector + oldCombinator;
 };
 
-const getRandomPseudoClass = (element) => {
-    return element.tagName === "INPUT" || element.tagName === "BUTTON" ? random.choice(cssPseudoClasses) : "";
-};
-
 const getInitialDepth = (element) => {
     switch (element.tagName) {
         case "INPUT":
@@ -218,7 +191,6 @@ const getInitialDepth = (element) => {
 };
 
 const cssProperties = ["accent-color", "border-bottom-color", "border-color", "border-left-color", "border-right-color", "border-top-color", "column-rule-color", "outline-color", "text-decoration-color"];
-const cssPseudoClasses = [":hover", ":focus", ":active"];
 
 // Generate CSS rules for the matching and non-matching selectors.
 const generateCssRules = (selectors) => {
@@ -238,12 +210,13 @@ export const genCss = () => {
     const elements = document.querySelectorAll(".main li");
 
     elements.forEach((element) => {
-        const chooseFrom = random.coin(0.1) ? [element.firstChild.firstChild, element.firstChild.lastChild] : [element, element.firstChild];
+        const chooseFrom = [element, element.firstChild];
+        random.shuffle(chooseFrom, true);
         // Add `.targeted` to the matching selectors to match only the todoMVC items.
-        matchingSelectors.push(`${buildMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${getRandomPseudoClass(chooseFrom[0])}.targeted`);
-        matchingSelectors.push(`${buildMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${getRandomPseudoClass(chooseFrom[1])}.targeted`);
-        nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${getRandomPseudoClass(chooseFrom[0])}`);
-        nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${getRandomPseudoClass(chooseFrom[1])}`);
+        matchingSelectors.push(`${buildMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}.targeted`);
+        matchingSelectors.push(`${buildMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}.targeted`);
+        nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
+        nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
     });
 
     const matchingCssRules = generateCssRules(matchingSelectors);
