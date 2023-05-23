@@ -1,4 +1,4 @@
-import { h, createElement, render, Fragment } from "preact";
+import { h, createElement, render } from "preact";
 import App from "./app/app";
 
 import "todomvc-app-css/index.css";
@@ -7,11 +7,10 @@ import "../../../big-dom-generator/public/layout.css";
 import "../../../big-dom-generator/generated.css";
 import "../../../big-dom-generator/dist/app.css";
 
-const todoHolder = document.createElement("div");
-todoHolder.className = "todoholder";
+const todoArea = document.querySelector(".todo-area");
 
 render(
-    <Fragment>
+    <div className="todoholder">
         <section className="todoapp" id="root">
             <App />
         </section>
@@ -21,9 +20,6 @@ render(
             <p>Press 'enter' to add the todo.</p>
             <p>Double-click to edit a todo</p>
         </footer>
-    </Fragment>,
-    todoHolder
+    </div>,
+    todoArea
 );
-
-const todoArea = document.querySelector(".todo-area");
-todoArea.appendChild(todoHolder);
