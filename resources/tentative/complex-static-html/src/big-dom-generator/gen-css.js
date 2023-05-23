@@ -56,12 +56,13 @@ const html = `
 
 const dom = new JSDOM(html);
 const { document } = dom.window;
-const todoList = document.querySelector(".todo-list");
 
 const addTodoItems = (NUM_TODOS_TO_INSERT_IN_HTML) => {
+    const todoList = document.querySelector(".todo-list");
+
     for (let i = 0; i < NUM_TODOS_TO_INSERT_IN_HTML; i++) {
         const li = document.createElement("li");
-        li.className = `li-${i}-0 targeted`;
+        li.className = `li-${i} targeted`;
         li.setAttribute("data-testid", "todo-item");
 
         const div = document.createElement("div");
@@ -89,16 +90,7 @@ const addTodoItems = (NUM_TODOS_TO_INSERT_IN_HTML) => {
 };
 
 const getClassname = (element) => {
-    if (!element)
-        return "";
-
-    const classList = Array.from(element.classList);
-    if (classList.length === 1)
-        return `.${classList[0]}`;
-    else if (classList.length > 1)
-        return `.${random.choice(classList)}`;
-    else
-        return "";
+    return element ? `.${element.classList[0] || ""}` : "";
 };
 
 const getElementType = (element) => {
@@ -115,14 +107,16 @@ const getElementAtDepth = (combinator, element, currentDepth, depth) => {
 };
 
 const getRandomElement = (combinator, element) => {
-    if (combinator === Combinator.CHILD)
-        return element;
-    else if (combinator === Combinator.ADJACENT_SIBLING)
-        return element.previousElementSibling;
-    else if (combinator === Combinator.GENERAL_SIBLING)
-        return getRandomSiblingElementBefore(element);
-
-    return element;
+    switch (combinator) {
+        case Combinator.CHILD:
+            return element;
+        case Combinator.ADJACENT_SIBLING:
+            return element.previousElementSibling;
+        case Combinator.GENERAL_SIBLING:
+            return getRandomSiblingElementBefore(element);
+        default:
+            return element;
+    }
 };
 
 const getRandomSiblingElementBefore = (element) => {
@@ -149,10 +143,9 @@ const getNextDepth = (combinator, depth) => {
 
 const chooseCombinator = (depth, index) => {
     const selectors = [Combinator.DESCENDANT, Combinator.CHILD];
-    if (index > 0 && depth !== 7) {
-        selectors.push(Combinator.ADJACENT_SIBLING);
-        selectors.push(Combinator.GENERAL_SIBLING);
-    }
+    if (index > 0 && depth !== 7)
+        selectors.push(Combinator.ADJACENT_SIBLING, Combinator.GENERAL_SIBLING);
+
     return random.choice(selectors);
 };
 
@@ -209,19 +202,19 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSele
 };
 
 const getRandomPseudoClass = (element) => {
-    if (element.tagName === "INPUT" || element.tagName === "BUTTON")
-        return random.choice(cssPseudoClasses);
-
-    return "";
+    return element.tagName === "INPUT" || element.tagName === "BUTTON" ? random.choice(cssPseudoClasses) : "";
 };
 
 const getInitialDepth = (element) => {
-    if (element.tagName === "INPUT" || element.tagName === "BUTTON")
-        return 7;
-    else if (element.tagName === "DIV")
-        return 6;
-
-    return 5;
+    switch (element.tagName) {
+        case "INPUT":
+        case "BUTTON":
+            return 7;
+        case "DIV":
+            return 6;
+        default:
+            return 5;
+    }
 };
 
 const cssProperties = ["accent-color", "border-bottom-color", "border-color", "border-left-color", "border-right-color", "border-top-color", "column-rule-color", "outline-color", "text-decoration-color"];

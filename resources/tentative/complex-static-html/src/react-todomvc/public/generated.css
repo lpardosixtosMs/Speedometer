@@ -1,1600 +1,1600 @@
-div > section > main .toggle-all-container ~ .todo-list > .li-0-0:not(.ui) {
-                    border-left-color: rgba(140,140,140,0);
-                    border-color: rgba(140,140,140,0);
+.todo-area > .todoholder .li-0.targeted {
+                    border-right-color: rgba(140,140,140,0);
+                    accent-color: rgba(140,140,140,0);
                 }
-.todo-area > .todoholder .view-0:not(.ui) {
+.toggle-all-container ~ ul > li > .view-0.targeted {
                     border-bottom-color: rgba(140,140,140,0.001);
-                    outline-color: rgba(140,140,140,0.001);
+                    border-right-color: rgba(140,140,140,0.001);
                 }
-.todo-area > .todoholder li ~ .li-1-0:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.002);
-                    column-rule-color: rgba(140,140,140,0.002);
+div .li-0 ~ .li-1.targeted {
+                    text-decoration-color: rgba(140,140,140,0.002);
+                    border-bottom-color: rgba(140,140,140,0.002);
                 }
-.todo-area > * .view-1:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.003);
+div ~ .todo-list > li > .view-1.targeted {
                     outline-color: rgba(140,140,140,0.003);
+                    text-decoration-color: rgba(140,140,140,0.003);
                 }
-* > div li ~ .li-2-0:not(.ui) {
+.todo-area > .todoholder .li-0 ~ .li-2.targeted {
+                    border-left-color: rgba(140,140,140,0.004);
                     outline-color: rgba(140,140,140,0.004);
-                    text-decoration-color: rgba(140,140,140,0.004);
                 }
-header ~ .main > .todo-list li ~ .li-2-0 > .view-2:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.005);
-                    border-left-color: rgba(140,140,140,0.005);
+div > .todoholder li ~ .li-2 > .view-2.targeted {
+                    border-right-color: rgba(140,140,140,0.005);
+                    accent-color: rgba(140,140,140,0.005);
                 }
-div > section > main div ~ .todo-list > .li-3-0:not(.ui) {
+.todoholder > .todoapp > .main div ~ ul > li.targeted {
+                    text-decoration-color: rgba(140,140,140,0.006);
                     border-right-color: rgba(140,140,140,0.006);
-                    border-color: rgba(140,140,140,0.006);
                 }
-.header ~ .main .view-3:not(.ui) {
-                    border-color: rgba(140,140,140,0.007);
-                    border-top-color: rgba(140,140,140,0.007);
+.li-1 ~ .li-3 *.targeted {
+                    border-left-color: rgba(140,140,140,0.007);
+                    column-rule-color: rgba(140,140,140,0.007);
                 }
-.todo-area .li-2-0 ~ .li-4-0:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.008);
+* > .todoapp > .main .toggle-all-container ~ .todo-list > .li-4.targeted {
+                    outline-color: rgba(140,140,140,0.008);
                     border-left-color: rgba(140,140,140,0.008);
                 }
-.header ~ main .view-4:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.009);
+.li-2 ~ * *.targeted {
                     column-rule-color: rgba(140,140,140,0.009);
+                    outline-color: rgba(140,140,140,0.009);
                 }
-* > * > * .toggle-all-container ~ .todo-list > .li-5-0:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.01);
-                    accent-color: rgba(140,140,140,0.01);
+.todo-area .li-1 ~ .li-5.targeted {
+                    border-color: rgba(140,140,140,0.01);
+                    border-top-color: rgba(140,140,140,0.01);
                 }
-* ~ .main .view-5:not(.ui) {
-                    accent-color: rgba(140,140,140,0.011);
-                    column-rule-color: rgba(140,140,140,0.011);
+.toggle-all-container ~ .todo-list > li > div.targeted {
+                    outline-color: rgba(140,140,140,0.011);
+                    text-decoration-color: rgba(140,140,140,0.011);
                 }
-.todoholder > .todoapp > * div ~ .todo-list > *:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.012);
-                    border-bottom-color: rgba(140,140,140,0.012);
+div > .todoapp > .main * ~ * > .li-6.targeted {
+                    border-color: rgba(140,140,140,0.012);
+                    border-left-color: rgba(140,140,140,0.012);
                 }
-.header ~ .main .view-6:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.013);
+.todo-area > div div.targeted {
+                    border-bottom-color: rgba(140,140,140,0.013);
                     border-color: rgba(140,140,140,0.013);
                 }
-* > .todoholder .li-5-0 ~ li:not(.ui) {
-                    outline-color: rgba(140,140,140,0.014);
+.todo-area > .todoholder .li-0 ~ .li-7.targeted {
+                    border-right-color: rgba(140,140,140,0.014);
                     border-bottom-color: rgba(140,140,140,0.014);
                 }
-.todoholder > section > main li ~ .li-7-0 > .view-7:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.015);
-                    text-decoration-color: rgba(140,140,140,0.015);
+.todoholder > .todoapp > .main li ~ .li-7 > *.targeted {
+                    outline-color: rgba(140,140,140,0.015);
+                    border-right-color: rgba(140,140,140,0.015);
                 }
-.todo-area > .todoholder .li-2-0 ~ .li-8-0:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.016);
-                    border-top-color: rgba(140,140,140,0.016);
+.todoholder > section > main .toggle-all-container ~ ul > .li-8.targeted {
+                    border-left-color: rgba(140,140,140,0.016);
+                    border-color: rgba(140,140,140,0.016);
                 }
-div > .todoholder .view-8:not(.ui) {
+* ~ .main .view-8.targeted {
+                    border-bottom-color: rgba(140,140,140,0.017);
                     column-rule-color: rgba(140,140,140,0.017);
-                    border-left-color: rgba(140,140,140,0.017);
                 }
-.todo-area li ~ .li-9-0:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.018);
+.todoholder > .todoapp > .main .toggle-all-container ~ .todo-list > .li-9.targeted {
                     border-color: rgba(140,140,140,0.018);
+                    outline-color: rgba(140,140,140,0.018);
                 }
-header ~ .main .view-9:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.019);
-                    border-bottom-color: rgba(140,140,140,0.019);
+.li-1 ~ .li-9 div.targeted {
+                    text-decoration-color: rgba(140,140,140,0.019);
+                    accent-color: rgba(140,140,140,0.019);
                 }
-.todoapp > .main .li-4-0 ~ .li-10-0:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.02);
-                    accent-color: rgba(140,140,140,0.02);
+* > .todoapp > .main div ~ .todo-list > .li-10.targeted {
+                    border-right-color: rgba(140,140,140,0.02);
+                    border-top-color: rgba(140,140,140,0.02);
                 }
-div > .todoholder > .todoapp > .main .view-10:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.021);
+.header ~ .main .view-10.targeted {
+                    accent-color: rgba(140,140,140,0.021);
                     border-right-color: rgba(140,140,140,0.021);
                 }
-* > .todoapp > .main .toggle-all-container ~ ul > *:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.022);
-                    outline-color: rgba(140,140,140,0.022);
+.todoholder > .todoapp > .main div ~ * > .li-11.targeted {
+                    text-decoration-color: rgba(140,140,140,0.022);
+                    accent-color: rgba(140,140,140,0.022);
                 }
-.li-3-0 ~ * div:not(.ui) {
+.todo-area > .todoholder div.targeted {
                     border-top-color: rgba(140,140,140,0.023);
-                    border-bottom-color: rgba(140,140,140,0.023);
+                    text-decoration-color: rgba(140,140,140,0.023);
                 }
-.todoholder > .todoapp > .main .toggle-all-container ~ .todo-list > .li-12-0:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.024);
-                    column-rule-color: rgba(140,140,140,0.024);
+.main > ul .li-2 ~ li.targeted {
+                    accent-color: rgba(140,140,140,0.024);
+                    border-top-color: rgba(140,140,140,0.024);
                 }
-.header ~ main div:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.025);
-                    border-color: rgba(140,140,140,0.025);
+.toggle-all-container ~ .todo-list > li > .view-12.targeted {
+                    border-left-color: rgba(140,140,140,0.025);
+                    border-right-color: rgba(140,140,140,0.025);
                 }
-.todoholder > .todoapp > .main .toggle-all-container ~ ul > .li-13-0:not(.ui) {
-                    border-color: rgba(140,140,140,0.026);
-                    column-rule-color: rgba(140,140,140,0.026);
+.todo-area li ~ li.targeted {
+                    outline-color: rgba(140,140,140,0.026);
+                    border-left-color: rgba(140,140,140,0.026);
                 }
-header ~ * .view-13:not(.ui) {
-                    accent-color: rgba(140,140,140,0.027);
-                    border-top-color: rgba(140,140,140,0.027);
+.toggle-all-container ~ .todo-list > * > .view-13.targeted {
+                    border-bottom-color: rgba(140,140,140,0.027);
+                    outline-color: rgba(140,140,140,0.027);
                 }
-.todoholder > section li ~ .li-14-0:not(.ui) {
+.todoholder > .todoapp > * .toggle-all-container ~ .todo-list > .li-14.targeted {
+                    text-decoration-color: rgba(140,140,140,0.028);
                     border-bottom-color: rgba(140,140,140,0.028);
-                    border-left-color: rgba(140,140,140,0.028);
                 }
-.todo-area > div > .todoapp > main div:not(.ui) {
+.header ~ .main .view-14.targeted {
                     border-right-color: rgba(140,140,140,0.029);
-                    outline-color: rgba(140,140,140,0.029);
+                    border-top-color: rgba(140,140,140,0.029);
                 }
-.todoholder > section > .main div ~ .todo-list > li:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.03);
+main > .todo-list .li-5 ~ li.targeted {
+                    border-left-color: rgba(140,140,140,0.03);
                     column-rule-color: rgba(140,140,140,0.03);
                 }
-li ~ .li-15-0 .view-15:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.031);
+.toggle-all-container ~ .todo-list > .li-15 > div.targeted {
+                    border-color: rgba(140,140,140,0.031);
                     accent-color: rgba(140,140,140,0.031);
                 }
-.todoholder > .todoapp li ~ li:not(.ui) {
+div > .todoapp > .main div ~ .todo-list > .li-16.targeted {
+                    border-left-color: rgba(140,140,140,0.032);
                     border-bottom-color: rgba(140,140,140,0.032);
-                    column-rule-color: rgba(140,140,140,0.032);
                 }
-* > div .view-16:not(.ui) {
-                    accent-color: rgba(140,140,140,0.033);
-                    text-decoration-color: rgba(140,140,140,0.033);
+.li-2 ~ .li-16 .view-16.targeted {
+                    column-rule-color: rgba(140,140,140,0.033);
+                    border-left-color: rgba(140,140,140,0.033);
                 }
-div > .todoapp > .main div ~ .todo-list > .li-17-0:not(.ui) {
+div > .todoapp > .main .toggle-all-container ~ .todo-list > .li-17.targeted {
                     text-decoration-color: rgba(140,140,140,0.034);
                     border-color: rgba(140,140,140,0.034);
                 }
-.header ~ main .view-17:not(.ui) {
-                    border-color: rgba(140,140,140,0.035);
-                    outline-color: rgba(140,140,140,0.035);
+li ~ .li-17 div.targeted {
+                    border-left-color: rgba(140,140,140,0.035);
+                    border-right-color: rgba(140,140,140,0.035);
                 }
-.main > .todo-list .li-0-0 ~ *:not(.ui) {
-                    outline-color: rgba(140,140,140,0.036);
-                    border-right-color: rgba(140,140,140,0.036);
+.todoholder > .todoapp .li-8 ~ .li-18.targeted {
+                    accent-color: rgba(140,140,140,0.036);
+                    text-decoration-color: rgba(140,140,140,0.036);
                 }
-div ~ .todo-list > .li-18-0 > div:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.037);
+.main .toggle-all-container ~ .todo-list > li *.targeted {
+                    border-bottom-color: rgba(140,140,140,0.037);
                     accent-color: rgba(140,140,140,0.037);
                 }
-div > .todoholder .li-15-0 ~ .li-19-0:not(.ui) {
-                    accent-color: rgba(140,140,140,0.038);
+.todo-area > * * ~ .li-19.targeted {
+                    border-top-color: rgba(140,140,140,0.038);
                     border-color: rgba(140,140,140,0.038);
                 }
-div > div .li-7-0 ~ .li-19-0 > .view-19:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.039);
-                    text-decoration-color: rgba(140,140,140,0.039);
+div > * > .main .li-10 ~ .li-19 > .view-19.targeted {
+                    border-right-color: rgba(140,140,140,0.039);
+                    accent-color: rgba(140,140,140,0.039);
                 }
-.main * ~ .todo-list > * > .view-20 > .toggle:hover:not(.ui) {
+div > section li ~ li.targeted {
                     text-decoration-color: rgba(140,140,140,0.04);
-                    border-left-color: rgba(140,140,140,0.04);
+                    border-right-color: rgba(140,140,140,0.04);
                 }
-.main div ~ ul > .li-20-0 > .view-20 > *:hover:not(.ui) {
+main * ~ .todo-list > li div.targeted {
                     border-left-color: rgba(140,140,140,0.041);
-                    border-right-color: rgba(140,140,140,0.041);
+                    text-decoration-color: rgba(140,140,140,0.041);
                 }
-div > .todoholder > * > .main .li-21-0:not(.ui) {
+.todoapp > main li ~ .li-21.targeted {
                     border-right-color: rgba(140,140,140,0.042);
                     accent-color: rgba(140,140,140,0.042);
                 }
-.todo-area > * * ~ .li-21-0 > .view-21:not(.ui) {
-                    accent-color: rgba(140,140,140,0.043);
-                    border-bottom-color: rgba(140,140,140,0.043);
+.main .toggle-all-container ~ ul > .li-21 div.targeted {
+                    border-top-color: rgba(140,140,140,0.043);
+                    border-right-color: rgba(140,140,140,0.043);
                 }
-.todoholder > .todoapp > .main .toggle-all-container ~ .todo-list > .li-22-0:not(.ui) {
+div > .todoapp > main .toggle-all-container ~ .todo-list > *.targeted {
+                    column-rule-color: rgba(140,140,140,0.044);
                     border-bottom-color: rgba(140,140,140,0.044);
-                    text-decoration-color: rgba(140,140,140,0.044);
                 }
-header ~ main .view-22:not(.ui) {
+header ~ main div.targeted {
                     border-right-color: rgba(140,140,140,0.045);
                     column-rule-color: rgba(140,140,140,0.045);
                 }
-* > section > main .toggle-all-container ~ .todo-list > .li-23-0:not(.ui) {
+.todoholder > .todoapp > .main .toggle-all-container ~ .todo-list > li.targeted {
                     border-left-color: rgba(140,140,140,0.046);
-                    text-decoration-color: rgba(140,140,140,0.046);
+                    border-top-color: rgba(140,140,140,0.046);
                 }
-.header ~ main *:not(.ui) {
+.li-10 ~ .li-23 div.targeted {
                     text-decoration-color: rgba(140,140,140,0.047);
-                    column-rule-color: rgba(140,140,140,0.047);
-                }
-.todoholder > * > * .toggle-all-container ~ .todo-list > .li-24-0:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.048);
-                    outline-color: rgba(140,140,140,0.048);
-                }
-.li-22-0 ~ * div:not(.ui) {
-                    accent-color: rgba(140,140,140,0.049);
-                    border-left-color: rgba(140,140,140,0.049);
-                }
-.todoapp > main .li-21-0 ~ .li-25-0:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.05);
-                    outline-color: rgba(140,140,140,0.05);
-                }
-.main * ~ .todo-list > .li-25-0 .view-25:not(.ui) {
-                    border-color: rgba(140,140,140,0.051);
-                    column-rule-color: rgba(140,140,140,0.051);
-                }
-.main > .todo-list .li-2-0 ~ .li-26-0:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.052);
-                    border-right-color: rgba(140,140,140,0.052);
-                }
-div ~ .todo-list > li > .view-26:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.053);
-                    accent-color: rgba(140,140,140,0.053);
-                }
-.todoholder > section > * div ~ * > .li-27-0:not(.ui) {
-                    border-color: rgba(140,140,140,0.054);
-                    border-top-color: rgba(140,140,140,0.054);
-                }
-header ~ .main .view-27:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.055);
-                    text-decoration-color: rgba(140,140,140,0.055);
-                }
-div > .todoapp .li-2-0 ~ .li-28-0:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.056);
-                    border-left-color: rgba(140,140,140,0.056);
-                }
-div > .todoholder > .todoapp > main .view-28:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.057);
-                    border-color: rgba(140,140,140,0.057);
-                }
-.todo-area > .todoholder .li-28-0 ~ .li-29-0:not(.ui) {
-                    border-color: rgba(140,140,140,0.058);
-                    accent-color: rgba(140,140,140,0.058);
-                }
-.todo-area > * > .todoapp > .main .view-29:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.059);
-                    border-top-color: rgba(140,140,140,0.059);
-                }
-.todoholder > * > .main .toggle-all-container ~ .todo-list > li:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.06);
-                    accent-color: rgba(140,140,140,0.06);
-                }
-header ~ .main .view-30:not(.ui) {
-                    outline-color: rgba(140,140,140,0.061);
-                    border-bottom-color: rgba(140,140,140,0.061);
-                }
-* > section > .main .toggle-all-container ~ ul > .li-31-0:not(.ui) {
-                    accent-color: rgba(140,140,140,0.062);
-                    border-color: rgba(140,140,140,0.062);
-                }
-.header ~ * *:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.063);
-                    border-left-color: rgba(140,140,140,0.063);
-                }
-div > section > main .toggle-all-container ~ .todo-list > .li-32-0:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.064);
-                    border-color: rgba(140,140,140,0.064);
-                }
-.todo-area > .todoholder .view-32:not(.ui) {
-                    border-color: rgba(140,140,140,0.065);
-                    accent-color: rgba(140,140,140,0.065);
-                }
-section > .main * ~ .li-33-0:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.066);
-                    border-right-color: rgba(140,140,140,0.066);
-                }
-* > .todoholder > section > .main .view-33:not(.ui) {
-                    accent-color: rgba(140,140,140,0.067);
-                    text-decoration-color: rgba(140,140,140,0.067);
-                }
-.todo-area > .todoholder * ~ li:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.068);
-                    border-right-color: rgba(140,140,140,0.068);
-                }
-div > div > section > main .view-34:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.069);
-                    outline-color: rgba(140,140,140,0.069);
-                }
-div > .todoapp li ~ .li-35-0:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.07);
-                    border-top-color: rgba(140,140,140,0.07);
-                }
-.todo-area > * .view-35:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.071);
-                    border-right-color: rgba(140,140,140,0.071);
-                }
-.todoholder > * .li-18-0 ~ .li-36-0:not(.ui) {
-                    accent-color: rgba(140,140,140,0.072);
-                    border-color: rgba(140,140,140,0.072);
-                }
-.todo-area > .todoholder div:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.073);
-                    outline-color: rgba(140,140,140,0.073);
-                }
-.todo-area > * .li-12-0 ~ .li-37-0:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.074);
-                    border-left-color: rgba(140,140,140,0.074);
-                }
-.todo-area > .todoholder *:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.075);
-                    border-bottom-color: rgba(140,140,140,0.075);
-                }
-.main > .todo-list .li-4-0 ~ .li-38-0:not(.ui) {
-                    accent-color: rgba(140,140,140,0.076);
-                    border-color: rgba(140,140,140,0.076);
-                }
-.toggle-all-container ~ ul > .li-38-0 > div:not(.ui) {
-                    border-color: rgba(140,140,140,0.077);
-                    border-bottom-color: rgba(140,140,140,0.077);
-                }
-.todo-area .li-22-0 ~ .li-39-0:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.078);
-                    border-top-color: rgba(140,140,140,0.078);
-                }
-li ~ li .view-39:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.079);
-                    accent-color: rgba(140,140,140,0.079);
-                }
-.todoholder > .todoapp > .main .toggle-all-container ~ ul > li:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.08);
-                    border-left-color: rgba(140,140,140,0.08);
-                }
-div > .todoholder div:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.081);
-                    text-decoration-color: rgba(140,140,140,0.081);
-                }
-.todoholder > section > .main .toggle-all-container ~ .todo-list > .li-41-0:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.082);
-                    border-color: rgba(140,140,140,0.082);
-                }
-li ~ li div:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.083);
-                    border-right-color: rgba(140,140,140,0.083);
-                }
-div > * li ~ li:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.084);
-                    border-top-color: rgba(140,140,140,0.084);
-                }
-.main .toggle-all-container ~ .todo-list > .li-42-0 div:not(.ui) {
-                    outline-color: rgba(140,140,140,0.085);
-                    border-color: rgba(140,140,140,0.085);
-                }
-.main > ul .li-37-0 ~ li:not(.ui) {
-                    border-color: rgba(140,140,140,0.086);
-                    accent-color: rgba(140,140,140,0.086);
-                }
-.toggle-all-container ~ .todo-list > li > .view-43:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.087);
-                    text-decoration-color: rgba(140,140,140,0.087);
-                }
-.todo-area > div li ~ li:not(.ui) {
-                    accent-color: rgba(140,140,140,0.088);
-                    border-top-color: rgba(140,140,140,0.088);
-                }
-.todo-area > div .view-44:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.089);
-                    border-right-color: rgba(140,140,140,0.089);
-                }
-* > .todoapp > .main .toggle-all-container ~ * > li:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.09);
-                    border-color: rgba(140,140,140,0.09);
-                }
-.todo-area > div .view-45:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.091);
-                    border-bottom-color: rgba(140,140,140,0.091);
-                }
-li ~ li > div > .toggle:focus:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.092);
-                    accent-color: rgba(140,140,140,0.092);
-                }
-.li-42-0 ~ li > * > button:hover:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.093);
-                    border-top-color: rgba(140,140,140,0.093);
-                }
-.main .li-46-0 + *:not(.ui) {
-                    accent-color: rgba(140,140,140,0.094);
-                    border-color: rgba(140,140,140,0.094);
-                }
-.todo-area > .todoholder .view-47:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.095);
-                    border-bottom-color: rgba(140,140,140,0.095);
-                }
-.todo-area .li-10-0 ~ .li-48-0:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.096);
-                    border-left-color: rgba(140,140,140,0.096);
-                }
-.li-38-0 ~ li .view-48:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.097);
-                    outline-color: rgba(140,140,140,0.097);
-                }
-* > div li ~ .li-49-0:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.098);
-                    border-top-color: rgba(140,140,140,0.098);
-                }
-.todo-area .li-1-0 ~ li > .view-49:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.099);
-                    border-bottom-color: rgba(140,140,140,0.099);
-                }
-div > * > * * ~ .todo-list > *:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.1);
-                    accent-color: rgba(140,140,140,0.1);
-                }
-.li-48-0 ~ .li-50-0 .view-50:not(.ui) {
-                    accent-color: rgba(140,140,140,0.101);
-                    text-decoration-color: rgba(140,140,140,0.101);
-                }
-main > * .li-10-0 ~ li:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.102);
-                    column-rule-color: rgba(140,140,140,0.102);
-                }
-.toggle-all-container ~ ul > .li-51-0 > .view-51:not(.ui) {
-                    border-color: rgba(140,140,140,0.103);
-                    outline-color: rgba(140,140,140,0.103);
-                }
-div > .todoapp > .main .toggle-all-container ~ .todo-list > li:not(.ui) {
-                    outline-color: rgba(140,140,140,0.104);
-                    border-right-color: rgba(140,140,140,0.104);
-                }
-div > * .view-52:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.105);
-                    border-bottom-color: rgba(140,140,140,0.105);
-                }
-.todoholder > .todoapp > .main div ~ ul > .li-53-0:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.106);
-                    column-rule-color: rgba(140,140,140,0.106);
-                }
-.header ~ main *:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.107);
-                    text-decoration-color: rgba(140,140,140,0.107);
-                }
-div > section > main div ~ ul > li:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.108);
-                    border-color: rgba(140,140,140,0.108);
-                }
-.todo-area > .todoholder .view-54:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.109);
-                    border-left-color: rgba(140,140,140,0.109);
-                }
-.todoholder > .todoapp > * .toggle-all-container ~ .todo-list > .li-55-0:not(.ui) {
-                    accent-color: rgba(140,140,140,0.11);
-                    outline-color: rgba(140,140,140,0.11);
-                }
-* ~ main .view-55:not(.ui) {
-                    outline-color: rgba(140,140,140,0.111);
-                    column-rule-color: rgba(140,140,140,0.111);
-                }
-* > ul li ~ li:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.112);
-                    border-top-color: rgba(140,140,140,0.112);
-                }
-.toggle-all-container ~ ul > .li-56-0 > .view-56:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.113);
-                    border-color: rgba(140,140,140,0.113);
-                }
-.main .toggle-all-container ~ ul > li > .view-57 > .toggle:focus:not(.ui) {
-                    border-color: rgba(140,140,140,0.114);
-                    border-top-color: rgba(140,140,140,0.114);
-                }
-* div ~ ul > li > .view-57 > button:active:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.115);
-                    column-rule-color: rgba(140,140,140,0.115);
-                }
-.todoapp li + .li-58-0:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.116);
-                    border-bottom-color: rgba(140,140,140,0.116);
-                }
-.header ~ .main *:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.117);
-                    accent-color: rgba(140,140,140,0.117);
-                }
-.todoholder > section > main .toggle-all-container ~ .todo-list > li:not(.ui) {
-                    accent-color: rgba(140,140,140,0.118);
-                    border-bottom-color: rgba(140,140,140,0.118);
-                }
-.todo-area > div .view-59:not(.ui) {
-                    outline-color: rgba(140,140,140,0.119);
-                    border-color: rgba(140,140,140,0.119);
-                }
-section > * * ~ li:not(.ui) {
-                    border-color: rgba(140,140,140,0.12);
-                    border-left-color: rgba(140,140,140,0.12);
-                }
-div > .todoholder .view-60:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.121);
-                    column-rule-color: rgba(140,140,140,0.121);
-                }
-div > section li ~ .li-61-0:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.122);
-                    border-bottom-color: rgba(140,140,140,0.122);
-                }
-.main .toggle-all-container ~ .todo-list > .li-61-0 div:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.123);
-                    accent-color: rgba(140,140,140,0.123);
-                }
-.todoholder > section > .main .toggle-all-container ~ .todo-list > .li-62-0:not(.ui) {
-                    accent-color: rgba(140,140,140,0.124);
-                    text-decoration-color: rgba(140,140,140,0.124);
-                }
-.todo-area > .todoholder div:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.125);
-                    column-rule-color: rgba(140,140,140,0.125);
-                }
-main .toggle-all-container ~ .todo-list > .li-63-0 > .view-63 > .toggle:hover:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.126);
-                    border-color: rgba(140,140,140,0.126);
-                }
-.main .toggle-all-container ~ .todo-list > .li-63-0 > div > button:hover:not(.ui) {
-                    border-color: rgba(140,140,140,0.127);
-                    border-right-color: rgba(140,140,140,0.127);
-                }
-.todo-area > .todoholder > section > .main .li-64-0:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.128);
-                    accent-color: rgba(140,140,140,0.128);
-                }
-.todo-area > div .view-64:not(.ui) {
-                    accent-color: rgba(140,140,140,0.129);
-                    outline-color: rgba(140,140,140,0.129);
-                }
-.todoholder > section > main .toggle-all-container ~ .todo-list > .li-65-0:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.13);
-                    border-top-color: rgba(140,140,140,0.13);
-                }
-.header ~ main .view-65:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.131);
-                    outline-color: rgba(140,140,140,0.131);
-                }
-.todoholder > .todoapp > * div ~ ul > .li-66-0:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.132);
-                    text-decoration-color: rgba(140,140,140,0.132);
-                }
-.header ~ .main .view-66:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.133);
-                    border-bottom-color: rgba(140,140,140,0.133);
-                }
-li ~ li > div > .toggle:hover:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.134);
-                    border-color: rgba(140,140,140,0.134);
-                }
-li ~ .li-67-0 > .view-67 > .destroy:focus:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.135);
-                    border-left-color: rgba(140,140,140,0.135);
-                }
-* .li-67-0 + li:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.136);
-                    border-color: rgba(140,140,140,0.136);
-                }
-.li-50-0 ~ li div:not(.ui) {
-                    accent-color: rgba(140,140,140,0.137);
-                    text-decoration-color: rgba(140,140,140,0.137);
-                }
-* > .todoapp > main .toggle-all-container ~ .todo-list > .li-69-0:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.138);
-                    border-top-color: rgba(140,140,140,0.138);
-                }
-.li-26-0 ~ .li-69-0 .view-69:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.139);
-                    outline-color: rgba(140,140,140,0.139);
-                }
-.todoholder > .todoapp .li-32-0 ~ .li-70-0:not(.ui) {
-                    outline-color: rgba(140,140,140,0.14);
-                    border-right-color: rgba(140,140,140,0.14);
-                }
-.todo-area > .todoholder > .todoapp > main .view-70:not(.ui) {
-                    accent-color: rgba(140,140,140,0.141);
-                    border-left-color: rgba(140,140,140,0.141);
-                }
-div .li-36-0 ~ li:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.142);
-                    text-decoration-color: rgba(140,140,140,0.142);
-                }
-div ~ .todo-list > .li-71-0 > .view-71:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.143);
-                    border-left-color: rgba(140,140,140,0.143);
-                }
-.main .toggle-all-container ~ * > .li-72-0 > .view-72 > input:active:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.144);
-                    border-color: rgba(140,140,140,0.144);
-                }
-.main .toggle-all-container ~ ul > .li-72-0 > div > *:focus:not(.ui) {
-                    border-color: rgba(140,140,140,0.145);
-                    border-bottom-color: rgba(140,140,140,0.145);
-                }
-* > * > section .li-73-0:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.146);
-                    accent-color: rgba(140,140,140,0.146);
-                }
-.toggle-all-container ~ .todo-list > .li-73-0 > div:not(.ui) {
-                    accent-color: rgba(140,140,140,0.147);
-                    border-right-color: rgba(140,140,140,0.147);
-                }
-div li ~ .li-74-0:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.148);
-                    text-decoration-color: rgba(140,140,140,0.148);
-                }
-.toggle-all-container ~ .todo-list > .li-74-0 > div:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.149);
-                    border-top-color: rgba(140,140,140,0.149);
-                }
-div > .todoapp > .main .toggle-all-container ~ ul > .li-75-0:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.15);
-                    border-bottom-color: rgba(140,140,140,0.15);
-                }
-div > .todoholder div:not(.ui) {
-                    outline-color: rgba(140,140,140,0.151);
-                    border-left-color: rgba(140,140,140,0.151);
-                }
-.todoholder > section > main .toggle-all-container ~ .todo-list > .li-76-0:not(.ui) {
-                    accent-color: rgba(140,140,140,0.152);
-                    text-decoration-color: rgba(140,140,140,0.152);
-                }
-.header ~ main .view-76:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.153);
-                    border-top-color: rgba(140,140,140,0.153);
-                }
-* > .todoholder .li-50-0 ~ .li-77-0:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.154);
-                    outline-color: rgba(140,140,140,0.154);
-                }
-div > div > section .li-32-0 ~ .li-77-0 > *:not(.ui) {
-                    border-color: rgba(140,140,140,0.155);
-                    border-right-color: rgba(140,140,140,0.155);
-                }
-.todoholder > * > .main div ~ ul > .li-78-0:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.156);
-                    accent-color: rgba(140,140,140,0.156);
-                }
-* ~ * .view-78:not(.ui) {
-                    outline-color: rgba(140,140,140,0.157);
-                    text-decoration-color: rgba(140,140,140,0.157);
-                }
-.todoholder > section > .main .toggle-all-container ~ .todo-list > .li-79-0:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.158);
-                    border-top-color: rgba(140,140,140,0.158);
-                }
-header ~ .main .view-79:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.159);
-                    border-color: rgba(140,140,140,0.159);
-                }
-div > * > main .toggle-all-container ~ ul > .li-80-0:not(.ui) {
-                    border-color: rgba(140,140,140,0.16);
-                    border-bottom-color: rgba(140,140,140,0.16);
-                }
-header ~ .main div:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.161);
-                    border-right-color: rgba(140,140,140,0.161);
-                }
-div > .todoapp > * .toggle-all-container ~ .todo-list > .li-81-0:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.162);
-                    border-left-color: rgba(140,140,140,0.162);
-                }
-header ~ .main div:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.163);
-                    border-top-color: rgba(140,140,140,0.163);
-                }
-.todoholder > section > main div ~ ul > .li-82-0:not(.ui) {
-                    accent-color: rgba(140,140,140,0.164);
-                    border-bottom-color: rgba(140,140,140,0.164);
-                }
-.li-18-0 ~ * div:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.165);
-                    outline-color: rgba(140,140,140,0.165);
-                }
-* > .todoapp > main div ~ .todo-list > .li-83-0:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.166);
-                    border-top-color: rgba(140,140,140,0.166);
-                }
-.todo-area > .todoholder .view-83:not(.ui) {
-                    outline-color: rgba(140,140,140,0.167);
-                    column-rule-color: rgba(140,140,140,0.167);
-                }
-.todo-area > .todoholder .li-70-0 ~ .li-84-0:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.168);
-                    accent-color: rgba(140,140,140,0.168);
-                }
-div > .todoholder > * > .main .view-84:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.169);
-                    border-right-color: rgba(140,140,140,0.169);
-                }
-.todoholder > .todoapp > main div ~ .todo-list > li:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.17);
-                    border-top-color: rgba(140,140,140,0.17);
-                }
-header ~ .main .view-85:not(.ui) {
-                    outline-color: rgba(140,140,140,0.171);
-                    column-rule-color: rgba(140,140,140,0.171);
-                }
-div > section > * .toggle-all-container ~ .todo-list > .li-86-0:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.172);
-                    border-top-color: rgba(140,140,140,0.172);
-                }
-div > .todoholder .view-86:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.173);
-                    accent-color: rgba(140,140,140,0.173);
-                }
-.todoholder > .todoapp > main * ~ .todo-list > li:not(.ui) {
-                    border-color: rgba(140,140,140,0.174);
-                    text-decoration-color: rgba(140,140,140,0.174);
-                }
-.header ~ main .view-87:not(.ui) {
-                    outline-color: rgba(140,140,140,0.175);
-                    border-left-color: rgba(140,140,140,0.175);
-                }
-* .li-62-0 ~ li:not(.ui) {
-                    accent-color: rgba(140,140,140,0.176);
-                    border-right-color: rgba(140,140,140,0.176);
-                }
-.toggle-all-container ~ .todo-list > .li-88-0 > .view-88:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.177);
-                    text-decoration-color: rgba(140,140,140,0.177);
-                }
-.todoholder > .todoapp > main div ~ * > .li-89-0:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.178);
-                    border-color: rgba(140,140,140,0.178);
-                }
-header ~ .main .view-89:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.179);
-                    outline-color: rgba(140,140,140,0.179);
-                }
-.todoholder > .todoapp > .main .toggle-all-container ~ .todo-list > li:not(.ui) {
-                    outline-color: rgba(140,140,140,0.18);
-                    text-decoration-color: rgba(140,140,140,0.18);
-                }
-.todo-area > .todoholder .view-90:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.181);
-                    border-right-color: rgba(140,140,140,0.181);
-                }
-.todoholder > .todoapp > .main .toggle-all-container ~ ul > .li-91-0:not(.ui) {
-                    border-right-color: rgba(140,140,140,0.182);
-                    accent-color: rgba(140,140,140,0.182);
-                }
-* ~ main .view-91:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.183);
-                    text-decoration-color: rgba(140,140,140,0.183);
-                }
-.todoapp > .main li ~ .li-92-0:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.184);
-                    border-top-color: rgba(140,140,140,0.184);
-                }
-.main div ~ ul > .li-92-0 .view-92:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.185);
-                    border-color: rgba(140,140,140,0.185);
-                }
-div > section > .main .toggle-all-container ~ .todo-list > .li-93-0:not(.ui) {
-                    outline-color: rgba(140,140,140,0.186);
-                    accent-color: rgba(140,140,140,0.186);
-                }
-* ~ .main .view-93:not(.ui) {
-                    border-bottom-color: rgba(140,140,140,0.187);
-                    border-right-color: rgba(140,140,140,0.187);
-                }
-.todoholder > .todoapp > main div ~ .todo-list > .li-94-0:not(.ui) {
-                    border-color: rgba(140,140,140,0.188);
-                    accent-color: rgba(140,140,140,0.188);
-                }
-div > .todoholder .view-94:not(.ui) {
-                    outline-color: rgba(140,140,140,0.189);
-                    text-decoration-color: rgba(140,140,140,0.189);
-                }
-div > .todoapp > .main .toggle-all-container ~ ul > li:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.19);
-                    column-rule-color: rgba(140,140,140,0.19);
-                }
-.todo-area > div .view-95:not(.ui) {
-                    accent-color: rgba(140,140,140,0.191);
-                    border-top-color: rgba(140,140,140,0.191);
-                }
-.todoholder > .todoapp > main div ~ .todo-list > *:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.192);
-                    border-left-color: rgba(140,140,140,0.192);
-                }
-.header ~ .main .view-96:not(.ui) {
-                    border-color: rgba(140,140,140,0.193);
-                    border-bottom-color: rgba(140,140,140,0.193);
-                }
-div > section > * .toggle-all-container ~ ul > .li-97-0:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.194);
-                    border-right-color: rgba(140,140,140,0.194);
-                }
-li ~ .li-97-0 div:not(.ui) {
-                    outline-color: rgba(140,140,140,0.195);
-                    border-top-color: rgba(140,140,140,0.195);
-                }
-.todoholder > .todoapp li ~ li:not(.ui) {
-                    border-top-color: rgba(140,140,140,0.196);
-                    accent-color: rgba(140,140,140,0.196);
-                }
-div > .todoholder > .todoapp > main .view-98:not(.ui) {
-                    border-left-color: rgba(140,140,140,0.197);
-                    text-decoration-color: rgba(140,140,140,0.197);
-                }
-.main > .todo-list .li-76-0 ~ .li-99-0:not(.ui) {
-                    text-decoration-color: rgba(140,140,140,0.198);
-                    column-rule-color: rgba(140,140,140,0.198);
-                }
-div ~ .todo-list > .li-99-0 > .view-99:not(.ui) {
-                    column-rule-color: rgba(140,140,140,0.199);
-                    border-right-color: rgba(140,140,140,0.199);
-                }
-.just-span > div > .todoapp li {
-                    border-right-color: rgba(140,140,140,0);
-                    border-top-color: rgba(140,140,140,0);
-                }
-.just-span .header ~ .main .view-0 {
-                    border-top-color: rgba(140,140,140,0.001);
-                    border-color: rgba(140,140,140,0.001);
-                }
-.just-span > .todoholder > .todoapp > .main li {
-                    border-color: rgba(140,140,140,0.002);
-                    outline-color: rgba(140,140,140,0.002);
-                }
-.just-span > * .view-1 {
-                    accent-color: rgba(140,140,140,0.003);
-                    text-decoration-color: rgba(140,140,140,0.003);
-                }
-.just-span > .todoholder > .todoapp > .main .li-2-0 {
-                    column-rule-color: rgba(140,140,140,0.004);
-                    border-left-color: rgba(140,140,140,0.004);
-                }
-.todoapp.main .li-0-0 ~ * .view-2 {
-                    border-left-color: rgba(140,140,140,0.005);
-                    text-decoration-color: rgba(140,140,140,0.005);
-                }
-.just-span > * .li-3-0 {
-                    border-color: rgba(140,140,140,0.006);
-                    border-right-color: rgba(140,140,140,0.006);
-                }
-.just-span > * * {
-                    text-decoration-color: rgba(140,140,140,0.007);
-                    outline-color: rgba(140,140,140,0.007);
-                }
-.just-span li {
-                    column-rule-color: rgba(140,140,140,0.008);
-                    border-right-color: rgba(140,140,140,0.008);
-                }
-.just-span > .todoholder .view-4 {
-                    border-right-color: rgba(140,140,140,0.009);
-                    outline-color: rgba(140,140,140,0.009);
-                }
-.just-span > div .li-5-0 {
-                    outline-color: rgba(140,140,140,0.01);
-                    border-left-color: rgba(140,140,140,0.01);
-                }
-.todoapp.footer .header ~ main .view-5 {
-                    border-color: rgba(140,140,140,0.011);
-                    border-top-color: rgba(140,140,140,0.011);
-                }
-.just-span > * > .todoapp li {
-                    text-decoration-color: rgba(140,140,140,0.012);
-                    border-left-color: rgba(140,140,140,0.012);
-                }
-.todoapp.header > main div ~ .todo-list > li div {
-                    border-top-color: rgba(140,140,140,0.013);
-                    column-rule-color: rgba(140,140,140,0.013);
-                }
-.todoapp.main > .main li + .li-7-0 {
-                    border-right-color: rgba(140,140,140,0.014);
-                    outline-color: rgba(140,140,140,0.014);
-                }
-section.header > * * ~ .todo-list > .li-7-0 .view-7 {
-                    outline-color: rgba(140,140,140,0.015);
-                    border-bottom-color: rgba(140,140,140,0.015);
-                }
-.just-span > .todoholder > * > .main div ~ .todo-list > .li-8-0 {
-                    column-rule-color: rgba(140,140,140,0.016);
-                    text-decoration-color: rgba(140,140,140,0.016);
-                }
-.just-span .li-6-0 ~ * .view-8 {
-                    border-color: rgba(140,140,140,0.017);
-                    border-top-color: rgba(140,140,140,0.017);
-                }
-.just-span > div * {
-                    border-top-color: rgba(140,140,140,0.018);
-                    border-bottom-color: rgba(140,140,140,0.018);
-                }
-.just-span > div .view-9 {
-                    text-decoration-color: rgba(140,140,140,0.019);
-                    outline-color: rgba(140,140,140,0.019);
-                }
-.just-span > .todoholder > section > .main .toggle-all-container ~ ul > * {
-                    border-left-color: rgba(140,140,140,0.02);
-                    border-bottom-color: rgba(140,140,140,0.02);
-                }
-.todoholder.info .li-6-0 ~ .li-10-0 .view-10 {
-                    border-bottom-color: rgba(140,140,140,0.021);
-                    accent-color: rgba(140,140,140,0.021);
-                }
-.just-span li {
-                    accent-color: rgba(140,140,140,0.022);
-                    border-right-color: rgba(140,140,140,0.022);
-                }
-.just-span > * .view-11 {
-                    border-right-color: rgba(140,140,140,0.023);
-                    border-top-color: rgba(140,140,140,0.023);
-                }
-.just-span > .todoholder > .todoapp .li-12-0 {
-                    border-top-color: rgba(140,140,140,0.024);
-                    border-left-color: rgba(140,140,140,0.024);
-                }
-.just-span > .todoholder .view-12 {
-                    border-left-color: rgba(140,140,140,0.025);
-                    border-color: rgba(140,140,140,0.025);
-                }
-.just-span > .todoholder > section > .main .li-13-0 {
-                    accent-color: rgba(140,140,140,0.026);
-                    outline-color: rgba(140,140,140,0.026);
-                }
-.just-span header ~ .main .view-13 {
-                    border-right-color: rgba(140,140,140,0.027);
-                    text-decoration-color: rgba(140,140,140,0.027);
-                }
-.just-span .li-14-0 {
-                    border-color: rgba(140,140,140,0.028);
-                    border-bottom-color: rgba(140,140,140,0.028);
-                }
-.just-span > div > * > main div {
-                    border-bottom-color: rgba(140,140,140,0.029);
-                    text-decoration-color: rgba(140,140,140,0.029);
-                }
-.just-span li {
-                    text-decoration-color: rgba(140,140,140,0.03);
-                    accent-color: rgba(140,140,140,0.03);
-                }
-section.main > .main .toggle-all-container ~ .todo-list > li .view-15 {
-                    accent-color: rgba(140,140,140,0.031);
-                    outline-color: rgba(140,140,140,0.031);
-                }
-.just-span > .todoholder > .todoapp > * .toggle-all-container ~ .todo-list > .li-16-0 {
-                    outline-color: rgba(140,140,140,0.032);
-                    column-rule-color: rgba(140,140,140,0.032);
-                }
-.todoholder.info .header ~ .main .view-16 {
-                    border-top-color: rgba(140,140,140,0.033);
-                    border-right-color: rgba(140,140,140,0.033);
-                }
-.just-span > .todoholder .li-17-0 {
-                    column-rule-color: rgba(140,140,140,0.034);
-                    border-bottom-color: rgba(140,140,140,0.034);
-                }
-.just-span > .todoholder .view-17 {
-                    border-right-color: rgba(140,140,140,0.035);
-                    accent-color: rgba(140,140,140,0.035);
-                }
-.just-span > .todoholder li {
-                    accent-color: rgba(140,140,140,0.036);
-                    border-left-color: rgba(140,140,140,0.036);
-                }
-.just-span .header ~ .main .view-18 {
-                    outline-color: rgba(140,140,140,0.037);
-                    border-color: rgba(140,140,140,0.037);
-                }
-.just-span > * > .todoapp > .main div ~ .todo-list > .li-19-0 {
-                    border-color: rgba(140,140,140,0.038);
-                    border-left-color: rgba(140,140,140,0.038);
-                }
-.main.todo-list .li-9-0 ~ .li-19-0 div {
-                    border-right-color: rgba(140,140,140,0.039);
-                    text-decoration-color: rgba(140,140,140,0.039);
-                }
-.todoapp.footer > main * ~ .todo-list > .li-20-0 > .view-20 > .toggle:hover {
-                    text-decoration-color: rgba(140,140,140,0.04);
-                    accent-color: rgba(140,140,140,0.04);
-                }
-section.main .li-14-0 ~ .li-20-0 > .view-20 > .destroy:focus {
-                    border-top-color: rgba(140,140,140,0.041);
-                    border-color: rgba(140,140,140,0.041);
-                }
-.just-span > .todoholder > * .li-21-0 {
-                    outline-color: rgba(140,140,140,0.042);
-                    border-bottom-color: rgba(140,140,140,0.042);
-                }
-.just-span > div > .todoapp > main .view-21 {
-                    column-rule-color: rgba(140,140,140,0.043);
-                    accent-color: rgba(140,140,140,0.043);
-                }
-.just-span > * li {
-                    border-bottom-color: rgba(140,140,140,0.044);
-                    border-right-color: rgba(140,140,140,0.044);
-                }
-section.main header ~ main .view-22 {
-                    border-right-color: rgba(140,140,140,0.045);
-                    outline-color: rgba(140,140,140,0.045);
-                }
-.just-span * {
-                    outline-color: rgba(140,140,140,0.046);
-                    border-color: rgba(140,140,140,0.046);
-                }
-.just-span > div > .todoapp > main * {
                     border-color: rgba(140,140,140,0.047);
-                    accent-color: rgba(140,140,140,0.047);
                 }
-.just-span > div .li-24-0 {
-                    accent-color: rgba(140,140,140,0.048);
-                    border-left-color: rgba(140,140,140,0.048);
+.todoholder > section .li-14 ~ *.targeted {
+                    border-right-color: rgba(140,140,140,0.048);
+                    text-decoration-color: rgba(140,140,140,0.048);
                 }
-.just-span header ~ .main .view-24 {
-                    border-top-color: rgba(140,140,140,0.049);
+.todo-area > div > .todoapp > .main div.targeted {
+                    border-color: rgba(140,140,140,0.049);
                     column-rule-color: rgba(140,140,140,0.049);
                 }
-main.todo-list > ul .li-24-0 + li {
-                    border-color: rgba(140,140,140,0.05);
-                    border-left-color: rgba(140,140,140,0.05);
+div > section > .main .toggle-all-container ~ .todo-list > .li-25.targeted {
+                    accent-color: rgba(140,140,140,0.05);
+                    outline-color: rgba(140,140,140,0.05);
                 }
-.todoapp.header > .main .toggle-all-container ~ .todo-list > li .view-25 {
-                    border-left-color: rgba(140,140,140,0.051);
-                    border-right-color: rgba(140,140,140,0.051);
+.li-4 ~ .li-25 .view-25.targeted {
+                    border-top-color: rgba(140,140,140,0.051);
+                    accent-color: rgba(140,140,140,0.051);
                 }
-.just-span li {
-                    border-bottom-color: rgba(140,140,140,0.052);
-                    border-top-color: rgba(140,140,140,0.052);
+.todoholder > .todoapp > .main .toggle-all-container ~ .todo-list > .li-26.targeted {
+                    border-left-color: rgba(140,140,140,0.052);
+                    border-right-color: rgba(140,140,140,0.052);
                 }
-.just-span > .todoholder > * > .main * {
-                    column-rule-color: rgba(140,140,140,0.053);
+header ~ .main .view-26.targeted {
+                    border-bottom-color: rgba(140,140,140,0.053);
                     outline-color: rgba(140,140,140,0.053);
                 }
-.just-span > * .li-27-0 {
-                    border-color: rgba(140,140,140,0.054);
-                    text-decoration-color: rgba(140,140,140,0.054);
+.todoapp > main .li-7 ~ li.targeted {
+                    border-left-color: rgba(140,140,140,0.054);
+                    border-bottom-color: rgba(140,140,140,0.054);
                 }
-.just-span header ~ .main div {
+div > .todoholder > section > .main div.targeted {
+                    outline-color: rgba(140,140,140,0.055);
                     text-decoration-color: rgba(140,140,140,0.055);
-                    accent-color: rgba(140,140,140,0.055);
                 }
-.just-span > * > .todoapp > .main div ~ .todo-list > li {
-                    accent-color: rgba(140,140,140,0.056);
-                    border-left-color: rgba(140,140,140,0.056);
+.main > ul .li-26 ~ *.targeted {
+                    border-color: rgba(140,140,140,0.056);
+                    border-right-color: rgba(140,140,140,0.056);
                 }
-.just-span .header ~ .main * {
+div ~ .todo-list > li > div.targeted {
                     border-bottom-color: rgba(140,140,140,0.057);
-                    border-right-color: rgba(140,140,140,0.057);
+                    border-color: rgba(140,140,140,0.057);
                 }
-.just-span > div > .todoapp > .main .li-29-0 {
-                    column-rule-color: rgba(140,140,140,0.058);
-                    outline-color: rgba(140,140,140,0.058);
+section > .main .li-9 ~ .li-29.targeted {
+                    border-left-color: rgba(140,140,140,0.058);
+                    border-bottom-color: rgba(140,140,140,0.058);
                 }
-.todoapp.main .li-2-0 ~ .li-29-0 * {
-                    accent-color: rgba(140,140,140,0.059);
-                    border-right-color: rgba(140,140,140,0.059);
+.main * ~ * > .li-29 .view-29.targeted {
+                    text-decoration-color: rgba(140,140,140,0.059);
+                    border-left-color: rgba(140,140,140,0.059);
                 }
-.just-span > .todoholder * {
+section > main li ~ li.targeted {
                     border-color: rgba(140,140,140,0.06);
-                    border-top-color: rgba(140,140,140,0.06);
+                    column-rule-color: rgba(140,140,140,0.06);
                 }
-.todoapp.header li ~ .li-30-0 .view-30 {
+.todo-area > * .view-30.targeted {
                     border-top-color: rgba(140,140,140,0.061);
-                    column-rule-color: rgba(140,140,140,0.061);
+                    border-color: rgba(140,140,140,0.061);
                 }
-.just-span .li-31-0 {
-                    column-rule-color: rgba(140,140,140,0.062);
-                    border-right-color: rgba(140,140,140,0.062);
+.todoholder > * > main div ~ ul > .li-31.targeted {
+                    border-bottom-color: rgba(140,140,140,0.062);
+                    outline-color: rgba(140,140,140,0.062);
                 }
-.just-span > .todoholder .view-31 {
-                    border-color: rgba(140,140,140,0.063);
-                    accent-color: rgba(140,140,140,0.063);
+li ~ .li-31 *.targeted {
+                    text-decoration-color: rgba(140,140,140,0.063);
+                    border-bottom-color: rgba(140,140,140,0.063);
                 }
-.just-span > .todoholder li + * {
-                    accent-color: rgba(140,140,140,0.064);
-                    border-top-color: rgba(140,140,140,0.064);
+* > section > main div ~ .todo-list > .li-32.targeted {
+                    border-right-color: rgba(140,140,140,0.064);
+                    border-color: rgba(140,140,140,0.064);
                 }
-.just-span .header ~ main .view-32 {
-                    outline-color: rgba(140,140,140,0.065);
+.li-10 ~ li .view-32.targeted {
+                    text-decoration-color: rgba(140,140,140,0.065);
                     border-right-color: rgba(140,140,140,0.065);
                 }
-.just-span > .todoholder > .todoapp > .main div ~ .todo-list > .li-33-0 {
-                    border-right-color: rgba(140,140,140,0.066);
-                    border-left-color: rgba(140,140,140,0.066);
+.todoholder > .todoapp > main * ~ ul > li.targeted {
+                    column-rule-color: rgba(140,140,140,0.066);
+                    text-decoration-color: rgba(140,140,140,0.066);
                 }
-.just-span > .todoholder div {
-                    text-decoration-color: rgba(140,140,140,0.067);
+.li-2 ~ li div.targeted {
+                    border-bottom-color: rgba(140,140,140,0.067);
                     column-rule-color: rgba(140,140,140,0.067);
                 }
-.just-span > div > .todoapp > * .toggle-all-container ~ ul > li {
-                    column-rule-color: rgba(140,140,140,0.068);
+.todoholder > section > * * ~ ul > .li-34.targeted {
+                    border-right-color: rgba(140,140,140,0.068);
                     border-bottom-color: rgba(140,140,140,0.068);
                 }
-.just-span .li-6-0 ~ * .view-34 {
-                    border-bottom-color: rgba(140,140,140,0.069);
-                    outline-color: rgba(140,140,140,0.069);
+li ~ li .view-34.targeted {
+                    accent-color: rgba(140,140,140,0.069);
+                    border-right-color: rgba(140,140,140,0.069);
                 }
-.just-span .li-35-0 {
-                    border-right-color: rgba(140,140,140,0.07);
-                    border-top-color: rgba(140,140,140,0.07);
+.todoapp > main li ~ .li-35.targeted {
+                    column-rule-color: rgba(140,140,140,0.07);
+                    accent-color: rgba(140,140,140,0.07);
                 }
-.todoapp.footer > main div ~ * > li div {
-                    border-left-color: rgba(140,140,140,0.071);
+.todo-area > .todoholder > section > main .view-35.targeted {
                     outline-color: rgba(140,140,140,0.071);
+                    column-rule-color: rgba(140,140,140,0.071);
                 }
-.just-span > .todoholder .li-36-0 {
-                    outline-color: rgba(140,140,140,0.072);
-                    border-top-color: rgba(140,140,140,0.072);
+div > div .li-14 ~ *.targeted {
+                    border-color: rgba(140,140,140,0.072);
+                    border-bottom-color: rgba(140,140,140,0.072);
                 }
-.just-span > .todoholder div {
-                    border-top-color: rgba(140,140,140,0.073);
+.todo-area > .todoholder > .todoapp li ~ li > .view-36.targeted {
                     text-decoration-color: rgba(140,140,140,0.073);
+                    border-color: rgba(140,140,140,0.073);
                 }
-.just-span .li-37-0 {
-                    text-decoration-color: rgba(140,140,140,0.074);
+div > section > main div ~ ul > .li-37.targeted {
                     accent-color: rgba(140,140,140,0.074);
+                    border-right-color: rgba(140,140,140,0.074);
                 }
-.todoapp.main > main .toggle-all-container ~ .todo-list > .li-37-0 .view-37 {
-                    border-right-color: rgba(140,140,140,0.075);
-                    border-left-color: rgba(140,140,140,0.075);
+.header ~ .main .view-37.targeted {
+                    border-top-color: rgba(140,140,140,0.075);
+                    accent-color: rgba(140,140,140,0.075);
                 }
-.just-span > .todoholder .header ~ main > .todo-list .li-38-0 {
-                    border-left-color: rgba(140,140,140,0.076);
-                    outline-color: rgba(140,140,140,0.076);
+div > section > * .toggle-all-container ~ ul > .li-38.targeted {
+                    border-bottom-color: rgba(140,140,140,0.076);
+                    text-decoration-color: rgba(140,140,140,0.076);
                 }
-.just-span > div div {
-                    outline-color: rgba(140,140,140,0.077);
-                    accent-color: rgba(140,140,140,0.077);
+* > div .view-38.targeted {
+                    column-rule-color: rgba(140,140,140,0.077);
+                    border-bottom-color: rgba(140,140,140,0.077);
                 }
-.just-span > .todoholder > section > * * {
-                    border-bottom-color: rgba(140,140,140,0.078);
+.todoapp > .main .li-2 ~ li.targeted {
+                    border-left-color: rgba(140,140,140,0.078);
                     column-rule-color: rgba(140,140,140,0.078);
                 }
-.todoholder.info li ~ li .view-39 {
-                    border-color: rgba(140,140,140,0.079);
-                    text-decoration-color: rgba(140,140,140,0.079);
+* > .todoholder .view-39.targeted {
+                    border-right-color: rgba(140,140,140,0.079);
+                    border-left-color: rgba(140,140,140,0.079);
                 }
-.just-span > .todoholder > section li ~ .li-40-0 {
-                    text-decoration-color: rgba(140,140,140,0.08);
-                    border-left-color: rgba(140,140,140,0.08);
+* > .todoapp > .main div ~ .todo-list > .li-40.targeted {
+                    accent-color: rgba(140,140,140,0.08);
+                    border-right-color: rgba(140,140,140,0.08);
                 }
-.just-span > div > .todoapp > .main .view-40 {
+* ~ main .view-40.targeted {
+                    border-top-color: rgba(140,140,140,0.081);
                     column-rule-color: rgba(140,140,140,0.081);
-                    border-right-color: rgba(140,140,140,0.081);
                 }
-.just-span > .todoholder > .todoapp > .main .li-41-0 {
-                    border-color: rgba(140,140,140,0.082);
+.todo-area .li-31 ~ li.targeted {
+                    outline-color: rgba(140,140,140,0.082);
                     border-top-color: rgba(140,140,140,0.082);
                 }
-.just-span > div .view-41 {
-                    border-right-color: rgba(140,140,140,0.083);
-                    outline-color: rgba(140,140,140,0.083);
+.toggle-all-container ~ .todo-list > li > .view-41.targeted {
+                    border-bottom-color: rgba(140,140,140,0.083);
+                    border-left-color: rgba(140,140,140,0.083);
                 }
-div.info > .todoapp .li-41-0 + .li-42-0 {
-                    border-bottom-color: rgba(140,140,140,0.084);
+.todoholder > section > .main .toggle-all-container ~ .todo-list > .li-42.targeted {
                     border-top-color: rgba(140,140,140,0.084);
+                    accent-color: rgba(140,140,140,0.084);
                 }
-.todoapp.footer > main div ~ * > .li-42-0 .view-42 {
+div > .todoholder div.targeted {
+                    column-rule-color: rgba(140,140,140,0.085);
                     border-top-color: rgba(140,140,140,0.085);
-                    border-left-color: rgba(140,140,140,0.085);
                 }
-.just-span > .todoholder > .todoapp > .main .li-43-0 {
-                    border-left-color: rgba(140,140,140,0.086);
-                    accent-color: rgba(140,140,140,0.086);
+* > section > main * ~ .todo-list > li.targeted {
+                    border-color: rgba(140,140,140,0.086);
+                    column-rule-color: rgba(140,140,140,0.086);
                 }
-.just-span header ~ .main div {
+li ~ .li-43 .view-43.targeted {
                     accent-color: rgba(140,140,140,0.087);
-                    outline-color: rgba(140,140,140,0.087);
+                    border-color: rgba(140,140,140,0.087);
                 }
-.just-span > * li {
-                    border-top-color: rgba(140,140,140,0.088);
+.todoholder > .todoapp > .main .toggle-all-container ~ ul > .li-44.targeted {
+                    outline-color: rgba(140,140,140,0.088);
                     border-bottom-color: rgba(140,140,140,0.088);
                 }
-.todoapp.header header ~ main .view-44 {
-                    text-decoration-color: rgba(140,140,140,0.089);
+li ~ .li-44 *.targeted {
+                    border-color: rgba(140,140,140,0.089);
                     outline-color: rgba(140,140,140,0.089);
                 }
-div.info > .todoapp .li-44-0 + .li-45-0 {
+div > .todoapp > .main .toggle-all-container ~ .todo-list > li.targeted {
+                    text-decoration-color: rgba(140,140,140,0.09);
                     border-color: rgba(140,140,140,0.09);
-                    column-rule-color: rgba(140,140,140,0.09);
                 }
-section.main > .main .toggle-all-container ~ * > li .view-45 {
-                    column-rule-color: rgba(140,140,140,0.091);
-                    border-top-color: rgba(140,140,140,0.091);
+div > * .view-45.targeted {
+                    border-right-color: rgba(140,140,140,0.091);
+                    text-decoration-color: rgba(140,140,140,0.091);
                 }
-*.info .li-8-0 ~ .li-46-0 > .view-46 > input:active {
-                    border-top-color: rgba(140,140,140,0.092);
+.todoholder > .todoapp > .main div ~ ul > .li-46.targeted {
                     accent-color: rgba(140,140,140,0.092);
+                    border-bottom-color: rgba(140,140,140,0.092);
                 }
-section.header > main div ~ .todo-list > .li-46-0 > div > .destroy:hover {
-                    border-bottom-color: rgba(140,140,140,0.093);
-                    text-decoration-color: rgba(140,140,140,0.093);
+.header ~ main *.targeted {
+                    border-left-color: rgba(140,140,140,0.093);
+                    accent-color: rgba(140,140,140,0.093);
                 }
-.just-span .li-46-0 + .li-47-0 {
+* > div .li-41 ~ li.targeted {
                     text-decoration-color: rgba(140,140,140,0.094);
-                    border-left-color: rgba(140,140,140,0.094);
+                    border-right-color: rgba(140,140,140,0.094);
                 }
-.todoapp.header > .main .toggle-all-container ~ .todo-list > li .view-47 {
+div > div > .todoapp * ~ .li-47 > *.targeted {
                     border-color: rgba(140,140,140,0.095);
                     column-rule-color: rgba(140,140,140,0.095);
                 }
-.just-span > .todoholder > .todoapp > main .li-48-0 {
-                    column-rule-color: rgba(140,140,140,0.096);
-                    outline-color: rgba(140,140,140,0.096);
+.todoapp > main * ~ .li-48.targeted {
+                    border-top-color: rgba(140,140,140,0.096);
+                    border-bottom-color: rgba(140,140,140,0.096);
                 }
-.just-span .li-10-0 ~ .li-48-0 div {
-                    outline-color: rgba(140,140,140,0.097);
-                    border-right-color: rgba(140,140,140,0.097);
+.todo-area > div .view-48.targeted {
+                    border-color: rgba(140,140,140,0.097);
+                    text-decoration-color: rgba(140,140,140,0.097);
                 }
-.todoapp.main > main .li-48-0 + .li-49-0 {
+.todoholder > section .li-3 ~ .li-49.targeted {
                     border-right-color: rgba(140,140,140,0.098);
-                    border-top-color: rgba(140,140,140,0.098);
+                    accent-color: rgba(140,140,140,0.098);
                 }
-.just-span > div div {
-                    border-top-color: rgba(140,140,140,0.099);
+.todo-area > div *.targeted {
                     border-color: rgba(140,140,140,0.099);
+                    border-right-color: rgba(140,140,140,0.099);
                 }
-.just-span > div > section .li-50-0 {
-                    border-color: rgba(140,140,140,0.1);
+.todoholder > section > .main div ~ .todo-list > .li-50.targeted {
+                    column-rule-color: rgba(140,140,140,0.1);
                     border-left-color: rgba(140,140,140,0.1);
                 }
-.todoapp.main > .main .toggle-all-container ~ ul > .li-50-0 .view-50 {
-                    text-decoration-color: rgba(140,140,140,0.101);
-                    border-bottom-color: rgba(140,140,140,0.101);
+.todo-area > div .view-50.targeted {
+                    accent-color: rgba(140,140,140,0.101);
+                    border-color: rgba(140,140,140,0.101);
                 }
-.just-span > .todoholder > .todoapp > .main li {
+* > * > .main .toggle-all-container ~ ul > li.targeted {
                     column-rule-color: rgba(140,140,140,0.102);
-                    border-left-color: rgba(140,140,140,0.102);
+                    accent-color: rgba(140,140,140,0.102);
                 }
-main.todo-list .li-14-0 ~ .li-51-0 * {
-                    border-left-color: rgba(140,140,140,0.103);
-                    border-bottom-color: rgba(140,140,140,0.103);
+li ~ li *.targeted {
+                    border-top-color: rgba(140,140,140,0.103);
+                    column-rule-color: rgba(140,140,140,0.103);
                 }
-header ~ main > * .li-10-0 ~ .li-52-0 {
-                    border-bottom-color: rgba(140,140,140,0.104);
+.todoholder > section > .main .toggle-all-container ~ .todo-list > li.targeted {
+                    accent-color: rgba(140,140,140,0.104);
                     border-top-color: rgba(140,140,140,0.104);
                 }
-.just-span > .todoholder .li-10-0 ~ .li-52-0 > div {
-                    text-decoration-color: rgba(140,140,140,0.105);
-                    border-color: rgba(140,140,140,0.105);
+li ~ .li-52 div.targeted {
+                    border-bottom-color: rgba(140,140,140,0.105);
+                    outline-color: rgba(140,140,140,0.105);
                 }
-.just-span > div .header ~ .main > .todo-list .li-53-0 {
+div > .todoholder .li-27 ~ li.targeted {
                     border-color: rgba(140,140,140,0.106);
-                    border-right-color: rgba(140,140,140,0.106);
+                    text-decoration-color: rgba(140,140,140,0.106);
                 }
-.todoholder.info .header ~ main .view-53 {
-                    border-right-color: rgba(140,140,140,0.107);
-                    border-left-color: rgba(140,140,140,0.107);
+.todo-area > .todoholder .li-20 ~ .li-53 > .view-53.targeted {
+                    border-top-color: rgba(140,140,140,0.107);
+                    border-color: rgba(140,140,140,0.107);
                 }
-.just-span .li-53-0 + .li-54-0 {
-                    border-left-color: rgba(140,140,140,0.108);
-                    accent-color: rgba(140,140,140,0.108);
+.todoholder > * > .main .toggle-all-container ~ .todo-list > .li-54.targeted {
+                    border-right-color: rgba(140,140,140,0.108);
+                    border-bottom-color: rgba(140,140,140,0.108);
                 }
-.just-span > .todoholder .view-54 {
-                    column-rule-color: rgba(140,140,140,0.109);
-                    outline-color: rgba(140,140,140,0.109);
+li ~ .li-54 div.targeted {
+                    text-decoration-color: rgba(140,140,140,0.109);
+                    border-left-color: rgba(140,140,140,0.109);
                 }
-.just-span > .todoholder > section * {
-                    accent-color: rgba(140,140,140,0.11);
+.todoholder > section > main .toggle-all-container ~ ul > .li-55.targeted {
                     border-bottom-color: rgba(140,140,140,0.11);
+                    border-color: rgba(140,140,140,0.11);
                 }
-.todoapp.header > .main div ~ .todo-list > li .view-55 {
+li ~ .li-55 div.targeted {
                     outline-color: rgba(140,140,140,0.111);
-                    border-color: rgba(140,140,140,0.111);
+                    border-bottom-color: rgba(140,140,140,0.111);
                 }
-.just-span > .todoholder .li-56-0 {
-                    border-color: rgba(140,140,140,0.112);
-                    column-rule-color: rgba(140,140,140,0.112);
+.todoholder > .todoapp > main .toggle-all-container ~ .todo-list > .li-56.targeted {
+                    border-right-color: rgba(140,140,140,0.112);
+                    accent-color: rgba(140,140,140,0.112);
                 }
-div.info * ~ .li-56-0 div {
-                    border-left-color: rgba(140,140,140,0.113);
-                    accent-color: rgba(140,140,140,0.113);
+div > .todoholder div.targeted {
+                    border-top-color: rgba(140,140,140,0.113);
+                    border-right-color: rgba(140,140,140,0.113);
                 }
-section.footer > .main .toggle-all-container ~ .todo-list > .li-57-0 > .view-57 > .toggle:focus {
-                    accent-color: rgba(140,140,140,0.114);
-                    text-decoration-color: rgba(140,140,140,0.114);
+.todoholder > section .li-55 ~ li.targeted {
+                    border-color: rgba(140,140,140,0.114);
+                    border-top-color: rgba(140,140,140,0.114);
                 }
-.just-span * ~ * > .view-57 > button:hover {
+.main div ~ .todo-list > li *.targeted {
                     border-bottom-color: rgba(140,140,140,0.115);
-                    outline-color: rgba(140,140,140,0.115);
+                    column-rule-color: rgba(140,140,140,0.115);
                 }
-.just-span > * .li-58-0 {
-                    text-decoration-color: rgba(140,140,140,0.116);
-                    border-color: rgba(140,140,140,0.116);
+.main > .todo-list .li-54 ~ li.targeted {
+                    outline-color: rgba(140,140,140,0.116);
+                    border-right-color: rgba(140,140,140,0.116);
                 }
-.todoholder.info * ~ * * {
-                    border-right-color: rgba(140,140,140,0.117);
-                    accent-color: rgba(140,140,140,0.117);
+div ~ ul > li > .view-58.targeted {
+                    column-rule-color: rgba(140,140,140,0.117);
+                    text-decoration-color: rgba(140,140,140,0.117);
                 }
-.todoapp.main > .main .li-58-0 + .li-59-0 {
-                    border-left-color: rgba(140,140,140,0.118);
+main > .todo-list li ~ .li-59.targeted {
+                    accent-color: rgba(140,140,140,0.118);
                     column-rule-color: rgba(140,140,140,0.118);
                 }
-section.header > .main .toggle-all-container ~ .todo-list > li .view-59 {
+.toggle-all-container ~ .todo-list > .li-59 > .view-59.targeted {
+                    border-left-color: rgba(140,140,140,0.119);
                     outline-color: rgba(140,140,140,0.119);
-                    border-bottom-color: rgba(140,140,140,0.119);
                 }
-.just-span > .todoholder > * > * div ~ .todo-list > * {
-                    text-decoration-color: rgba(140,140,140,0.12);
-                    border-color: rgba(140,140,140,0.12);
+* > div li ~ .li-60.targeted {
+                    border-right-color: rgba(140,140,140,0.12);
+                    border-left-color: rgba(140,140,140,0.12);
                 }
-.just-span > .todoholder .view-60 {
-                    border-top-color: rgba(140,140,140,0.121);
-                    border-bottom-color: rgba(140,140,140,0.121);
+* > .todoholder > section .li-58 ~ .li-60 > .view-60.targeted {
+                    border-color: rgba(140,140,140,0.121);
+                    border-right-color: rgba(140,140,140,0.121);
                 }
-.todoholder.info > .todoapp .li-60-0 + .li-61-0 {
-                    border-left-color: rgba(140,140,140,0.122);
-                    border-color: rgba(140,140,140,0.122);
+.todoholder > .todoapp .li-12 ~ .li-61.targeted {
+                    text-decoration-color: rgba(140,140,140,0.122);
+                    border-top-color: rgba(140,140,140,0.122);
                 }
-.just-span > * > section > main div {
-                    border-color: rgba(140,140,140,0.123);
-                    accent-color: rgba(140,140,140,0.123);
+.todo-area > .todoholder > .todoapp > main .view-61.targeted {
+                    border-right-color: rgba(140,140,140,0.123);
+                    text-decoration-color: rgba(140,140,140,0.123);
                 }
-.just-span .li-61-0 + li {
+div > section > .main div ~ ul > .li-62.targeted {
                     column-rule-color: rgba(140,140,140,0.124);
-                    outline-color: rgba(140,140,140,0.124);
+                    border-left-color: rgba(140,140,140,0.124);
                 }
-.just-span > div > * > main div {
-                    border-top-color: rgba(140,140,140,0.125);
-                    border-right-color: rgba(140,140,140,0.125);
+.li-2 ~ .li-62 .view-62.targeted {
+                    border-color: rgba(140,140,140,0.125);
+                    column-rule-color: rgba(140,140,140,0.125);
                 }
-.todoapp.main > .main .toggle-all-container ~ ul > li > .view-63 > .toggle:hover {
-                    border-right-color: rgba(140,140,140,0.126);
+* > .main li ~ .li-63.targeted {
                     border-left-color: rgba(140,140,140,0.126);
+                    border-right-color: rgba(140,140,140,0.126);
                 }
-.todoholder.info .li-6-0 ~ li > .view-63 > button:hover {
+.todo-area > * > .todoapp > .main *.targeted {
+                    column-rule-color: rgba(140,140,140,0.127);
                     border-left-color: rgba(140,140,140,0.127);
-                    text-decoration-color: rgba(140,140,140,0.127);
                 }
-.just-span .li-64-0 {
+.todoholder > .todoapp > main .toggle-all-container ~ .todo-list > .li-64.targeted {
                     border-top-color: rgba(140,140,140,0.128);
-                    accent-color: rgba(140,140,140,0.128);
+                    column-rule-color: rgba(140,140,140,0.128);
                 }
-.just-span > .todoholder > section > main * {
+.header ~ main div.targeted {
+                    border-color: rgba(140,140,140,0.129);
                     accent-color: rgba(140,140,140,0.129);
-                    border-bottom-color: rgba(140,140,140,0.129);
                 }
-.just-span > div > .todoapp > main .li-65-0 {
-                    outline-color: rgba(140,140,140,0.13);
-                    text-decoration-color: rgba(140,140,140,0.13);
+section > .main .li-2 ~ .li-65.targeted {
+                    border-right-color: rgba(140,140,140,0.13);
+                    border-color: rgba(140,140,140,0.13);
                 }
-.todoholder.info header ~ .main div {
-                    text-decoration-color: rgba(140,140,140,0.131);
-                    border-top-color: rgba(140,140,140,0.131);
+.todo-area > .todoholder .view-65.targeted {
+                    border-bottom-color: rgba(140,140,140,0.131);
+                    border-left-color: rgba(140,140,140,0.131);
                 }
-.just-span > * li {
-                    border-top-color: rgba(140,140,140,0.132);
-                    column-rule-color: rgba(140,140,140,0.132);
+.todoholder > .todoapp > main div ~ * > li.targeted {
+                    border-color: rgba(140,140,140,0.132);
+                    accent-color: rgba(140,140,140,0.132);
                 }
-.just-span .header ~ main .view-66 {
-                    column-rule-color: rgba(140,140,140,0.133);
-                    border-left-color: rgba(140,140,140,0.133);
+li ~ li .view-66.targeted {
+                    text-decoration-color: rgba(140,140,140,0.133);
+                    border-right-color: rgba(140,140,140,0.133);
                 }
-.todo-list.li-97-0 li ~ li > .view-67 > .toggle:active {
-                    border-color: rgba(140,140,140,0.134);
-                    border-right-color: rgba(140,140,140,0.134);
+div > .todoapp li ~ .li-67.targeted {
+                    accent-color: rgba(140,140,140,0.134);
+                    outline-color: rgba(140,140,140,0.134);
                 }
-.todoapp.header > * div ~ .todo-list > .li-67-0 > .view-67 > .destroy:active {
-                    border-left-color: rgba(140,140,140,0.135);
-                    text-decoration-color: rgba(140,140,140,0.135);
+main .toggle-all-container ~ .todo-list > * div.targeted {
+                    border-right-color: rgba(140,140,140,0.135);
+                    border-bottom-color: rgba(140,140,140,0.135);
                 }
-.just-span > .todoholder > .todoapp > * .li-68-0 {
-                    border-bottom-color: rgba(140,140,140,0.136);
-                    border-top-color: rgba(140,140,140,0.136);
+main > .todo-list .li-42 ~ *.targeted {
+                    border-color: rgba(140,140,140,0.136);
+                    outline-color: rgba(140,140,140,0.136);
                 }
-div.info li ~ .li-68-0 div {
-                    border-right-color: rgba(140,140,140,0.137);
-                    column-rule-color: rgba(140,140,140,0.137);
+.toggle-all-container ~ * > .li-68 > div.targeted {
+                    accent-color: rgba(140,140,140,0.137);
+                    border-color: rgba(140,140,140,0.137);
                 }
-.just-span li {
-                    column-rule-color: rgba(140,140,140,0.138);
-                    border-left-color: rgba(140,140,140,0.138);
+.todoholder > .todoapp > main div ~ ul > .li-69.targeted {
+                    border-top-color: rgba(140,140,140,0.138);
+                    text-decoration-color: rgba(140,140,140,0.138);
                 }
-section.main > .main .toggle-all-container ~ .todo-list > .li-69-0 .view-69 {
-                    text-decoration-color: rgba(140,140,140,0.139);
-                    accent-color: rgba(140,140,140,0.139);
+div > div .view-69.targeted {
+                    border-color: rgba(140,140,140,0.139);
+                    border-top-color: rgba(140,140,140,0.139);
                 }
-.just-span > .todoholder li {
+.todo-area > .todoholder .li-20 ~ *.targeted {
+                    column-rule-color: rgba(140,140,140,0.14);
                     accent-color: rgba(140,140,140,0.14);
-                    outline-color: rgba(140,140,140,0.14);
                 }
-.just-span > div .view-70 {
-                    outline-color: rgba(140,140,140,0.141);
+div > .todoholder li ~ li > .view-70.targeted {
                     border-top-color: rgba(140,140,140,0.141);
+                    column-rule-color: rgba(140,140,140,0.141);
                 }
-.just-span > * .li-71-0 {
-                    border-top-color: rgba(140,140,140,0.142);
-                    border-left-color: rgba(140,140,140,0.142);
+div > .todoapp li ~ .li-71.targeted {
+                    border-bottom-color: rgba(140,140,140,0.142);
+                    text-decoration-color: rgba(140,140,140,0.142);
                 }
-*.info * ~ li .view-71 {
+.todo-area > * > .todoapp > .main div.targeted {
+                    accent-color: rgba(140,140,140,0.143);
                     border-left-color: rgba(140,140,140,0.143);
-                    text-decoration-color: rgba(140,140,140,0.143);
                 }
-section.header > main .toggle-all-container ~ .todo-list > .li-72-0 > .view-72 > .toggle:hover {
-                    text-decoration-color: rgba(140,140,140,0.144);
-                    border-bottom-color: rgba(140,140,140,0.144);
+div > .todoapp > .main .toggle-all-container ~ .todo-list > *.targeted {
+                    border-color: rgba(140,140,140,0.144);
+                    column-rule-color: rgba(140,140,140,0.144);
                 }
-main.todo-list .li-14-0 ~ .li-72-0 > * > .destroy:hover {
-                    accent-color: rgba(140,140,140,0.145);
-                    column-rule-color: rgba(140,140,140,0.145);
+div > .todoholder div.targeted {
+                    border-left-color: rgba(140,140,140,0.145);
+                    border-color: rgba(140,140,140,0.145);
                 }
-.just-span > div .header ~ .main > .todo-list li {
-                    border-top-color: rgba(140,140,140,0.146);
+.todoapp > main * ~ .li-73.targeted {
+                    column-rule-color: rgba(140,140,140,0.146);
                     border-left-color: rgba(140,140,140,0.146);
                 }
-.just-span .li-8-0 ~ .li-73-0 div {
-                    outline-color: rgba(140,140,140,0.147);
+.todo-area > .todoholder div.targeted {
+                    border-bottom-color: rgba(140,140,140,0.147);
                     border-right-color: rgba(140,140,140,0.147);
                 }
-.just-span * {
-                    border-left-color: rgba(140,140,140,0.148);
-                    column-rule-color: rgba(140,140,140,0.148);
+div > * > .main .toggle-all-container ~ ul > .li-74.targeted {
+                    border-color: rgba(140,140,140,0.148);
+                    text-decoration-color: rgba(140,140,140,0.148);
                 }
-.just-span > div .view-74 {
-                    column-rule-color: rgba(140,140,140,0.149);
-                    text-decoration-color: rgba(140,140,140,0.149);
+.li-12 ~ li .view-74.targeted {
+                    border-right-color: rgba(140,140,140,0.149);
+                    border-top-color: rgba(140,140,140,0.149);
                 }
-.header ~ main > .todo-list .li-9-0 ~ .li-75-0 {
+.main > .todo-list .li-64 ~ *.targeted {
+                    border-left-color: rgba(140,140,140,0.15);
                     border-bottom-color: rgba(140,140,140,0.15);
-                    border-right-color: rgba(140,140,140,0.15);
                 }
-div.info header ~ * > ul li ~ .li-75-0 > .view-75 {
-                    border-color: rgba(140,140,140,0.151);
-                    outline-color: rgba(140,140,140,0.151);
+* ~ .todo-list > li > div.targeted {
+                    border-right-color: rgba(140,140,140,0.151);
+                    border-left-color: rgba(140,140,140,0.151);
                 }
-.just-span .li-76-0 {
-                    border-right-color: rgba(140,140,140,0.152);
+.main > ul .li-26 ~ li.targeted {
+                    accent-color: rgba(140,140,140,0.152);
                     column-rule-color: rgba(140,140,140,0.152);
                 }
-.todoapp.footer > .main .toggle-all-container ~ .todo-list > li .view-76 {
+div ~ .todo-list > .li-76 > .view-76.targeted {
+                    text-decoration-color: rgba(140,140,140,0.153);
                     accent-color: rgba(140,140,140,0.153);
-                    outline-color: rgba(140,140,140,0.153);
                 }
-.header ~ main > .todo-list .li-25-0 ~ li {
-                    border-top-color: rgba(140,140,140,0.154);
-                    column-rule-color: rgba(140,140,140,0.154);
+* > section .li-38 ~ .li-77.targeted {
+                    border-left-color: rgba(140,140,140,0.154);
+                    text-decoration-color: rgba(140,140,140,0.154);
                 }
-.todoholder.info header ~ .main > ul li ~ li > .view-77 {
-                    border-color: rgba(140,140,140,0.155);
+.todo-area > div > section > main div.targeted {
+                    border-top-color: rgba(140,140,140,0.155);
                     border-left-color: rgba(140,140,140,0.155);
                 }
-.just-span > div > .todoapp .li-78-0 {
-                    border-left-color: rgba(140,140,140,0.156);
-                    accent-color: rgba(140,140,140,0.156);
+.todoholder > section > .main .toggle-all-container ~ .todo-list > .li-78.targeted {
+                    text-decoration-color: rgba(140,140,140,0.156);
+                    border-bottom-color: rgba(140,140,140,0.156);
                 }
-.just-span > .todoholder * {
-                    accent-color: rgba(140,140,140,0.157);
-                    text-decoration-color: rgba(140,140,140,0.157);
+header ~ .main div.targeted {
+                    border-left-color: rgba(140,140,140,0.157);
+                    column-rule-color: rgba(140,140,140,0.157);
                 }
-.just-span > .todoholder header ~ .main > ul li {
-                    text-decoration-color: rgba(140,140,140,0.158);
-                    border-bottom-color: rgba(140,140,140,0.158);
+.todoholder > .todoapp > .main * ~ ul > .li-79.targeted {
+                    outline-color: rgba(140,140,140,0.158);
+                    border-right-color: rgba(140,140,140,0.158);
                 }
-.todoapp.main header ~ main .view-79 {
-                    outline-color: rgba(140,140,140,0.159);
+.li-11 ~ .li-79 .view-79.targeted {
+                    column-rule-color: rgba(140,140,140,0.159);
                     border-color: rgba(140,140,140,0.159);
                 }
-.just-span > .todoholder li {
+div > section > .main .toggle-all-container ~ .todo-list > .li-80.targeted {
                     border-top-color: rgba(140,140,140,0.16);
-                    border-left-color: rgba(140,140,140,0.16);
+                    text-decoration-color: rgba(140,140,140,0.16);
                 }
-div.info .li-2-0 ~ .li-80-0 .view-80 {
-                    border-left-color: rgba(140,140,140,0.161);
-                    border-color: rgba(140,140,140,0.161);
+.li-10 ~ li *.targeted {
+                    border-bottom-color: rgba(140,140,140,0.161);
+                    outline-color: rgba(140,140,140,0.161);
                 }
-.just-span > div * {
+.todoholder > .todoapp li ~ *.targeted {
                     border-color: rgba(140,140,140,0.162);
-                    border-right-color: rgba(140,140,140,0.162);
+                    border-bottom-color: rgba(140,140,140,0.162);
                 }
-div.info .li-10-0 ~ .li-81-0 div {
-                    column-rule-color: rgba(140,140,140,0.163);
+main * ~ ul > .li-81 .view-81.targeted {
                     accent-color: rgba(140,140,140,0.163);
+                    border-color: rgba(140,140,140,0.163);
                 }
-.just-span > .todoholder > * .li-82-0 {
+.main > .todo-list .li-12 ~ li.targeted {
+                    column-rule-color: rgba(140,140,140,0.164);
                     accent-color: rgba(140,140,140,0.164);
-                    border-right-color: rgba(140,140,140,0.164);
                 }
-.just-span > div > .todoapp > .main .view-82 {
-                    border-bottom-color: rgba(140,140,140,0.165);
-                    border-top-color: rgba(140,140,140,0.165);
+.toggle-all-container ~ ul > .li-82 > div.targeted {
+                    text-decoration-color: rgba(140,140,140,0.165);
+                    column-rule-color: rgba(140,140,140,0.165);
                 }
-.just-span > .todoholder .li-82-0 + .li-83-0 {
-                    border-right-color: rgba(140,140,140,0.166);
-                    outline-color: rgba(140,140,140,0.166);
+.todoholder > .todoapp > main div ~ .todo-list > *.targeted {
+                    border-bottom-color: rgba(140,140,140,0.166);
+                    border-left-color: rgba(140,140,140,0.166);
                 }
-.just-span .header ~ .main div {
+.header ~ .main .view-83.targeted {
                     outline-color: rgba(140,140,140,0.167);
-                    text-decoration-color: rgba(140,140,140,0.167);
+                    column-rule-color: rgba(140,140,140,0.167);
                 }
-.just-span > div > .todoapp > .main div ~ ul > .li-84-0 {
-                    border-top-color: rgba(140,140,140,0.168);
+.todoapp > main .li-26 ~ li.targeted {
                     border-color: rgba(140,140,140,0.168);
+                    outline-color: rgba(140,140,140,0.168);
                 }
-.todoholder.info .header ~ main .view-84 {
-                    column-rule-color: rgba(140,140,140,0.169);
+.todo-area > .todoholder > .todoapp > .main .view-84.targeted {
+                    border-bottom-color: rgba(140,140,140,0.169);
                     text-decoration-color: rgba(140,140,140,0.169);
                 }
-.just-span > .todoholder > section > main .li-85-0 {
-                    text-decoration-color: rgba(140,140,140,0.17);
-                    border-color: rgba(140,140,140,0.17);
+.todoholder > section > .main .toggle-all-container ~ .todo-list > li.targeted {
+                    border-top-color: rgba(140,140,140,0.17);
+                    accent-color: rgba(140,140,140,0.17);
                 }
-section.header .li-58-0 ~ li div {
-                    border-color: rgba(140,140,140,0.171);
-                    border-left-color: rgba(140,140,140,0.171);
+li ~ li .view-85.targeted {
+                    text-decoration-color: rgba(140,140,140,0.171);
+                    border-right-color: rgba(140,140,140,0.171);
                 }
-.just-span .li-52-0 ~ .li-86-0 {
+.todoholder > section > .main div ~ ul > li.targeted {
+                    accent-color: rgba(140,140,140,0.172);
                     border-left-color: rgba(140,140,140,0.172);
-                    column-rule-color: rgba(140,140,140,0.172);
                 }
-.just-span > .todoholder div {
-                    border-top-color: rgba(140,140,140,0.173);
-                    outline-color: rgba(140,140,140,0.173);
+.li-14 ~ li .view-86.targeted {
+                    border-bottom-color: rgba(140,140,140,0.173);
+                    border-color: rgba(140,140,140,0.173);
                 }
-.just-span > .todoholder > .todoapp > .main li {
-                    column-rule-color: rgba(140,140,140,0.174);
-                    border-bottom-color: rgba(140,140,140,0.174);
+.todoholder > section > .main .toggle-all-container ~ .todo-list > .li-87.targeted {
+                    border-left-color: rgba(140,140,140,0.174);
+                    text-decoration-color: rgba(140,140,140,0.174);
                 }
-.just-span > div .view-87 {
-                    text-decoration-color: rgba(140,140,140,0.175);
-                    accent-color: rgba(140,140,140,0.175);
+.todo-area > div div.targeted {
+                    column-rule-color: rgba(140,140,140,0.175);
+                    outline-color: rgba(140,140,140,0.175);
                 }
-.just-span .li-88-0 {
+.todoholder > .todoapp > main * ~ ul > li.targeted {
                     accent-color: rgba(140,140,140,0.176);
-                    border-right-color: rgba(140,140,140,0.176);
+                    border-bottom-color: rgba(140,140,140,0.176);
                 }
-.just-span > div > section > main .view-88 {
+header ~ main .view-88.targeted {
+                    outline-color: rgba(140,140,140,0.177);
                     border-right-color: rgba(140,140,140,0.177);
-                    border-top-color: rgba(140,140,140,0.177);
                 }
-.just-span > .todoholder > * .li-89-0 {
-                    border-color: rgba(140,140,140,0.178);
-                    outline-color: rgba(140,140,140,0.178);
+* > .todoapp > main .toggle-all-container ~ .todo-list > li.targeted {
+                    border-bottom-color: rgba(140,140,140,0.178);
+                    text-decoration-color: rgba(140,140,140,0.178);
                 }
-.just-span > .todoholder .view-89 {
+.header ~ .main *.targeted {
                     border-top-color: rgba(140,140,140,0.179);
-                    accent-color: rgba(140,140,140,0.179);
+                    column-rule-color: rgba(140,140,140,0.179);
                 }
-.todoapp.header > .main li + .li-90-0 {
-                    text-decoration-color: rgba(140,140,140,0.18);
-                    outline-color: rgba(140,140,140,0.18);
+.todoholder > section > .main .toggle-all-container ~ ul > li.targeted {
+                    accent-color: rgba(140,140,140,0.18);
+                    border-right-color: rgba(140,140,140,0.18);
                 }
-.just-span > div .view-90 {
-                    outline-color: rgba(140,140,140,0.181);
+li ~ .li-90 div.targeted {
+                    border-left-color: rgba(140,140,140,0.181);
                     accent-color: rgba(140,140,140,0.181);
                 }
-.just-span .li-91-0 {
-                    border-right-color: rgba(140,140,140,0.182);
+div > .todoapp > .main .toggle-all-container ~ ul > .li-91.targeted {
+                    border-color: rgba(140,140,140,0.182);
                     border-left-color: rgba(140,140,140,0.182);
                 }
-*.footer > .main .toggle-all-container ~ .todo-list > * .view-91 {
-                    border-left-color: rgba(140,140,140,0.183);
-                    border-top-color: rgba(140,140,140,0.183);
+.li-9 ~ .li-91 .view-91.targeted {
+                    accent-color: rgba(140,140,140,0.183);
+                    border-right-color: rgba(140,140,140,0.183);
                 }
-main.todo-list > ul li + .li-92-0 {
-                    accent-color: rgba(140,140,140,0.184);
+div > .todoapp > .main .toggle-all-container ~ .todo-list > li.targeted {
                     text-decoration-color: rgba(140,140,140,0.184);
+                    accent-color: rgba(140,140,140,0.184);
                 }
-.just-span > .todoholder > * > main * {
-                    text-decoration-color: rgba(140,140,140,0.185);
-                    border-color: rgba(140,140,140,0.185);
+.li-62 ~ .li-92 .view-92.targeted {
+                    border-bottom-color: rgba(140,140,140,0.185);
+                    border-left-color: rgba(140,140,140,0.185);
                 }
-.just-span li {
-                    border-color: rgba(140,140,140,0.186);
-                    border-right-color: rgba(140,140,140,0.186);
+div > section > main div ~ ul > li.targeted {
+                    column-rule-color: rgba(140,140,140,0.186);
+                    outline-color: rgba(140,140,140,0.186);
                 }
-.just-span > .todoholder .view-93 {
-                    column-rule-color: rgba(140,140,140,0.187);
-                    border-left-color: rgba(140,140,140,0.187);
+* ~ .main .view-93.targeted {
+                    border-top-color: rgba(140,140,140,0.187);
+                    border-right-color: rgba(140,140,140,0.187);
                 }
-.just-span > div .li-64-0 ~ * {
+.todoholder > section > .main * ~ .todo-list > .li-94.targeted {
                     border-left-color: rgba(140,140,140,0.188);
-                    border-bottom-color: rgba(140,140,140,0.188);
+                    border-top-color: rgba(140,140,140,0.188);
                 }
-*.info header ~ main * {
+header ~ main .view-94.targeted {
                     text-decoration-color: rgba(140,140,140,0.189);
-                    border-color: rgba(140,140,140,0.189);
+                    column-rule-color: rgba(140,140,140,0.189);
                 }
-.just-span > div .li-94-0 + * {
+.todoholder > section > .main .toggle-all-container ~ * > .li-95.targeted {
+                    border-top-color: rgba(140,140,140,0.19);
                     border-right-color: rgba(140,140,140,0.19);
-                    accent-color: rgba(140,140,140,0.19);
                 }
-*.info .li-72-0 ~ li div {
-                    accent-color: rgba(140,140,140,0.191);
+.header ~ .main div.targeted {
                     column-rule-color: rgba(140,140,140,0.191);
+                    border-left-color: rgba(140,140,140,0.191);
                 }
-.just-span > .todoholder > section * {
-                    border-bottom-color: rgba(140,140,140,0.192);
-                    border-left-color: rgba(140,140,140,0.192);
+* > section > .main .toggle-all-container ~ .todo-list > .li-96.targeted {
+                    text-decoration-color: rgba(140,140,140,0.192);
+                    outline-color: rgba(140,140,140,0.192);
                 }
-.just-span > div > * > .main .view-96 {
+* > .todoholder div.targeted {
                     border-left-color: rgba(140,140,140,0.193);
                     border-top-color: rgba(140,140,140,0.193);
                 }
-.just-span > .todoholder > .todoapp > .main .li-97-0 {
+.todoholder > .todoapp > .main .toggle-all-container ~ ul > .li-97.targeted {
                     outline-color: rgba(140,140,140,0.194);
+                    border-bottom-color: rgba(140,140,140,0.194);
+                }
+div > .todoholder .view-97.targeted {
+                    column-rule-color: rgba(140,140,140,0.195);
+                    outline-color: rgba(140,140,140,0.195);
+                }
+.todoholder > section .li-94 ~ li.targeted {
+                    border-left-color: rgba(140,140,140,0.196);
+                    border-right-color: rgba(140,140,140,0.196);
+                }
+* > .todoholder .view-98.targeted {
+                    outline-color: rgba(140,140,140,0.197);
+                    text-decoration-color: rgba(140,140,140,0.197);
+                }
+div > section > .main .toggle-all-container ~ .todo-list > li.targeted {
+                    border-color: rgba(140,140,140,0.198);
+                    border-bottom-color: rgba(140,140,140,0.198);
+                }
+div > .todoholder .view-99.targeted {
+                    accent-color: rgba(140,140,140,0.199);
+                    border-color: rgba(140,140,140,0.199);
+                }
+.just-span input:active {
+                    outline-color: rgba(140,140,140,0);
+                    border-top-color: rgba(140,140,140,0);
+                }
+.main.todo-list > ul > .li-0 > div > button:focus {
+                    border-color: rgba(140,140,140,0.001);
+                    outline-color: rgba(140,140,140,0.001);
+                }
+.todoapp.header > .main div ~ .todo-list > * .toggle:active {
+                    accent-color: rgba(140,140,140,0.002);
+                    border-left-color: rgba(140,140,140,0.002);
+                }
+.just-span li ~ * > .view-1 > button:focus {
+                    outline-color: rgba(140,140,140,0.003);
+                    accent-color: rgba(140,140,140,0.003);
+                }
+*.footer > main div ~ .todo-list > .li-2 > div > .toggle:hover {
+                    border-right-color: rgba(140,140,140,0.004);
+                    outline-color: rgba(140,140,140,0.004);
+                }
+*.li-29 .li-0 ~ * > .view-2 > .destroy:active {
+                    border-top-color: rgba(140,140,140,0.005);
+                    border-color: rgba(140,140,140,0.005);
+                }
+.just-span .li-0 ~ .li-3 > div .toggle:focus {
+                    accent-color: rgba(140,140,140,0.006);
+                    border-top-color: rgba(140,140,140,0.006);
+                }
+section.header .li-0 ~ li > div > .destroy:hover {
+                    border-right-color: rgba(140,140,140,0.007);
+                    accent-color: rgba(140,140,140,0.007);
+                }
+.just-span > div .li-2 ~ .li-4 > .view-4 .toggle:hover {
+                    column-rule-color: rgba(140,140,140,0.008);
+                    text-decoration-color: rgba(140,140,140,0.008);
+                }
+.todoapp.main > * .toggle-all-container ~ .todo-list > * > div > *:focus {
+                    border-left-color: rgba(140,140,140,0.009);
+                    column-rule-color: rgba(140,140,140,0.009);
+                }
+.todoapp.header > main div ~ * > .li-5 input:focus {
+                    text-decoration-color: rgba(140,140,140,0.01);
+                    border-left-color: rgba(140,140,140,0.01);
+                }
+.todo-list.li-97 .li-1 ~ .li-5 > div > button:hover {
+                    accent-color: rgba(140,140,140,0.011);
+                    text-decoration-color: rgba(140,140,140,0.011);
+                }
+.just-span .li-4 ~ .li-6 > .view-6 > .toggle:focus {
+                    column-rule-color: rgba(140,140,140,0.012);
+                    outline-color: rgba(140,140,140,0.012);
+                }
+.just-span li ~ li > .view-6 > .destroy:focus {
+                    border-top-color: rgba(140,140,140,0.013);
+                    column-rule-color: rgba(140,140,140,0.013);
+                }
+ul.li-67 > .li-7 > * *:focus {
+                    text-decoration-color: rgba(140,140,140,0.014);
+                    border-top-color: rgba(140,140,140,0.014);
+                }
+.todoholder.info .li-2 ~ * > .view-7 > *:active {
+                    border-color: rgba(140,140,140,0.015);
+                    border-right-color: rgba(140,140,140,0.015);
+                }
+.just-span header ~ * > ul input:active {
+                    accent-color: rgba(140,140,140,0.016);
+                    border-color: rgba(140,140,140,0.016);
+                }
+*.footer .li-6 ~ .li-8 > .view-8 > *:hover {
+                    border-bottom-color: rgba(140,140,140,0.017);
+                    border-top-color: rgba(140,140,140,0.017);
+                }
+.just-span .toggle:active {
+                    border-color: rgba(140,140,140,0.018);
+                    outline-color: rgba(140,140,140,0.018);
+                }
+ul.li-57 li ~ .li-9 > .view-9 > .destroy:hover {
+                    text-decoration-color: rgba(140,140,140,0.019);
+                    border-right-color: rgba(140,140,140,0.019);
+                }
+.just-span header ~ .main > .todo-list *:hover {
+                    border-bottom-color: rgba(140,140,140,0.02);
+                    text-decoration-color: rgba(140,140,140,0.02);
+                }
+main.todo-list .li-6 ~ .li-10 > .view-10 > button:active {
+                    accent-color: rgba(140,140,140,0.021);
+                    border-bottom-color: rgba(140,140,140,0.021);
+                }
+.main.todo-list .li-8 ~ li > .view-11 > *:hover {
+                    outline-color: rgba(140,140,140,0.022);
+                    column-rule-color: rgba(140,140,140,0.022);
+                }
+.todoapp.main > main div ~ .todo-list > .li-11 > .view-11 > .destroy:focus {
+                    border-bottom-color: rgba(140,140,140,0.023);
+                    outline-color: rgba(140,140,140,0.023);
+                }
+.just-span > div input:focus {
+                    border-right-color: rgba(140,140,140,0.024);
+                    border-color: rgba(140,140,140,0.024);
+                }
+section.footer > .main div ~ .todo-list > li > div > button:hover {
+                    accent-color: rgba(140,140,140,0.025);
+                    border-right-color: rgba(140,140,140,0.025);
+                }
+main.todo-list > * li ~ * > div .toggle:focus {
+                    text-decoration-color: rgba(140,140,140,0.026);
+                    accent-color: rgba(140,140,140,0.026);
+                }
+section.main .li-10 ~ .li-13 > .view-13 > button:focus {
+                    border-left-color: rgba(140,140,140,0.027);
+                    column-rule-color: rgba(140,140,140,0.027);
+                }
+.just-span > .todoholder > .todoapp .toggle:hover {
+                    accent-color: rgba(140,140,140,0.028);
+                    border-left-color: rgba(140,140,140,0.028);
+                }
+.just-span li ~ .li-14 > .view-14 > .destroy:active {
+                    border-top-color: rgba(140,140,140,0.029);
+                    border-color: rgba(140,140,140,0.029);
+                }
+.just-span .toggle:active {
+                    border-left-color: rgba(140,140,140,0.03);
+                    column-rule-color: rgba(140,140,140,0.03);
+                }
+.todoholder.info li ~ li > .view-15 > .destroy:active {
+                    border-bottom-color: rgba(140,140,140,0.031);
+                    border-right-color: rgba(140,140,140,0.031);
+                }
+.just-span > .todoholder > .todoapp input:active {
+                    outline-color: rgba(140,140,140,0.032);
+                    text-decoration-color: rgba(140,140,140,0.032);
+                }
+.todo-list.li-45 .li-6 ~ li > div > button:hover {
+                    border-right-color: rgba(140,140,140,0.033);
+                    border-left-color: rgba(140,140,140,0.033);
+                }
+.just-span > div *:focus {
+                    border-bottom-color: rgba(140,140,140,0.034);
+                    column-rule-color: rgba(140,140,140,0.034);
+                }
+.todoapp.header > * div ~ .todo-list > * > * > .destroy:focus {
+                    border-color: rgba(140,140,140,0.035);
+                    border-bottom-color: rgba(140,140,140,0.035);
+                }
+.just-span .li-6 ~ li *:focus {
+                    outline-color: rgba(140,140,140,0.036);
+                    accent-color: rgba(140,140,140,0.036);
+                }
+.just-span .li-12 ~ * > .view-18 > .destroy:hover {
+                    border-bottom-color: rgba(140,140,140,0.037);
+                    border-right-color: rgba(140,140,140,0.037);
+                }
+.todo-list.li-81 .li-14 ~ .li-19 .toggle:active {
+                    border-color: rgba(140,140,140,0.038);
+                    border-bottom-color: rgba(140,140,140,0.038);
+                }
+.todoapp.main > .main .toggle-all-container ~ ul > .li-19 > .view-19 > .destroy:active {
+                    border-left-color: rgba(140,140,140,0.039);
+                    border-top-color: rgba(140,140,140,0.039);
+                }
+.just-span input:active {
+                    border-bottom-color: rgba(140,140,140,0.04);
+                    border-left-color: rgba(140,140,140,0.04);
+                }
+*.footer > main .toggle-all-container ~ ul > li > .view-20 > *:active {
+                    text-decoration-color: rgba(140,140,140,0.041);
+                    border-bottom-color: rgba(140,140,140,0.041);
+                }
+.just-span > * input:focus {
+                    accent-color: rgba(140,140,140,0.042);
+                    text-decoration-color: rgba(140,140,140,0.042);
+                }
+main.todo-list .li-6 ~ li > div > .destroy:focus {
+                    border-color: rgba(140,140,140,0.043);
+                    accent-color: rgba(140,140,140,0.043);
+                }
+.just-span *:active {
+                    border-top-color: rgba(140,140,140,0.044);
+                    border-left-color: rgba(140,140,140,0.044);
+                }
+.todoapp.footer li ~ .li-22 > div > .destroy:focus {
+                    accent-color: rgba(140,140,140,0.045);
+                    outline-color: rgba(140,140,140,0.045);
+                }
+.just-span > div .toggle:hover {
+                    text-decoration-color: rgba(140,140,140,0.046);
+                    accent-color: rgba(140,140,140,0.046);
+                }
+*.footer > .main * ~ ul > .li-23 > .view-23 > button:focus {
+                    outline-color: rgba(140,140,140,0.047);
+                    text-decoration-color: rgba(140,140,140,0.047);
+                }
+.todoapp.footer > .main div ~ ul > .li-24 > .view-24 > .toggle:hover {
+                    border-color: rgba(140,140,140,0.048);
+                    outline-color: rgba(140,140,140,0.048);
+                }
+.todoapp.footer .li-10 ~ .li-24 > * > .destroy:hover {
+                    text-decoration-color: rgba(140,140,140,0.049);
+                    border-left-color: rgba(140,140,140,0.049);
+                }
+.just-span .header ~ .main > ul input:hover {
+                    accent-color: rgba(140,140,140,0.05);
+                    text-decoration-color: rgba(140,140,140,0.05);
+                }
+.todoholder.info li ~ .li-25 > div > .destroy:hover {
+                    border-top-color: rgba(140,140,140,0.051);
+                    outline-color: rgba(140,140,140,0.051);
+                }
+.just-span > div header ~ main > .todo-list .toggle:hover {
+                    text-decoration-color: rgba(140,140,140,0.052);
+                    border-top-color: rgba(140,140,140,0.052);
+                }
+.todoapp.footer > main div ~ .todo-list > .li-26 > * > .destroy:focus {
+                    border-bottom-color: rgba(140,140,140,0.053);
+                    text-decoration-color: rgba(140,140,140,0.053);
+                }
+*.header > .main .toggle-all-container ~ ul > .li-27 > * > input:focus {
+                    border-color: rgba(140,140,140,0.054);
+                    border-bottom-color: rgba(140,140,140,0.054);
+                }
+.just-span .li-2 ~ li > div > button:active {
+                    outline-color: rgba(140,140,140,0.055);
+                    border-color: rgba(140,140,140,0.055);
+                }
+.just-span > .todoholder input:active {
+                    border-top-color: rgba(140,140,140,0.056);
+                    outline-color: rgba(140,140,140,0.056);
+                }
+.todoapp.header > main .toggle-all-container ~ ul > li > .view-28 > .destroy:active {
+                    text-decoration-color: rgba(140,140,140,0.057);
+                    accent-color: rgba(140,140,140,0.057);
+                }
+*.todo-list .toggle-all-container ~ .todo-list input:hover {
+                    column-rule-color: rgba(140,140,140,0.058);
+                    outline-color: rgba(140,140,140,0.058);
+                }
+.todoapp.header > .main div ~ .todo-list > .li-29 > div > button:focus {
+                    border-top-color: rgba(140,140,140,0.059);
+                    accent-color: rgba(140,140,140,0.059);
+                }
+.todoapp.header > main .toggle-all-container ~ * > * > .view-30 > input:hover {
+                    text-decoration-color: rgba(140,140,140,0.06);
+                    border-top-color: rgba(140,140,140,0.06);
+                }
+*.info .li-22 ~ li > .view-30 > button:active {
+                    border-color: rgba(140,140,140,0.061);
+                    border-right-color: rgba(140,140,140,0.061);
+                }
+.just-span > .todoholder > * .toggle:focus {
+                    border-bottom-color: rgba(140,140,140,0.062);
+                    border-color: rgba(140,140,140,0.062);
+                }
+.todoholder.info .li-14 ~ .li-31 > .view-31 > button:active {
+                    border-top-color: rgba(140,140,140,0.063);
+                    text-decoration-color: rgba(140,140,140,0.063);
+                }
+.todoapp.footer > .main .li-6 ~ li > .view-32 .toggle:active {
+                    column-rule-color: rgba(140,140,140,0.064);
+                    border-right-color: rgba(140,140,140,0.064);
+                }
+.todo-list.li-25 .li-22 ~ .li-32 > * > .destroy:hover {
+                    accent-color: rgba(140,140,140,0.065);
+                    border-left-color: rgba(140,140,140,0.065);
+                }
+.just-span > div > .todoapp .toggle:focus {
+                    border-color: rgba(140,140,140,0.066);
+                    text-decoration-color: rgba(140,140,140,0.066);
+                }
+.todoapp.footer .li-31 ~ .li-33 > div > .destroy:active {
+                    outline-color: rgba(140,140,140,0.067);
+                    border-right-color: rgba(140,140,140,0.067);
+                }
+.just-span > * > section > main .toggle:hover {
+                    column-rule-color: rgba(140,140,140,0.068);
+                    border-bottom-color: rgba(140,140,140,0.068);
+                }
+.todoapp.footer > main .toggle-all-container ~ ul > .li-34 > .view-34 > .destroy:hover {
+                    border-color: rgba(140,140,140,0.069);
+                    border-left-color: rgba(140,140,140,0.069);
+                }
+section.header > .main div ~ ul > .li-35 > * > input:hover {
+                    accent-color: rgba(140,140,140,0.07);
+                    border-bottom-color: rgba(140,140,140,0.07);
+                }
+.just-span .li-27 ~ li > div > .destroy:active {
+                    border-color: rgba(140,140,140,0.071);
+                    border-top-color: rgba(140,140,140,0.071);
+                }
+.just-span li ~ * > .view-36 > .toggle:focus {
+                    border-bottom-color: rgba(140,140,140,0.072);
+                    border-right-color: rgba(140,140,140,0.072);
+                }
+.main.todo-list .li-26 ~ li > .view-36 > button:focus {
+                    border-left-color: rgba(140,140,140,0.073);
+                    border-bottom-color: rgba(140,140,140,0.073);
+                }
+.todoapp.footer > .main .li-20 ~ li > div input:active {
+                    column-rule-color: rgba(140,140,140,0.074);
+                    accent-color: rgba(140,140,140,0.074);
+                }
+div.info li ~ .li-37 > div > .destroy:active {
+                    outline-color: rgba(140,140,140,0.075);
+                    border-left-color: rgba(140,140,140,0.075);
+                }
+.todo-list.li-49 li ~ li > div > .toggle:hover {
+                    text-decoration-color: rgba(140,140,140,0.076);
+                    outline-color: rgba(140,140,140,0.076);
+                }
+.todoapp.main > * div ~ .todo-list > li > * > button:hover {
+                    border-right-color: rgba(140,140,140,0.077);
+                    column-rule-color: rgba(140,140,140,0.077);
+                }
+.todoapp.footer > .main .toggle-all-container ~ .todo-list > * > * > input:hover {
+                    border-color: rgba(140,140,140,0.078);
+                    accent-color: rgba(140,140,140,0.078);
+                }
+*.todo-list .li-22 ~ .li-39 > div > button:focus {
+                    text-decoration-color: rgba(140,140,140,0.079);
+                    border-color: rgba(140,140,140,0.079);
+                }
+.just-span > div > section > main .toggle:hover {
+                    border-left-color: rgba(140,140,140,0.08);
+                    column-rule-color: rgba(140,140,140,0.08);
+                }
+.todoapp.main > main .toggle-all-container ~ * > .li-40 > .view-40 > button:active {
+                    border-color: rgba(140,140,140,0.081);
+                    border-left-color: rgba(140,140,140,0.081);
+                }
+.todoapp.main > .main .toggle-all-container ~ .todo-list > .li-41 .toggle:hover {
+                    border-bottom-color: rgba(140,140,140,0.082);
+                    accent-color: rgba(140,140,140,0.082);
+                }
+main.todo-list .li-27 ~ .li-41 > div > button:active {
+                    border-left-color: rgba(140,140,140,0.083);
+                    border-right-color: rgba(140,140,140,0.083);
+                }
+.just-span .li-36 ~ li > .view-42 > *:hover {
+                    column-rule-color: rgba(140,140,140,0.084);
+                    outline-color: rgba(140,140,140,0.084);
+                }
+.todoapp.footer li ~ .li-42 > .view-42 > button:focus {
+                    border-color: rgba(140,140,140,0.085);
+                    column-rule-color: rgba(140,140,140,0.085);
+                }
+main.todo-list > ul li ~ li > .view-43 .toggle:hover {
+                    text-decoration-color: rgba(140,140,140,0.086);
+                    outline-color: rgba(140,140,140,0.086);
+                }
+*.todo-list * ~ * > .view-43 > button:hover {
+                    column-rule-color: rgba(140,140,140,0.087);
+                    accent-color: rgba(140,140,140,0.087);
+                }
+.just-span .toggle:hover {
+                    border-color: rgba(140,140,140,0.088);
+                    border-top-color: rgba(140,140,140,0.088);
+                }
+main.todo-list .li-18 ~ .li-44 > * > .destroy:hover {
+                    border-bottom-color: rgba(140,140,140,0.089);
+                    border-right-color: rgba(140,140,140,0.089);
+                }
+.just-span li ~ li > .view-45 > .toggle:hover {
+                    column-rule-color: rgba(140,140,140,0.09);
+                    border-bottom-color: rgba(140,140,140,0.09);
+                }
+.todoholder.info .li-37 ~ .li-45 > div > button:hover {
+                    border-right-color: rgba(140,140,140,0.091);
+                    column-rule-color: rgba(140,140,140,0.091);
+                }
+.just-span > div .header ~ .main > .todo-list .toggle:active {
+                    text-decoration-color: rgba(140,140,140,0.092);
+                    border-right-color: rgba(140,140,140,0.092);
+                }
+section.header > main div ~ * > .li-46 > div > .destroy:hover {
+                    accent-color: rgba(140,140,140,0.093);
+                    text-decoration-color: rgba(140,140,140,0.093);
+                }
+.main.todo-list .li-29 ~ li > .view-47 > .toggle:focus {
+                    border-right-color: rgba(140,140,140,0.094);
+                    accent-color: rgba(140,140,140,0.094);
+                }
+.todoapp.header > .main div ~ .todo-list > .li-47 > .view-47 > *:hover {
+                    column-rule-color: rgba(140,140,140,0.095);
+                    border-color: rgba(140,140,140,0.095);
+                }
+*.footer > main div ~ ul > li > .view-48 > .toggle:hover {
+                    border-bottom-color: rgba(140,140,140,0.096);
+                    text-decoration-color: rgba(140,140,140,0.096);
+                }
+.just-span .li-18 ~ li > .view-48 > .destroy:focus {
+                    border-right-color: rgba(140,140,140,0.097);
+                    border-bottom-color: rgba(140,140,140,0.097);
+                }
+.todoapp.footer > .main .toggle-all-container ~ ul > li > .view-49 > .toggle:focus {
+                    outline-color: rgba(140,140,140,0.098);
+                    border-right-color: rgba(140,140,140,0.098);
+                }
+*.li-85 li ~ li > div > .destroy:active {
+                    border-left-color: rgba(140,140,140,0.099);
+                    outline-color: rgba(140,140,140,0.099);
+                }
+.just-span li ~ .li-50 > .view-50 > *:hover {
+                    column-rule-color: rgba(140,140,140,0.1);
+                    border-bottom-color: rgba(140,140,140,0.1);
+                }
+.todoholder.info .li-0 ~ .li-50 > .view-50 > button:active {
+                    outline-color: rgba(140,140,140,0.101);
+                    border-top-color: rgba(140,140,140,0.101);
+                }
+section.footer > .main div ~ ul > li .toggle:active {
+                    border-bottom-color: rgba(140,140,140,0.102);
+                    border-left-color: rgba(140,140,140,0.102);
+                }
+.main.todo-list .li-38 ~ li > * > button:hover {
+                    accent-color: rgba(140,140,140,0.103);
+                    border-color: rgba(140,140,140,0.103);
+                }
+.just-span > div header ~ main > .todo-list .toggle:hover {
+                    outline-color: rgba(140,140,140,0.104);
+                    border-left-color: rgba(140,140,140,0.104);
+                }
+.todoapp.footer > .main .toggle-all-container ~ .todo-list > .li-52 > * > *:hover {
+                    border-bottom-color: rgba(140,140,140,0.105);
+                    outline-color: rgba(140,140,140,0.105);
+                }
+section.footer > main div ~ .todo-list > .li-53 > .view-53 > input:hover {
+                    text-decoration-color: rgba(140,140,140,0.106);
+                    column-rule-color: rgba(140,140,140,0.106);
+                }
+.todoholder.info .li-30 ~ .li-53 > .view-53 > button:hover {
+                    accent-color: rgba(140,140,140,0.107);
+                    border-top-color: rgba(140,140,140,0.107);
+                }
+.todoapp.footer > main .toggle-all-container ~ .todo-list > .li-54 input:hover {
+                    column-rule-color: rgba(140,140,140,0.108);
+                    border-left-color: rgba(140,140,140,0.108);
+                }
+.todoapp.header * ~ li > div > .destroy:hover {
+                    border-top-color: rgba(140,140,140,0.109);
+                    text-decoration-color: rgba(140,140,140,0.109);
+                }
+.just-span input:hover {
+                    border-left-color: rgba(140,140,140,0.11);
+                    outline-color: rgba(140,140,140,0.11);
+                }
+.main.todo-list .li-23 ~ .li-55 > .view-55 > button:focus {
+                    border-right-color: rgba(140,140,140,0.111);
+                    border-left-color: rgba(140,140,140,0.111);
+                }
+ul.li-53 .li-26 ~ .li-56 > .view-56 > input:hover {
+                    accent-color: rgba(140,140,140,0.112);
+                    border-right-color: rgba(140,140,140,0.112);
+                }
+.todoapp.main > .main .toggle-all-container ~ ul > .li-56 > div > button:hover {
+                    border-top-color: rgba(140,140,140,0.113);
+                    accent-color: rgba(140,140,140,0.113);
+                }
+.just-span > * > .todoapp input:hover {
+                    border-bottom-color: rgba(140,140,140,0.114);
+                    border-top-color: rgba(140,140,140,0.114);
+                }
+.todoapp.footer > main .toggle-all-container ~ .todo-list > .li-57 > * > .destroy:focus {
+                    border-left-color: rgba(140,140,140,0.115);
+                    border-bottom-color: rgba(140,140,140,0.115);
+                }
+.just-span > .todoholder > .todoapp > .main *:hover {
+                    column-rule-color: rgba(140,140,140,0.116);
+                    border-color: rgba(140,140,140,0.116);
+                }
+.todoapp.main > .main div ~ ul > .li-58 > .view-58 > .destroy:hover {
+                    text-decoration-color: rgba(140,140,140,0.117);
+                    accent-color: rgba(140,140,140,0.117);
+                }
+.just-span > .todoholder input:focus {
+                    border-color: rgba(140,140,140,0.118);
+                    text-decoration-color: rgba(140,140,140,0.118);
+                }
+*.header > .main .toggle-all-container ~ .todo-list > .li-59 > div > button:focus {
+                    column-rule-color: rgba(140,140,140,0.119);
+                    outline-color: rgba(140,140,140,0.119);
+                }
+.main.todo-list .li-38 ~ .li-60 > .view-60 > .toggle:active {
+                    border-bottom-color: rgba(140,140,140,0.12);
+                    border-right-color: rgba(140,140,140,0.12);
+                }
+section.main > .main .toggle-all-container ~ .todo-list > .li-60 > div > button:hover {
+                    accent-color: rgba(140,140,140,0.121);
+                    border-bottom-color: rgba(140,140,140,0.121);
+                }
+section.footer > .main div ~ ul > .li-61 > .view-61 > .toggle:hover {
+                    outline-color: rgba(140,140,140,0.122);
+                    text-decoration-color: rgba(140,140,140,0.122);
+                }
+.todo-list.li-13 * ~ .li-61 > div > *:focus {
+                    border-color: rgba(140,140,140,0.123);
+                    outline-color: rgba(140,140,140,0.123);
+                }
+.just-span > .todoholder > section > * .toggle:active {
+                    accent-color: rgba(140,140,140,0.124);
+                    border-color: rgba(140,140,140,0.124);
+                }
+.todoapp.main > .main .toggle-all-container ~ ul > .li-62 > div > *:focus {
+                    text-decoration-color: rgba(140,140,140,0.125);
+                    border-left-color: rgba(140,140,140,0.125);
+                }
+*.main > main .toggle-all-container ~ .todo-list > li > div > input:hover {
+                    outline-color: rgba(140,140,140,0.126);
+                    text-decoration-color: rgba(140,140,140,0.126);
+                }
+ul.li-53 .li-2 ~ .li-63 > .view-63 > button:active {
+                    border-top-color: rgba(140,140,140,0.127);
+                    border-bottom-color: rgba(140,140,140,0.127);
+                }
+.just-span > div > section input:active {
+                    border-left-color: rgba(140,140,140,0.128);
+                    border-top-color: rgba(140,140,140,0.128);
+                }
+.just-span * ~ .li-64 > div > .destroy:focus {
+                    border-right-color: rgba(140,140,140,0.129);
+                    border-color: rgba(140,140,140,0.129);
+                }
+.todoapp.main > main .toggle-all-container ~ .todo-list > li > div > input:hover {
+                    text-decoration-color: rgba(140,140,140,0.13);
+                    border-right-color: rgba(140,140,140,0.13);
+                }
+.todoholder.info li ~ .li-65 > div > button:focus {
+                    border-color: rgba(140,140,140,0.131);
+                    column-rule-color: rgba(140,140,140,0.131);
+                }
+.todoapp.header > * .toggle-all-container ~ ul > li input:active {
+                    accent-color: rgba(140,140,140,0.132);
+                    border-bottom-color: rgba(140,140,140,0.132);
+                }
+.just-span .li-32 ~ .li-66 > div > button:hover {
+                    border-left-color: rgba(140,140,140,0.133);
+                    accent-color: rgba(140,140,140,0.133);
+                }
+.main.todo-list .toggle-all-container ~ ul .toggle:hover {
+                    column-rule-color: rgba(140,140,140,0.134);
+                    border-right-color: rgba(140,140,140,0.134);
+                }
+.todoapp.header > main div ~ ul > .li-67 > .view-67 > .destroy:focus {
+                    border-bottom-color: rgba(140,140,140,0.135);
+                    column-rule-color: rgba(140,140,140,0.135);
+                }
+div.info > .todoapp .li-58 ~ li > .view-68 input:hover {
+                    border-left-color: rgba(140,140,140,0.136);
+                    border-bottom-color: rgba(140,140,140,0.136);
+                }
+*.todo-list .li-10 ~ .li-68 > .view-68 > .destroy:focus {
+                    border-right-color: rgba(140,140,140,0.137);
+                    border-left-color: rgba(140,140,140,0.137);
+                }
+.main.todo-list .li-9 ~ * > .view-69 > .toggle:focus {
+                    border-color: rgba(140,140,140,0.138);
+                    border-right-color: rgba(140,140,140,0.138);
+                }
+.todoapp.header > .main div ~ .todo-list > .li-69 > div > button:focus {
+                    outline-color: rgba(140,140,140,0.139);
+                    border-color: rgba(140,140,140,0.139);
+                }
+.todoapp.main > .main .toggle-all-container ~ ul > .li-70 > .view-70 > .toggle:active {
+                    accent-color: rgba(140,140,140,0.14);
+                    outline-color: rgba(140,140,140,0.14);
+                }
+.just-span .li-6 ~ .li-70 > * > button:active {
+                    border-bottom-color: rgba(140,140,140,0.141);
+                    column-rule-color: rgba(140,140,140,0.141);
+                }
+section.footer > main div ~ ul > .li-71 > .view-71 > input:focus {
+                    border-right-color: rgba(140,140,140,0.142);
+                    border-color: rgba(140,140,140,0.142);
+                }
+main.todo-list .li-0 ~ * > .view-71 > .destroy:active {
+                    outline-color: rgba(140,140,140,0.143);
+                    border-right-color: rgba(140,140,140,0.143);
+                }
+.todoholder.info li ~ .li-72 > div > .toggle:active {
+                    border-top-color: rgba(140,140,140,0.144);
+                    outline-color: rgba(140,140,140,0.144);
+                }
+.todoapp.header > .main * ~ ul > .li-72 > .view-72 > .destroy:active {
+                    column-rule-color: rgba(140,140,140,0.145);
+                    border-top-color: rgba(140,140,140,0.145);
+                }
+section.header > * .toggle-all-container ~ ul > .li-73 > * > .toggle:active {
+                    outline-color: rgba(140,140,140,0.146);
+                    border-left-color: rgba(140,140,140,0.146);
+                }
+div.info li ~ .li-73 > div > .destroy:focus {
+                    accent-color: rgba(140,140,140,0.147);
+                    outline-color: rgba(140,140,140,0.147);
+                }
+.just-span > .todoholder input:hover {
+                    column-rule-color: rgba(140,140,140,0.148);
+                    border-right-color: rgba(140,140,140,0.148);
+                }
+*.header > main div ~ ul > .li-74 > div > button:hover {
+                    border-top-color: rgba(140,140,140,0.149);
+                    border-color: rgba(140,140,140,0.149);
+                }
+.just-span > .todoholder header ~ * > ul .toggle:active {
+                    border-bottom-color: rgba(140,140,140,0.15);
+                    accent-color: rgba(140,140,140,0.15);
+                }
+section.footer > .main .toggle-all-container ~ ul > .li-75 > .view-75 > button:focus {
+                    column-rule-color: rgba(140,140,140,0.151);
+                    border-left-color: rgba(140,140,140,0.151);
+                }
+.just-span .li-58 ~ .li-76 > .view-76 .toggle:focus {
+                    accent-color: rgba(140,140,140,0.152);
+                    column-rule-color: rgba(140,140,140,0.152);
+                }
+.just-span .li-70 ~ * > div > .destroy:active {
+                    border-top-color: rgba(140,140,140,0.153);
+                    accent-color: rgba(140,140,140,0.153);
+                }
+*.footer > main div ~ .todo-list > .li-77 > .view-77 > .toggle:active {
+                    border-right-color: rgba(140,140,140,0.154);
+                    outline-color: rgba(140,140,140,0.154);
+                }
+ul.li-53 .li-64 ~ .li-77 > .view-77 > .destroy:active {
+                    border-top-color: rgba(140,140,140,0.155);
+                    border-left-color: rgba(140,140,140,0.155);
+                }
+.just-span header ~ .main > .todo-list .toggle:focus {
+                    border-color: rgba(140,140,140,0.156);
+                    border-top-color: rgba(140,140,140,0.156);
+                }
+.todo-list.li-21 .li-74 ~ * > .view-78 > button:focus {
+                    border-right-color: rgba(140,140,140,0.157);
+                    border-color: rgba(140,140,140,0.157);
+                }
+.todoapp.footer > .main li ~ .li-79 > * input:active {
+                    column-rule-color: rgba(140,140,140,0.158);
+                    border-bottom-color: rgba(140,140,140,0.158);
+                }
+.todoapp.header li ~ li > .view-79 > *:hover {
+                    outline-color: rgba(140,140,140,0.159);
+                    column-rule-color: rgba(140,140,140,0.159);
+                }
+.just-span > div > section > .main .toggle:hover {
+                    border-color: rgba(140,140,140,0.16);
+                    outline-color: rgba(140,140,140,0.16);
+                }
+.todoapp.main > main div ~ .todo-list > .li-80 > .view-80 > button:hover {
+                    column-rule-color: rgba(140,140,140,0.161);
+                    border-top-color: rgba(140,140,140,0.161);
+                }
+*.li-35 > li > .view-81 input:active {
+                    border-right-color: rgba(140,140,140,0.162);
+                    border-left-color: rgba(140,140,140,0.162);
+                }
+.just-span * ~ li > .view-81 > button:hover {
+                    border-color: rgba(140,140,140,0.163);
+                    border-right-color: rgba(140,140,140,0.163);
+                }
+.just-span .toggle:hover {
+                    border-top-color: rgba(140,140,140,0.164);
+                    border-color: rgba(140,140,140,0.164);
+                }
+*.info .li-34 ~ li > .view-82 > .destroy:active {
+                    border-bottom-color: rgba(140,140,140,0.165);
+                    column-rule-color: rgba(140,140,140,0.165);
+                }
+.just-span > div *:active {
+                    accent-color: rgba(140,140,140,0.166);
+                    border-bottom-color: rgba(140,140,140,0.166);
+                }
+section.main > .main .toggle-all-container ~ * > .li-83 > .view-83 > button:active {
+                    border-left-color: rgba(140,140,140,0.167);
+                    accent-color: rgba(140,140,140,0.167);
+                }
+.todoapp.header > .main .toggle-all-container ~ .todo-list > .li-84 > .view-84 > .toggle:active {
+                    outline-color: rgba(140,140,140,0.168);
+                    column-rule-color: rgba(140,140,140,0.168);
+                }
+.main.todo-list .li-30 ~ .li-84 > * > button:hover {
+                    border-top-color: rgba(140,140,140,0.169);
+                    border-bottom-color: rgba(140,140,140,0.169);
+                }
+div.info > section * ~ li > .view-85 .toggle:focus {
+                    border-left-color: rgba(140,140,140,0.17);
+                    border-top-color: rgba(140,140,140,0.17);
+                }
+.todo-list.li-21 .li-73 ~ .li-85 > .view-85 > .destroy:hover {
+                    outline-color: rgba(140,140,140,0.171);
+                    border-left-color: rgba(140,140,140,0.171);
+                }
+.just-span input:active {
+                    text-decoration-color: rgba(140,140,140,0.172);
+                    border-bottom-color: rgba(140,140,140,0.172);
+                }
+.todoholder.info .li-80 ~ li > .view-86 > .destroy:focus {
+                    border-left-color: rgba(140,140,140,0.173);
+                    accent-color: rgba(140,140,140,0.173);
+                }
+.just-span .li-69 ~ .li-87 > div > .toggle:hover {
+                    outline-color: rgba(140,140,140,0.174);
+                    border-left-color: rgba(140,140,140,0.174);
+                }
+.todo-list.li-21 .li-19 ~ .li-87 > .view-87 > .destroy:active {
+                    column-rule-color: rgba(140,140,140,0.175);
+                    border-top-color: rgba(140,140,140,0.175);
+                }
+.todoapp.header > main div ~ .todo-list > li *:active {
+                    border-bottom-color: rgba(140,140,140,0.176);
+                    column-rule-color: rgba(140,140,140,0.176);
+                }
+.todoholder.info .li-42 ~ .li-88 > .view-88 > .destroy:focus {
+                    text-decoration-color: rgba(140,140,140,0.177);
+                    accent-color: rgba(140,140,140,0.177);
+                }
+.todoapp.header > main div ~ .todo-list > .li-89 .toggle:active {
+                    border-top-color: rgba(140,140,140,0.178);
+                    text-decoration-color: rgba(140,140,140,0.178);
+                }
+ul.li-17 .li-12 ~ * > div > button:hover {
+                    border-color: rgba(140,140,140,0.179);
+                    column-rule-color: rgba(140,140,140,0.179);
+                }
+.just-span > div > section input:focus {
+                    border-right-color: rgba(140,140,140,0.18);
+                    outline-color: rgba(140,140,140,0.18);
+                }
+ul.li-17 .li-6 ~ * > .view-90 > .destroy:active {
+                    border-bottom-color: rgba(140,140,140,0.181);
+                    border-right-color: rgba(140,140,140,0.181);
+                }
+.todoholder.info > .todoapp .li-84 ~ li > .view-91 .toggle:active {
+                    border-top-color: rgba(140,140,140,0.182);
+                    border-bottom-color: rgba(140,140,140,0.182);
+                }
+.todo-list.li-25 .li-63 ~ li > .view-91 > .destroy:focus {
+                    border-color: rgba(140,140,140,0.183);
+                    border-top-color: rgba(140,140,140,0.183);
+                }
+.just-span > * > .todoapp *:hover {
+                    border-bottom-color: rgba(140,140,140,0.184);
+                    border-color: rgba(140,140,140,0.184);
+                }
+.todoholder.info .li-2 ~ .li-92 > div > .destroy:hover {
+                    border-left-color: rgba(140,140,140,0.185);
+                    column-rule-color: rgba(140,140,140,0.185);
+                }
+.todoholder.info > section .header ~ .main > * input:hover {
+                    accent-color: rgba(140,140,140,0.186);
+                    border-left-color: rgba(140,140,140,0.186);
+                }
+.todoapp.main .li-75 ~ .li-93 > div > button:hover {
+                    column-rule-color: rgba(140,140,140,0.187);
+                    border-color: rgba(140,140,140,0.187);
+                }
+.just-span > .todoholder > * input:focus {
+                    text-decoration-color: rgba(140,140,140,0.188);
+                    border-bottom-color: rgba(140,140,140,0.188);
+                }
+.main.todo-list .li-30 ~ li > .view-94 > .destroy:active {
+                    accent-color: rgba(140,140,140,0.189);
+                    column-rule-color: rgba(140,140,140,0.189);
+                }
+.just-span > div > .todoapp .toggle:hover {
+                    border-bottom-color: rgba(140,140,140,0.19);
+                    border-right-color: rgba(140,140,140,0.19);
+                }
+.main.todo-list * ~ .li-95 > .view-95 > .destroy:hover {
+                    column-rule-color: rgba(140,140,140,0.191);
+                    text-decoration-color: rgba(140,140,140,0.191);
+                }
+.just-span li ~ .li-96 > div > input:active {
+                    outline-color: rgba(140,140,140,0.192);
+                    accent-color: rgba(140,140,140,0.192);
+                }
+.todo-list.li-53 li ~ li > div > .destroy:focus {
+                    text-decoration-color: rgba(140,140,140,0.193);
+                    border-left-color: rgba(140,140,140,0.193);
+                }
+.todoholder.info .li-12 ~ .li-97 > .view-97 > .toggle:active {
+                    border-color: rgba(140,140,140,0.194);
                     text-decoration-color: rgba(140,140,140,0.194);
                 }
-.just-span .header ~ main .view-97 {
-                    text-decoration-color: rgba(140,140,140,0.195);
+.todoapp.main > .main .toggle-all-container ~ .todo-list > .li-97 > .view-97 > button:hover {
                     border-right-color: rgba(140,140,140,0.195);
+                    border-left-color: rgba(140,140,140,0.195);
                 }
-.just-span > div > section > main .toggle-all-container ~ ul > .li-98-0 {
-                    border-right-color: rgba(140,140,140,0.196);
+.todoapp.main > .main .toggle-all-container ~ * > li > div > input:hover {
+                    outline-color: rgba(140,140,140,0.196);
                     border-top-color: rgba(140,140,140,0.196);
                 }
-.just-span .header ~ .main div {
-                    border-color: rgba(140,140,140,0.197);
+.todoholder.info li ~ .li-98 > div > button:focus {
+                    border-bottom-color: rgba(140,140,140,0.197);
                     outline-color: rgba(140,140,140,0.197);
                 }
-.just-span > .todoholder > section .li-99-0 {
+.just-span * ~ .li-99 > div > .toggle:focus {
+                    border-color: rgba(140,140,140,0.198);
                     column-rule-color: rgba(140,140,140,0.198);
-                    border-top-color: rgba(140,140,140,0.198);
                 }
-.just-span > .todoholder > * > .main .view-99 {
-                    border-top-color: rgba(140,140,140,0.199);
+.todo-list.li-61 .li-4 ~ .li-99 > * > .destroy:focus {
                     outline-color: rgba(140,140,140,0.199);
+                    accent-color: rgba(140,140,140,0.199);
                 }
