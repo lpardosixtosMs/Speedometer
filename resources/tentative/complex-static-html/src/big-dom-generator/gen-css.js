@@ -45,12 +45,12 @@ const html = `
                     <button class="clear-completed">Clear completed</button>
                 </footer>
             </section>
-        <footer class="info">
-          <p>Click on input field to write your todo.</p>
-          <p>At least two characters are needed to be a valid entry.</p>
-          <p>Press 'enter' to add the todo.</p>
-          <p>Double-click to edit a todo</p>
-        </footer>
+            <footer class="info">
+            <p>Click on input field to write your todo.</p>
+            <p>At least two characters are needed to be a valid entry.</p>
+            <p>Press 'enter' to add the todo.</p>
+            <p>Double-click to edit a todo</p>
+            </footer>
       </div>
     </div>`;
 
@@ -89,17 +89,16 @@ const addTodoItems = (NUM_TODOS_TO_INSERT_IN_HTML) => {
 };
 
 const getClassname = (element) => {
-    if (!element) {
+    if (!element)
         return "";
-    }
+
     const classList = Array.from(element.classList);
-    if (classList.length === 1) {
+    if (classList.length === 1)
         return `.${classList[0]}`;
-    } else if (classList.length > 1) {
+    else if (classList.length > 1)
         return `.${random.choice(classList)}`;
-    } else {
+    else
         return "";
-    }
 };
 
 const getElementType = (element) => {
@@ -116,13 +115,13 @@ const getElementAtDepth = (combinator, element, currentDepth, depth) => {
 };
 
 const getRandomElement = (combinator, element) => {
-    if (combinator === Combinator.CHILD) {
+    if (combinator === Combinator.CHILD)
         return element;
-    } else if (combinator === Combinator.ADJACENT_SIBLING) {
+    else if (combinator === Combinator.ADJACENT_SIBLING)
         return element.previousElementSibling;
-    } else if (combinator === Combinator.GENERAL_SIBLING) {
+    else if (combinator === Combinator.GENERAL_SIBLING)
         return getRandomSiblingElementBefore(element);
-    }
+
     return element;
 };
 
@@ -163,7 +162,6 @@ const randomWeighted = (options, probs) => {
     let accumProb = 0;
     for (let i = 0; i < probs.length; i++) {
         accumProb += probs[i];
-        // prettier-ignore
         if (randNum <= accumProb)
             return options[i];
     }
@@ -171,14 +169,11 @@ const randomWeighted = (options, probs) => {
 };
 
 const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) => {
-    // prettier-ignore
     if (selLen >= maxLen)
         return "";
 
-    // Get a random selector for the element.
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
     const selector = getSelector(element);
-    // prettier-ignore
     if (!depth)
         return `${selector}${oldCombinator}`;
 
@@ -189,14 +184,12 @@ const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) =>
     const nextDepth = getNextDepth(combinator, depth);
     const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
 
-    // Recurse with the next element and depth, and append the selector and old combinator.
     return buildMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, maxLen) + selector + oldCombinator;
 };
 
 const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSelector) => {
-    // prettier-ignore
     if (!depth)
-        return `.just-span${ oldCombinator}`;
+        return `.just-span${oldCombinator}`;
 
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
     const selector = getSelector(element);
@@ -208,28 +201,26 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSele
     const children = Array.from(element.parentElement.children);
     const index = children.indexOf(element);
 
-    // Otherwise, recurse.
     const combinator = chooseCombinator(depth, index);
     const nextDepth = getNextDepth(combinator, depth);
     const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
 
-    // Recurse with the next element and depth, and append the selector and old combinator.
     return buildNonMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, badSelector) + selector + oldCombinator;
 };
 
 const getRandomPseudoClass = (element) => {
-    if (element.tagName === "INPUT" || element.tagName === "BUTTON") {
+    if (element.tagName === "INPUT" || element.tagName === "BUTTON")
         return random.choice(cssPseudoClasses);
-    }
+
     return "";
 };
 
 const getInitialDepth = (element) => {
-    if (element.tagName === "INPUT" || element.tagName === "BUTTON") {
+    if (element.tagName === "INPUT" || element.tagName === "BUTTON")
         return 7;
-    } else if (element.tagName === "DIV") {
+    else if (element.tagName === "DIV")
         return 6;
-    }
+
     return 5;
 };
 
@@ -247,14 +238,12 @@ const generateCssRules = (selectors) => {
     });
 };
 
-// Generates CSS rules for matching and non-matching selectors.
 export const genCss = () => {
     const matchingSelectors = [];
     const nonMatchingSelectors = [];
     addTodoItems(NUM_TODOS_TO_INSERT_IN_HTML);
     const elements = document.querySelectorAll(".main li");
 
-    // Generate matching and non-matching selectors for each element.
     elements.forEach((element) => {
         const chooseFrom = [element, element.firstChild, element.firstChild.firstChild, element.firstChild.lastChild];
         // Add `.targeted` to the matching selectors to match only the todoMVC items.
