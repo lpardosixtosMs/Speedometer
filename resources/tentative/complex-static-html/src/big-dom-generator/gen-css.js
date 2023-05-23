@@ -132,6 +132,7 @@ const randomWeighted = (options, probs) => {
     let accumProb = 0;
     for (let i = 0; i < probs.length; i++) {
         accumProb += probs[i];
+        // prettier-ignore
         if (randNum <= accumProb)
             return options[i];
     }
@@ -139,11 +140,14 @@ const randomWeighted = (options, probs) => {
 };
 
 const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) => {
+    // prettier-ignore
     if (selLen >= maxLen)
         return "";
 
+    // Get a random selector for the element.
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
     const selector = getSelector(element);
+    // prettier-ignore
     if (!depth)
         return `${selector}${oldCombinator}`;
 
@@ -154,12 +158,14 @@ const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) =>
     const nextDepth = getNextDepth(combinator, depth);
     const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
 
+    // Recurse with the next element and depth, and append the selector and old combinator.
     return buildMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, maxLen) + selector + oldCombinator;
 };
 
 const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSelector) => {
+    // prettier-ignore
     if (!depth)
-        return `.just-span${oldCombinator}`;
+        return `.just-span${ oldCombinator}`;
 
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
     const selector = getSelector(element);
@@ -171,10 +177,12 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSele
     const children = Array.from(element.parentElement.children);
     const index = children.indexOf(element);
 
+    // Otherwise, recurse.
     const combinator = chooseCombinator(depth, index);
     const nextDepth = getNextDepth(combinator, depth);
     const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
 
+    // Recurse with the next element and depth, and append the selector and old combinator.
     return buildNonMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, badSelector) + selector + oldCombinator;
 };
 
@@ -203,12 +211,14 @@ const generateCssRules = (selectors) => {
     });
 };
 
+// Generates CSS rules for matching and non-matching selectors.
 export const genCss = () => {
     const matchingSelectors = [];
     const nonMatchingSelectors = [];
     addTodoItems(NUM_TODOS_TO_INSERT_IN_HTML);
     const elements = document.querySelectorAll(".main li");
 
+    // Generate matching and non-matching selectors for each element.
     elements.forEach((element) => {
         const chooseFrom = [element, element.firstChild];
         random.shuffle(chooseFrom, true);
