@@ -16,12 +16,12 @@ module.exports = (env) => {
         plugins: [
             new CopyPlugin({
                 patterns: [
-                    { from: "../../big-dom-generator/generator-dist/logo.png", to: "." },
+                    { from: "../../big-dom-generator/dist/logo.png", to: "." },
                 ],
             }),
             new HtmlWebpackPlugin({
                 title: env.embedded ? "Production Embedded" : "Production",
-                template: env.embedded ? "../../big-dom-generator/generator-dist/index.html" : "public/index.html",
+                template: env.embedded ? "../../big-dom-generator/dist/index.html" : "public/index.html",
             }),
             new MiniCssExtractPlugin({
                 filename: "[name].css",
