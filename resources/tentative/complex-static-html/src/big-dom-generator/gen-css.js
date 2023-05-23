@@ -55,11 +55,11 @@ const addTodoItems = (NUM_TODOS_TO_INSERT_IN_HTML) => {
 
     for (let i = 0; i < NUM_TODOS_TO_INSERT_IN_HTML; i++) {
         const li = document.createElement("li");
-        li.className = `li-${i} targeted`;
+        li.className = `li-${i}`;
         li.setAttribute("data-testid", "todo-item");
 
         const div = document.createElement("div");
-        div.className = `view-${i} targeted`;
+        div.className = `view-${i}`;
 
         li.appendChild(div);
         todoList.appendChild(li);
@@ -187,15 +187,7 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSele
 };
 
 const getInitialDepth = (element) => {
-    switch (element.tagName) {
-        case "INPUT":
-        case "BUTTON":
-            return 7;
-        case "DIV":
-            return 6;
-        default:
-            return 5;
-    }
+    return element.tagName === "DIV" ? 6 : 5;
 };
 
 const cssProperties = ["accent-color", "border-bottom-color", "border-color", "border-left-color", "border-right-color", "border-top-color", "column-rule-color", "outline-color", "text-decoration-color"];
@@ -212,6 +204,8 @@ const generateCssRules = (selectors) => {
 };
 
 // Generates CSS rules for matching and non-matching selectors.
+const TARGETED_CLASS = ".targeted";
+
 export const genCss = () => {
     const matchingSelectors = [];
     const nonMatchingSelectors = [];
@@ -222,9 +216,9 @@ export const genCss = () => {
     elements.forEach((element) => {
         const chooseFrom = [element, element.firstChild];
         random.shuffle(chooseFrom, true);
-        // Add `.targeted` to the matching selectors to match only the todoMVC items.
-        matchingSelectors.push(`${buildMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}.targeted`);
-        matchingSelectors.push(`${buildMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}.targeted`);
+        // Add `TARGETED_CLASS` to the matching selectors to match only the todoMVC items.
+        matchingSelectors.push(`${buildMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${TARGETED_CLASS}`);
+        matchingSelectors.push(`${buildMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${TARGETED_CLASS}`);
         nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
         nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
     });
