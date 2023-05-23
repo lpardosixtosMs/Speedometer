@@ -227,5 +227,6 @@ export const genCss = () => {
     const nonMatchingCssRules = generateCssRules(nonMatchingSelectors);
 
     const allCssRules = matchingCssRules.concat(nonMatchingCssRules);
+    random.shuffle(allCssRules, true);
     return allCssRules.join("\n");
 };
