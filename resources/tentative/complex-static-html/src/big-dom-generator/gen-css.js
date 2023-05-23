@@ -1,38 +1,9 @@
-import { LCG } from "random-seedable";
 import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML } from "./params.js";
+import { LCG } from "random-seedable";
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
 const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
-
-import { JSDOM } from "jsdom";
-import React from "react";
-import ReactDOMServer from "react-dom/server";
-import { MemoryRouter, Routes, Route } from "react-router-dom";
-import { App } from "../big-dom-generator/app";
-import { App as TodoApp } from "../react-todomvc/todo/app";
-
-const bigDomHtml = ReactDOMServer.renderToStaticMarkup(<App />);
-const dom = new JSDOM(bigDomHtml);
-const { document } = dom.window;
-
-const todoAppHtml = ReactDOMServer.renderToStaticMarkup(
-    <div className="todoHolder">
-        <section className="todoapp" id="root">
-            <MemoryRouter>
-                <Routes>
-                    <Route path="*" element={<TodoApp />} />
-                </Routes>
-            </MemoryRouter>
-        </section>
-        <footer className="info">
-            <p>Click on input field to write your todo.</p>
-            <p>At least two characters are needed to be a valid entry.</p>
-            <p>Press 'enter' to add the todo.</p>
-            <p>Double-click to edit a todo</p>
-        </footer>
-    </div>
-);
-
-document.querySelector(".todo-area").innerHTML = todoAppHtml;
 
 const Combinator = {
     DESCENDANT: " ",
@@ -40,6 +11,51 @@ const Combinator = {
     ADJACENT_SIBLING: " + ",
     GENERAL_SIBLING: " ~ ",
 };
+
+const html = `
+    <div class="main-ui">
+        <div class="show-more"/>
+        <div class="top-bar"/>
+        <div class="ribbon"/>
+        <div class="tree-area"/>
+        <div class="todo-area"/>
+        <div class="todoholder">
+            <section class="todoapp">
+                <header class="header" data-testid="header">
+                    <h1>todos</h1>
+                    <div class="input-container">
+                    <input class="new-todo" id="todo-input" type="text" data-testid="text-input" placeholder="What needs to be done?" value="">
+                    <label class="visually-hidden" for="todo-input">New Todo Input</label>
+                    </div>
+                </header>
+                <main class="main" data-testid="main">
+                    <div class="toggle-all-container">
+                    <input class="toggle-all" type="checkbox" data-testid="toggle-all">
+                    <label class="toggle-all-label" for="toggle-all">Toggle All Input</label>
+                    </div>
+                    <ul class="todo-list" data-testid="todo-list"></ul/>
+                </main>
+                <footer class="footer" data-testid="footer">
+                    <span class="todo-count">0 items left!</span>
+                    <ul class="filters" data-testid="footer-navigation">
+                    <li><a class="selected" href="#/">All</a></li>
+                    <li><a class="" href="#/active">Active</a></li>
+                    <li><a class="" href="#/completed">Completed</a></li>
+                    </ul>
+                    <button class="clear-completed">Clear completed</button>
+                </footer>
+            </section>
+            <footer class="info">
+            <p>Click on input field to write your todo.</p>
+            <p>At least two characters are needed to be a valid entry.</p>
+            <p>Press 'enter' to add the todo.</p>
+            <p>Double-click to edit a todo</p>
+            </footer>
+      </div>
+    </div>`;
+
+const dom = new JSDOM(html);
+const { document } = dom.window;
 
 const addTodoItems = (NUM_TODOS_TO_INSERT_IN_HTML) => {
     const todoList = document.querySelector(".todo-list");
