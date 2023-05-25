@@ -13,9 +13,8 @@ const filesToMove = [
     "../node_modules/todomvc-common/base.css",
     "../node_modules/todomvc-app-css/index.css",
     "../node_modules/jquery/dist/jquery.min.js",
-    "../node_modules/underscore/underscore-min.js",
-    "../node_modules/backbone/backbone-min.js",
-    "../node_modules/backbone/backbone-min.js.map",
+    "../node_modules/handlebars/dist/handlebars.min.js",
+    "../node_modules/director/build/director.min.js",
     "../../../big-dom-generator/dist/app.css",
     "../../../big-dom-generator/public/layout.css",
     "../../../big-dom-generator/generated.css",
@@ -50,7 +49,7 @@ async function build() {
     // remove base paths from files to move
     for (let i = 0; i < filesToMove.length; i++) {
         const fileName = filesToMove[i].split("/").pop();
-        if (i <= 5)
+        if (i < 5)
             todoHtml = todoHtml.replace(filesToMove[i].replace("../", ""), fileName);
         else
             todoHtml = todoHtml.replace(filesToMove[i], fileName);
