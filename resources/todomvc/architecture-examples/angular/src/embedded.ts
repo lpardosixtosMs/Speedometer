@@ -2,6 +2,10 @@ import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 
 import { AppModule } from "./app/app.module";
 
+import "../../../big-dom-generator/dist/app.css";
+import "../../../big-dom-generator/public/layout.css";
+import "../../../big-dom-generator/generated.css";
+
 const divElement = document.createElement("div");
 divElement.className = "todoholder";
 const todoArea = document.querySelector(".todo-area");
