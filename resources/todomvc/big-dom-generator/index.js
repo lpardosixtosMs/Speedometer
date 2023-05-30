@@ -8,15 +8,15 @@ import "./src/app.css";
 const fs = require("fs");
 
 const randomCss = genCss();
-fs.writeFileSync("./generated.css", randomCss);
+fs.writeFileSync("./matchingCss.css", randomCss.matchingCss);
+fs.writeFileSync("./nonMatchingCss.css", randomCss.nonMatchingCss);
 
 const html = `<!DOCTYPE html>
-<html lang="en" class="ui spectrum spectrum--medium spectrum--light">
+<html lang="en" class="spectrum spectrum--medium spectrum--light">
   <head>
     <title>Big Todo App</title>
-    <link rel="stylesheet" href="app.css">
   </head>
-  <body class="ui">
+  <body>
     ${renderToStaticMarkup(<App />)}
   </body>
 </html>`;
