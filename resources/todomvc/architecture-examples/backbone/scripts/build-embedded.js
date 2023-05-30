@@ -18,7 +18,8 @@ const filesToMove = [
     "../node_modules/backbone/backbone-min.js.map",
     "../../../big-dom-generator/dist/app.css",
     "../../../big-dom-generator/public/layout.css",
-    "../../../big-dom-generator/generated.css",
+    "../../../big-dom-generator/matchingCss.css",
+    "../../../big-dom-generator/nonMatchingCss.css",
     "../../../big-dom-generator/dist/logo.png",
 ];
 
