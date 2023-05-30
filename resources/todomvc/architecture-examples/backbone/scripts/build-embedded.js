@@ -95,11 +95,17 @@ async function build() {
     layoutLink.href = "layout.css";
     head.appendChild(layoutLink);
 
-    // create a link for the generated.css and append it to the head
-    const generatedLink = doc.createElement("link");
-    generatedLink.rel = "stylesheet";
-    generatedLink.href = "generated.css";
-    head.appendChild(generatedLink);
+    // create a link for the matchingCss.css and append it to the head
+    const matchingCssGeneratedLink = doc.createElement("link");
+    matchingCssGeneratedLink.rel = "stylesheet";
+    matchingCssGeneratedLink.href = "matchingCss.css";
+    head.appendChild(matchingCssGeneratedLink);
+
+    // create a link for the nonMatchingCss.css and append it to the head
+    const nonMatchingCssGeneratedLink = doc.createElement("link");
+    nonMatchingCssGeneratedLink.rel = "stylesheet";
+    nonMatchingCssGeneratedLink.href = "nonMatchingCss.css";
+    head.appendChild(nonMatchingCssGeneratedLink);
 
     // find the location to insert the todo.html contents
     const todoArea = doc.querySelector(".todo-area");
