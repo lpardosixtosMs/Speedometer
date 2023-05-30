@@ -7,7 +7,8 @@ import { App } from "./todo/app";
 import "../../../big-dom-generator/dist/app.css";
 import "todomvc-app-css/index.css";
 import "../../../big-dom-generator/public/layout.css";
-import "../../../big-dom-generator/generated.css";
+import "../../../big-dom-generator/matchingCss.css";
+import "../../../big-dom-generator/nonMatchingCss.css";
 
 const todoHolder = document.createElement("div");
 todoHolder.className = "todoholder";
