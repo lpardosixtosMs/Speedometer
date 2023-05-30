@@ -89,6 +89,12 @@ async function build() {
     for (const link of todoLinks)
         head.appendChild(link.cloneNode(true));
 
+    // create a link for app.css and append it to the head
+    const appLink = doc.createElement("link");
+    appLink.rel = "stylesheet";
+    appLink.href = "app.css";
+    head.appendChild(appLink);
+
     // create a link for layout.css and append it to the head
     const layoutLink = doc.createElement("link");
     layoutLink.rel = "stylesheet";
