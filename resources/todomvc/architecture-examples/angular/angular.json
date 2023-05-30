@@ -51,7 +51,7 @@
                         },
                         "embedded": {
                             "outputPath": "embedded-dist",
-                            "index": "src/embedded-index.html",
+                            "index": "src/embedded/index.html",
                             "main": "src/embedded.ts",
                             "assets": ["src/favicon.ico", "src/assets", "src/logo.png"],
                             "styles": ["src/styles.css", "node_modules/todomvc-common/base.css", "node_modules/todomvc-app-css/index.css", "../../big-dom-generator/dist/app.css", "../../big-dom-generator/public/layout.css", "../../big-dom-generator/generated.css"],
