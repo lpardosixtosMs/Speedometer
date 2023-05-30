@@ -13,8 +13,6 @@ Suites.enable = function (names) {
     });
 };
 
-// local
-
 Suites.push({
     name: "TodoMVC-JavaScript-ES5",
     url: "todomvc/vanilla-examples/javascript-es5/dist/index.html",
@@ -217,7 +215,7 @@ Suites.push({
 });
 
 Suites.push({
-    name: "TodoMVC-React-Complex-DOM",
+    name: "TodoMVC-React-Tentative-Complex-DOM",
     url: "tentative/complex-static-html/dist/index.html#/home",
     async prepare(page) {
         const element = await page.waitForElement(".new-todo");
@@ -247,36 +245,7 @@ Suites.push({
 
 Suites.push({
     name: "TodoMVC-React-Complex-DOM",
-    url: "todomvc/architecture-examples/react/embedded-dist/index.html",
-    async prepare(page) {
-        const element = await page.waitForElement(".new-todo");
-        element.focus();
-    },
-    tests: [
-        new BenchmarkTestStep(`Adding${numberOfItemsToAdd}Items`, (page) => {
-            const newTodo = page.querySelector(".new-todo");
-            for (let i = 0; i < numberOfItemsToAdd; i++) {
-                newTodo.setValue(`Something to do ${i}`);
-                newTodo.dispatchEvent("input");
-                newTodo.enter("keydown");
-            }
-        }),
-        new BenchmarkTestStep("CompletingAllItems", (page) => {
-            const checkboxes = page.querySelectorAll(".toggle");
-            for (let i = 0; i < numberOfItemsToAdd; i++)
-                checkboxes[i].click();
-        }),
-        new BenchmarkTestStep("DeletingAllItems", (page) => {
-            const deleteButtons = page.querySelectorAll(".destroy");
-            for (let i = 0; i < numberOfItemsToAdd; i++)
-                deleteButtons[i].click();
-        }),
-    ],
-});
-
-Suites.push({
-    name: "TodoMVC-React-Complex-DOM-Tentative",
-    url: "tentative/complex-static-html/dist/index.html",
+    url: "todomvc/architecture-examples/react/embedded-dist/index.html#/home",
     async prepare(page) {
         const element = await page.waitForElement(".new-todo");
         element.focus();
@@ -621,7 +590,7 @@ Suites.push({
 
 Suites.push({
     name: "TodoMVC-Preact-Complex-DOM",
-    url: "todomvc/architecture-examples/preact/embedded-dist/index.html",
+    url: "todomvc/architecture-examples/preact/embedded-dist/index.html#/home",
     async prepare(page) {
         const element = await page.waitForElement(".new-todo");
         element.focus();
