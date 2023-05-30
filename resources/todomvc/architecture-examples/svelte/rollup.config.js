@@ -35,7 +35,14 @@ export default {
         copy({
             targets: [
                 { src: "public/index.html", dest: "dist/" },
-                { src: "public/embedded/index.html", dest: "embedded-dist/" },
+                {
+                    src: "../../big-dom-generator/dist/index.html",
+                    dest: "embedded-dist/",
+                    transform: (contents) => {
+                        const scriptTag = '<script src="app.js"></script>';
+                        return contents.toString().replace("</body>", `${scriptTag}\n</body>`);
+                    },
+                },
                 { src: "../../big-dom-generator/dist/logo.png", dest: "embedded-dist/" }
             ],
         }),
