@@ -7,8 +7,8 @@ import { App } from "./todo/app";
 import "./public/app.css";
 import "todomvc-app-css/index.css";
 import "./public/layout.css";
-import "./public/generated.css";
-
+import "./public/nonMatchingCss.css";
+import "./public/matchingCss.css";
 
 const todoHolder = document.createElement("div");
 todoHolder.className = "todoholder";
