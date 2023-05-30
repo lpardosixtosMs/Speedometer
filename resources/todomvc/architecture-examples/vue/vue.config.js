@@ -8,7 +8,7 @@ module.exports = defineConfig({
     outputDir: isEmbedded ? "embedded-dist" : "dist",
       chainWebpack: (config) => {
         config.plugin("html").tap((args) => {
-          args[0].template = isEmbedded ? "../../big-dom-generator/dist/index.html" : "public/index.html";
+          args[0].template = isEmbedded ? "public/embedded/index.html" : "public/index.html";
           return args;
         });
         config.plugin("copy").use(CopyWebpackPlugin, [

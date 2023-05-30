@@ -1,17 +1,14 @@
 import { h, createElement, render } from "preact";
 import App from "./app/app";
-
+import "../../../big-dom-generator/dist/app.css";
 import "todomvc-app-css/index.css";
 import "./styles.css";
 import "../../../big-dom-generator/public/layout.css";
 import "../../../big-dom-generator/generated.css";
-import "../../../big-dom-generator/dist/app.css";
-
-const todoArea = document.querySelector(".todo-area");
 
 render(
     <div className="todoholder">
-        <section className="todoapp" id="root">
+        <section className="todoapp">
             <App />
         </section>
         <footer className="info">
@@ -21,5 +18,5 @@ render(
             <p>Double-click to edit a todo</p>
         </footer>
     </div>,
-    todoArea
+    document.querySelector(".todo-area")
 );

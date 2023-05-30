@@ -4,16 +4,16 @@ import { Provider } from "react-redux";
 import { HashRouter, Route } from "react-router-dom";
 import App from "./app";
 import reducer from "./reducers";
+import "../../../big-dom-generator/dist/app.css";
 import "todomvc-app-css/index.css";
 import "../../../big-dom-generator/public/layout.css";
 import "../../../big-dom-generator/generated.css";
-import "../../../big-dom-generator/dist/app.css";
 
 const store = createStore(reducer);
 
 render(
     <div className="todoholder">
-        <section className="todoapp" id="root">
+        <section className="todoapp">
             <Provider store={store}>
                 <HashRouter>
                     <Route path="*" component={App} />

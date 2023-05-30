@@ -18,7 +18,7 @@ module.exports = (env) => merge(common(env), {
         }),
         new HtmlWebpackPlugin({
             title: "Production",
-            template: env.embedded ? "../../big-dom-generator/dist/index.html" : "/src/index.html",
+            template: env.embedded ? "/src/embedded/index.html" : "/src/index.html",
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",

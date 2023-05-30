@@ -4,10 +4,10 @@ import { HashRouter, Route, Routes } from "react-router-dom";
 
 import { App } from "./todo/app";
 
+import "../../../big-dom-generator/dist/app.css";
 import "todomvc-app-css/index.css";
 import "../../../big-dom-generator/public/layout.css";
 import "../../../big-dom-generator/generated.css";
-import "../../../big-dom-generator/dist/app.css";
 
 const todoHolder = document.createElement("div");
 todoHolder.className = "todoholder";

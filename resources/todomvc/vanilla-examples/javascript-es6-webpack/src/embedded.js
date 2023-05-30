@@ -4,11 +4,11 @@ import Model from "./model";
 import Store from "./store";
 import Template from "./template";
 
+import "../../../big-dom-generator/dist/app.css";
 import "todomvc-app-css/index.css";
 import "./app.css";
 import "../../../big-dom-generator/public/layout.css";
 import "../../../big-dom-generator/generated.css";
-import "../../../big-dom-generator/dist/app.css";
 
 let todo;
 const onHashChange = () => {
