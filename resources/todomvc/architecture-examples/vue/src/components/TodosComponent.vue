@@ -1,7 +1,7 @@
 <template>
     <section class="todoapp">
         <TodoHeader @add-todo="addTodo" />
-        <section class="main" v-show="todos.length" v-cloak>
+        <main class="main" v-show="todos.length" v-cloak>
             <div class="toggle-all-container">
                 <input type="checkbox" id="toggle-all-input" class="toggle-all" v-model="toggleAllModel" />
                 <label class="toggle-all-label" htmlFor="toggle-all-input"> Toggle All Input </label>
@@ -9,7 +9,7 @@
             <ul class="todo-list">
                 <TodoItem v-for="todo in filteredTodos" :key="todo.id" :todo="todo" @delete-todo="deleteTodo" @edit-todo="editTodo" @toggle-todo="toggleTodo" />
             </ul>
-        </section>
+        </main>
         <TodoFooter :todos="todos" @delete-completed="deleteCompleted" :remaining="activeTodos.length" :completed="completedTodos.length" :route="route" />
     </section>
 </template>
@@ -18,6 +18,11 @@
 import TodoHeader from "./TodoHeader.vue";
 import TodoFooter from "./TodoFooter.vue";
 import TodoItem from "./TodoItem.vue";
+
+const itemNumber = (() => {
+    let number = 0;
+    return () => number++;
+})();
 
 function uuid() {
     let uuid = "";
@@ -55,6 +60,7 @@ export default {
                 completed: false,
                 title: value,
                 id: uuid(),
+                itemNumber: itemNumber(),
             });
         },
         toggleTodo(todo, value) {
