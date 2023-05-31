@@ -91,7 +91,6 @@ var app = app || {};
         // Add all items in the **Todos** collection at once.
         addAll: function () {
             this.$list.html("");
-            console.log("add all");
             app.todos.each(this.addOne, this);
         },
 
