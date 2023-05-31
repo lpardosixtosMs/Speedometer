@@ -24,7 +24,7 @@
         </footer>
         <script id="todo-template" type="text/x-handlebars-template">
             {{#each this as |item index|}}
-              <li class="li-{{index}} {{#if item.completed}}completed{{/if}} targeted" data-id="{{item.id}}">
+            <li class="li-{{index}} {{#if item.completed}}completed{{/if}} targeted" data-id="{{item.id}}">
                 <div class="view-{{index}} targeted">
                   <input class="toggle" type="checkbox" {{#if item.completed}}checked{{/if}}>
                   <label>{{item.title}}</label>
@@ -32,7 +32,7 @@
                 </div>
                 <input class="edit" value="{{item.title}}">
               </li>
-            {{/each}}
+        {{/each}}
         </script>
         <script id="footer-template" type="text/x-handlebars-template">
             <span id="todo-count" class="todo-count"><strong>{{activeTodoCount}}</strong> {{activeTodoWord}} left</span>
