@@ -7,7 +7,7 @@
                 <label class="toggle-all-label" htmlFor="toggle-all-input"> Toggle All Input </label>
             </div>
             <ul class="todo-list">
-                <TodoItem v-for="todo in filteredTodos" :key="todo.id" :todo="todo" @delete-todo="deleteTodo" @edit-todo="editTodo" @toggle-todo="toggleTodo" />
+                <TodoItem v-for="(todo, index) in filteredTodos" :key="todo.id" :todo="todo" :index="index" @delete-todo="deleteTodo" @edit-todo="editTodo" @toggle-todo="toggleTodo" />
             </ul>
         </main>
         <TodoFooter :todos="todos" @delete-completed="deleteCompleted" :remaining="activeTodos.length" :completed="completedTodos.length" :route="route" />
@@ -18,11 +18,6 @@
 import TodoHeader from "./TodoHeader.vue";
 import TodoFooter from "./TodoFooter.vue";
 import TodoItem from "./TodoItem.vue";
-
-const itemNumber = (() => {
-    let number = 0;
-    return () => number++;
-})();
 
 function uuid() {
     let uuid = "";
@@ -60,7 +55,6 @@ export default {
                 completed: false,
                 title: value,
                 id: uuid(),
-                itemNumber: itemNumber(),
             });
         },
         toggleTodo(todo, value) {

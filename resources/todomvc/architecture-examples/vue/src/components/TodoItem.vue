@@ -3,9 +3,9 @@
                 completed: this.todo.completed,
                 editing: this.editing,
                 targeted: true,
-                [`li-${this.todo.itemNumber}`]: true,
+                [`li-${this.index}`]: true,
             }">
-        <div :class="{targeted: true, [`view-${this.todo.itemNumber}`]: true}">
+        <div :class="{targeted: true, [`view-${this.index}`]: true}">
             <input type="checkbox" class="toggle" v-model="toggleModel" />
             <label @dblclick="startEdit">{{ todo.title }}</label>
             <button class="destroy" @click.prevent="deleteTodo"></button>
@@ -27,6 +27,7 @@ export default {
             completed: Boolean,
             id: Number,
         },
+        index: Number,
     },
     data() {
         return {
