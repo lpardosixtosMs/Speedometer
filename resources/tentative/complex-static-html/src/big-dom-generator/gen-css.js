@@ -1,152 +1,135 @@
+import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML, TARGETED_CLASS } from "./params.js";
 import { LCG } from "random-seedable";
-import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE } from "./params.js";
+import { JSDOM } from "jsdom";
 
 const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
 
+const Combinator = {
+    DESCENDANT: " ",
+    CHILD: " > ",
+    ADJACENT_SIBLING: " + ",
+    GENERAL_SIBLING: " ~ ",
+};
+
 // The generator assumes the page has the following structure,
 // and it needs to be updated if the structure changes.
-// TODO: make it less hard-coded.
-/*
-<body>
+const html = `
     <div class="main-ui">
         <div class="show-more"/>
-        <div class=top-bar"/>
+        <div class="top-bar"/>
         <div class="ribbon"/>
         <div class="tree-area"/>
         <div class="todo-area"/>
         <div class="todoholder">
-            <section class="todoapp"/>
-                <header class="header"/>
-                    <main class="main">
-                        <input class="toggle-all-container">
-                        <ul class="todo-list">
-                            <li class="li-0 targeted">
-                                <div class="view-0 targeted">
-                            <li class="li-1 targeted">
-                                <div class="view-0 targeted">
-                            ...
-                        </ul>
-                    </main>
+            <section class="todoapp">
+                <header class="header" data-testid="header">
+                    <h1>todos</h1>
+                    <div class="input-container">
+                    <input class="new-todo" id="todo-input" type="text" data-testid="text-input" placeholder="What needs to be done?" value="">
+                    <label class="visually-hidden" for="todo-input">New Todo Input</label>
+                    </div>
+                </header>
+                <main class="main" data-testid="main">
+                    <div class="toggle-all-container">
+                    <input class="toggle-all" type="checkbox" data-testid="toggle-all">
+                    <label class="toggle-all-label" for="toggle-all">Toggle All Input</label>
+                    </div>
+                    <ul class="todo-list" data-testid="todo-list"></ul/>
+                </main>
+                <footer class="footer" data-testid="footer">
+                    <span class="todo-count">0 items left!</span>
+                    <ul class="filters" data-testid="footer-navigation">
+                    <li><a class="selected" href="#/">All</a></li>
+                    <li><a class="" href="#/active">Active</a></li>
+                    <li><a class="" href="#/completed">Completed</a></li>
+                    </ul>
+                    <button class="clear-completed">Clear completed</button>
+                </footer>
             </section>
         </div>
-    </div>
-</body>
-*/
+    </div>`;
 
-const getClassname = (depth, index) => {
-    switch (depth) {
-        case 7:
-            return `.view-${index}`;
-        case 6:
-            return `.li-${index}`;
-        case 5:
-            // prettier-ignore
-            if (!index)
-                return ".toggle-all-container";
-            return ".todo-list";
-        case 4:
-            // prettier-ignore
-            if (!index)
-                return ".header";
-            return ".main";
-        case 3:
-            return ".todoapp";
-        case 2:
-            return ".todoholder";
-        case 1:
-            switch (index) {
-                case 0:
-                    return ".show-more";
-                case 1:
-                    return ".ribbon";
-                case 2:
-                    return ".top-bar";
-                case 3:
-                    return ".tree-area";
-                case 4:
-                    return ".todo-area";
-                default:
-                    throw new Error(`Invalid index: ${index}`);
-            }
-        case 0:
-            return ".main-ui";
-        default:
-            throw new Error(`Invalid depth: ${depth}`);
+const dom = new JSDOM(html);
+const { document } = dom.window;
+
+const addTodoItems = (NUM_TODOS_TO_INSERT_IN_HTML) => {
+    const todoList = document.querySelector(".todo-list");
+
+    for (let i = 0; i < NUM_TODOS_TO_INSERT_IN_HTML; i++) {
+        const li = document.createElement("li");
+        li.className = `li-${i}`;
+        li.setAttribute("data-testid", "todo-item");
+
+        const div = document.createElement("div");
+        div.className = `view-${i}`;
+
+        li.appendChild(div);
+        todoList.appendChild(li);
     }
 };
 
-const getType = (depth, index) => {
-    switch (depth) {
-        case 7:
-            return "div";
-        case 6:
-            return "li";
-        case 5:
-            // prettier-ignore
-            if (!index)
-                return "div";
-            return "ul";
-        case 4:
-            // prettier-ignore
-            if (!index)
-                return "header";
-            return "main";
-        case 3:
-            return "section";
-        case 2:
-        case 1:
-            return "div";
-        case 0:
-            return ".main-ui";
-        default:
-            throw new Error(`Invalid depth: ${depth}`);
+const getClassname = (element) => {
+    return element ? `.${element.classList[0] || ""}` : "";
+};
+
+const getElementType = (element) => {
+    return element.nodeName.toLowerCase();
+};
+
+const getElementAtDepth = (combinator, element, currentDepth, depth) => {
+    let currentElement = element;
+    while (currentDepth > depth) {
+        currentElement = currentElement.parentElement;
+        currentDepth--;
     }
+    return getRandomElement(combinator, currentElement);
+};
+
+const getRandomElement = (combinator, element) => {
+    switch (combinator) {
+        case Combinator.CHILD:
+            return element;
+        case Combinator.ADJACENT_SIBLING:
+            return element.previousElementSibling;
+        case Combinator.GENERAL_SIBLING:
+            return getRandomSiblingElementBefore(element);
+        default:
+            return element;
+    }
+};
+
+const getRandomSiblingElementBefore = (element) => {
+    const parent = element.parentElement;
+    const children = Array.from(parent.children);
+    const currentIndex = children.indexOf(element);
+    const validChildren = children.slice(0, currentIndex);
+    return random.choice(validChildren);
 };
 
 const getNextDepth = (combinator, depth) => {
     switch (combinator) {
-        case " ":
+        case Combinator.DESCENDANT:
             return random.randRange(0, depth);
-        case " > ":
+        case Combinator.CHILD:
             return depth - 1;
-        case " + ":
-        case " ~ ":
+        case Combinator.ADJACENT_SIBLING:
+        case Combinator.GENERAL_SIBLING:
             return depth;
         default:
             throw new Error(`Invalid combinator: ${combinator}`);
     }
 };
 
-const getNextIndex = (combinator, newDepth, index) => {
-    // prettier-ignore
-    if (combinator === " + ")
-        return index - 1;
-    // prettier-ignore
-    if (combinator === " ~ ")
-        return random.randRange(0, index);
-    switch (newDepth) {
-        case 6:
-            return index;
-        case 5:
-        case 4:
-            return 1;
-        case 1:
-            return 4;
-        default:
-            return 0;
-    }
-};
-
-// Returns a random combinator chosen so that the generated selector is valid.
 const chooseCombinator = (depth, index) => {
-    const selectors = [" ", " > "];
-    if (index > 0 && depth !== 7) {
-        selectors.push(" + ");
-        selectors.push(" ~ ");
-    }
+    const selectors = [Combinator.DESCENDANT, Combinator.CHILD];
+    // prettier-ignore
+    if (index > 0 && depth !== 7)
+        selectors.push(Combinator.ADJACENT_SIBLING, Combinator.GENERAL_SIBLING);
+
     return random.choice(selectors);
 };
 
+// Returns a random option from the given options array, weighted by the corresponding probabilities in the probs array.
 const randomWeighted = (options, probs) => {
     const randNum = random.float();
     let accumProb = 0;
@@ -159,80 +142,91 @@ const randomWeighted = (options, probs) => {
     return options[options.length - 1];
 };
 
-const buildMatchingSelector = (depth, index, oldCombinator, selLen, maxLen) => {
+const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) => {
     // prettier-ignore
     if (selLen >= maxLen)
         return "";
 
-    const getSelector = randomWeighted([getClassname, getType, () => "*"], [0.6, 0.3, 0.1]);
-    const selector = getSelector(depth, index);
-    const combinator = chooseCombinator(depth, index);
-
+    // Get a random selector for the element.
+    const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
+    const selector = getSelector(element);
     // prettier-ignore
     if (!depth)
         return `${selector}${oldCombinator}`;
 
+    const children = Array.from(element.parentElement.children);
+    const index = children.indexOf(element);
+    const combinator = chooseCombinator(depth, index);
+
     const nextDepth = getNextDepth(combinator, depth);
-    const nextIndex = getNextIndex(combinator, nextDepth, index);
-    return buildMatchingSelector(nextDepth, nextIndex, combinator, selLen + 1, maxLen) + selector + oldCombinator;
+    const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
+
+    // Recurse with the next element and depth, and append the selector and old combinator.
+    return buildMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, maxLen) + selector + oldCombinator;
 };
 
-// Returns a non-matching selector for the element.
-// We kept the selector from matching by adding the `.just-span` class to the left-most selector or
-// by adding a classname from one of its children.
-// TODO: Is there a better way to ensure the selector is non-matching?
-const buildNonMatchingSelector = (depth, index, oldCombinator, selLen, badSelector) => {
-    // If we are in the top node, we are done.
+const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSelector) => {
     // prettier-ignore
     if (!depth)
         return `.just-span${ oldCombinator}`;
 
-    // If we've reached the target length, pick a random classname from its children.
-    const getSelector = randomWeighted([getClassname, getType, () => "*"], [0.6, 0.3, 0.1]);
-    const selector = getSelector(depth, index);
+    const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
+    const selector = getSelector(element);
     if (selLen === badSelector) {
-        const wrongDepth = random.randRange(Math.min(depth + 1, 7), 8);
-        const wrongSelector = getClassname(wrongDepth, 0);
+        const wrongSelector = getClassname(random.choice(Array.from(element.children)));
         return selector + wrongSelector + oldCombinator;
     }
+
+    const children = Array.from(element.parentElement.children);
+    const index = children.indexOf(element);
 
     // Otherwise, recurse.
     const combinator = chooseCombinator(depth, index);
     const nextDepth = getNextDepth(combinator, depth);
-    const nextIndex = getNextIndex(combinator, nextDepth, index);
-    return buildNonMatchingSelector(nextDepth, nextIndex, combinator, selLen + 1, badSelector) + selector + oldCombinator;
+    const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
+
+    // Recurse with the next element and depth, and append the selector and old combinator.
+    return buildNonMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, badSelector) + selector + oldCombinator;
+};
+
+const getInitialDepth = (element) => {
+    return element.tagName === "DIV" ? 6 : 5;
+};
+
+// Generate CSS rules for the matching and non-matching selectors.
+const generateCssRules = (selectors) => {
+    return selectors.map((selector, i) => {
+        random.shuffle(cssProperties, true);
+        return `${selector} {
+                    ${cssProperties[0]}: rgba(140,140,140,${i / 1000});
+                    ${cssProperties[1]}: rgba(140,140,140,${i / 1000});
+                }`;
+    });
 };
 
 const cssProperties = ["accent-color", "border-bottom-color", "border-color", "border-left-color", "border-right-color", "border-top-color", "column-rule-color", "outline-color", "text-decoration-color"];
 
-// Returns a random 200 matching selectors and 200 non-matching selectors targeted at the todoMVC items.
 export const genCss = () => {
     const matchingSelectors = [];
     const nonMatchingSelectors = [];
-    for (let index = 0; index < 100; index++) {
-        // Add `.targeted` to the matching selectors to match only the todoMVC items.
-        matchingSelectors.push(`${buildMatchingSelector(6, index, "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}.targeted`);
-        matchingSelectors.push(`${buildMatchingSelector(7, index, "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}.targeted`);
-        nonMatchingSelectors.push(buildNonMatchingSelector(6, index, "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE)));
-        nonMatchingSelectors.push(buildNonMatchingSelector(7, index, "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE)));
-    }
-    // Create random color styles. Same color, different opacity.
-    // TODO: Choose a better color for the todoMVC theme.
-    const matchingCssRules = [];
-    matchingSelectors.forEach((selector, i) => {
-        random.shuffle(cssProperties, true);
-        matchingCssRules.push(`${selector} { 
-            ${cssProperties[0]}: rgba(140,140,140,${i / 1000}); 
-            ${cssProperties[1]}: rgba(140,140,140,${i / 1000});
-        }`);
+    addTodoItems(NUM_TODOS_TO_INSERT_IN_HTML);
+    const elements = document.querySelectorAll(".main li");
+
+    // Generate matching and non-matching selectors for each element.
+    elements.forEach((element) => {
+        const chooseFrom = [element, element.firstChild];
+        random.shuffle(chooseFrom, true);
+        // Add `TARGETED_CLASS` to the matching selectors to match only the todoMVC items.
+        matchingSelectors.push(`${buildMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${TARGETED_CLASS}`);
+        matchingSelectors.push(`${buildMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${TARGETED_CLASS}`);
+        nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
+        nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
     });
-    const nonMatchingCssRules = [];
-    nonMatchingSelectors.forEach((selector, i) => {
-        random.shuffle(cssProperties, true);
-        nonMatchingCssRules.push(`${selector} { 
-            ${cssProperties[0]}: rgba(140,140,140,${i / 1000}); 
-            ${cssProperties[1]}: rgba(140,140,140,${i / 1000});
-        }`);
-    });
-    return { matchingCss: matchingCssRules.join("\n"), nonMatchingCss: nonMatchingCssRules.join("\n") };
+
+    const matchingCssRules = generateCssRules(matchingSelectors);
+    const nonMatchingCssRules = generateCssRules(nonMatchingSelectors);
+
+    const allCssRules = matchingCssRules.concat(nonMatchingCssRules);
+    random.shuffle(allCssRules, true);
+    return allCssRules.join("\n");
 };
