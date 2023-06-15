@@ -22,12 +22,7 @@ const ANGULAR_HTML_MARKUP = `
     <div class="todo-area">
         <div class="todoholder" ng-version="14.3.0">
             <section class="todoapp">
-                <app-todo-header>
-                    <header class="header">
-                        <h1>todos</h1>
-                        <input placeholder="What needs to be done?" autofocus="" class="new-todo ng-valid ng-dirty ng-touched">
-                    </header>
-                </app-todo-header>
+                <app-todo-header/>
                 <app-todo-list>
                     <main class="main">
                         <div class="toggle-all-container">
@@ -56,13 +51,7 @@ const TODO_MVC_HTML_MARKUP = `
     <div class="todo-area">
         <div class="todoholder">
             <section class="todoapp">
-                <header class="header" data-testid="header">
-                    <h1>todos</h1>
-                    <div class="input-container">
-                        <input class="new-todo" id="todo-input" type="text" data-testid="text-input" placeholder="What needs to be done?" value="">
-                        <label class="visually-hidden" for="todo-input">New Todo Input</label>
-                    </div>
-                </header>
+                <header class="header" data-testid="header"/>
                 <main class="main" data-testid="main">
                     <div class="toggle-all-container">
                         <input class="toggle-all" type="checkbox" data-testid="toggle-all">
