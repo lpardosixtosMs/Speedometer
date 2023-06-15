@@ -97,7 +97,6 @@ const addTodoItems = (document, NUM_TODOS_TO_INSERT_IN_HTML, angular) => {
     for (let i = 0; i < NUM_TODOS_TO_INSERT_IN_HTML; i++) {
         const li = document.createElement("li");
         li.className = `li-${i}`;
-        li.setAttribute("data-testid", "todo-item");
 
         const div = document.createElement("div");
         div.className = `view-${i}`;
