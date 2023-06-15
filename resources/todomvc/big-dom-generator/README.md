@@ -58,4 +58,4 @@ Alternatively, you can include the CSS file in your angular.json file:
 
 # License
 
-CC-BY-4.0 © Issack John
+CC-BY-4.0 © 2023 Issack John
