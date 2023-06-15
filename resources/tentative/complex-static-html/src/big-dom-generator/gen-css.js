@@ -68,17 +68,14 @@ const getHtmlMarkup = (angular) => {
     return angular ? ANGULAR_HTML_MARKUP : TODO_MVC_HTML_MARKUP;
 };
 
-/** <app-todo-item>
-* <li class="targeted li-101">
-*              <div class="targeted view-101">
-*                 <input type="checkbox" class="toggle">
-*                 <label>sdfasdfasdfsdfa</label>
-*                 <button class="destroy"></button>
-*              </div>
-*              <!---->
-*           </li>
-*  </app-todo-item>
-*/
+/**
+ * List item structure for Angular:
+ * <app-todo-item>
+ *     <li class="targeted li-101">
+ *         <div class="targeted view-101"/>
+ *     </li>
+ * </app-todo-item>
+ */
 const addTodoItems = (document, NUM_TODOS_TO_INSERT_IN_HTML, angular) => {
     const todoList = document.querySelector(".todo-list");
 
@@ -227,7 +224,7 @@ const getInitialDepth = (element) => {
     return element.tagName === "DIV" ? 6 : 5;
 };
 
-// Generate CSS rules for the matching and non-matching selectors.
+// Take selectors and generate CSS rules for the matching and non-matching selectors.
 const generateCssRules = (selectors) => {
     return selectors.map((selector, i) => {
         random.shuffle(cssProperties, true);
@@ -240,6 +237,11 @@ const generateCssRules = (selectors) => {
 
 const cssProperties = ["accent-color", "border-bottom-color", "border-color", "border-left-color", "border-right-color", "border-top-color", "column-rule-color", "outline-color", "text-decoration-color"];
 
+/**
+ * Generates CSS for the matching and non-matching selectors.
+ * @param {string} angular whether to generate angular or react markup
+ * @returns {string} The css rules for the matching and non-matching selectors.
+ */
 export const genCss = (angular = false) => {
     const matchingSelectors = [];
     const nonMatchingSelectors = [];
