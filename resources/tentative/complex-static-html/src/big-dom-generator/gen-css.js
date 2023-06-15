@@ -11,7 +11,7 @@ const Combinator = {
     GENERAL_SIBLING: " ~ ",
 };
 
-// The generator assumes the page has the following structure,
+// The generator assumes the page has the following structures,
 // and it needs to be updated if the structure changes.
 const ANGULAR_HTML_MARKUP = `
 <div class="main-ui" dir="ltr">
@@ -40,8 +40,7 @@ const ANGULAR_HTML_MARKUP = `
     </div>
 </div>
 `;
-// The generator assumes the page has the following structure,
-// and it needs to be updated if the structure changes.
+
 const TODO_MVC_HTML_MARKUP = `
 <div class="main-ui">
     <div class="show-more"/>
