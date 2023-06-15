@@ -20,46 +20,28 @@ const ANGULAR_HTML_MARKUP = `
     <div class="ribbon"/>
     <div class="tree-area"/>
     <div class="todo-area">
-      <div class="todoholder" ng-version="14.3.0">
-        <section class="todoapp">
-            <app-todo-header>
-                <header class="header">
-                    <h1>todos</h1>
-                    <input placeholder="What needs to be done?" autofocus="" class="new-todo ng-valid ng-dirty ng-touched">
-                </header>
-            </app-todo-header>
-            <app-todo-list>
-                <main class="main">
-                    <div class="toggle-all-container">
-                        <input type="checkbox" class="toggle-all">
-                        <label htmlfor="toggle-all" class="toggle-all-label"> Toggle All Input </label>
-                    </div>
-                    <ul class="todo-list">
-                        <!---->
-                    </ul>
-                </main>
-                <!---->
-            </app-todo-list>
-            <app-todo-footer>
-                <footer class="footer">
-                    <span class="todo-count"><strong>3</strong> items left</span>
-                    <ul class="filters">
-                        <li><a routerlink="/" class="selected" href="#/"> All </a></li>
-                        <li><a routerlink="/active" href="#/active"> Active </a></li>
-                        <li><a routerlink="/completed" href="#/completed"> Completed </a></li>
-                    </ul>
+        <div class="todoholder" ng-version="14.3.0">
+            <section class="todoapp">
+                <app-todo-header>
+                    <header class="header">
+                        <h1>todos</h1>
+                        <input placeholder="What needs to be done?" autofocus="" class="new-todo ng-valid ng-dirty ng-touched">
+                    </header>
+                </app-todo-header>
+                <app-todo-list>
+                    <main class="main">
+                        <div class="toggle-all-container">
+                            <input type="checkbox" class="toggle-all">
+                            <label htmlfor="toggle-all" class="toggle-all-label"> Toggle All Input </label>
+                        </div>
+                        <ul class="todo-list">
+                            <!---->
+                        </ul>
+                    </main>
                     <!---->
-                </footer>
-                <!---->
-            </app-todo-footer>
-        </section>
+                </app-todo-list>
+            </section>
         </div>
-        <footer class="info">
-            <p>Click on input field to write your todo.</p>
-            <p>At least two characters are needed to be a valid entry.</p>
-            <p>Press 'enter' to add the todo.</p>
-            <p>Double-click to edit a todo</p>
-        </footer>
     </div>
 </div>
 `;
@@ -71,33 +53,25 @@ const TODO_MVC_HTML_MARKUP = `
     <div class="top-bar"/>
     <div class="ribbon"/>
     <div class="tree-area"/>
-    <div class="todo-area"/>
-    <div class="todoholder">
-        <section class="todoapp">
-            <header class="header" data-testid="header">
-                <h1>todos</h1>
-                <div class="input-container">
-                    <input class="new-todo" id="todo-input" type="text" data-testid="text-input" placeholder="What needs to be done?" value="">
-                    <label class="visually-hidden" for="todo-input">New Todo Input</label>
-                </div>
-            </header>
-            <main class="main" data-testid="main">
-                <div class="toggle-all-container">
-                    <input class="toggle-all" type="checkbox" data-testid="toggle-all">
-                    <label class="toggle-all-label" for="toggle-all">Toggle All Input</label>
-                </div>
-                <ul class="todo-list" data-testid="todo-list"></ul/>
-            </main>
-            <footer class="footer" data-testid="footer">
-                <span class="todo-count">0 items left!</span>
-                <ul class="filters" data-testid="footer-navigation">
-                    <li><a class="selected" href="#/">All</a></li>
-                    <li><a class="" href="#/active">Active</a></li>
-                    <li><a class="" href="#/completed">Completed</a></li>
-                </ul>
-                <button class="clear-completed">Clear completed</button>
-            </footer>
-        </section>
+    <div class="todo-area">
+        <div class="todoholder">
+            <section class="todoapp">
+                <header class="header" data-testid="header">
+                    <h1>todos</h1>
+                    <div class="input-container">
+                        <input class="new-todo" id="todo-input" type="text" data-testid="text-input" placeholder="What needs to be done?" value="">
+                        <label class="visually-hidden" for="todo-input">New Todo Input</label>
+                    </div>
+                </header>
+                <main class="main" data-testid="main">
+                    <div class="toggle-all-container">
+                        <input class="toggle-all" type="checkbox" data-testid="toggle-all">
+                        <label class="toggle-all-label" for="toggle-all">Toggle All Input</label>
+                    </div>
+                    <ul class="todo-list" data-testid="todo-list"></ul/>
+                </main>
+            </section>
+        </div>
     </div>
 </div>
 `;
