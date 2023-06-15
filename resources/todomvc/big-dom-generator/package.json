@@ -1,0 +1,8 @@
+{
+    "name": "big-dom-generator",
+    "version": "1.0.0",
+    "description": "css for TodoMVCs",
+    "main": "generated.css",
+    "dependencies": {
+    }
+  }
