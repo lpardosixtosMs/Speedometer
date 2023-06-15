@@ -220,8 +220,16 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSele
     return buildNonMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, badSelector) + selector + oldCombinator;
 };
 
-const getInitialDepth = (element) => {
-    return element.tagName === "DIV" ? 6 : 5;
+const ANGULAR_DIV_DEPTH = 8;
+const ANGULAR_LI_DEPTH = 7;
+const NON_ANGULAR_DIV_DEPTH = 6;
+const NON_ANGULAR_LI_DEPTH = 5;
+
+const getInitialDepth = (element, angular) => {
+    if (angular)
+        return element.tagName === "DIV" ? ANGULAR_DIV_DEPTH : ANGULAR_LI_DEPTH;
+    else
+        return element.tagName === "DIV" ? NON_ANGULAR_DIV_DEPTH : NON_ANGULAR_LI_DEPTH;
 };
 
 // Take selectors and generate CSS rules for the matching and non-matching selectors.
@@ -257,10 +265,10 @@ export const genCss = (angular = false) => {
         const chooseFrom = [element, element.firstChild];
         random.shuffle(chooseFrom, true);
         // Add `TARGETED_CLASS` to the matching selectors to match only the todoMVC items.
-        matchingSelectors.push(`${buildMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${TARGETED_CLASS}`);
-        matchingSelectors.push(`${buildMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${TARGETED_CLASS}`);
-        nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
-        nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1]), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
+        matchingSelectors.push(`${buildMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0], angular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${TARGETED_CLASS}`);
+        matchingSelectors.push(`${buildMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1], angular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${TARGETED_CLASS}`);
+        nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[0], getInitialDepth(chooseFrom[0], angular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
+        nonMatchingSelectors.push(`${buildNonMatchingSelector(chooseFrom[1], getInitialDepth(chooseFrom[1], angular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
     });
 
     const matchingCssRules = generateCssRules(matchingSelectors);
