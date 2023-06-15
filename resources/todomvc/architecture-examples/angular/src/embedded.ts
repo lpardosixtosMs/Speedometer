@@ -4,8 +4,7 @@ import { AppModule } from "./app/app.module";
 
 import "../../../big-dom-generator/dist/app.css";
 import "../../../big-dom-generator/public/layout.css";
-import "../../../big-dom-generator/matchingCss.css";
-import "../../../big-dom-generator/nonMatchingCss.css";
+import "../../../big-dom-generator/generated.css";
 
 const divElement = document.createElement("div");
 divElement.className = "todoholder";
