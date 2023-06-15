@@ -34,7 +34,7 @@ export function Main({ todos, dispatch }) {
             ) : null}
             <ul className="todo-list" data-testid="todo-list">
                 {visibleTodos.map((todo, index) => (
-                    <Item todo={todo} key={todo.id} dispatch={dispatch} index={index}/>
+                    <Item todo={todo} key={todo.id} dispatch={dispatch} index={index} />
                 ))}
             </ul>
         </main>

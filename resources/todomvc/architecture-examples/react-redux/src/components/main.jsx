@@ -32,7 +32,7 @@ export default class Main extends Component {
                 </div>
                 <ul className="todo-list" data-testid="todo-list">
                     {visibleTodos.map((todo, index) => (
-                        <Item key={todo.id} todo={todo} editTodo={editTodo} deleteTodo={deleteTodo} toggleTodo={toggleTodo} index={index}/>
+                        <Item key={todo.id} todo={todo} editTodo={editTodo} deleteTodo={deleteTodo} toggleTodo={toggleTodo} index={index} />
                     ))}
                 </ul>
                 <Footer completedCount={completedCount} activeCount={activeCount} filter={location.pathname} onClearCompleted={clearCompleted} />;

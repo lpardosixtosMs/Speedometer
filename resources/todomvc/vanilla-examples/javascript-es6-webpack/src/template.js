@@ -16,7 +16,7 @@ const escape = (str) => str && reHasUnescapedHtml.test(str) ? str.replace(reUnes
 const escapeHtmlChar = (chr) => htmlEscapes[chr];
 
 const createTodoItem = ({ id, title, completed, checked, index }) => `
-<li data-id="${id}" class="${completed} targeted li-${index}">
+<li data-id="${id}" class="targeted li-${index} ${completed}">
     <div class="targeted view-${index}">
         <input class="toggle" type="checkbox" ${checked}>
         <label>${title}</label>

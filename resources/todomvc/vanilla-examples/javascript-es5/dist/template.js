@@ -66,8 +66,8 @@
             template = template.replace("{{title}}", escape(data[i].title));
             template = template.replace("{{completed}}", completed);
             template = template.replace("{{checked}}", checked);
-            template = template.replaceAll("{{li-index}}", i);
-            template = template.replaceAll("{{view-index}}", i);
+            template = template.replace("{{li-index}}", i);
+            template = template.replace("{{view-index}}", i);
 
             view = view + template;
         }
