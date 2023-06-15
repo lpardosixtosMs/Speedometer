@@ -13,46 +13,111 @@ const Combinator = {
 
 // The generator assumes the page has the following structure,
 // and it needs to be updated if the structure changes.
-const html = `
-    <div class="main-ui">
-        <div class="show-more"/>
-        <div class="top-bar"/>
-        <div class="ribbon"/>
-        <div class="tree-area"/>
-        <div class="todo-area"/>
-        <div class="todoholder">
-            <section class="todoapp">
-                <header class="header" data-testid="header">
+const ANGULAR_HTML_MARKUP = `
+<div class="main-ui" dir="ltr">
+    <div class="show-more">
+    <div class="top-bar"/>
+    <div class="ribbon"/>
+    <div class="tree-area"/>
+    <div class="todo-area">
+      <div class="todoholder" ng-version="14.3.0">
+        <section class="todoapp">
+            <app-todo-header>
+                <header class="header">
                     <h1>todos</h1>
-                    <div class="input-container">
+                    <input placeholder="What needs to be done?" autofocus="" class="new-todo ng-valid ng-dirty ng-touched">
+                </header>
+            </app-todo-header>
+            <app-todo-list>
+                <main class="main">
+                    <div class="toggle-all-container">
+                        <input type="checkbox" class="toggle-all">
+                        <label htmlfor="toggle-all" class="toggle-all-label"> Toggle All Input </label>
+                    </div>
+                    <ul class="todo-list">
+                        <!---->
+                    </ul>
+                </main>
+                <!---->
+            </app-todo-list>
+            <app-todo-footer>
+                <footer class="footer">
+                    <span class="todo-count"><strong>3</strong> items left</span>
+                    <ul class="filters">
+                        <li><a routerlink="/" class="selected" href="#/"> All </a></li>
+                        <li><a routerlink="/active" href="#/active"> Active </a></li>
+                        <li><a routerlink="/completed" href="#/completed"> Completed </a></li>
+                    </ul>
+                    <!---->
+                </footer>
+                <!---->
+            </app-todo-footer>
+        </section>
+        </div>
+        <footer class="info">
+            <p>Click on input field to write your todo.</p>
+            <p>At least two characters are needed to be a valid entry.</p>
+            <p>Press 'enter' to add the todo.</p>
+            <p>Double-click to edit a todo</p>
+        </footer>
+    </div>
+</div>
+`;
+// The generator assumes the page has the following structure,
+// and it needs to be updated if the structure changes.
+const TODO_MVC_HTML_MARKUP = `
+<div class="main-ui">
+    <div class="show-more"/>
+    <div class="top-bar"/>
+    <div class="ribbon"/>
+    <div class="tree-area"/>
+    <div class="todo-area"/>
+    <div class="todoholder">
+        <section class="todoapp">
+            <header class="header" data-testid="header">
+                <h1>todos</h1>
+                <div class="input-container">
                     <input class="new-todo" id="todo-input" type="text" data-testid="text-input" placeholder="What needs to be done?" value="">
                     <label class="visually-hidden" for="todo-input">New Todo Input</label>
-                    </div>
-                </header>
-                <main class="main" data-testid="main">
-                    <div class="toggle-all-container">
+                </div>
+            </header>
+            <main class="main" data-testid="main">
+                <div class="toggle-all-container">
                     <input class="toggle-all" type="checkbox" data-testid="toggle-all">
                     <label class="toggle-all-label" for="toggle-all">Toggle All Input</label>
-                    </div>
-                    <ul class="todo-list" data-testid="todo-list"></ul/>
-                </main>
-                <footer class="footer" data-testid="footer">
-                    <span class="todo-count">0 items left!</span>
-                    <ul class="filters" data-testid="footer-navigation">
+                </div>
+                <ul class="todo-list" data-testid="todo-list"></ul/>
+            </main>
+            <footer class="footer" data-testid="footer">
+                <span class="todo-count">0 items left!</span>
+                <ul class="filters" data-testid="footer-navigation">
                     <li><a class="selected" href="#/">All</a></li>
                     <li><a class="" href="#/active">Active</a></li>
                     <li><a class="" href="#/completed">Completed</a></li>
-                    </ul>
-                    <button class="clear-completed">Clear completed</button>
-                </footer>
-            </section>
-        </div>
-    </div>`;
+                </ul>
+                <button class="clear-completed">Clear completed</button>
+            </footer>
+        </section>
+    </div>
+</div>
+`;
 
-const dom = new JSDOM(html);
-const { document } = dom.window;
+const getHtmlMarkup = (angular) => {
+    return angular ? ANGULAR_HTML_MARKUP : TODO_MVC_HTML_MARKUP;
+};
 
-const addTodoItems = (NUM_TODOS_TO_INSERT_IN_HTML) => {
+/** <app-todo-item>
+* <li class="targeted li-101">
+*              <div class="targeted view-101">
+*                 <input type="checkbox" class="toggle">
+*                 <label>sdfasdfasdfsdfa</label>
+*                 <button class="destroy"></button>
+*              </div>
+*              <!---->
+*           </li>
+*  </app-todo-item>
+*/
+const addTodoItems = (document, NUM_TODOS_TO_INSERT_IN_HTML, angular) => {
     const todoList = document.querySelector(".todo-list");
 
     for (let i = 0; i < NUM_TODOS_TO_INSERT_IN_HTML; i++) {
@@ -64,12 +129,20 @@ const addTodoItems = (NUM_TODOS_TO_INSERT_IN_HTML) => {
         div.className = `view-${i}`;
 
         li.appendChild(div);
-        todoList.appendChild(li);
+
+        if (angular) {
+            const appTodoItem = document.createElement("app-todo-item");
+
+            appTodoItem.appendChild(li);
+            todoList.appendChild(appTodoItem);
+        } else {
+            todoList.appendChild(li);
+        }
     }
 };
 
 const getClassname = (element) => {
-    return element ? `.${element.classList[0] || ""}` : "";
+    return element && element.classList.length > 0 ? `.${element.classList[0]}` : element.nodeName.toLowerCase();
 };
 
 const getElementType = (element) => {
@@ -174,7 +247,7 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSele
     const selector = getSelector(element);
     if (selLen === badSelector) {
         const wrongSelector = getClassname(random.choice(Array.from(element.children)));
-        return selector + wrongSelector + oldCombinator;
+        return `${selector} ${ wrongSelector}${oldCombinator}`;
     }
 
     const children = Array.from(element.parentElement.children);
@@ -206,10 +279,14 @@ const generateCssRules = (selectors) => {
 
 const cssProperties = ["accent-color", "border-bottom-color", "border-color", "border-left-color", "border-right-color", "border-top-color", "column-rule-color", "outline-color", "text-decoration-color"];
 
-export const genCss = () => {
+export const genCss = (angular = false) => {
     const matchingSelectors = [];
     const nonMatchingSelectors = [];
-    addTodoItems(NUM_TODOS_TO_INSERT_IN_HTML);
+    const htmlMarkup = getHtmlMarkup(angular);
+    const dom = new JSDOM(htmlMarkup);
+    const { document } = dom.window;
+
+    addTodoItems(document, NUM_TODOS_TO_INSERT_IN_HTML, angular);
     const elements = document.querySelectorAll(".main li");
 
     // Generate matching and non-matching selectors for each element.
