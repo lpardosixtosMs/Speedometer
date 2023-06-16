@@ -217,10 +217,7 @@ export const genCss = (angular = false) => {
         nonMatchingSelectors.push(`${buildNonMatchingSelector(element.firstChild, getInitialDepth(element.firstChild, angular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
     });
 
-    const matchingCssRules = generateCssRules(matchingSelectors);
-    const nonMatchingCssRules = generateCssRules(nonMatchingSelectors);
-
-    const allCssRules = matchingCssRules.concat(nonMatchingCssRules);
+    const allCssRules = generateCssRules(matchingSelectors.concat(nonMatchingSelectors));
     random.shuffle(allCssRules, true);
     return allCssRules.join("\n");
 };
