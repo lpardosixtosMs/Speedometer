@@ -8,7 +8,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const path = require("path");
 
-// const CopyPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = merge(common, {
     entry: {
@@ -22,11 +22,11 @@ module.exports = merge(common, {
     mode: "production",
     devtool: "source-map",
     plugins: [
-        // new CopyPlugin({
-        //     patterns: [
-        //         { from: "../../../../big-dom-generator/dist/logo.png", to: "." },
-        //     ],
-        // }),
+        new CopyPlugin({
+            patterns: [
+                { from: "../../big-dom-generator/dist/logo.png", to: "." },
+            ],
+        }),
         new HtmlWebpackPlugin({
             title: "Production",
             template: "complex/public/index.html",
