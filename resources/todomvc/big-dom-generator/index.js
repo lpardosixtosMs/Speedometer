@@ -8,8 +8,7 @@ import "./src/app.css";
 const fs = require("fs");
 
 const randomCss = genCss();
-fs.writeFileSync("./matchingCss.css", randomCss.matchingCss);
-fs.writeFileSync("./nonMatchingCss.css", randomCss.nonMatchingCss);
+fs.writeFileSync("./generated.css", randomCss);
 
 const html = `<!DOCTYPE html>
 <html lang="en" class="spectrum spectrum--medium spectrum--light">
