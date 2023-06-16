@@ -153,7 +153,7 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSele
     const selector = getSelector(element);
     if (selLen === badSelector) {
         const wrongSelector = getClassname(random.choice(Array.from(element.children)));
-        return `${selector} ${wrongSelector}${oldCombinator}`;
+        return `${selector}${wrongSelector}${oldCombinator}`;
     }
 
     const children = Array.from(element.parentElement.children);
