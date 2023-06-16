@@ -1,6 +1,7 @@
 import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML, TARGETED_CLASS } from "./params.js";
 import { LCG } from "random-seedable";
 import { JSDOM } from "jsdom";
+import { ANGULAR_TODO_MVC_HTML_MARKUP, TODO_MVC_HTML_MARKUP } from "./html-markup.js";
 
 const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
 
@@ -11,61 +12,8 @@ const Combinator = {
     GENERAL_SIBLING: " ~ ",
 };
 
-// The generator assumes the page has the following structures,
-// and it needs to be updated if the structure changes.
-const ANGULAR_HTML_MARKUP = `
-<div class="main-ui" dir="ltr">
-    <div class="show-more">
-    <div class="top-bar"/>
-    <div class="ribbon"/>
-    <div class="tree-area"/>
-    <div class="todo-area">
-        <div class="todoholder" ng-version="14.3.0">
-            <section class="todoapp">
-                <app-todo-header/>
-                <app-todo-list>
-                    <main class="main">
-                        <div class="toggle-all-container">
-                            <input type="checkbox" class="toggle-all">
-                            <label htmlfor="toggle-all" class="toggle-all-label"> Toggle All Input </label>
-                        </div>
-                        <ul class="todo-list">
-                            <!---->
-                        </ul>
-                    </main>
-                    <!---->
-                </app-todo-list>
-            </section>
-        </div>
-    </div>
-</div>
-`;
-
-const TODO_MVC_HTML_MARKUP = `
-<div class="main-ui">
-    <div class="show-more"/>
-    <div class="top-bar"/>
-    <div class="ribbon"/>
-    <div class="tree-area"/>
-    <div class="todo-area">
-        <div class="todoholder">
-            <section class="todoapp">
-                <header class="header" data-testid="header"/>
-                <main class="main" data-testid="main">
-                    <div class="toggle-all-container">
-                        <input class="toggle-all" type="checkbox" data-testid="toggle-all">
-                        <label class="toggle-all-label" for="toggle-all">Toggle All Input</label>
-                    </div>
-                    <ul class="todo-list" data-testid="todo-list"></ul/>
-                </main>
-            </section>
-        </div>
-    </div>
-</div>
-`;
-
 const getHtmlMarkup = (angular) => {
-    return angular ? ANGULAR_HTML_MARKUP : TODO_MVC_HTML_MARKUP;
+    return angular ? ANGULAR_TODO_MVC_HTML_MARKUP : TODO_MVC_HTML_MARKUP;
 };
 
 /**
