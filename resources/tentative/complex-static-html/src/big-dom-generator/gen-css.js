@@ -144,14 +144,14 @@ const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) =>
     return buildMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, maxLen) + selector + oldCombinator;
 };
 
-const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSelector) => {
+const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSelectorPosition) => {
     // prettier-ignore
     if (!depth)
         return `.just-span${ oldCombinator}`;
 
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
     const selector = getSelector(element);
-    if (selLen === badSelector) {
+    if (selLen === badSelectorPosition) {
         const wrongSelector = getClassname(random.choice(Array.from(element.children)));
         return `${selector}${wrongSelector}${oldCombinator}`;
     }
@@ -165,7 +165,7 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSele
     const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
 
     // Recurse with the next element and depth, and append the selector and old combinator.
-    return buildNonMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, badSelector) + selector + oldCombinator;
+    return buildNonMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, badSelectorPosition) + selector + oldCombinator;
 };
 
 const ANGULAR_VIEW_DEPTH = 8;
