@@ -48,7 +48,7 @@ const addTodoItems = (document, NUM_TODOS_TO_INSERT_IN_HTML, angular) => {
 };
 
 const getClassname = (element) => {
-    return element && element.classList.length > 0 ? `.${element.classList[0]}` : element.nodeName.toLowerCase();
+    return element.classList.length > 0 ? `.${element.classList[0]}` : element.nodeName.toLowerCase();
 };
 
 const getElementType = (element) => {
@@ -57,9 +57,11 @@ const getElementType = (element) => {
 
 const getElementAtDepth = (combinator, element, currentDepth, depth) => {
     let currentElement = element;
-    while (currentDepth > depth) {
-        currentElement = currentElement.parentElement;
-        currentDepth--;
+    if (combinator === Combinator.DESCENDANT){
+        while (currentDepth > depth) {
+            currentElement = currentElement.parentElement;
+            currentDepth--;
+        }
     }
     return getRandomElement(combinator, currentElement);
 };
@@ -99,13 +101,12 @@ const getNextDepth = (combinator, depth) => {
     }
 };
 
-const chooseCombinator = (depth, index) => {
-    const selectors = [Combinator.DESCENDANT, Combinator.CHILD];
-    // prettier-ignore
-    if (index > 0 && depth !== 7)
-        selectors.push(Combinator.ADJACENT_SIBLING, Combinator.GENERAL_SIBLING);
+const chooseCombinator = (element) => {
+    const combinators = [Combinator.DESCENDANT, Combinator.CHILD];
+    if (element.previousElementSibling)
+        combinators.push(Combinator.ADJACENT_SIBLING, Combinator.GENERAL_SIBLING);
 
-    return random.choice(selectors);
+    return random.choice(combinators);
 };
 
 // Returns a random option from the given options array, weighted by the corresponding probabilities in the probs array.
@@ -123,7 +124,7 @@ const randomWeighted = (options, probs) => {
 
 const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) => {
     // prettier-ignore
-    if (selLen >= maxLen)
+    if (selLen >= maxLen || !element)
         return "";
 
     // Get a random selector for the element.
@@ -133,9 +134,7 @@ const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) =>
     if (!depth)
         return `${selector}${oldCombinator}`;
 
-    const children = Array.from(element.parentElement.children);
-    const index = children.indexOf(element);
-    const combinator = chooseCombinator(depth, index);
+    const combinator = chooseCombinator(element);
 
     const nextDepth = getNextDepth(combinator, depth);
     const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
@@ -146,7 +145,7 @@ const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) =>
 
 const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSelectorPosition) => {
     // prettier-ignore
-    if (!depth)
+    if (!depth || !element)
         return `.just-span${ oldCombinator}`;
 
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
@@ -156,11 +155,8 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSele
         return `${selector}${wrongSelector}${oldCombinator}`;
     }
 
-    const children = Array.from(element.parentElement.children);
-    const index = children.indexOf(element);
-
     // Otherwise, recurse.
-    const combinator = chooseCombinator(depth, index);
+    const combinator = chooseCombinator(element);
     const nextDepth = getNextDepth(combinator, depth);
     const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
 
