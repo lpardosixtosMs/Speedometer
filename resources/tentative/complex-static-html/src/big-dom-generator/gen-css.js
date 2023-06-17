@@ -101,6 +101,7 @@ const getNextDepth = (combinator, depth) => {
     }
 };
 
+// Returns a random combinator chosen so that the generated selector is valid.
 const chooseCombinator = (element) => {
     const combinators = [Combinator.DESCENDANT, Combinator.CHILD];
     if (element.previousElementSibling)
@@ -143,11 +144,15 @@ const buildMatchingSelector = (element, depth, oldCombinator, selectorLength, ma
     return buildMatchingSelector(nextElement, nextDepth, combinator, selectorLength + 1, maxSelectorLength) + selector + oldCombinator;
 };
 
+// Returns a non-matching selector for the element.
+// We kept the selector from matching by adding the `.just-span` class to the left-most selector or
+// by adding a classname from one of its children.
 const buildNonMatchingSelector = (element, depth, oldCombinator, selectorLength, badSelectorPosition) => {
     // prettier-ignore
     if (!depth || !element)
-        return `.just-span${ oldCombinator}`;
+        return `.just-span${oldCombinator}`;
 
+    // If we've reached the target length, pick a random classname from its children.
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
     const selector = getSelector(element);
     if (selectorLength === badSelectorPosition) {
@@ -176,21 +181,21 @@ const getInitialDepth = (element, isAngular) => {
     return element.tagName === "DIV" ? NON_ANGULAR_VIEW_DEPTH : NON_ANGULAR_LI_DEPTH;
 };
 
-// Take selectors and generate CSS rules for the matching and non-matching selectors.
+// Take selectors create random color styles. Same color, different opacity.
 const generateCssRules = (selectors) => {
     return selectors.map((selector, i) => {
         random.shuffle(cssProperties, true);
         return `${selector} {
-                            ${cssProperties[0]}: rgba(140,140,140,${i / 1000});
-                            ${cssProperties[1]}: rgba(140,140,140,${i / 1000});
-                        }`;
+                    ${cssProperties[0]}: rgba(140,140,140,${i / 1000});
+                    ${cssProperties[1]}: rgba(140,140,140,${i / 1000});
+                }`;
     });
 };
 
 const cssProperties = ["accent-color", "border-bottom-color", "border-color", "border-left-color", "border-right-color", "border-top-color", "column-rule-color", "outline-color", "text-decoration-color"];
 
 /**
- * Generates CSS for the matching and non-matching selectors.
+ * Returns a random 200 matching selectors and 200 non-matching selectors targeted at the todoMVC items.
  * @param {string} isAngular whether to generate angular or react markup
  * @returns {string} The css rules for the matching and non-matching selectors.
  */
