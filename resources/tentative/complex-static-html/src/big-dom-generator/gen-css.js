@@ -57,7 +57,7 @@ const getElementType = (element) => {
 
 const getElementAtDepth = (combinator, element, currentDepth, depth) => {
     let currentElement = element;
-    if (combinator === Combinator.DESCENDANT){
+    if (combinator === Combinator.DESCENDANT) {
         while (currentDepth > depth) {
             currentElement = currentElement.parentElement;
             currentDepth--;
@@ -110,21 +110,21 @@ const chooseCombinator = (element) => {
 };
 
 // Returns a random option from the given options array, weighted by the corresponding probabilities in the probs array.
-const randomWeighted = (options, probs) => {
-    const randNum = random.float();
-    let accumProb = 0;
-    for (let i = 0; i < probs.length; i++) {
-        accumProb += probs[i];
+const randomWeighted = (options, probabilities) => {
+    const randomNumber = random.float();
+    let accumulatedProbability = 0;
+    for (let i = 0; i < probabilities.length; i++) {
+        accumulatedProbability += probabilities[i];
         // prettier-ignore
-        if (randNum <= accumProb)
+        if (randomNumber <= accumulatedProbability)
             return options[i];
     }
     return options[options.length - 1];
 };
 
-const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) => {
+const buildMatchingSelector = (element, depth, oldCombinator, selectorLength, maxSelectorLength) => {
     // prettier-ignore
-    if (selLen >= maxLen || !element)
+    if (selectorLength >= maxSelectorLength || !element)
         return "";
 
     // Get a random selector for the element.
@@ -140,17 +140,17 @@ const buildMatchingSelector = (element, depth, oldCombinator, selLen, maxLen) =>
     const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
 
     // Recurse with the next element and depth, and append the selector and old combinator.
-    return buildMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, maxLen) + selector + oldCombinator;
+    return buildMatchingSelector(nextElement, nextDepth, combinator, selectorLength + 1, maxSelectorLength) + selector + oldCombinator;
 };
 
-const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSelectorPosition) => {
+const buildNonMatchingSelector = (element, depth, oldCombinator, selectorLength, badSelectorPosition) => {
     // prettier-ignore
     if (!depth || !element)
         return `.just-span${ oldCombinator}`;
 
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
     const selector = getSelector(element);
-    if (selLen === badSelectorPosition) {
+    if (selectorLength === badSelectorPosition) {
         const wrongSelector = getClassname(random.choice(Array.from(element.children)));
         return `${selector}${wrongSelector}${oldCombinator}`;
     }
@@ -161,7 +161,7 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selLen, badSele
     const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
 
     // Recurse with the next element and depth, and append the selector and old combinator.
-    return buildNonMatchingSelector(nextElement, nextDepth, combinator, selLen + 1, badSelectorPosition) + selector + oldCombinator;
+    return buildNonMatchingSelector(nextElement, nextDepth, combinator, selectorLength + 1, badSelectorPosition) + selector + oldCombinator;
 };
 
 const ANGULAR_VIEW_DEPTH = 8;
@@ -169,8 +169,8 @@ const ANGULAR_LI_DEPTH = 7;
 const NON_ANGULAR_VIEW_DEPTH = 6;
 const NON_ANGULAR_LI_DEPTH = 5;
 
-const getInitialDepth = (element, angular) => {
-    if (angular)
+const getInitialDepth = (element, isAngular) => {
+    if (isAngular)
         return element.tagName === "DIV" ? ANGULAR_VIEW_DEPTH : ANGULAR_LI_DEPTH;
 
     return element.tagName === "DIV" ? NON_ANGULAR_VIEW_DEPTH : NON_ANGULAR_LI_DEPTH;
@@ -181,9 +181,9 @@ const generateCssRules = (selectors) => {
     return selectors.map((selector, i) => {
         random.shuffle(cssProperties, true);
         return `${selector} {
-                    ${cssProperties[0]}: rgba(140,140,140,${i / 1000});
-                    ${cssProperties[1]}: rgba(140,140,140,${i / 1000});
-                }`;
+                            ${cssProperties[0]}: rgba(140,140,140,${i / 1000});
+                            ${cssProperties[1]}: rgba(140,140,140,${i / 1000});
+                        }`;
     });
 };
 
@@ -191,26 +191,26 @@ const cssProperties = ["accent-color", "border-bottom-color", "border-color", "b
 
 /**
  * Generates CSS for the matching and non-matching selectors.
- * @param {string} angular whether to generate angular or react markup
+ * @param {string} isAngular whether to generate angular or react markup
  * @returns {string} The css rules for the matching and non-matching selectors.
  */
-export const genCss = (angular = false) => {
+export const genCss = (isAngular = false) => {
     const matchingSelectors = [];
     const nonMatchingSelectors = [];
-    const htmlMarkup = getHtmlMarkup(angular);
+    const htmlMarkup = getHtmlMarkup(isAngular);
     const dom = new JSDOM(htmlMarkup);
     const { document } = dom.window;
 
-    addTodoItems(document, NUM_TODOS_TO_INSERT_IN_HTML, angular);
+    addTodoItems(document, NUM_TODOS_TO_INSERT_IN_HTML, isAngular);
     const elements = document.querySelectorAll(".main li");
 
     // Generate matching and non-matching selectors for each element.
     elements.forEach((element) => {
         // Add `TARGETED_CLASS` to the matching selectors to match only the todoMVC items.
-        matchingSelectors.push(`${buildMatchingSelector(element, getInitialDepth(element, angular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${TARGETED_CLASS}`);
-        matchingSelectors.push(`${buildMatchingSelector(element.firstChild, getInitialDepth(element.firstChild, angular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${TARGETED_CLASS}`);
-        nonMatchingSelectors.push(`${buildNonMatchingSelector(element, getInitialDepth(element, angular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
-        nonMatchingSelectors.push(`${buildNonMatchingSelector(element.firstChild, getInitialDepth(element.firstChild, angular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
+        matchingSelectors.push(`${buildMatchingSelector(element, getInitialDepth(element, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${TARGETED_CLASS}`);
+        matchingSelectors.push(`${buildMatchingSelector(element.firstChild, getInitialDepth(element.firstChild, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${TARGETED_CLASS}`);
+        nonMatchingSelectors.push(`${buildNonMatchingSelector(element, getInitialDepth(element, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
+        nonMatchingSelectors.push(`${buildNonMatchingSelector(element.firstChild, getInitialDepth(element.firstChild, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
     });
 
     const allCssRules = generateCssRules(matchingSelectors.concat(nonMatchingSelectors));
