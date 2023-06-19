@@ -55,27 +55,25 @@ const getElementType = (element) => {
     return element.nodeName.toLowerCase();
 };
 
-const getElementAtDepth = (combinator, element, currentDepth, depth) => {
+const getElementAtDepth = (element, currentDepth, depth) => {
     let currentElement = element;
-    if (combinator === Combinator.DESCENDANT) {
-        while (currentDepth > depth) {
-            currentElement = currentElement.parentElement;
-            currentDepth--;
-        }
+    while (currentDepth > depth) {
+        currentElement = currentElement.parentElement;
+        currentDepth--;
     }
-    return getRandomElement(combinator, currentElement);
+    return currentElement;
 };
 
-const getRandomElement = (combinator, element) => {
+const getRandomElement = (combinator, element, currentDepth, depth) => {
     switch (combinator) {
         case Combinator.CHILD:
-            return element;
+            return element.parentElement;
         case Combinator.ADJACENT_SIBLING:
             return element.previousElementSibling;
         case Combinator.GENERAL_SIBLING:
             return getRandomSiblingElementBefore(element);
         case Combinator.DESCENDANT:
-            return element;
+            return getElementAtDepth(element, currentDepth, depth);
         default:
             throw new Error(`Invalid combinator: ${combinator}`);
     }
@@ -140,7 +138,7 @@ const buildMatchingSelector = (element, depth, oldCombinator, selectorLength, ma
     const combinator = chooseCombinator(element);
 
     const nextDepth = getNextDepth(combinator, depth);
-    const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
+    const nextElement = getRandomElement(combinator, element, depth, nextDepth);
 
     // Recurse with the next element and depth, and append the selector and old combinator.
     return buildMatchingSelector(nextElement, nextDepth, combinator, selectorLength + 1, maxSelectorLength) + selector + oldCombinator;
@@ -158,14 +156,16 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selectorLength,
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
     const selector = getSelector(element);
     if (selectorLength === badSelectorPosition) {
-        const wrongSelector = getClassname(random.choice(Array.from(element.children)));
+        const wrongDepth = random.randRange(Math.min(depth + 1, 7), 8);
+        const randomElement = getRandomElement(Combinator.DESCENDANT, element, depth, wrongDepth);
+        const wrongSelector = getClassname(randomElement);
         return `${selector}${wrongSelector}${oldCombinator}`;
     }
 
     // Otherwise, recurse.
     const combinator = chooseCombinator(element);
     const nextDepth = getNextDepth(combinator, depth);
-    const nextElement = getElementAtDepth(combinator, element, depth, nextDepth);
+    const nextElement = getRandomElement(combinator, element, depth, nextDepth);
 
     // Recurse with the next element and depth, and append the selector and old combinator.
     return buildNonMatchingSelector(nextElement, nextDepth, combinator, selectorLength + 1, badSelectorPosition) + selector + oldCombinator;
