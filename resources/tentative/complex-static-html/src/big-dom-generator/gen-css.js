@@ -123,37 +123,19 @@ const randomWeighted = (options, probabilities) => {
     return options[options.length - 1];
 };
 
-const buildMatchingSelector = (element, depth, oldCombinator, selectorLength, maxSelectorLength) => {
-    // prettier-ignore
-    if (selectorLength >= maxSelectorLength || !element)
-        return "";
+const buildSelectors = (element, depth, oldCombinator, selectorLength, maxSelectorLength, isMatching) => {
+    if ((!isMatching && !depth) || !element || selectorLength >= maxSelectorLength) {
+        if (isMatching)
+            return "";
+        return `.view-${random.randRange(0, NUM_TODOS_TO_INSERT_IN_HTML)}${oldCombinator}`;
+    }
 
     // Get a random selector for the element.
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
     const selector = getSelector(element);
     // prettier-ignore
-    if (!depth)
+    if (isMatching && !depth)
         return `${selector}${oldCombinator}`;
-
-    const combinator = chooseCombinator(element);
-    const nextDepth = getNextDepth(combinator, depth);
-    const nextElement = getRandomElement(combinator, element, depth, nextDepth);
-
-    // Recurse with the next element and depth, and append the selector and old combinator.
-    return buildMatchingSelector(nextElement, nextDepth, combinator, selectorLength + 1, maxSelectorLength) + selector + oldCombinator;
-};
-
-// Returns a non-matching selector for the element.
-// We kept the selector from matching by adding the `.just-span` class to the left-most selector or
-// by adding a classname from one of its children.
-const buildNonMatchingSelector = (element, depth, oldCombinator, selectorLength, badSelectorPosition) => {
-    // prettier-ignore
-    if (!depth || !element || selectorLength === badSelectorPosition)
-        return `.view-${random.randRange(0, NUM_TODOS_TO_INSERT_IN_HTML)}${oldCombinator}`;
-
-    // If we've reached the target length, pick a random classname from its children.
-    const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
-    const selector = getSelector(element);
 
     // Otherwise, recurse.
     const combinator = chooseCombinator(element);
@@ -161,7 +143,7 @@ const buildNonMatchingSelector = (element, depth, oldCombinator, selectorLength,
     const nextElement = getRandomElement(combinator, element, depth, nextDepth);
 
     // Recurse with the next element and depth, and append the selector and old combinator.
-    return buildNonMatchingSelector(nextElement, nextDepth, combinator, selectorLength + 1, badSelectorPosition) + selector + oldCombinator;
+    return buildSelectors(nextElement, nextDepth, combinator, selectorLength + 1, maxSelectorLength, isMatching) + selector + oldCombinator;
 };
 
 const ANGULAR_VIEW_DEPTH = 8;
@@ -207,10 +189,10 @@ export const genCss = (isAngular = false) => {
     // Generate matching and non-matching selectors for each element.
     elements.forEach((element) => {
         // Add `TARGETED_CLASS` to the matching selectors to match only the todoMVC items.
-        matchingSelectors.push(`${buildMatchingSelector(element, getInitialDepth(element, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${TARGETED_CLASS}`);
-        matchingSelectors.push(`${buildMatchingSelector(element.firstChild, getInitialDepth(element.firstChild, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}${TARGETED_CLASS}`);
-        nonMatchingSelectors.push(`${buildNonMatchingSelector(element, getInitialDepth(element, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
-        nonMatchingSelectors.push(`${buildNonMatchingSelector(element.firstChild, getInitialDepth(element.firstChild, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE))}`);
+        matchingSelectors.push(`${buildSelectors(element, getInitialDepth(element, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE), true)}${TARGETED_CLASS}`);
+        matchingSelectors.push(`${buildSelectors(element.firstChild, getInitialDepth(element.firstChild, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE), true)}${TARGETED_CLASS}`);
+        nonMatchingSelectors.push(`${buildSelectors(element, getInitialDepth(element, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE), false)}${TARGETED_CLASS}`);
+        nonMatchingSelectors.push(`${buildSelectors(element.firstChild, getInitialDepth(element.firstChild, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE), false)}${TARGETED_CLASS}`);
     });
 
     const allCssRules = generateCssRules(matchingSelectors.concat(nonMatchingSelectors));
