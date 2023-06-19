@@ -124,7 +124,7 @@ const randomWeighted = (options, probabilities) => {
 };
 
 const buildSelectors = (element, depth, oldCombinator, selectorLength, maxSelectorLength, isMatching) => {
-    // if nonMatching we add a view<random-index> class that is guaranteed to not have targeted children in the todoMVC
+    // if nonMatching we add a view-<random-index> class selector that is guaranteed to not have targeted children in the todoMVC
     if ((!isMatching && !depth) || selectorLength >= maxSelectorLength || !element)
         return isMatching ? "" : `.view-${random.randRange(0, NUM_TODOS_TO_INSERT_IN_HTML)}${oldCombinator}`;
 
