@@ -74,8 +74,10 @@ const getRandomElement = (combinator, element) => {
             return element.previousElementSibling;
         case Combinator.GENERAL_SIBLING:
             return getRandomSiblingElementBefore(element);
-        default:
+        case Combinator.DESCENDANT:
             return element;
+        default:
+            throw new Error(`Invalid combinator: ${combinator}`);
     }
 };
 
