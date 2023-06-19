@@ -123,37 +123,21 @@ const randomWeighted = (options, probabilities) => {
     return options[options.length - 1];
 };
 
-/**
- * This function recursively builds a selector string.
- * The selector string is built by randomly choosing a selector for each element and a combinator to join them.
- * The recursion stops when the maximum selector length is reached or when the depth is 0.
- * @param {HTMLElement} element The current element.
- * @param {Number} depth The current depth.
- * @param {String} oldCombinator The combinator to join the current selector with the previous one.
- * @param {Number} selectorLength The current selector length.
- * @param {Number} maxSelectorLength The maximum selector length.
- * @param {boolean} isMatching Whether we are generating a matching selector or not.
- * @returns A selector string.
- */
 const buildSelectors = (element, depth, oldCombinator, selectorLength, maxSelectorLength, isMatching) => {
-    // If we've reached the maximum selector length or depth, return a random selector.
+    // if nonMatching we add a view<random-index> class that is guaranteed to not have targeted children in the todoMVC
     if ((!isMatching && !depth) || selectorLength >= maxSelectorLength || !element)
         return isMatching ? "" : `.view-${random.randRange(0, NUM_TODOS_TO_INSERT_IN_HTML)}${oldCombinator}`;
 
-    // Get a random selector for the element.
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
     const selector = getSelector(element);
 
-    // If we're building a matching selector and we've reached the desired depth, return the selector and old combinator.
     if (isMatching && !depth)
         return `${selector}${oldCombinator}`;
 
-    // Otherwise, recurse.
     const combinator = chooseCombinator(element);
     const nextDepth = getNextDepth(combinator, depth);
     const nextElement = getRandomElement(combinator, element, depth, nextDepth);
 
-    // Recurse with the next element and depth, and append the selector and old combinator.
     return buildSelectors(nextElement, nextDepth, combinator, selectorLength + 1, maxSelectorLength, isMatching) + selector + oldCombinator;
 };
 
@@ -199,7 +183,6 @@ export const genCss = (isAngular = false) => {
 
     // Generate matching and non-matching selectors for each element.
     elements.forEach((element) => {
-        // Add `TARGETED_CLASS` to the matching selectors to match only the todoMVC items.
         matchingSelectors.push(`${buildSelectors(element, getInitialDepth(element, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE), true)}${TARGETED_CLASS}`);
         matchingSelectors.push(`${buildSelectors(element.firstChild, getInitialDepth(element.firstChild, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE), true)}${TARGETED_CLASS}`);
         nonMatchingSelectors.push(`${buildSelectors(element, getInitialDepth(element, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE), false)}${TARGETED_CLASS}`);
