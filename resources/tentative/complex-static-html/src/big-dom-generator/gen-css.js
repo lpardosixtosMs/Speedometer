@@ -183,8 +183,10 @@ export const genCss = (isAngular = false) => {
 
     // Generate matching and non-matching selectors for each element.
     elements.forEach((element) => {
+        // Add `TARGETED_CLASS` to the matching selectors to match only the todoMVC items.
         matchingSelectors.push(`${buildSelectors(element, getInitialDepth(element, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE), true)}${TARGETED_CLASS}`);
         matchingSelectors.push(`${buildSelectors(element.firstChild, getInitialDepth(element.firstChild, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE), true)}${TARGETED_CLASS}`);
+        // Add `TARGETED_CLASS` to the nonMatchingSelectors to make sure they don't accidentally match other elements on the page.
         nonMatchingSelectors.push(`${buildSelectors(element, getInitialDepth(element, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE), false)}${TARGETED_CLASS}`);
         nonMatchingSelectors.push(`${buildSelectors(element.firstChild, getInitialDepth(element.firstChild, isAngular), "", 0, random.randRange(3, MAX_SELECTOR_LENGTH_TO_GENERATE), false)}${TARGETED_CLASS}`);
     });
