@@ -136,7 +136,6 @@ const buildMatchingSelector = (element, depth, oldCombinator, selectorLength, ma
         return `${selector}${oldCombinator}`;
 
     const combinator = chooseCombinator(element);
-
     const nextDepth = getNextDepth(combinator, depth);
     const nextElement = getRandomElement(combinator, element, depth, nextDepth);
 
@@ -149,18 +148,12 @@ const buildMatchingSelector = (element, depth, oldCombinator, selectorLength, ma
 // by adding a classname from one of its children.
 const buildNonMatchingSelector = (element, depth, oldCombinator, selectorLength, badSelectorPosition) => {
     // prettier-ignore
-    if (!depth || !element)
-        return `.just-span${oldCombinator}`;
+    if (!depth || !element || selectorLength === badSelectorPosition)
+        return `.view-${random.randRange(0, NUM_TODOS_TO_INSERT_IN_HTML)}${oldCombinator}`;
 
     // If we've reached the target length, pick a random classname from its children.
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
     const selector = getSelector(element);
-    if (selectorLength === badSelectorPosition) {
-        const wrongDepth = random.randRange(Math.min(depth + 1, 7), 8);
-        const randomElement = getRandomElement(Combinator.DESCENDANT, element, depth, wrongDepth);
-        const wrongSelector = getClassname(randomElement);
-        return `${selector}${wrongSelector}${oldCombinator}`;
-    }
 
     // Otherwise, recurse.
     const combinator = chooseCombinator(element);
