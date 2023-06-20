@@ -3,6 +3,8 @@ const common = require("./webpack.common.js");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
+const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
+
 module.exports = merge(common, {
     mode: "development",
     devtool: "inline-source-map",
@@ -11,7 +13,7 @@ module.exports = merge(common, {
             title: "Development",
             template: "shared/public/index.html",
             templateParameters: {
-                body: getHtmlContent("./partial.html"),
+                body: getHtmlContent("standalone/partial.html"),
                 htmlClasses: "",
             },
         }),
@@ -28,10 +30,3 @@ module.exports = merge(common, {
         ],
     },
 });
-
-function getHtmlContent(filePath) {
-    const absolutePath = path.resolve(__dirname, filePath);
-    const fs = require("fs");
-    return fs.readFileSync(absolutePath, "utf8");
-}
-

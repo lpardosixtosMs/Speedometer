@@ -1,5 +1,5 @@
 const { merge } = require("webpack-merge");
-const common = require("../shared/webpack.common.js");
+const common = require("./webpack.common.js");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -9,6 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const path = require("path");
 
 const CopyPlugin = require("copy-webpack-plugin");
+const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
 
 module.exports = merge(common, {
     output: {
@@ -28,7 +29,7 @@ module.exports = merge(common, {
             title: "TodoMVC: React Complex DOM",
             template: "shared/public/index.html",
             templateParameters: {
-                body: getHtmlContent("../node_modules/big-dom-generator/dist/index.html"),
+                body: getHtmlContent("node_modules/big-dom-generator/dist/index.html"),
                 htmlClasses: "spectrum spectrum--medium spectrum--light",
             },
         }),
@@ -50,12 +51,3 @@ module.exports = merge(common, {
         minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
     },
 });
-
-function getHtmlContent(filePath) {
-    const absolutePath = path.resolve(__dirname, filePath);
-    const fs = require("fs");
-    const htmlContent = fs.readFileSync(absolutePath, "utf8");
-    const bodyStartIndex = htmlContent.indexOf("<body>") + 6;
-    const bodyEndIndex = htmlContent.indexOf("</body>");
-    return htmlContent.substring(bodyStartIndex, bodyEndIndex);
-}

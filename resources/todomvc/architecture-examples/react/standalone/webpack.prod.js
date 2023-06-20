@@ -8,6 +8,8 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const path = require("path");
 
+const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
+
 module.exports = merge(common, {
     output: {
         filename: "[name].bundle.js",
@@ -21,7 +23,7 @@ module.exports = merge(common, {
             title: "TodoMVC: React",
             template: "shared/public/index.html",
             templateParameters: {
-                body: getHtmlContent("./partial.html"),
+                body: getHtmlContent("standalone/partial.html"),
                 htmlClasses: "",
             },
         }),
@@ -43,9 +45,3 @@ module.exports = merge(common, {
         minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
     },
 });
-
-function getHtmlContent(filePath) {
-    const absolutePath = path.resolve(__dirname, filePath);
-    const fs = require("fs");
-    return fs.readFileSync(absolutePath, "utf8");
-}
