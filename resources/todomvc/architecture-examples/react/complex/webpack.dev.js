@@ -11,7 +11,7 @@ module.exports = merge(common, {
             title: "TodoMVC: React Complex DOM Development",
             template: "shared/public/index.html",
             templateParameters: {
-                body: getHtmlContent("node_modules/big-dom-generator/dist/index.html"),
+                body: getHtmlContent("node_modules/big-dom-generator/dist/index.html", true),
                 htmlClasses: "spectrum spectrum--medium spectrum--light",
             },
         }),

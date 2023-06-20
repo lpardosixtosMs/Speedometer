@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-function getHtmlContent(filePath, isEmbedded) {
+function getHtmlContent(filePath, isEmbedded = false) {
     let htmlContent = fs.readFileSync(filePath, "utf8");
     if (isEmbedded) {
         const bodyStartIndex = htmlContent.indexOf("<body>") + 6;
