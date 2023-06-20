@@ -22,7 +22,7 @@ module.exports = merge(common, {
     plugins: [
         new HtmlWebpackPlugin({
             title: "Production",
-            template: "simple/public/index.html",
+            template: "shared/public/index.html",
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",
