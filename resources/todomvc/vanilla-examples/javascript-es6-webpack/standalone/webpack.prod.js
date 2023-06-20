@@ -12,7 +12,7 @@ module.exports = merge(common, {
     plugins: [
         new HtmlWebpackPlugin({
             title: "Production",
-            template: "shared/index.html",
+            template: "/shared/index.html",
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",
