@@ -1,11 +1,11 @@
-import View from "./view";
-import Controller from "./controller";
-import Model from "./model";
-import Store from "./store";
-import Template from "./template";
+import View from "../../shared/view";
+import Controller from "../../shared/controller";
+import Model from "../../shared/model";
+import Store from "../../shared/store";
+import Template from "../../shared/template";
 
 import "todomvc-app-css/index.css";
-import "./app.css";
+import "../../shared/app.css";
 
 let todo;
 const onHashChange = () => {
