@@ -20,7 +20,7 @@ module.exports = {
             filename: "[name].css",
             chunkFilename: "[id].css",
         }),
-        new webpack.IgnorePlugin({ resourceRegExp: /canvas/ })
+        new webpack.IgnorePlugin({ resourceRegExp: /canvas/ }),
     ],
     module: {
         rules: [
@@ -63,7 +63,7 @@ module.exports = {
                 generator: {
                     filename: "[name][ext]",
                 },
-            }
+            },
         ],
     },
     target: "node",

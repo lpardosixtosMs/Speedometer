@@ -19,15 +19,14 @@ This will import the generated.css file from the big-dom-generator package and a
 
 Alternatively, you can include the CSS file in your HTML file using a link tag:
 
-
 ```html
-<link rel="stylesheet" href="node_modules/big-dom-generator/matchingCss.css">
-<link rel="stylesheet" href="node_modules/big-dom-generator/nonMatchingCss.css">
+<link rel="stylesheet" href="node_modules/big-dom-generator/matchingCss.css" /> <link rel="stylesheet" href="node_modules/big-dom-generator/nonMatchingCss.css" />
 ```
 
 To use the angular version of the big-dom-generator package in an Angular project, you can follow these steps:
 
 1. Install the package using npm:
+
 ```bash
 $ npm install @big-dom-generator/angular
 ```
@@ -35,26 +34,24 @@ $ npm install @big-dom-generator/angular
 2. Import the CSS file in your Angular component:
 
 ```javascript
-import '@big-dom-generator/angular/big-dom-generator.css';
+import "@big-dom-generator/angular/big-dom-generator.css";
 ```
 
 Alternatively, you can include the CSS file in your angular.json file:
 
 ```json
 {
-  "projects": {
-    "my-app": {
-      "architect": {
-        "build": {
-          "options": {
-            "styles": [
-              "node_modules/@big-dom-generator/angular/big-dom-generator.css"
-            ]
-          }
+    "projects": {
+        "my-app": {
+            "architect": {
+                "build": {
+                    "options": {
+                        "styles": ["node_modules/@big-dom-generator/angular/big-dom-generator.css"]
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }
 ```
 

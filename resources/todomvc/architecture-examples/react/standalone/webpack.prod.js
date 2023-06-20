@@ -23,7 +23,7 @@ module.exports = merge(common, {
             title: "TodoMVC: React",
             template: "shared/public/index.html",
             templateParameters: {
-                body: getHtmlContent("standalone/partial.html"),
+                body: getHtmlContent("standalone/public/partial.html"),
                 htmlClasses: "",
             },
         }),

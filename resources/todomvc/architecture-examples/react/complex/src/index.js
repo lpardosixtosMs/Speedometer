@@ -25,7 +25,7 @@ render(
         <footer className="info">
             <p>Click on input field to write your todo.</p>
             <p>At least two characters are needed to be a valid entry.</p>
-            <p>Press 'enter' to add the todo.</p>
+            <p>Press &lsquo;enter&rsquo; to add the todo.</p>
             <p>Double-click to edit a todo</p>
         </footer>
     </>,

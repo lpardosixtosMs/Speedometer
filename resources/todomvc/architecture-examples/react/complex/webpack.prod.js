@@ -21,9 +21,7 @@ module.exports = merge(common, {
     devtool: "source-map",
     plugins: [
         new CopyPlugin({
-            patterns: [
-                { from: "node_modules/big-dom-generator/dist/logo.png", to: "." },
-            ],
+            patterns: [{ from: "node_modules/big-dom-generator/dist/logo.png", to: "." }],
         }),
         new HtmlWebpackPlugin({
             title: "TodoMVC: React Complex DOM",
