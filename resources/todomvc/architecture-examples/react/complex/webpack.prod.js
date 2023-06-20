@@ -24,15 +24,15 @@ module.exports = merge(common, {
     plugins: [
         new CopyPlugin({
             patterns: [
-                { from: "../../big-dom-generator/dist/logo.png", to: "." },
-                { from: "../../big-dom-generator/dist/index.html", to: "../public" },
+                { from: "node_modules/big-dom-generator/dist/logo.png", to: "." },
             ],
         }),
         new HtmlWebpackPlugin({
-            title: "Production",
+            title: "TodoMVC: React Complex DOM",
             template: "shared/public/index.html",
             templateParameters: {
-                title: "TodoMVC: React Complex DOM",
+                body: getHtmlContent("../node_modules/big-dom-generator/dist/index.html"),
+                htmlClasses: "spectrum spectrum--medium spectrum--light",
             },
         }),
         new MiniCssExtractPlugin({
@@ -53,3 +53,12 @@ module.exports = merge(common, {
         minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
     },
 });
+
+function getHtmlContent(filePath) {
+    const absolutePath = path.resolve(__dirname, filePath);
+    const fs = require("fs");
+    const htmlContent = fs.readFileSync(absolutePath, "utf8");
+    const bodyStartIndex = htmlContent.indexOf("<body>") + 6;
+    const bodyEndIndex = htmlContent.indexOf("</body>");
+    return htmlContent.substring(bodyStartIndex, bodyEndIndex);
+}
