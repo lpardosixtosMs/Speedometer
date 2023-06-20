@@ -30,7 +30,10 @@ module.exports = merge(common, {
         }),
         new HtmlWebpackPlugin({
             title: "Production",
-            template: "complex/public/index.html",
+            template: "shared/public/index.html",
+            templateParameters: {
+                title: "TodoMVC: React Complex DOM",
+            },
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",

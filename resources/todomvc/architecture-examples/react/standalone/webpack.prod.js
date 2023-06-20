@@ -10,7 +10,7 @@ const path = require("path");
 
 module.exports = merge(common, {
     entry: {
-        app: "./simple/src/index.js",
+        app: "./standalone/src/index.js",
     },
     output: {
         filename: "[name].bundle.js",
@@ -23,6 +23,9 @@ module.exports = merge(common, {
         new HtmlWebpackPlugin({
             title: "Production",
             template: "shared/public/index.html",
+            templateParameters: {
+                title: "TodoMVC: React",
+            },
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",
