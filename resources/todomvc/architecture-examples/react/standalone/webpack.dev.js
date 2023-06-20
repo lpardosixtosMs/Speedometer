@@ -1,6 +1,7 @@
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = merge(common, {
     mode: "development",
@@ -8,7 +9,11 @@ module.exports = merge(common, {
     plugins: [
         new HtmlWebpackPlugin({
             title: "Development",
-            template: "public/index.html",
+            template: "shared/public/index.html",
+            templateParameters: {
+                body: getHtmlContent("./partial.html"),
+                htmlClasses: "",
+            },
         }),
     ],
     devServer: {
@@ -23,3 +28,10 @@ module.exports = merge(common, {
         ],
     },
 });
+
+function getHtmlContent(filePath) {
+    const absolutePath = path.resolve(__dirname, filePath);
+    const fs = require("fs");
+    return fs.readFileSync(absolutePath, "utf8");
+}
+

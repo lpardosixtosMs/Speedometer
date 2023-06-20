@@ -1,5 +1,5 @@
 const { merge } = require("webpack-merge");
-const common = require("../shared/webpack.common.js");
+const common = require("./webpack.common.js");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -9,9 +9,6 @@ const TerserPlugin = require("terser-webpack-plugin");
 const path = require("path");
 
 module.exports = merge(common, {
-    entry: {
-        app: "./standalone/src/index.js",
-    },
     output: {
         filename: "[name].bundle.js",
         path: path.resolve(__dirname, "dist"),

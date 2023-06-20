@@ -1,4 +1,7 @@
 module.exports = {
+    entry: {
+        app: "./standalone/src/index.js",
+    },
     resolve: {
         extensions: [".js", ".jsx"],
     },

@@ -11,9 +11,6 @@ const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = merge(common, {
-    entry: {
-        app: "./complex/src/index.js",
-    },
     output: {
         filename: "[name].bundle.js",
         path: path.resolve(__dirname, "dist"),
