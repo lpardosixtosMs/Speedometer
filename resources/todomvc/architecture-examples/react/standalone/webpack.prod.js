@@ -21,10 +21,10 @@ module.exports = merge(common, {
     devtool: "source-map",
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Production",
+            title: "TodoMVC: React",
             template: "shared/public/index.html",
             templateParameters: {
-                title: "TodoMVC: React",
+                body: getHtmlContent("./partial.html"),
             },
         }),
         new MiniCssExtractPlugin({
@@ -45,3 +45,9 @@ module.exports = merge(common, {
         minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
     },
 });
+
+function getHtmlContent(filePath) {
+    const absolutePath = path.resolve(__dirname, filePath);
+    const fs = require("fs");
+    return fs.readFileSync(absolutePath, "utf8");
+}
