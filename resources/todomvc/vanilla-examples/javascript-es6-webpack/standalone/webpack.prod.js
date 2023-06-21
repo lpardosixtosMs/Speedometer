@@ -6,6 +6,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
+const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
+
 module.exports = merge(common, {
     mode: "production",
     devtool: "source-map",
@@ -13,6 +15,10 @@ module.exports = merge(common, {
         new HtmlWebpackPlugin({
             title: "TodoMVC: JavaScript Es6 Webpack",
             template: "/shared/index.html",
+            templateParameters: {
+                body: getHtmlContent("shared/partial.html"),
+                htmlClasses: "",
+            },
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",
