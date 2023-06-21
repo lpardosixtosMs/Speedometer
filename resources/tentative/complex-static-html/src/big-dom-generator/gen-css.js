@@ -125,14 +125,11 @@ const randomWeighted = (options, probabilities) => {
 
 const buildSelectors = (element, depth, oldCombinator, selectorLength, maxSelectorLength, isMatching) => {
     // if nonMatching we add a view-<random-index> class selector that is guaranteed to not have targeted children in the todoMVC
-    if ((!isMatching && !depth) || selectorLength >= maxSelectorLength || !element)
+    if (depth < 3 || selectorLength >= maxSelectorLength || !element || element.tagName === "HTML" || element.tagName === "BODY")
         return isMatching ? "" : `.view-${random.randRange(0, NUM_TODOS_TO_INSERT_IN_HTML)}${oldCombinator}`;
 
     const getSelector = randomWeighted([getClassname, getElementType, () => "*"], [0.6, 0.3, 0.1]);
     const selector = getSelector(element);
-
-    if (isMatching && !depth)
-        return `${selector}${oldCombinator}`;
 
     const combinator = chooseCombinator(element);
     const nextDepth = getNextDepth(combinator, depth);
@@ -141,16 +138,13 @@ const buildSelectors = (element, depth, oldCombinator, selectorLength, maxSelect
     return buildSelectors(nextElement, nextDepth, combinator, selectorLength + 1, maxSelectorLength, isMatching) + selector + oldCombinator;
 };
 
-const ANGULAR_VIEW_DEPTH = 8;
-const ANGULAR_LI_DEPTH = 7;
-const NON_ANGULAR_VIEW_DEPTH = 6;
-const NON_ANGULAR_LI_DEPTH = 5;
-
-const getInitialDepth = (element, isAngular) => {
-    if (isAngular)
-        return element.tagName === "DIV" ? ANGULAR_VIEW_DEPTH : ANGULAR_LI_DEPTH;
-
-    return element.tagName === "DIV" ? NON_ANGULAR_VIEW_DEPTH : NON_ANGULAR_LI_DEPTH;
+const getInitialDepth = (element) => {
+    let depth = 0;
+    while (element) {
+        depth++;
+        element = element.parentElement;
+    }
+    return depth;
 };
 
 // Take selectors create random color styles. Same color, different opacity.
