@@ -10,10 +10,10 @@ import copy from "rollup-plugin-copy";
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-    input: "src/index.js",
+    input: "standalone/src/index.js",
     output: [
         {
-            file: "dist/app.js",
+            file: "standalone/dist/app.js",
             format: "iife",
             sourcemap: true,
         },
