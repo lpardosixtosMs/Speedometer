@@ -11,7 +11,7 @@ module.exports = merge(common, {
     devtool: "source-map",
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Production",
+            title: "TodoMVC: JavaScript Es6 Webpack",
             template: "/shared/index.html",
         }),
         new MiniCssExtractPlugin({
