@@ -60,16 +60,16 @@ const getElementType = (element) => {
     return element.nodeName.toLowerCase();
 };
 
-const getElementAtDepth = (element, currentDepth, depth) => {
+const getElementAtDepth = (element, currentDepth, targetDepth) => {
     let currentElement = element;
-    while (currentDepth > depth) {
+    while (currentDepth > targetDepth) {
         currentElement = currentElement.parentElement;
         currentDepth--;
     }
     return currentElement;
 };
 
-const getRandomElement = (combinator, element, currentDepth, depth) => {
+const getRandomElement = (combinator, element, currentDepth, targetDepth) => {
     switch (combinator) {
         case Combinator.CHILD:
             return element.parentElement;
@@ -78,7 +78,7 @@ const getRandomElement = (combinator, element, currentDepth, depth) => {
         case Combinator.GENERAL_SIBLING:
             return getRandomSiblingElementBefore(element);
         case Combinator.DESCENDANT:
-            return getElementAtDepth(element, currentDepth, depth);
+            return getElementAtDepth(element, currentDepth, targetDepth);
         default:
             throw new Error(`Invalid combinator: ${combinator}`);
     }
