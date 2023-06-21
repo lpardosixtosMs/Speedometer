@@ -1,12 +1,19 @@
 const { defineConfig } = require("@vue/cli-service");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const { getHtmlContent } = require("../shared/utils/getHtmlContent");
 
 module.exports = defineConfig({
     transpileDependencies: true,
     publicPath: "",
+    outputDir: "complex/dist",
     chainWebpack: (config) => {
         config.plugin("html").tap((args) => {
-            args[0].template = "node_modules/big-dom-generator/index.html";
+            args[0].title = "TodoMVC: Vue";
+            args[0].template = "shared/public/index.html";
+            args[0].templateParameters = {
+                body: getHtmlContent("node_modules/big-dom-generator/dist/index.html", true),
+                htmlClasses: "spectrum spectrum--medium spectrum--light",
+            };
             return args;
         });
         config.plugin("copy").use(CopyWebpackPlugin, [
@@ -19,6 +26,7 @@ module.exports = defineConfig({
                 ],
             },
         ]);
+        config.entry("app").clear().add("./complex/src/main.js");
     },
     terser: {
         minify: "terser",

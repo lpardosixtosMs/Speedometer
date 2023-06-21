@@ -4,7 +4,7 @@ const { getHtmlContent } = require("../shared/utils/getHtmlContent");
 module.exports = defineConfig({
     transpileDependencies: true,
     publicPath: "",
-    outputDir: "standalone/dist", // Change the output directory to "dist/my-app"
+    outputDir: "standalone/dist",
     chainWebpack: (config) => {
         config.plugin("html").tap((args) => {
             args[0].title = "TodoMVC: Vue";
