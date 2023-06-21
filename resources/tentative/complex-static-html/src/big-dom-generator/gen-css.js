@@ -12,8 +12,13 @@ const Combinator = {
     GENERAL_SIBLING: " ~ ",
 };
 
-const getHtmlMarkup = (angular) => {
-    return angular ? ANGULAR_TODO_MVC_HTML_MARKUP : TODO_MVC_HTML_MARKUP;
+const getHtmlMarkup = (markup) => {
+    switch (markup) {
+        case "angular":
+            return ANGULAR_TODO_MVC_HTML_MARKUP;
+        default:
+            return TODO_MVC_HTML_MARKUP;
+    }
 };
 
 /**
@@ -162,17 +167,17 @@ const cssProperties = ["accent-color", "border-bottom-color", "border-color", "b
 
 /**
  * Returns a random 200 matching selectors and 200 non-matching selectors targeted at the todoMVC items.
- * @param {boolean} isAngular whether to generate angular or react markup
+ * @param {string} markup The markup to generate the selectors for.
  * @returns {string} The css rules for the matching and non-matching selectors.
  */
-export const genCss = (isAngular = false) => {
+export const genCss = (markup) => {
     const matchingSelectors = [];
     const nonMatchingSelectors = [];
-    const htmlMarkup = getHtmlMarkup(isAngular);
+    const htmlMarkup = getHtmlMarkup(markup);
     const dom = new JSDOM(htmlMarkup);
     const { document } = dom.window;
 
-    addTodoItems(document, NUM_TODOS_TO_INSERT_IN_HTML, isAngular);
+    addTodoItems(document, NUM_TODOS_TO_INSERT_IN_HTML, markup);
     const elements = document.querySelectorAll(".main li");
 
     // Generate matching and non-matching selectors for each element.
