@@ -106,5 +106,5 @@ export default {
 </script>
 
 <style src="./todos-component.css"></style>
-<style src="../../node_modules/todomvc-common/base.css"></style>
-<style src="../../node_modules/todomvc-app-css/index.css"></style>
+<style src="../../../node_modules/todomvc-common/base.css"></style>
+<style src="../../../node_modules/todomvc-app-css/index.css"></style>

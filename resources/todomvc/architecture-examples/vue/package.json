@@ -8,8 +8,10 @@
         "npm": ">=8.19.3"
     },
     "scripts": {
-        "dev": "vue-cli-service serve",
-        "build": "vue-cli-service build",
+        "dev": "VUE_CLI_SERVICE_CONFIG_PATH='./standalone/vue.config.js' vue-cli-service serve",
+        "dev:embedded": "VUE_CLI_SERVICE_CONFIG_PATH='./complex/vue.config.js' vue-cli-service serve",
+        "build": "VUE_CLI_SERVICE_CONFIG_PATH='./standalone/vue.config.js' vue-cli-service build",
+        "build:embedded": "VUE_CLI_SERVICE_CONFIG_PATH='./complex/vue.config.js' vue-cli-service build",
         "lint": "vue-cli-service lint"
     },
     "dependencies": {
