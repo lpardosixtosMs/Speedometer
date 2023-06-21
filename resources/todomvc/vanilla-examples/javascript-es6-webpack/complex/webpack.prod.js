@@ -6,13 +6,23 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
+const CopyPlugin = require("copy-webpack-plugin");
+const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
+
 module.exports = merge(common, {
     mode: "production",
     devtool: "source-map",
     plugins: [
+        new CopyPlugin({
+            patterns: [{ from: "node_modules/big-dom-generator/dist/logo.png", to: "." }],
+        }),
         new HtmlWebpackPlugin({
             title: "TodoMVC: JavaScript Es6 Webpack Complex DOM",
             template: "/shared/index.html",
+            templateParameters: {
+                body: getHtmlContent("node_modules/big-dom-generator/dist/index.html", true),
+                htmlClasses: "spectrum spectrum--medium spectrum--light",
+            },
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",
