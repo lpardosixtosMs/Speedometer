@@ -3,6 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import css from "rollup-plugin-import-css";
+import copy from "rollup-plugin-copy";
 import html from "@rollup/plugin-html";
 const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
 
@@ -11,20 +12,24 @@ const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-    input: "standalone/src/index.js",
+    input: "complex/src/index.js",
     output: [
         {
-            file: "standalone/dist/app.js",
+            file: "complex/dist/app.js",
             format: "iife",
             sourcemap: true,
         },
     ],
     plugins: [
         html({
+            title: "TodoMVC: Preact Complex DOM",
             template: ({ attributes, bundle, files, publicPath, title }) => {
-                const html = getHtmlContent("shared/public/index.html");
-                const body = getHtmlContent("standalone/public/partial.html");
-                return html.replace("<body>", `<body>${body}`);
+                let html = getHtmlContent("shared/public/index.html");
+                const body = getHtmlContent("node_modules/big-dom-generator/dist/index.html", true);
+                html = html.replace("<html", "<html class=\"spectrum spectrum--medium spectrum--light\"");
+                html = html.replace("<title>TodoMVC: Preact</title>", `<title>${title}</title>`);
+                html = html.replace("<body>", `<body>${body}`);
+                return html;
             },
             filename: "index.html",
         }),
@@ -51,6 +56,9 @@ export default {
             jsnext: true,
             main: true,
             browser: true,
+        }),
+        copy({
+            targets: [{ src: "node_modules/big-dom-generator/dist/logo.png", dest: "complex/dist/" }],
         }),
         commonjs(),
         production && terser(),

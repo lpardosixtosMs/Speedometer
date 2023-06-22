@@ -9,9 +9,13 @@
     },
     "scripts": {
         "build": "rollup -c ./standalone/rollup.config.js --bundleConfigAsCjs",
+        "build:complex": "rollup -c ./complex/rollup.config.js --bundleConfigAsCjs",
         "dev": "npm-run-all --parallel serve watch",
+        "dev:complex": "npm-run-all --parallel serve:complex watch:complex",
         "serve": "http-server ./standalone/dist -p 7002 -c-1 --cors -o",
-        "watch": "ROLLUP_WATCH=true rollup -c ./standalone/rollup.config.js -w --bundleConfigAsCjs"
+        "serve:complex": "http-server ./complex/dist -p 7002 -c-1 --cors -o",
+        "watch": "ROLLUP_WATCH=true rollup -c ./standalone/rollup.config.js -w --bundleConfigAsCjs",
+        "watch:complex": "ROLLUP_WATCH=true rollup -c ./complex/rollup.config.js -w --bundleConfigAsCjs"
     },
     "devDependencies": {
         "@babel/plugin-transform-react-jsx": "^7.21.0",
