@@ -1,8 +1,8 @@
 const fs = require("fs").promises;
 
-const rootDirectory = "./";
-const sourceDirectory = "./src";
-const targetDirectory = "./dist";
+const rootDirectory = "./standalone/";
+const sourceDirectory = "./shared/src";
+const targetDirectory = "./standalone/dist";
 
 const htmlFile = "index.html";
 
