@@ -1,9 +1,9 @@
 const fs = require("fs");
 const path = require("path");
 
-function getHtmlContent(filePath, isEmbedded = false) {
+function getHtmlContent(filePath, isComplex = false) {
     let htmlContent = fs.readFileSync(filePath, "utf8");
-    if (isEmbedded) {
+    if (isComplex) {
         const bodyStartIndex = htmlContent.indexOf("<body>") + 6;
         const bodyEndIndex = htmlContent.indexOf("</body>");
         htmlContent = htmlContent.substring(bodyStartIndex, bodyEndIndex);
