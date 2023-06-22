@@ -11,9 +11,9 @@ const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-    input: "standalone/src/index.js",
+    input: "complex/src/index.js",
     output: {
-        file: "standalone/dist/app.js",
+        file: "complex/dist/app.js",
         format: "iife",
         sourcemap: true,
         name: "app",
@@ -36,14 +36,20 @@ export default {
             targets: [
                 {
                     src: "shared/public/index.html",
-                    dest: "standalone/dist/",
+                    dest: "complex/dist/",
                     transform: (contents) => {
+                        const title = "TodoMVC: Svlete Complex DOM";
                         contents = contents.toString();
-                        const body = getHtmlContent("shared/public/partial.html");
+                        const body = getHtmlContent("node_modules/big-dom-generator/dist/index.html", true);
+                        const htmlToInjectForComplex = getHtmlContent("shared/public/partial.html");
+                        contents = contents.replace("<html", "<html class=\"spectrum spectrum--medium spectrum--light\"");
+                        contents = contents.replace("<title>TodoMVC: Svelte</title>", `<title>${title}</title>`);
                         contents = contents.replace("<body>", `<body>${body}`);
+                        contents = contents.replace('<div class="todo-area">', `<div class="todo-area"><div class="todoholder">${htmlToInjectForComplex}</div>`);
                         return contents;
                     },
                 },
+                { src: "node_modules/big-dom-generator/dist/logo.png", dest: "complex/dist/" },
             ],
         }),
     ],
