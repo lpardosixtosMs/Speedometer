@@ -4,7 +4,6 @@ import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import css from "rollup-plugin-import-css";
 import copy from "rollup-plugin-copy";
-import html from "@rollup/plugin-html";
 const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
 
 // `npm run build` -> `production` is true
@@ -21,18 +20,6 @@ export default {
         },
     ],
     plugins: [
-        html({
-            title: "TodoMVC: Preact Complex DOM",
-            template: ({ attributes, bundle, files, publicPath, title }) => {
-                let html = getHtmlContent("shared/public/index.html");
-                const body = getHtmlContent("node_modules/big-dom-generator/dist/index.html", true);
-                html = html.replace("<html", "<html class=\"spectrum spectrum--medium spectrum--light\"");
-                html = html.replace("<title>TodoMVC: Preact</title>", `<title>${title}</title>`);
-                html = html.replace("<body>", `<body>${body}`);
-                return html;
-            },
-            filename: "index.html",
-        }),
         css({
             minify: true,
         }),
@@ -58,7 +45,22 @@ export default {
             browser: true,
         }),
         copy({
-            targets: [{ src: "node_modules/big-dom-generator/dist/logo.png", dest: "complex/dist/" }],
+            targets: [
+                { src: "node_modules/big-dom-generator/dist/logo.png", dest: "complex/dist/" },
+                {
+                    src: "shapred/public/index.html",
+                    dest: "complex/dist/",
+                    transform: (contents) => {
+                        const title = "TodoMVC: Preact Complex DOM";
+                        contents = contents.toString();
+                        const body = getHtmlContent("node_modules/big-dom-generator/dist/index.html", true);
+                        contents = contents.replace("<html", '<html class="spectrum spectrum--medium spectrum--light"');
+                        contents = contents.replace("<title>TodoMVC: Preact</title>", `<title>${title}</title>`);
+                        contents = contents.replace("<body>", `<body>${body}`);
+                        return contents;
+                    },
+                },
+            ],
         }),
         commonjs(),
         production && terser(),
