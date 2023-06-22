@@ -3,7 +3,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import css from "rollup-plugin-import-css";
-import html from "@rollup/plugin-html";
+import copy from "rollup-plugin-copy";
 const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
 
 // `npm run build` -> `production` is true
@@ -20,14 +20,6 @@ export default {
         },
     ],
     plugins: [
-        html({
-            template: ({ attributes, bundle, files, publicPath, title }) => {
-                const html = getHtmlContent("shared/public/index.html");
-                const body = getHtmlContent("standalone/public/partial.html");
-                return html.replace("<body>", `<body>${body}`);
-            },
-            filename: "index.html",
-        }),
         css({
             minify: true,
         }),
@@ -53,6 +45,20 @@ export default {
             browser: true,
         }),
         commonjs(),
+        copy({
+            targets: [
+                {
+                    src: "shared/public/index.html",
+                    dest: "standalone/dist/",
+                    transform: (contents) => {
+                        contents = contents.toString();
+                        const body = getHtmlContent("shared/public/partial.html");
+                        contents = contents.replace("<body>", `<body>${body}`);
+                        return contents;
+                    },
+                },
+            ],
+        }),
         production && terser(),
     ],
 };
