@@ -48,7 +48,7 @@ export default {
             targets: [
                 { src: "node_modules/big-dom-generator/dist/logo.png", dest: "complex/dist/" },
                 {
-                    src: "shapred/public/index.html",
+                    src: "shared/public/index.html",
                     dest: "complex/dist/",
                     transform: (contents) => {
                         const title = "TodoMVC: Preact Complex DOM";
