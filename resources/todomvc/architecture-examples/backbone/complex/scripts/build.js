@@ -55,7 +55,7 @@ async function build() {
     }
 
     // remove basePath from source directory
-    const basePath = `${sourceDirectory.split("/")[1]}/`;
+    const basePath = `${sourceDirectory.split("/")[2]}/`;
     const re = new RegExp(basePath, "g");
     todoHtml = todoHtml.replace(re, "");
 
@@ -120,4 +120,4 @@ async function build() {
     console.log("done!!");
 }
 
-build().catch((error) => console.error(error));
+build();

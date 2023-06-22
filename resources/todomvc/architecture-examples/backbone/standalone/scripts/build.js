@@ -1,7 +1,7 @@
 const fs = require("fs").promises;
 
 const rootDirectory = "./standalone/";
-const sourceDirectory = "./shared/src";
+const sourceDirectory = "./shared/src/";
 const targetDirectory = "./standalone/dist";
 
 const htmlFile = "index.html";
@@ -38,6 +38,7 @@ const build = async () => {
     // copy files to move
     for (let i = 0; i < filesToMove.length; i++) {
         const fileName = filesToMove[i].split("/").pop();
+        console.log(`${filesToMove[i]} -> ${targetDirectory}/${fileName}`);
         await copy(filesToMove[i], `${targetDirectory}/${fileName}`);
     }
 
@@ -47,11 +48,12 @@ const build = async () => {
     // remove base paths from files to move
     for (let i = 0; i < filesToMove.length; i++) {
         const fileName = filesToMove[i].split("/").pop();
+        console.log(`${filesToMove[i]} -> ${fileName}`);
         html = html.replace(filesToMove[i], fileName);
     }
 
     // remove basePath from source directory
-    const basePath = `${sourceDirectory.split("/")[1]}/`;
+    const basePath = `${sourceDirectory.split("/")[2]}/`;
     const re = new RegExp(basePath, "g");
     html = html.replace(re, "");
 
