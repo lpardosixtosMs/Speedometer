@@ -10,9 +10,9 @@ import css from "rollup-plugin-import-css";
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-    input: "src/index.js",
+    input: "standalone/src/index.js",
     output: {
-        file: "dist/app.js",
+        file: "standalone/dist/app.js",
         format: "iife",
         sourcemap: true,
         name: "app",
@@ -22,7 +22,7 @@ export default {
             minify: true,
         }),
         svelte({
-            include: "src/**/*.svelte",
+            include: "shared/src/**/*.svelte",
         }),
         resolve({
             browser: true,
@@ -32,7 +32,7 @@ export default {
         production && terser(),
         production && filesize(),
         copy({
-            targets: [{ src: "public/index.html", dest: "dist/" }],
+            targets: [{ src: "shared/public/index.html", dest: "standalone/dist/" }],
         }),
     ],
 };
