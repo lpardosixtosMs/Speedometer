@@ -3,7 +3,8 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import css from "rollup-plugin-import-css";
-import copy from "rollup-plugin-copy";
+import html from "@rollup/plugin-html";
+const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
 
 // `npm run build` -> `production` is true
 // `npm run dev` -> `production` is false
@@ -19,6 +20,15 @@ export default {
         },
     ],
     plugins: [
+        html({
+            title: "Preact • TodoMVC",
+            template: ({ attributes, bundle, files, publicPath, title }) => {
+                const html = getHtmlContent("shared/public/index.html");
+                const body = getHtmlContent("standalone/public/partial.html");
+                return html.replace("<body>", `<body>${body}`);
+            },
+            filename: "index.html",
+        }),
         css({
             minify: true,
         }),
@@ -44,9 +54,6 @@ export default {
             browser: true,
         }),
         commonjs(),
-        copy({
-            targets: [{ src: "public/index.html", dest: "dist/" }],
-        }),
         production && terser(),
     ],
 };
