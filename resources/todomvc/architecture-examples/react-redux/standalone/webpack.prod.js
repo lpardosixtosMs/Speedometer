@@ -19,7 +19,7 @@ module.exports = merge(common, {
             templateParameters: {
                 body: getHtmlContent("shared/public/partial.html"),
                 htmlClasses: "",
-            }
+            },
         }),
         new MiniCssExtractPlugin({
             filename: "[name].css",

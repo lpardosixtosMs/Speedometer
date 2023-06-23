@@ -13,7 +13,7 @@ module.exports = merge(common, {
             templateParameters: {
                 body: getHtmlContent("standalone/public/partial.html"),
                 htmlClasses: "",
-            }
+            },
         }),
     ],
     devServer: {

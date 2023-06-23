@@ -42,7 +42,7 @@ export default {
                         contents = contents.toString();
                         const body = getHtmlContent("node_modules/big-dom-generator/dist/index.html", true);
                         const htmlToInjectForComplex = getHtmlContent("shared/public/partial.html");
-                        contents = contents.replace("<html", "<html class=\"spectrum spectrum--medium spectrum--light\"");
+                        contents = contents.replace("<html", '<html class="spectrum spectrum--medium spectrum--light"');
                         contents = contents.replace("<title>TodoMVC: Svelte</title>", `<title>${title}</title>`);
                         contents = contents.replace("<body>", `<body>${body}`);
                         contents = contents.replace('<div class="todo-area">', `<div class="todo-area"><div class="todoholder">${htmlToInjectForComplex}</div>`);
