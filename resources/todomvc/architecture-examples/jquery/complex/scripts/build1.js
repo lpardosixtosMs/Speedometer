@@ -13,8 +13,9 @@ const filesToMove = [
     "node_modules/todomvc-common/base.css",
     "node_modules/todomvc-app-css/index.css",
     "node_modules/jquery/dist/jquery.min.js",
-    "node_modules/handlebars/dist/handlebars.min.js",
-    "node_modules/director/build/director.min.js",
+    "node_modules/underscore/underscore-min.js",
+    "node_modules/backbone/backbone-min.js",
+    "node_modules/backbone/backbone-min.js.map",
     "node_modules/big-dom-generator/dist/app.css",
     "node_modules/big-dom-generator/public/layout.css",
     "node_modules/big-dom-generator/matchingCss.css",
@@ -22,11 +23,7 @@ const filesToMove = [
     "node_modules/big-dom-generator/dist/logo.png",
 ];
 
-const copy = async (src, dest) => {
-    await fs.copyFile(src, dest);
-};
-
-const build = async () => {
+async function build() {
     // remove dist directory if it exists
     await fs.rm(targetDirectory, { recursive: true, force: true });
 
@@ -40,15 +37,15 @@ const build = async () => {
     });
 
     // copy html file
-    await copy(`${path.resolve(__dirname, "../../node_modules/big-dom-generator/dist/index.html")}`, `${targetDirectory}/${htmlFile}`);
+    await fs.copyFile(`${path.resolve(__dirname, "../../node_modules/big-dom-generator/dist/index.html")}`, `${targetDirectory}/${htmlFile}`);
 
     // copy files to move
     for (let i = 0; i < filesToMove.length; i++) {
         const fileName = filesToMove[i].split("/").pop();
-        await copy(path.resolve(__dirname, "../../", filesToMove[i]), `${targetDirectory}/${fileName}`);
+        await fs.copyFile(path.resolve(__dirname, "../../", filesToMove[i]), `${targetDirectory}/${fileName}`);
     }
 
-    // read todo html file
+    // read todo.html file
     let todoHtml = await fs.readFile(`${rootDirectory}/${todoHtmlFile}`, "utf8");
 
     // remove base paths from files to move
@@ -121,6 +118,6 @@ const build = async () => {
     await fs.writeFile(`${targetDirectory}/${htmlFile}`, dom.serialize());
 
     console.log("done!!");
-};
+}
 
 build();
