@@ -17,7 +17,7 @@ module.exports = merge(common, {
             title: "TodoMVC: React-Redux",
             template: "shared/public/index.html",
             templateParameters: {
-                body: getHtmlContent("standalone/public/partial.html"),
+                body: getHtmlContent("shared/public/partial.html"),
                 htmlClasses: "",
             }
         }),
