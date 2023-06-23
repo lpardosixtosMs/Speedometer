@@ -13,6 +13,7 @@
         "serve": "http-server ./standalone/dist -p 7002 -c-1 --cors"
     },
     "dependencies": {
+        "big-dom-generator": "file:../../big-dom-generator",
         "todomvc-app-css": "^2.4.2",
         "todomvc-common": "^1.0.5"
     },

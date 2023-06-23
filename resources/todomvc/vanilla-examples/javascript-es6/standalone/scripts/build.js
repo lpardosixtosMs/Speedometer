@@ -1,8 +1,8 @@
 const fs = require("fs").promises;
 
 const rootDirectory = "./";
-const sourceDirectory = "./src";
-const targetDirectory = "./dist";
+const sourceDirectory = "./shared/src";
+const targetDirectory = "./standalone/dist";
 
 const htmlFile = "index.html";
 
@@ -44,7 +44,7 @@ const build = async () => {
     }
 
     // remove basePath from source directory
-    const basePath = `${sourceDirectory.split("/")[1]}/`;
+    const basePath = `${sourceDirectory.split("/")[1]}/${sourceDirectory.split("/")[2]}/`;
     const re = new RegExp(basePath, "g");
     html = html.replace(re, "");
 
