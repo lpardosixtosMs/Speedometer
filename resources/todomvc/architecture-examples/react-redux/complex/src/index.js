@@ -5,6 +5,10 @@ import { HashRouter, Route } from "react-router-dom";
 import App from "../../shared/src/app";
 import reducer from "../../shared/src/reducers";
 import "todomvc-app-css/index.css";
+import "big-dom-generator/public/layout.css";
+import "big-dom-generator/matchingCss.css";
+import "big-dom-generator/nonMatchingCss.css";
+import "big-dom-generator/dist/app.css";
 
 const store = createStore(reducer);
 

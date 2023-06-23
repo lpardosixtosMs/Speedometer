@@ -17,7 +17,7 @@ module.exports = merge(common, {
         }),
     ],
     devServer: {
-        static: "./dist",
+        static: "./standalone/dist",
     },
     module: {
         rules: [
