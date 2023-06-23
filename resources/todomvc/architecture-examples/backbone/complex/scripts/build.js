@@ -46,7 +46,7 @@ async function build() {
     }
 
     // read todo.html file
-    let todoHtml = await fs.readFile(`./shared/${todoHtmlFile}`, "utf8");
+    let todoHtml = await fs.readFile(`${rootDirectory}/${todoHtmlFile}`, "utf8");
 
     // remove base paths from files to move
     for (let i = 0; i < filesToMove.length; i++) {

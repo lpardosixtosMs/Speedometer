@@ -1,5 +1,6 @@
 const fs = require("fs").promises;
 
+const rootDirectory = "./standalone/";
 const sourceDirectory = "./shared/src/";
 const targetDirectory = "./standalone/dist";
 
@@ -32,11 +33,12 @@ const build = async () => {
     });
 
     // copy html file
-    await fs.copyFile(`./shared/${htmlFile}`, `${targetDirectory}/${htmlFile}`);
+    await fs.copyFile(`${rootDirectory}${htmlFile}`, `${targetDirectory}/${htmlFile}`);
 
     // copy files to move
     for (let i = 0; i < filesToMove.length; i++) {
         const fileName = filesToMove[i].split("/").pop();
+        console.log(`${filesToMove[i]} -> ${targetDirectory}/${fileName}`);
         await copy(filesToMove[i], `${targetDirectory}/${fileName}`);
     }
 
@@ -46,6 +48,7 @@ const build = async () => {
     // remove base paths from files to move
     for (let i = 0; i < filesToMove.length; i++) {
         const fileName = filesToMove[i].split("/").pop();
+        console.log(`${filesToMove[i]} -> ${fileName}`);
         html = html.replace(filesToMove[i], fileName);
     }
 
