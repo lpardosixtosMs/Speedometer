@@ -10,6 +10,7 @@ const path = require("path");
 
 const CopyPlugin = require("copy-webpack-plugin");
 const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
+const htmlToInjectForComplex = getHtmlContent("shared/public/partial.html");
 
 module.exports = merge(common, {
     output: {
@@ -27,7 +28,7 @@ module.exports = merge(common, {
             title: "TodoMVC: React Complex DOM",
             template: "shared/public/index.html",
             templateParameters: {
-                body: getHtmlContent("node_modules/big-dom-generator/dist/index.html", true),
+                body: getHtmlContent("node_modules/big-dom-generator/dist/index.html", true).replace('<div class="todo-area">', `<div class="todo-area"><div class="todoholder">${htmlToInjectForComplex}</div>`),
                 htmlClasses: "spectrum spectrum--medium spectrum--light",
             },
         }),
