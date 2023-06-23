@@ -2,7 +2,7 @@ const fs = require("fs").promises;
 const { JSDOM } = require("jsdom");
 const path = require("path");
 
-const rootDirectory = "./complex/";
+const rootDirectory = "./";
 const sourceDirectory = "./shared/src";
 const targetDirectory = "./complex/dist";
 
@@ -55,7 +55,7 @@ async function build() {
     }
 
     // remove basePath from source directory
-    const basePath = `${sourceDirectory.split("/")[2]}/`;
+    const basePath = `${sourceDirectory.split("/")[1]}/${sourceDirectory.split("/")[2]}/`;
     const re = new RegExp(basePath, "g");
     todoHtml = todoHtml.replace(re, "");
 
