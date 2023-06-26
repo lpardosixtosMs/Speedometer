@@ -1,0 +1,10 @@
+/*
+ * Public API Surface of shared-library
+ */
+export * from './lib/shared-library.service';
+export * from './lib/shared-library.component';
+export * from './lib/shared-library.module';
+export * from './lib/app/app-routing.module';
+export * from './lib/app/app.component';
+export * from './lib/app/app.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL3NoYXJlZC1saWJyYXJ5L3NyYy9wdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBRUgsY0FBYyw4QkFBOEIsQ0FBQztBQUM3QyxjQUFjLGdDQUFnQyxDQUFDO0FBQy9DLGNBQWMsNkJBQTZCLENBQUM7QUFFNUMsY0FBYyw4QkFBOEIsQ0FBQztBQUM3QyxjQUFjLHlCQUF5QixDQUFDO0FBQ3hDLGNBQWMsc0JBQXNCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvKlxuICogUHVibGljIEFQSSBTdXJmYWNlIG9mIHNoYXJlZC1saWJyYXJ5XG4gKi9cblxuZXhwb3J0ICogZnJvbSAnLi9saWIvc2hhcmVkLWxpYnJhcnkuc2VydmljZSc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9zaGFyZWQtbGlicmFyeS5jb21wb25lbnQnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvc2hhcmVkLWxpYnJhcnkubW9kdWxlJztcblxuZXhwb3J0ICogZnJvbSAnLi9saWIvYXBwL2FwcC1yb3V0aW5nLm1vZHVsZSc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9hcHAvYXBwLmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9hcHAvYXBwLm1vZHVsZSc7XG4iXX0=
