@@ -9,8 +9,8 @@
     },
     "scripts": {
         "ng": "ng",
-        "dev": "ng serve",
-        "build": "ng build --base-href /resources/todomvc/architecture-examples/angular/standalone/dist/",
+        "dev": "ng serve standalone",
+        "build": "ng build --base-href /resources/todomvc/architecture-examples/angular/projects/standalone/dist/",
         "watch": "ng build --watch --configuration development",
         "test": "ng test"
     },
