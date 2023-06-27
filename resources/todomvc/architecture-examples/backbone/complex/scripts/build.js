@@ -17,9 +17,9 @@ const filesToMove = [
     "node_modules/backbone/backbone-min.js",
     "node_modules/backbone/backbone-min.js.map",
     "node_modules/big-dom-generator/dist/app.css",
-    "node_modules/big-dom-generator/public/layout.css",
     "node_modules/big-dom-generator/matchingCss.css",
     "node_modules/big-dom-generator/nonMatchingCss.css",
+    "node_modules/big-dom-generator/public/layout.css",
     "node_modules/big-dom-generator/dist/logo.png",
 ];
 
@@ -87,7 +87,7 @@ async function build() {
         head.appendChild(link.cloneNode(true));
 
     // create links for css files and append them to the head
-    const cssFiles = ["app.css", "layout.css", "matchingCss.css", "nonMatchingCss.css"];
+    const cssFiles = ["app.css", "matchingCss.css", "nonMatchingCss.css", "layout.css"];
     for (const cssFile of cssFiles) {
         const cssLink = doc.createElement("link");
         cssLink.rel = "stylesheet";
