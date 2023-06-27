@@ -90,7 +90,7 @@ async function build() {
         cssLink.href = cssFile;
         head.appendChild(cssLink);
     }
-    
+
     // find the location to insert the todo.html contents
     const todoArea = doc.querySelector(".todo-area");
     todoArea.appendChild(todoHolder);
