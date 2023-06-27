@@ -1,48 +1,11 @@
 import * as i0 from '@angular/core';
-import { Injectable, Component, NgModule, EventEmitter, ChangeDetectionStrategy, Input, Output, ViewChild } from '@angular/core';
+import { Injectable, Component, EventEmitter, ChangeDetectionStrategy, Input, Output, ViewChild, NgModule } from '@angular/core';
 import * as i3 from '@angular/router';
 import { RouterModule } from '@angular/router';
 import * as i2 from '@angular/forms';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import * as i2$1 from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-
-class SharedLibraryService {
-    constructor() { }
-}
-SharedLibraryService.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryService, deps: [], target: i0.ɵɵFactoryTarget.Injectable });
-SharedLibraryService.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryService, providedIn: "root" });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryService, decorators: [{
-            type: Injectable,
-            args: [{
-                    providedIn: "root",
-                }]
-        }], ctorParameters: function () { return []; } });
-
-class SharedLibraryComponent {
-    constructor() { }
-    ngOnInit() { }
-}
-SharedLibraryComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-SharedLibraryComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "14.3.0", type: SharedLibraryComponent, selector: "lib-shared-library", ngImport: i0, template: " <p>shared-library works!</p> ", isInline: true });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryComponent, decorators: [{
-            type: Component,
-            args: [{ selector: "lib-shared-library", template: " <p>shared-library works!</p> " }]
-        }], ctorParameters: function () { return []; } });
-
-class SharedLibraryModule {
-}
-SharedLibraryModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-SharedLibraryModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryModule, declarations: [SharedLibraryComponent], exports: [SharedLibraryComponent] });
-SharedLibraryModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryModule });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryModule, decorators: [{
-            type: NgModule,
-            args: [{
-                    declarations: [SharedLibraryComponent],
-                    imports: [],
-                    exports: [SharedLibraryComponent],
-                }]
-        }] });
 
 function uuid() {
     let uuid = "";
@@ -286,5 +249,5 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImpor
  * Generated bundle index. Do not edit.
  */
 
-export { AppComponent, AppModule, AppRoutingModule, SharedLibraryComponent, SharedLibraryModule, SharedLibraryService };
+export { AppComponent, AppModule, AppRoutingModule };
 //# sourceMappingURL=shared-library.mjs.map
