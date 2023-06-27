@@ -14,7 +14,7 @@
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
                         "outputPath": "projects/standalone/dist",
-                        "index": "projects/standalone/src/index.html",
+                        "index": "projects/shared-library/src/lib/index.html",
                         "main": "projects/standalone/src/main.ts",
                         "polyfills": "projects/standalone/src/polyfills.ts",
                         "tsConfig": "projects/standalone/tsconfig.app.json",
@@ -38,8 +38,8 @@
                             ],
                             "fileReplacements": [
                                 {
-                                    "replace": "projects/standalone/src/environments/environment.ts",
-                                    "with": "projects/standalone/src/environments/environment.prod.ts"
+                                    "replace": "projects/shared-library/src/lib/environments/environment.ts",
+                                    "with": "projects/shared-library/src/lib/environments/environment.prod.ts"
                                 }
                             ],
                             "outputHashing": "all",
@@ -85,7 +85,7 @@
                         "polyfills": "projects/standalone/src/polyfills.ts",
                         "tsConfig": "projects/standalone/tsconfig.spec.json",
                         "karmaConfig": "projects/standalone/karma.conf.js",
-                        "assets": ["projects/standalone/src/favicon.ico", "projects/standalone/src/assets"],
+                        "assets": ["projects/shared-library/src/lib/favicon.ico", "projects/shared-library/src/lib/assets"],
                         "styles": ["projects/standalone/src/styles.css"],
                         "scripts": []
                     }
@@ -135,8 +135,8 @@
                             ],
                             "fileReplacements": [
                                 {
-                                    "replace": "projects/complex/src/environments/environment.ts",
-                                    "with": "projects/complex/src/environments/environment.prod.ts"
+                                    "replace": "projects/shared-library/src/lib/environments/environment.ts",
+                                    "with": "projects/shared-library/src/lib/environments/environment.prod.ts"
                                 }
                             ],
                             "outputHashing": "all",
