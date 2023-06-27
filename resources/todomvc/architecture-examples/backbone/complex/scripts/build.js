@@ -86,29 +86,14 @@ async function build() {
     for (const link of todoLinks)
         head.appendChild(link.cloneNode(true));
 
-    // create a link for app.css and append it to the head
-    const appLink = doc.createElement("link");
-    appLink.rel = "stylesheet";
-    appLink.href = "app.css";
-    head.appendChild(appLink);
-
-    // create a link for layout.css and append it to the head
-    const layoutLink = doc.createElement("link");
-    layoutLink.rel = "stylesheet";
-    layoutLink.href = "layout.css";
-    head.appendChild(layoutLink);
-
-    // create a link for the matchingCss.css and append it to the head
-    const matchingCssGeneratedLink = doc.createElement("link");
-    matchingCssGeneratedLink.rel = "stylesheet";
-    matchingCssGeneratedLink.href = "matchingCss.css";
-    head.appendChild(matchingCssGeneratedLink);
-
-    // create a link for the nonMatchingCss.css and append it to the head
-    const nonMatchingCssGeneratedLink = doc.createElement("link");
-    nonMatchingCssGeneratedLink.rel = "stylesheet";
-    nonMatchingCssGeneratedLink.href = "nonMatchingCss.css";
-    head.appendChild(nonMatchingCssGeneratedLink);
+    // create links for css files and append them to the head
+    const cssFiles = ["app.css", "layout.css", "matchingCss.css", "nonMatchingCss.css"];
+    for (const cssFile of cssFiles) {
+        const cssLink = doc.createElement("link");
+        cssLink.rel = "stylesheet";
+        cssLink.href = cssFile;
+        head.appendChild(cssLink);
+    }
 
     // find the location to insert the todo.html contents
     const todoArea = doc.querySelector(".todo-area");
