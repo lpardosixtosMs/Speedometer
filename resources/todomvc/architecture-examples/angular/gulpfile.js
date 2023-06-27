@@ -1,6 +1,7 @@
 const gulp = require("gulp");
 const fs = require("fs");
-// const { Transform } = require("stream");
+
+const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent");
 
 const replace = require("gulp-replace");
 
@@ -26,13 +27,3 @@ gulp.task("copy-logo", function () {
 });
 
 gulp.task("build", gulp.series("copy-index", "copy-logo"));
-
-function getHtmlContent(filePath, isComplex = false) {
-    let htmlContent = fs.readFileSync(filePath, "utf8");
-    if (isComplex) {
-        const bodyStartIndex = htmlContent.indexOf("<body>") + 6;
-        const bodyEndIndex = htmlContent.indexOf("</body>");
-        htmlContent = htmlContent.substring(bodyStartIndex, bodyEndIndex);
-    }
-    return htmlContent;
-}

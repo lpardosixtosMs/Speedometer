@@ -8,7 +8,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const path = require("path");
 
-const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent.js");
+const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent");
 
 module.exports = merge(common, {
     output: {

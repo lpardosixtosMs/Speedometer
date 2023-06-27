@@ -9,7 +9,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const path = require("path");
 
 const CopyPlugin = require("copy-webpack-plugin");
-const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent.js");
+const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent");
 const htmlToInjectForComplex = getHtmlContent("shared/public/partial.html");
 
 module.exports = merge(common, {

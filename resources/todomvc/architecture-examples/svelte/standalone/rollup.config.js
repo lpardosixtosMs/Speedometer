@@ -4,7 +4,7 @@ import { terser } from "rollup-plugin-terser";
 import filesize from "rollup-plugin-filesize";
 import copy from "rollup-plugin-copy";
 import css from "rollup-plugin-import-css";
-const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
+const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent");
 
 // `npm run build` -> `production` is true
 // `npm run dev` -> `production` is false

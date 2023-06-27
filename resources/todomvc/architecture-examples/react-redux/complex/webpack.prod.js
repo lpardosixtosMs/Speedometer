@@ -8,7 +8,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const TerserPlugin = require("terser-webpack-plugin");
 
-const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
+const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent");
 const htmlToInjectForComplex = getHtmlContent("shared/public/partial.html");
 
 module.exports = merge(common, {

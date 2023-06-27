@@ -12,7 +12,7 @@
         "dev": "ng serve standalone",
         "dev:complex": "ng serve complex",
         "build": "ng build standalone --base-href /resources/todomvc/architecture-examples/angular/projects/standalone/dist/",
-        "build:complex": "gulp build && ng build complex",
+        "build:complex": "gulp build && ng build complex --base-href /resources/todomvc/architecture-examples/angular/projects/complex/dist/",
         "watch": "ng build --watch --configuration development",
         "test": "ng test"
     },

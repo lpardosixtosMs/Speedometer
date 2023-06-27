@@ -4,7 +4,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import css from "rollup-plugin-import-css";
 import copy from "rollup-plugin-copy";
-const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
+const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent");
 
 // `npm run build` -> `production` is true
 // `npm run dev` -> `production` is false
