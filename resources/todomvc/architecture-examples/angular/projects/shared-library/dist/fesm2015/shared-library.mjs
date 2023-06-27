@@ -1,11 +1,11 @@
 import * as i0 from '@angular/core';
 import { Injectable, Component, EventEmitter, ChangeDetectionStrategy, Input, Output, ViewChild, NgModule } from '@angular/core';
-import * as i3 from '@angular/router';
-import { RouterModule } from '@angular/router';
 import * as i2 from '@angular/forms';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import * as i2$1 from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import * as i3 from '@angular/router';
+import { RouterModule } from '@angular/router';
+import * as i2$1 from '@angular/common';
 
 function uuid() {
     let uuid = "";
@@ -249,5 +249,5 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImpor
  * Generated bundle index. Do not edit.
  */
 
-export { AppComponent, AppModule, AppRoutingModule };
+export { AppModule };
 //# sourceMappingURL=shared-library.mjs.map
