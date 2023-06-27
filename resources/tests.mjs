@@ -203,7 +203,7 @@ Suites.push({
 
 Suites.push({
     name: "TodoMVC-React-Complex-DOM",
-    url: "tentative/complex-static-html/standalone/dist/index.html#/home",
+    url: "tentative/complex-static-html/dist/index.html#/home",
     tags: ["todomvc", "complex"],
     async prepare(page) {
         const element = await page.waitForElement(".new-todo");
