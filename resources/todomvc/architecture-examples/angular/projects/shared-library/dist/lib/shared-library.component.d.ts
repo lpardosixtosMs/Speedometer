@@ -1,4 +1,4 @@
-import { OnInit } from '@angular/core';
+import { OnInit } from "@angular/core";
 import * as i0 from "@angular/core";
 export declare class SharedLibraryComponent implements OnInit {
     constructor();

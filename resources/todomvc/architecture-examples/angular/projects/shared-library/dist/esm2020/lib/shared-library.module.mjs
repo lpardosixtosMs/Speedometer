@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { SharedLibraryComponent } from './shared-library.component';
+import { NgModule } from "@angular/core";
+import { SharedLibraryComponent } from "./shared-library.component";
 import * as i0 from "@angular/core";
 export class SharedLibraryModule {
 }
@@ -9,13 +9,9 @@ SharedLibraryModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", ver
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryModule, decorators: [{
             type: NgModule,
             args: [{
-                    declarations: [
-                        SharedLibraryComponent
-                    ],
+                    declarations: [SharedLibraryComponent],
                     imports: [],
-                    exports: [
-                        SharedLibraryComponent
-                    ]
+                    exports: [SharedLibraryComponent],
                 }]
         }] });
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2hhcmVkLWxpYnJhcnkubW9kdWxlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vc3JjL2xpYi9zaGFyZWQtbGlicmFyeS5tb2R1bGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUN6QyxPQUFPLEVBQUUsc0JBQXNCLEVBQUUsTUFBTSw0QkFBNEIsQ0FBQzs7QUFjcEUsTUFBTSxPQUFPLG1CQUFtQjs7Z0hBQW5CLG1CQUFtQjtpSEFBbkIsbUJBQW1CLGlCQVI1QixzQkFBc0IsYUFLdEIsc0JBQXNCO2lIQUdiLG1CQUFtQjsyRkFBbkIsbUJBQW1CO2tCQVYvQixRQUFRO21CQUFDO29CQUNSLFlBQVksRUFBRTt3QkFDWixzQkFBc0I7cUJBQ3ZCO29CQUNELE9BQU8sRUFBRSxFQUNSO29CQUNELE9BQU8sRUFBRTt3QkFDUCxzQkFBc0I7cUJBQ3ZCO2lCQUNGIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgTmdNb2R1bGUgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7IFNoYXJlZExpYnJhcnlDb21wb25lbnQgfSBmcm9tICcuL3NoYXJlZC1saWJyYXJ5LmNvbXBvbmVudCc7XG5cblxuXG5ATmdNb2R1bGUoe1xuICBkZWNsYXJhdGlvbnM6IFtcbiAgICBTaGFyZWRMaWJyYXJ5Q29tcG9uZW50XG4gIF0sXG4gIGltcG9ydHM6IFtcbiAgXSxcbiAgZXhwb3J0czogW1xuICAgIFNoYXJlZExpYnJhcnlDb21wb25lbnRcbiAgXVxufSlcbmV4cG9ydCBjbGFzcyBTaGFyZWRMaWJyYXJ5TW9kdWxlIHsgfVxuIl19
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic2hhcmVkLWxpYnJhcnkubW9kdWxlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vc3JjL2xpYi9zaGFyZWQtbGlicmFyeS5tb2R1bGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLFFBQVEsRUFBRSxNQUFNLGVBQWUsQ0FBQztBQUN6QyxPQUFPLEVBQUUsc0JBQXNCLEVBQUUsTUFBTSw0QkFBNEIsQ0FBQzs7QUFPcEUsTUFBTSxPQUFPLG1CQUFtQjs7Z0hBQW5CLG1CQUFtQjtpSEFBbkIsbUJBQW1CLGlCQUpiLHNCQUFzQixhQUUzQixzQkFBc0I7aUhBRXZCLG1CQUFtQjsyRkFBbkIsbUJBQW1CO2tCQUwvQixRQUFRO21CQUFDO29CQUNOLFlBQVksRUFBRSxDQUFDLHNCQUFzQixDQUFDO29CQUN0QyxPQUFPLEVBQUUsRUFBRTtvQkFDWCxPQUFPLEVBQUUsQ0FBQyxzQkFBc0IsQ0FBQztpQkFDcEMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBOZ01vZHVsZSB9IGZyb20gXCJAYW5ndWxhci9jb3JlXCI7XG5pbXBvcnQgeyBTaGFyZWRMaWJyYXJ5Q29tcG9uZW50IH0gZnJvbSBcIi4vc2hhcmVkLWxpYnJhcnkuY29tcG9uZW50XCI7XG5cbkBOZ01vZHVsZSh7XG4gICAgZGVjbGFyYXRpb25zOiBbU2hhcmVkTGlicmFyeUNvbXBvbmVudF0sXG4gICAgaW1wb3J0czogW10sXG4gICAgZXhwb3J0czogW1NoYXJlZExpYnJhcnlDb21wb25lbnRdLFxufSlcbmV4cG9ydCBjbGFzcyBTaGFyZWRMaWJyYXJ5TW9kdWxlIHt9XG4iXX0=

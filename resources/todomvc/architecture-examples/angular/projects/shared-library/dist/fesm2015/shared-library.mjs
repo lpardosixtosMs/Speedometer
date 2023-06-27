@@ -11,32 +11,23 @@ class SharedLibraryService {
     constructor() { }
 }
 SharedLibraryService.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryService, deps: [], target: i0.ɵɵFactoryTarget.Injectable });
-SharedLibraryService.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryService, providedIn: 'root' });
+SharedLibraryService.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryService, providedIn: "root" });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryService, decorators: [{
             type: Injectable,
             args: [{
-                    providedIn: 'root'
+                    providedIn: "root",
                 }]
         }], ctorParameters: function () { return []; } });
 
 class SharedLibraryComponent {
     constructor() { }
-    ngOnInit() {
-    }
+    ngOnInit() { }
 }
 SharedLibraryComponent.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryComponent, deps: [], target: i0.ɵɵFactoryTarget.Component });
-SharedLibraryComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "14.3.0", type: SharedLibraryComponent, selector: "lib-shared-library", ngImport: i0, template: `
-    <p>
-      shared-library works!
-    </p>
-  `, isInline: true });
+SharedLibraryComponent.ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "14.3.0", type: SharedLibraryComponent, selector: "lib-shared-library", ngImport: i0, template: " <p>shared-library works!</p> ", isInline: true });
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryComponent, decorators: [{
             type: Component,
-            args: [{ selector: 'lib-shared-library', template: `
-    <p>
-      shared-library works!
-    </p>
-  ` }]
+            args: [{ selector: "lib-shared-library", template: " <p>shared-library works!</p> " }]
         }], ctorParameters: function () { return []; } });
 
 class SharedLibraryModule {
@@ -47,13 +38,9 @@ SharedLibraryModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", ver
 i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "14.3.0", ngImport: i0, type: SharedLibraryModule, decorators: [{
             type: NgModule,
             args: [{
-                    declarations: [
-                        SharedLibraryComponent
-                    ],
+                    declarations: [SharedLibraryComponent],
                     imports: [],
-                    exports: [
-                        SharedLibraryComponent
-                    ]
+                    exports: [SharedLibraryComponent],
                 }]
         }] });
 
