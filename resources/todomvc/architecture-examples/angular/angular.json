@@ -6,7 +6,7 @@
         "standalone": {
             "projectType": "application",
             "schematics": {},
-            "root": "projects/standalone",
+            "root": "",
             "sourceRoot": "projects/standalone/src",
             "prefix": "app",
             "architect": {
@@ -18,7 +18,7 @@
                         "main": "projects/standalone/src/main.ts",
                         "polyfills": "projects/standalone/src/polyfills.ts",
                         "tsConfig": "projects/standalone/tsconfig.app.json",
-                        "assets": ["projects/standalone/src/favicon.ico", "projects/standalone/src/assets"],
+                        "assets": ["projects/standalone/src/favicon.ico"],
                         "styles": ["projects/standalone/src/styles.css", "node_modules/todomvc-common/base.css", "node_modules/todomvc-app-css/index.css"],
                         "scripts": []
                     },
@@ -85,7 +85,7 @@
                         "polyfills": "projects/standalone/src/polyfills.ts",
                         "tsConfig": "projects/standalone/tsconfig.spec.json",
                         "karmaConfig": "projects/standalone/karma.conf.js",
-                        "assets": ["projects/shared-library/src/lib/favicon.ico", "projects/shared-library/src/lib/assets"],
+                        "assets": ["projects/standalone/src/favicon.ico"],
                         "styles": ["projects/standalone/src/styles.css"],
                         "scripts": []
                     }
@@ -107,7 +107,7 @@
                         "main": "projects/complex/src/main.ts",
                         "polyfills": "projects/complex/src/polyfills.ts",
                         "tsConfig": "projects/complex/tsconfig.app.json",
-                        "assets": ["projects/complex/src/favicon.ico", "projects/complex/src/assets", "projects/complex/src/logo.png"],
+                        "assets": ["projects/complex/src/favicon.ico", "projects/complex/src/logo.png"],
                         "styles": [
                             "projects/complex/src/styles.css",
                             "node_modules/todomvc-common/base.css",

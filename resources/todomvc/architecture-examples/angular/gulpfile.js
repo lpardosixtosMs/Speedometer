@@ -8,7 +8,7 @@ gulp.task("copy-index", function () {
     const htmlContent = getHtmlContent("node_modules/big-dom-generator/dist/index.html", true);
     const htmlToInjectForComplex = getHtmlContent("projects/complex/src/partial.html");
     return gulp
-        .src("projects/complex/shared/index.html")
+        .src("projects/shared-library/src/lib/index.html")
         .pipe(replace("<html", '<html class="spectrum spectrum--medium spectrum--light"'))
         .pipe(replace("TodoMVC: Angular", "TodoMVC: Angular Complex DOM"))
         .pipe(replace("<body>", `<body>${htmlContent}`))
