@@ -12,6 +12,7 @@ gulp.task("copy-index", function () {
         .src("projects/shared-library/src/lib/index.html")
         .pipe(replace("<html", '<html class="spectrum spectrum--medium spectrum--light"'))
         .pipe(replace("TodoMVC: Angular", "TodoMVC: Angular Complex DOM"))
+        .pipe(replace(/<body>([\s\S]*)<\/body>/, "<body></body>"))
         .pipe(replace("<body>", `<body>${htmlContent}`))
         .pipe(replace('<div class="todo-area">', `<div class="todo-area"><div class="todoholder">${htmlToInjectForComplex}</div>`))
         .pipe(gulp.dest("projects/complex/src/"));
