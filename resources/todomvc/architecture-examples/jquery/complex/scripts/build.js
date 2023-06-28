@@ -1,6 +1,7 @@
 const fs = require("fs").promises;
 const { JSDOM } = require("jsdom");
 const path = require("path");
+const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent");
 
 const rootDirectory = "./";
 const sourceDirectory = "./shared/src";
@@ -34,27 +35,27 @@ const build = async () => {
     await fs.mkdir(targetDirectory);
 
     // copy src folder
-    await fs.cp(sourceDirectory, targetDirectory, { recursive: true }, (err) => {
-        if (err)
-            console.error(err);
-    });
+    await fs.cp(sourceDirectory, targetDirectory, { recursive: true });
 
     // copy html file
-    await copy(`${path.resolve(__dirname, "../../node_modules/big-dom-generator/dist/index.html")}`, `${targetDirectory}/${htmlFile}`);
+    await copy(
+        path.resolve(__dirname, "../../node_modules/big-dom-generator/dist/index.html"),
+        `${targetDirectory}/${htmlFile}`
+    );
 
     // copy files to move
-    for (let i = 0; i < filesToMove.length; i++) {
-        const fileName = filesToMove[i].split("/").pop();
-        await copy(path.resolve(__dirname, "../../", filesToMove[i]), `${targetDirectory}/${fileName}`);
+    for (const file of filesToMove) {
+        const fileName = file.split("/").pop();
+        await copy(path.resolve(__dirname, "../../", file), `${targetDirectory}/${fileName}`);
     }
 
     // read todo html file
     let todoHtml = await fs.readFile(`${rootDirectory}/${todoHtmlFile}`, "utf8");
 
     // remove base paths from files to move
-    for (let i = 0; i < filesToMove.length; i++) {
-        const fileName = filesToMove[i].split("/").pop();
-        todoHtml = todoHtml.replace(filesToMove[i], fileName);
+    for (const file of filesToMove) {
+        const fileName = file.split("/").pop();
+        todoHtml = todoHtml.replace(file, fileName);
     }
 
     // remove basePath from source directory
@@ -64,46 +65,48 @@ const build = async () => {
 
     // create a new JSDOM instance with todo.html contents
     const todoDom = new JSDOM(todoHtml);
+    const doc = todoDom.window.document;
     const todoHead = todoDom.window.document.querySelector("head");
     const todoBody = todoDom.window.document.querySelector("body");
 
-    // select only the link elements in the todo.html head
-    const todoLinks = Array.from(todoHead.querySelectorAll("link"));
+    doc.documentElement.setAttribute("class", "spectrum spectrum--medium spectrum--light");
+
+    const todoBodyInnerHTML = todoBody.innerHTML;
+    todoBody.innerHTML = getHtmlContent("node_modules/big-dom-generator/dist/index.html", true);
+
+    // replace the title with <title>jQuery • TodoMVC Complex DOM</title>
+    todoHead.querySelector("title").innerHTML = "jQuery • TodoMVC Complex DOM";
+
+    // add to the contents of .todo-area
+    const todoArea = todoDom.window.document.querySelector(".todo-area");
 
     // create a new div element with the class name of todoHolder
     const todoHolder = todoDom.window.document.createElement("div");
     todoHolder.className = "todoholder";
 
-    // insert the todo.html contents into the todoHolder div without the <body> tag
-    todoHolder.innerHTML = todoBody.innerHTML;
+    todoHolder.innerHTML = todoBodyInnerHTML;
 
-    // read html file
-    let html = await fs.readFile(`${targetDirectory}/${htmlFile}`, "utf8");
-
-    // create a new JSDOM instance with html contents
-    const dom = new JSDOM(html);
-    const doc = dom.window.document;
-
-    // append the contents of the todo.html head to the index.html head
-    const head = doc.querySelector("head");
-    for (const link of todoLinks)
-        head.appendChild(link.cloneNode(true));
+    // find the location to insert the todo.html contents
+    todoArea.appendChild(todoHolder);
 
     // create links for css files and append them to the head
-    const cssFiles = ["app.css", "matchingCss.css", "nonMatchingCss.css", "layout.css"];
+    const cssFiles = ["matchingCss.css", "nonMatchingCss.css", "layout.css"];
     for (const cssFile of cssFiles) {
         const cssLink = doc.createElement("link");
         cssLink.rel = "stylesheet";
         cssLink.href = cssFile;
-        head.appendChild(cssLink);
+        todoHead.appendChild(cssLink);
     }
 
-    // find the location to insert the todo.html contents
-    const todoArea = doc.querySelector(".todo-area");
-    todoArea.appendChild(todoHolder);
-
     // write html files
-    await fs.writeFile(`${targetDirectory}/${htmlFile}`, dom.serialize());
+    await fs.writeFile(`${targetDirectory}/${htmlFile}`, todoDom.serialize());
+
+    // combine two css files
+    const css1 = await fs.readFile(path.resolve(__dirname, "../../shared/src/app.css"), "utf8");
+    const css2 = await fs.readFile(path.resolve(__dirname, "../../node_modules/big-dom-generator/dist/app.css"), "utf8");
+    const css = css1 + css2;
+
+    await fs.writeFile(`${targetDirectory}/app.css`, css);
 
     console.log("done!!");
 };
