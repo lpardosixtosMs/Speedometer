@@ -7,7 +7,7 @@ const ROOT_DIRECTORY = "./";
 const SOURCE_DIRECTORY = "./shared/src";
 const TARGET_DIRECTORY = "./complex/dist";
 
-const HTML_FILE = "index.html";
+const COMPLEX_DOM_HTML_FILE = "index.html";
 const TODO_HTML_FILE = "index.html";
 
 const FILES_TO_MOVE = [
@@ -40,7 +40,7 @@ async function build() {
     });
 
     // copy html file
-    await fs.copyFile(path.resolve(__dirname, "../../node_modules/big-dom-generator/dist/index.html"), path.join(TARGET_DIRECTORY, HTML_FILE));
+    await fs.copyFile(path.resolve(__dirname, "../../node_modules/big-dom-generator/dist/index.html"), path.join(TARGET_DIRECTORY, COMPLEX_DOM_HTML_FILE));
 
     // copy files to move
     for (let i = 0; i < FILES_TO_MOVE.length; i++) {
@@ -49,56 +49,48 @@ async function build() {
     }
 
     // read todo.html file
-    let todoHtml = await fs.readFile(path.join(ROOT_DIRECTORY, TODO_HTML_FILE), "utf8");
+    let html = await fs.readFile(path.join(ROOT_DIRECTORY, TODO_HTML_FILE), "utf8");
 
     // remove base paths from files to move
     for (let i = 0; i < FILES_TO_MOVE.length; i++) {
         const fileName = FILES_TO_MOVE[i].split("/").pop();
-        todoHtml = todoHtml.replace(FILES_TO_MOVE[i], fileName);
+        html = html.replace(FILES_TO_MOVE[i], fileName);
     }
 
     // remove basePath from source directory
     const sourceDirectoryPathParts = SOURCE_DIRECTORY.split("/");
     const basePath = `${sourceDirectoryPathParts[1]}/${sourceDirectoryPathParts[2]}/`;
     const re = new RegExp(basePath, "g");
-    todoHtml = todoHtml.replace(re, "");
+    html = html.replace(re, "");
 
-    // create a new JSDOM instance with todo.html contents
-    const todoDom = new JSDOM(todoHtml);
-    const doc = todoDom.window.document;
-    const todoHead = todoDom.window.document.querySelector("head");
-    const todoBody = todoDom.window.document.querySelector("body");
+    const dom = new JSDOM(html);
+    const doc = dom.window.document;
+    const head = dom.window.document.querySelector("head");
 
     doc.documentElement.setAttribute("class", "spectrum spectrum--medium spectrum--light");
 
-    const todoBodyInnerHTML = todoBody.innerHTML;
-    todoBody.innerHTML = getHtmlContent("node_modules/big-dom-generator/dist/index.html", true);
+    const body = dom.window.document.querySelector("body");
+    const htmlToInjectInTodoHolder = body.innerHTML;
+    body.innerHTML = getHtmlContent("node_modules/big-dom-generator/dist/index.html", true);
 
-    // replace the title with <title>jQuery • TodoMVC Complex DOM</title>
-    todoHead.querySelector("title").innerHTML = "TodoMVC: Backbone Complex DOM";
+    const title = head.querySelector("title");
+    title.innerHTML = "TodoMVC: Backbone Complex DOM";
 
-    // add to the contents of .todo-area
-    const todoArea = todoDom.window.document.querySelector(".todo-area");
-
-    // create a new div element with the class name of todoHolder
-    const todoHolder = todoDom.window.document.createElement("div");
+    const todoHolder = dom.window.document.createElement("div");
     todoHolder.className = "todoholder";
+    todoHolder.innerHTML = htmlToInjectInTodoHolder;
 
-    todoHolder.innerHTML = todoBodyInnerHTML;
-
-    // find the location to insert the todo.html contents
+    const todoArea = dom.window.document.querySelector(".todo-area");
     todoArea.appendChild(todoHolder);
 
-    // create links for css files and append them to the head
     for (const cssFile of CSS_FILES_TO_ADD_LINKS_FOR) {
         const cssLink = doc.createElement("link");
         cssLink.rel = "stylesheet";
         cssLink.href = cssFile;
-        todoHead.appendChild(cssLink);
+        head.appendChild(cssLink);
     }
 
-    // write html files
-    await fs.writeFile(path.join(TARGET_DIRECTORY, HTML_FILE), todoDom.serialize());
+    await fs.writeFile(path.join(TARGET_DIRECTORY, COMPLEX_DOM_HTML_FILE), dom.serialize());
 
     console.log("done!!");
 }
