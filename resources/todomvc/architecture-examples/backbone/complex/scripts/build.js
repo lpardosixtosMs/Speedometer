@@ -1,6 +1,7 @@
 const fs = require("fs").promises;
 const { JSDOM } = require("jsdom");
 const path = require("path");
+const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent");
 
 const rootDirectory = "./";
 const sourceDirectory = "./shared/src";
@@ -61,30 +62,29 @@ async function build() {
 
     // create a new JSDOM instance with todo.html contents
     const todoDom = new JSDOM(todoHtml);
+    const doc = todoDom.window.document;
     const todoHead = todoDom.window.document.querySelector("head");
     const todoBody = todoDom.window.document.querySelector("body");
 
-    // select only the link elements in the todo.html head
-    const todoLinks = Array.from(todoHead.querySelectorAll("link"));
+    doc.documentElement.setAttribute("class", "spectrum spectrum--medium spectrum--light");
+
+    const todoBodyInnerHTML = todoBody.innerHTML;
+    todoBody.innerHTML = getHtmlContent("node_modules/big-dom-generator/dist/index.html", true);
+
+    // replace the title with <title>jQuery • TodoMVC Complex DOM</title>
+    todoHead.querySelector("title").innerHTML = "TodoMVC: Backbone Complex DOM";
+
+    // add to the contents of .todo-area
+    const todoArea = todoDom.window.document.querySelector(".todo-area");
 
     // create a new div element with the class name of todoHolder
     const todoHolder = todoDom.window.document.createElement("div");
     todoHolder.className = "todoholder";
 
-    // insert the todo.html contents into the todoHolder div without the <body> tag
-    todoHolder.innerHTML = todoBody.innerHTML;
+    todoHolder.innerHTML = todoBodyInnerHTML;
 
-    // read html file
-    let html = await fs.readFile(`${targetDirectory}/${htmlFile}`, "utf8");
-
-    // create a new JSDOM instance with html contents
-    const dom = new JSDOM(html);
-    const doc = dom.window.document;
-
-    // append the contents of the todo.html head to the index.html head
-    const head = doc.querySelector("head");
-    for (const link of todoLinks)
-        head.appendChild(link.cloneNode(true));
+    // find the location to insert the todo.html contents
+    todoArea.appendChild(todoHolder);
 
     // create links for css files and append them to the head
     const cssFiles = ["app.css", "matchingCss.css", "nonMatchingCss.css", "layout.css"];
@@ -92,15 +92,11 @@ async function build() {
         const cssLink = doc.createElement("link");
         cssLink.rel = "stylesheet";
         cssLink.href = cssFile;
-        head.appendChild(cssLink);
+        todoHead.appendChild(cssLink);
     }
 
-    // find the location to insert the todo.html contents
-    const todoArea = doc.querySelector(".todo-area");
-    todoArea.appendChild(todoHolder);
-
     // write html files
-    await fs.writeFile(`${targetDirectory}/${htmlFile}`, dom.serialize());
+    await fs.writeFile(`${targetDirectory}/${htmlFile}`, todoDom.serialize());
 
     console.log("done!!");
 }
