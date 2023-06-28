@@ -3,14 +3,14 @@ const { JSDOM } = require("jsdom");
 const path = require("path");
 const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent");
 
-const rootDirectory = "./";
-const sourceDirectory = "./shared/src";
-const targetDirectory = "./complex/dist";
+const ROOT_DIRECTORY = "./";
+const SOURCE_DIRECTORY = "./shared/src";
+const TARGET_DIRECTORY = "./complex/dist";
 
-const htmlFile = "index.html";
-const todoHtmlFile = "index.html";
+const HTML_FILE = "index.html";
+const TODO_HTML_FILE = "index.html";
 
-const filesToMove = [
+const FILES_TO_MOVE = [
     "node_modules/todomvc-common/base.css",
     "node_modules/todomvc-app-css/index.css",
     "node_modules/jquery/dist/jquery.min.js",
@@ -24,39 +24,42 @@ const filesToMove = [
     "node_modules/big-dom-generator/dist/logo.png",
 ];
 
+const CSS_FILES_TO_ADD_LINKS_FOR = ["app.css", "matchingCss.css", "nonMatchingCss.css", "layout.css"];
+
 async function build() {
     // remove dist directory if it exists
-    await fs.rm(targetDirectory, { recursive: true, force: true });
+    await fs.rm(TARGET_DIRECTORY, { recursive: true, force: true });
 
     // re-create the directory.
-    await fs.mkdir(targetDirectory);
+    await fs.mkdir(TARGET_DIRECTORY);
 
     // copy src folder
-    await fs.cp(sourceDirectory, targetDirectory, { recursive: true }, (err) => {
+    await fs.cp(SOURCE_DIRECTORY, TARGET_DIRECTORY, { recursive: true }, (err) => {
         if (err)
             console.error(err);
     });
 
     // copy html file
-    await fs.copyFile(`${path.resolve(__dirname, "../../node_modules/big-dom-generator/dist/index.html")}`, `${targetDirectory}/${htmlFile}`);
+    await fs.copyFile(path.resolve(__dirname, "../../node_modules/big-dom-generator/dist/index.html"), path.join(TARGET_DIRECTORY, HTML_FILE));
 
     // copy files to move
-    for (let i = 0; i < filesToMove.length; i++) {
-        const fileName = filesToMove[i].split("/").pop();
-        await fs.copyFile(path.resolve(__dirname, "../../", filesToMove[i]), `${targetDirectory}/${fileName}`);
+    for (let i = 0; i < FILES_TO_MOVE.length; i++) {
+        const fileName = FILES_TO_MOVE[i].split("/").pop();
+        await fs.copyFile(path.resolve(__dirname, "../../", FILES_TO_MOVE[i]), path.join(TARGET_DIRECTORY, fileName));
     }
 
     // read todo.html file
-    let todoHtml = await fs.readFile(`${rootDirectory}/${todoHtmlFile}`, "utf8");
+    let todoHtml = await fs.readFile(path.join(ROOT_DIRECTORY, TODO_HTML_FILE), "utf8");
 
     // remove base paths from files to move
-    for (let i = 0; i < filesToMove.length; i++) {
-        const fileName = filesToMove[i].split("/").pop();
-        todoHtml = todoHtml.replace(filesToMove[i], fileName);
+    for (let i = 0; i < FILES_TO_MOVE.length; i++) {
+        const fileName = FILES_TO_MOVE[i].split("/").pop();
+        todoHtml = todoHtml.replace(FILES_TO_MOVE[i], fileName);
     }
 
     // remove basePath from source directory
-    const basePath = `${sourceDirectory.split("/")[1]}/${sourceDirectory.split("/")[2]}/`;
+    const sourceDirectoryPathParts = SOURCE_DIRECTORY.split("/");
+    const basePath = `${sourceDirectoryPathParts[1]}/${sourceDirectoryPathParts[2]}/`;
     const re = new RegExp(basePath, "g");
     todoHtml = todoHtml.replace(re, "");
 
@@ -87,8 +90,7 @@ async function build() {
     todoArea.appendChild(todoHolder);
 
     // create links for css files and append them to the head
-    const cssFiles = ["app.css", "matchingCss.css", "nonMatchingCss.css", "layout.css"];
-    for (const cssFile of cssFiles) {
+    for (const cssFile of CSS_FILES_TO_ADD_LINKS_FOR) {
         const cssLink = doc.createElement("link");
         cssLink.rel = "stylesheet";
         cssLink.href = cssFile;
@@ -96,7 +98,7 @@ async function build() {
     }
 
     // write html files
-    await fs.writeFile(`${targetDirectory}/${htmlFile}`, todoDom.serialize());
+    await fs.writeFile(path.join(TARGET_DIRECTORY, HTML_FILE), todoDom.serialize());
 
     console.log("done!!");
 }
