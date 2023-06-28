@@ -7,7 +7,8 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
 const CopyPlugin = require("copy-webpack-plugin");
-const { getHtmlContent } = require("../shared/utils/getHtmlContent.js");
+const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent.js");
+const htmlToInjectForComplex = getHtmlContent("shared/partial.html");
 
 module.exports = merge(common, {
     mode: "production",
@@ -20,7 +21,7 @@ module.exports = merge(common, {
             title: "TodoMVC: JavaScript Es6 Webpack Complex DOM",
             template: "/shared/index.html",
             templateParameters: {
-                body: getHtmlContent("node_modules/big-dom-generator/dist/index.html", true),
+                body: getHtmlContent("node_modules/big-dom-generator/dist/index.html", true).replace('<div class="todo-area">', `<div class="todo-area"><div class="todoholder">${htmlToInjectForComplex}</div>`),
                 htmlClasses: "spectrum spectrum--medium spectrum--light",
             },
         }),
