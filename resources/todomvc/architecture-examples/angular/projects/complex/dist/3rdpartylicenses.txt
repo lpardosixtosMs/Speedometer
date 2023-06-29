@@ -13,6 +13,8 @@ MIT
 @angular/router
 MIT
 
+@big-dom-generator/angular
+
 big-dom-generator
 
 rxjs

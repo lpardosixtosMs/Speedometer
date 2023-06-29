@@ -114,8 +114,7 @@
                             "node_modules/todomvc-app-css/index.css",
                             "node_modules/big-dom-generator/dist/app.css",
                             "node_modules/big-dom-generator/public/layout.css",
-                            "node_modules/big-dom-generator/matchingCss.css",
-                            "node_modules/big-dom-generator/nonMatchingCss.css"
+                            "node_modules/big-dom-generator/angular/generated.css"
                         ],
                         "scripts": []
                     },
