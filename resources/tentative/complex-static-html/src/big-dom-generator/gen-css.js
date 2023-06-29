@@ -1,7 +1,8 @@
-import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML, TARGETED_CLASS } from "./params.js";
+import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML, TARGETED_CLASS, USE_CSS_VARIABLES, NUMBER_VARIABLES_PER_CSS_PROPERTY } from "./params.js";
 import { LCG } from "random-seedable";
 import { JSDOM } from "jsdom";
 import { ANGULAR_TODO_MVC_HTML_MARKUP, TODO_MVC_HTML_MARKUP } from "./html-markup.js";
+import { genVariableDefinitions, storeVariableDefinitions } from "./gen-css-variables.js";
 
 const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
 
@@ -152,8 +153,25 @@ const getInitialDepth = (element) => {
     return depth;
 };
 
+const getRandomCSSVariable = (property) => {
+    const variableDepth = random.randRange(0, 3);
+    const variableIndex = random.randRange(0, NUMBER_VARIABLES_PER_CSS_PROPERTY);
+    storeVariableDefinitions(property, variableDepth, variableIndex);
+    return `var(--complex-dom-${property}-${random.randRange(0, 3)}-${random.randRange(0, 6)})`;
+};
+
 // Take selectors create random color styles. Same color, different opacity.
 const generateCssRules = (selectors) => {
+    if (USE_CSS_VARIABLES) {
+        return selectors.map((selector) => {
+            random.shuffle(cssProperties, true);
+            return `${selector} {
+                ${cssProperties[0]}: ${getRandomCSSVariable(cssProperties[0])};
+                ${cssProperties[1]}: ${getRandomCSSVariable(cssProperties[1])};
+            }`;
+        });
+    }
+
     return selectors.map((selector, i) => {
         random.shuffle(cssProperties, true);
         return `${selector} {
@@ -193,5 +211,8 @@ export const genCss = (markup) => {
 
     const allCssRules = generateCssRules(matchingSelectors.concat(nonMatchingSelectors));
     random.shuffle(allCssRules, true);
+    if (USE_CSS_VARIABLES)
+        return [genVariableDefinitions(cssProperties), allCssRules.join("\n")].join("\n");
+
     return allCssRules.join("\n");
 };

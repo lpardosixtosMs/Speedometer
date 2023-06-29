@@ -11,3 +11,6 @@ export const NUM_TODOS_TO_INSERT_IN_HTML = 100;
 export const TARGETED_CLASS = ".targeted";
 
 export const MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH = 15;
+
+export const USE_CSS_VARIABLES = true;
+export const NUMBER_VARIABLES_PER_CSS_PROPERTY = 6;
