@@ -7,7 +7,7 @@ import "./src/app.css";
 
 const fs = require("fs");
 
-const randomCss = genCss();
+const randomCss = `${genCss()}\n`;
 fs.writeFileSync("./generated.css", randomCss);
 
 const html = `<!DOCTYPE html>
