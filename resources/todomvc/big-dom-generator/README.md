@@ -11,8 +11,7 @@ $ npm install big-dom-generator
 To use the big-dom-generator package in a javascript project, you can import the CSS file like this:
 
 ```javascript
-import "big-dom-generator/matchingCss.css";
-import "big-dom-generator/nonMatchingCss.css";
+import "big-dom-generator/generated.css";
 ```
 
 This will import the generated.css file from the big-dom-generator package and apply the styles to your web page.
@@ -20,7 +19,7 @@ This will import the generated.css file from the big-dom-generator package and a
 Alternatively, you can include the CSS file in your HTML file using a link tag:
 
 ```html
-<link rel="stylesheet" href="node_modules/big-dom-generator/matchingCss.css" /> <link rel="stylesheet" href="node_modules/big-dom-generator/nonMatchingCss.css" />
+<link rel="stylesheet" href="node_modules/big-dom-generator/generated.css" />
 ```
 
 To use the angular version of the big-dom-generator package in an Angular project, you can follow these steps:
