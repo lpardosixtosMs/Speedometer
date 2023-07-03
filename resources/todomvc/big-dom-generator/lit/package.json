@@ -1,0 +1,7 @@
+{
+  "name": "@big-dom-generator/lit",
+  "version": "1.0.0",
+  "description": "CSS for Lit TodoMVC",
+  "main": "generated.css",
+  "dependencies": {}
+}

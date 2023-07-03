@@ -99,16 +99,7 @@ export const LIT_TODO_MVC_HTML_MARKUP = `
                         <todo-list>
                             <input id="toggle-all" type="checkbox" class="toggle-all">
                             <label for="toggle-all">Mark all as complete</label>
-                            <ul class="todo-list">
-                                <li class=" todo ">
-                                    <div class="view">
-                                        <input class="toggle" type="checkbox"> 
-                                        <label><!--?lit$0390463987$-->sasddas</label> 
-                                        <button class="destroy"></button>
-                                    </div>
-                                    <input class="edit" type="text">
-                                </li>
-                            </ul>
+                            <ul class="todo-list"></ul>
                         </todo-list>
                     </main>
                 </section>
