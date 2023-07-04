@@ -5,7 +5,7 @@
         "target": "ES2022",
         "module": "ES2022",
         "lib": ["DOM", "DOM.Iterable"],
-        "rootDir": "./src",
+        "rootDir": "shared/src",
         "moduleResolution": "node",
         "sourceMap": true,
         "outDir": "./standalone/",
@@ -25,6 +25,6 @@
         "experimentalDecorators": true,
         "useDefineForClassFields": false
     },
-    "include": ["src/**/*.ts"],
+    "include": ["shared/src/**/*.ts"],
     "exclude": []
 }
