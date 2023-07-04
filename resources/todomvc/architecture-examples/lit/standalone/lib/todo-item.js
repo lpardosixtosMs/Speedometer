@@ -1,17 +1,23 @@
+import { __decorate } from "tslib";
 import { LitElement, html, css } from "lit";
 import { customElement } from "lit/decorators/custom-element.js";
 import { property } from "lit/decorators/property.js";
 import { state } from "lit/decorators/state.js";
 import { classMap } from "lit/directives/class-map.js";
-
 import { todoStyles } from "./todo.css.js";
 import { DeleteTodoEvent, EditTodoEvent } from "./events.js";
-
-@customElement("todo-item")
-export class TodoItem extends LitElement {
-    static override styles = [
+export let TodoItem = class TodoItem extends LitElement {
+    constructor() {
+        super(...arguments);
+        this.index = 0;
+        this.todoId = "";
+        this.text = "";
+        this.completed = false;
+        this.isEditing = false;
+    }
+    static { this.styles = [
         todoStyles,
-        css`
+        css `
             :host {
                 display: block;
             }
@@ -120,24 +126,8 @@ export class TodoItem extends LitElement {
                 margin-bottom: -1px;
             }
         `,
-    ];
-
-    @property()
-        index = 0;
-
-    @property()
-        todoId = "";
-
-    @property()
-        text = "";
-
-    @property({ type: Boolean })
-        completed = false;
-
-    @state()
-        isEditing: boolean = false;
-
-    override render() {
+    ]; }
+    render() {
         const itemClassList = {
             targeted: true,
             [`li-${this.index}`]: true,
@@ -145,7 +135,7 @@ export class TodoItem extends LitElement {
             completed: this.completed ?? false,
             editing: this.isEditing,
         };
-        return html`
+        return html `
             <li class=${classMap(itemClassList)}>
                 <div class="targeted view-${this.index}">
                     <input class="toggle" type="checkbox" .checked=${this.completed ?? false} @change=${this.#toggleTodo} />
@@ -156,40 +146,46 @@ export class TodoItem extends LitElement {
             </li>
         `;
     }
-
     #toggleTodo() {
         this.dispatchEvent(new EditTodoEvent({ id: this.todoId, completed: !this.completed }));
     }
-
     #deleteTodo() {
         this.dispatchEvent(new DeleteTodoEvent(this.todoId));
     }
-
     #beginEdit() {
         this.isEditing = true;
     }
-
-    #finishEdit(e: Event) {
-        const el = e.target as HTMLInputElement;
+    #finishEdit(e) {
+        const el = e.target;
         const text = el.value;
         this.dispatchEvent(new EditTodoEvent({ id: this.todoId, text }));
         this.isEditing = false;
     }
-
-    #captureEscape(e: KeyboardEvent) {
+    #captureEscape(e) {
         if (e.key === "escape")
             this.#abortEdit(e);
     }
-
-    #abortEdit(e: Event) {
-        const input = e.target as HTMLInputElement;
+    #abortEdit(e) {
+        const input = e.target;
         input.value = this.text ?? "";
     }
-}
-
-declare global {
-    // eslint-disable-next-line no-unused-vars
-    interface HTMLElementTagNameMap {
-        "todo-item": TodoItem;
-    }
-}
+};
+__decorate([
+    property()
+], TodoItem.prototype, "index", void 0);
+__decorate([
+    property()
+], TodoItem.prototype, "todoId", void 0);
+__decorate([
+    property()
+], TodoItem.prototype, "text", void 0);
+__decorate([
+    property({ type: Boolean })
+], TodoItem.prototype, "completed", void 0);
+__decorate([
+    state()
+], TodoItem.prototype, "isEditing", void 0);
+TodoItem = __decorate([
+    customElement("todo-item")
+], TodoItem);
+//# sourceMappingURL=todo-item.js.map

@@ -8,7 +8,7 @@
         "rootDir": "./src",
         "moduleResolution": "node",
         "sourceMap": true,
-        "outDir": "./",
+        "outDir": "./standalone/",
         "importHelpers": true,
         "verbatimModuleSyntax": true,
         "forceConsistentCasingInFileNames": true,

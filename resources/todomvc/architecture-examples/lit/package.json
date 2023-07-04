@@ -16,13 +16,15 @@
         "@rollup/plugin-node-resolve": "^15.1.0",
         "@rollup/plugin-terser": "^0.4.3",
         "@rollup/plugin-typescript": "^11.1.1",
-        "rollup": "^2.79.1",
-        "rollup-plugin-minify-html-literals": "^1.2.6",
         "@web/dev-server": "^0.2.1",
+        "rollup": "^2.79.1",
+        "rollup-plugin-copy": "^3.4.0",
+        "rollup-plugin-minify-html-literals": "^1.2.6",
         "typescript": "^5.0.4",
         "wireit": "^0.9.5"
     },
     "dependencies": {
+        "big-dom-generator": "file:../../big-dom-generator",
         "lit": "^3.0.0-pre.0",
         "tslib": "^2.5.2"
     },
@@ -32,10 +34,10 @@
                 "build"
             ],
             "files": [
-                "web-dev-server.config.js"
+                "standalone/web-dev-server.config.js"
             ],
             "service": true,
-            "command": "wds"
+            "command": "wds --root-dir standalone/dist"
         },
         "dev": {
             "#comment": "like serve, only it doesn't do the slow rollup build",
@@ -60,10 +62,10 @@
                 "tsconfig.json"
             ],
             "output": [
-                "index.js",
-                "index.js.map",
-                "lib",
-                ".tsbuildinfo"
+                "standalone/index.js",
+                "standalone/index.js.map",
+                "standalone/lib",
+                "standalone/.tsbuildinfo"
             ],
             "clean": false,
             "command": "tsc"
@@ -71,12 +73,12 @@
         "rollup": {
             "files": [
                 "src/**/*.ts",
-                "rollup.config.mjs"
+                "standalone/rollup.config.mjs"
             ],
             "output": [
-                "dist/index.js"
+                "standalone/dist/index.js"
             ],
-            "command": "rollup --config rollup.config.mjs"
+            "command": "rollup --config standalone/rollup.config.mjs"
         }
     }
 }
