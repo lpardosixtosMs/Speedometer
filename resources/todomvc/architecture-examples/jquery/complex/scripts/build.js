@@ -22,10 +22,6 @@ const FILES_TO_MOVE = [
 
 const CSS_FILES_TO_ADD_LINKS_FOR = ["generated.css"];
 
-const copy = async (src, dest) => {
-    await fs.copyFile(src, dest);
-};
-
 const build = async () => {
     // remove dist directory if it exists
     await fs.rm(TARGET_DIRECTORY, { recursive: true, force: true });
@@ -35,7 +31,7 @@ const build = async () => {
 
     // copy src folder
     await fs.cp(SOURCE_DIRECTORY, TARGET_DIRECTORY, { recursive: true });
-    
+
     // copy files to move
     for (let i = 0; i < FILES_TO_MOVE.length; i++) {
         const fileName = FILES_TO_MOVE[i].split("/").pop();

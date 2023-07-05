@@ -10,13 +10,7 @@ const TARGET_DIRECTORY = "./complex/dist";
 const COMPLEX_DOM_HTML_FILE = "index.html";
 const TODO_HTML_FILE = "index.html";
 
-const FILES_TO_MOVE = [
-    "node_modules/todomvc-common/base.css",
-    "node_modules/todomvc-app-css/index.css",
-    "node_modules/big-dom-generator/dist/app.css",
-    "node_modules/big-dom-generator/generated.css",
-    "node_modules/big-dom-generator/dist/logo.png",
-];
+const FILES_TO_MOVE = ["node_modules/todomvc-common/base.css", "node_modules/todomvc-app-css/index.css", "node_modules/big-dom-generator/dist/app.css", "node_modules/big-dom-generator/generated.css", "node_modules/big-dom-generator/dist/logo.png"];
 
 const CSS_FILES_TO_ADD_LINKS_FOR = ["app.css", "generated.css"];
 
