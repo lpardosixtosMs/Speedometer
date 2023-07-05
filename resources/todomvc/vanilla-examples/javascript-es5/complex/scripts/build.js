@@ -15,11 +15,10 @@ const FILES_TO_MOVE = [
     "node_modules/todomvc-app-css/index.css",
     "node_modules/big-dom-generator/dist/app.css",
     "node_modules/big-dom-generator/generated.css",
-    "node_modules/big-dom-generator/public/layout.css",
     "node_modules/big-dom-generator/dist/logo.png",
 ];
 
-const CSS_FILES_TO_ADD_LINKS_FOR = ["app.css", "generated.css", "layout.css"];
+const CSS_FILES_TO_ADD_LINKS_FOR = ["app.css", "generated.css"];
 
 async function build() {
     // remove dist directory if it exists
