@@ -33,9 +33,6 @@ async function build() {
             console.error(err);
     });
 
-    // copy html file
-    await fs.copyFile(path.resolve(__dirname, "../../", "node_modules/big-dom-generator/dist/index.html"), path.resolve(TARGET_DIRECTORY, COMPLEX_DOM_HTML_FILE));
-
     // copy files to move
     for (let i = 0; i < FILES_TO_MOVE.length; i++) {
         const fileName = FILES_TO_MOVE[i].split("/").pop();
