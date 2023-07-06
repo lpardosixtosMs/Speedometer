@@ -3,7 +3,7 @@ const { JSDOM } = require("jsdom");
 const path = require("path");
 const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent");
 
-const SOURCE_DIRECTORY = "node_modules/javascript-es6-webpack/dist/";
+const SOURCE_DIRECTORY = "node_modules/javascript-es6/dist/";
 const TARGET_DIRECTORY = "./dist";
 
 const COMPLEX_DOM_HTML_FILE = "index.html";
@@ -41,7 +41,7 @@ async function build() {
 
     const body = dom.window.document.querySelector("body");
     const htmlToInjectInTodoHolder = body.innerHTML;
-    body.innerHTML = getHtmlContent("node_modules/big-dom-generator/dist/index.html", true);
+    body.innerHTML = getHtmlContent("node_modules/big-dom-generator/dist/index.html");
 
     const title = head.querySelector("title");
     title.innerHTML = "TodoMVC: JavaScript Es6 Complex DOM";
