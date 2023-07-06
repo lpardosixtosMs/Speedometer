@@ -44,6 +44,7 @@ export default {
             main: true,
             browser: true,
         }),
+        commonjs(),
         copy({
             targets: [
                 { src: "node_modules/big-dom-generator/dist/logo.png", dest: "complex/dist/" },
@@ -64,7 +65,6 @@ export default {
                 },
             ],
         }),
-        commonjs(),
         production && terser(),
     ],
 };
