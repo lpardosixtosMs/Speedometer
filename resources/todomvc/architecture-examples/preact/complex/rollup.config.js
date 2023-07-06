@@ -53,7 +53,7 @@ export default {
                     transform: (contents) => {
                         const title = "TodoMVC: Preact Complex DOM";
                         contents = contents.toString();
-                        const body = getHtmlContent("node_modules/big-dom-generator/dist/index.html", true);
+                        const body = getHtmlContent("node_modules/big-dom-generator/dist/index.html");
                         const htmlToInjectForComplex = getHtmlContent("shared/public/partial.html");
                         contents = contents.replace("<html", '<html class="spectrum spectrum--medium spectrum--light"');
                         contents = contents.replace("<title>TodoMVC: Preact</title>", `<title>${title}</title>`);

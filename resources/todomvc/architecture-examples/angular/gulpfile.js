@@ -7,7 +7,7 @@ const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent");
 const replace = require("gulp-replace");
 
 gulp.task("copy-index", function () {
-    const htmlContent = getHtmlContent("node_modules/big-dom-generator/dist/index.html", true);
+    const htmlContent = getHtmlContent("node_modules/big-dom-generator/dist/index.html");
     const htmlToInjectForComplex = getHtmlContent("projects/complex/src/partial.html");
     return gulp
         .src("projects/shared-library/src/lib/index.html")

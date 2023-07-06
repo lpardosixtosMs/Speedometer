@@ -61,7 +61,7 @@ const build = async () => {
 
     const body = dom.window.document.querySelector("body");
     const htmlToInjectInTodoHolder = body.innerHTML;
-    body.innerHTML = getHtmlContent("node_modules/big-dom-generator/dist/index.html", true);
+    body.innerHTML = getHtmlContent("node_modules/big-dom-generator/dist/index.html");
 
     const title = head.querySelector("title");
     title.innerHTML = "jQuery • TodoMVC Complex DOM";
