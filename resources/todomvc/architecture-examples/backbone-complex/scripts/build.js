@@ -3,56 +3,40 @@ const { JSDOM } = require("jsdom");
 const path = require("path");
 const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent");
 
-const ROOT_DIRECTORY = "./";
-const SOURCE_DIRECTORY = "./shared/src";
-const TARGET_DIRECTORY = "./complex/dist";
+const SOURCE_DIRECTORY = "node_modules/backbone/dist/";
+const TARGET_DIRECTORY = "./dist";
 
 const COMPLEX_DOM_HTML_FILE = "index.html";
 const TODO_HTML_FILE = "index.html";
 
-const FILES_TO_MOVE = [
-    "node_modules/todomvc-common/base.css",
-    "node_modules/todomvc-app-css/index.css",
-    "node_modules/jquery/dist/jquery.min.js",
-    "node_modules/underscore/underscore-min.js",
-    "node_modules/backbone/backbone-min.js",
-    "node_modules/backbone/backbone-min.js.map",
-    "node_modules/big-dom-generator/dist/app.css",
-    "node_modules/big-dom-generator/generated.css",
-    "node_modules/big-dom-generator/dist/logo.png",
-];
+const FILES_TO_MOVE = ["node_modules/big-dom-generator/dist/app.css", "node_modules/big-dom-generator/generated.css", "node_modules/big-dom-generator/dist/logo.png"];
 
-const CSS_FILES_TO_ADD_LINKS_FOR = ["app.css", "generated.css"];
+const CSS_FILES_TO_ADD_LINKS_FOR = ["big-dom-generator.css", "generated.css"];
 
 async function build() {
     // remove dist directory if it exists
-    await fs.rm(TARGET_DIRECTORY, { recursive: true, force: true });
+    await fs.rm(path.resolve(TARGET_DIRECTORY), { recursive: true, force: true });
 
     // re-create the directory.
-    await fs.mkdir(TARGET_DIRECTORY);
+    await fs.mkdir(path.resolve(TARGET_DIRECTORY));
 
-    // copy src folder
-    await fs.cp(SOURCE_DIRECTORY, TARGET_DIRECTORY, { recursive: true }, (err) => {
+    // copy dist folder from javascript-es6-webpack
+    await fs.cp(path.resolve(SOURCE_DIRECTORY), path.resolve(TARGET_DIRECTORY), { recursive: true }, (err) => {
         if (err)
             console.error(err);
     });
 
     // copy files to move
-    for (let i = 0; i < FILES_TO_MOVE.length; i++)
-        await fs.copyFile(path.resolve(__dirname, "../../", FILES_TO_MOVE[i]), path.join(TARGET_DIRECTORY, path.basename(FILES_TO_MOVE[i])));
+    for (let i = 0; i < FILES_TO_MOVE.length; i++) {
+        // rename app.css to big-dom-generator because there is already a link for one
+        const sourcePath = path.resolve(__dirname, "..", FILES_TO_MOVE[i]);
+        const fileName = path.basename(FILES_TO_MOVE[i]);
+        const targetPath = fileName === "app.css" ? path.join(TARGET_DIRECTORY, "big-dom-generator.css") : path.join(TARGET_DIRECTORY, fileName);
+        await fs.copyFile(sourcePath, targetPath);
+    }
 
     // read todo.html file
-    let html = await fs.readFile(path.join(ROOT_DIRECTORY, TODO_HTML_FILE), "utf8");
-
-    // remove base paths from files to move
-    for (let i = 0; i < FILES_TO_MOVE.length; i++)
-        html = html.replace(FILES_TO_MOVE[i], path.basename(FILES_TO_MOVE[i]));
-
-    // remove basePath from source directory
-    const sourceDirectoryPathParts = SOURCE_DIRECTORY.split("/");
-    const basePath = `${sourceDirectoryPathParts[1]}/${sourceDirectoryPathParts[2]}/`;
-    const re = new RegExp(basePath, "g");
-    html = html.replace(re, "");
+    let html = await fs.readFile(path.resolve(__dirname, path.join("..", "dist", TODO_HTML_FILE)), "utf8");
 
     const dom = new JSDOM(html);
     const doc = dom.window.document;
