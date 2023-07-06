@@ -4,16 +4,15 @@ import { terser } from "rollup-plugin-terser";
 import filesize from "rollup-plugin-filesize";
 import copy from "rollup-plugin-copy";
 import css from "rollup-plugin-import-css";
-const { getHtmlContent } = require("big-dom-generator/utils/getHtmlContent");
 
 // `npm run build` -> `production` is true
 // `npm run dev` -> `production` is false
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-    input: "standalone/src/index.js",
+    input: "src/index.js",
     output: {
-        file: "standalone/dist/app.js",
+        file: "dist/app.js",
         format: "iife",
         sourcemap: true,
         name: "app",
@@ -23,7 +22,7 @@ export default {
             minify: true,
         }),
         svelte({
-            include: "shared/src/**/*.svelte",
+            include: "src/**/*.svelte",
         }),
         resolve({
             browser: true,
@@ -33,18 +32,7 @@ export default {
         production && terser(),
         production && filesize(),
         copy({
-            targets: [
-                {
-                    src: "shared/public/index.html",
-                    dest: "standalone/dist/",
-                    transform: (contents) => {
-                        contents = contents.toString();
-                        const body = getHtmlContent("shared/public/partial.html");
-                        contents = contents.replace("<body>", `<body>${body}`);
-                        return contents;
-                    },
-                },
-            ],
+            targets: [{ src: "public/index.html", dest: "dist/" }],
         }),
     ],
 };

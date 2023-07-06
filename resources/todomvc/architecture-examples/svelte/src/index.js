@@ -1,4 +1,4 @@
-import App from "../../shared/src/App.svelte";
+import App from "./App.svelte";
 
 const app = new App({
     target: document.querySelector(".todoapp"),
