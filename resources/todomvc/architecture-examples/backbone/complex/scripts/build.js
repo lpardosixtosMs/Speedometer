@@ -38,19 +38,15 @@ async function build() {
     });
 
     // copy files to move
-    for (let i = 0; i < FILES_TO_MOVE.length; i++) {
-        const fileName = FILES_TO_MOVE[i].split("/").pop();
-        await fs.copyFile(path.resolve(__dirname, "../../", FILES_TO_MOVE[i]), path.join(TARGET_DIRECTORY, fileName));
-    }
+    for (let i = 0; i < FILES_TO_MOVE.length; i++)
+        await fs.copyFile(path.resolve(__dirname, "../../", FILES_TO_MOVE[i]), path.join(TARGET_DIRECTORY, path.basename(FILES_TO_MOVE[i])));
 
     // read todo.html file
     let html = await fs.readFile(path.join(ROOT_DIRECTORY, TODO_HTML_FILE), "utf8");
 
     // remove base paths from files to move
-    for (let i = 0; i < FILES_TO_MOVE.length; i++) {
-        const fileName = FILES_TO_MOVE[i].split("/").pop();
-        html = html.replace(FILES_TO_MOVE[i], fileName);
-    }
+    for (let i = 0; i < FILES_TO_MOVE.length; i++)
+        html = html.replace(FILES_TO_MOVE[i], path.basename(FILES_TO_MOVE[i]));
 
     // remove basePath from source directory
     const sourceDirectoryPathParts = SOURCE_DIRECTORY.split("/");
