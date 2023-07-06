@@ -43,8 +43,7 @@ const build = async () => {
     }
 
     // remove basePath from source directory
-    const sourceDirectoryPathParts = sourceDirectory.split("/");
-    const basePath = `${sourceDirectoryPathParts[1]}/`;
+    const basePath = `${path.basename(sourceDirectory)}/`;
     const re = new RegExp(basePath, "g");
     html = html.replace(re, "");
 
