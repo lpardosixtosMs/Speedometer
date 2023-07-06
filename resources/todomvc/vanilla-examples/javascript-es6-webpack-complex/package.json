@@ -9,10 +9,11 @@
     "private": true,
     "scripts": {
         "dev": "webpack serve --open --config ./webpack.dev.js",
-        "build": "webpack --config ./webpack.prod.js",
+        "build": "node scripts/build.js",
         "serve": "http-server ./dist -p 7002 -c-1 --cors"
     },
     "dependencies": {
+        "big-dom-generator": "file:../../big-dom-generator",
         "todomvc-app-css": "^2.4.2",
         "todomvc-common": "^1.0.5"
     },
@@ -22,6 +23,8 @@
         "css-minimizer-webpack-plugin": "^4.2.2",
         "html-webpack-plugin": "^5.5.0",
         "http-server": "^14.1.1",
+        "javascript-es6-webpack": "file:../javascript-es6-webpack",
+        "jsdom": "^22.1.0",
         "mini-css-extract-plugin": "^2.7.2",
         "style-loader": "^3.3.1",
         "webpack": "^5.75.0",

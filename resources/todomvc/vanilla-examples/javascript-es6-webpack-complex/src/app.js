@@ -1,8 +1,8 @@
-import View from "../../shared/view";
-import Controller from "../../shared/controller";
-import Model from "../../shared/model";
-import Store from "../../shared/store";
-import Template from "../../shared/template";
+import View from "../../javascript-es6-webpack/shared/view";
+import Controller from "../../javascript-es6-webpack/shared/controller";
+import Model from "../../javascript-es6-webpack/shared/model";
+import Store from "../../javascript-es6-webpack/shared/store";
+import Template from "../../javascript-es6-webpack/shared/template";
 
 import "../../shared/app.css";
 
