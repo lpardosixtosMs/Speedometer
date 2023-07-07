@@ -9,7 +9,7 @@ const TARGET_DIRECTORY = "./dist";
 const COMPLEX_DOM_HTML_FILE = "index.html";
 const TODO_HTML_FILE = "index.html";
 
-const FILES_TO_MOVE = ["node_modules/big-dom-generator/dist/app.css", "node_modules/big-dom-generator/generated.css", "node_modules/big-dom-generator/dist/logo.png"];
+const FILES_TO_MOVE = ["node_modules/big-dom-generator/dist/app.css", "node_modules/big-dom-generator/angular/generated.css", "node_modules/big-dom-generator/dist/logo.png"];
 
 const CSS_FILES_TO_ADD_LINKS_FOR = ["big-dom-generator.css", "generated.css"];
 
