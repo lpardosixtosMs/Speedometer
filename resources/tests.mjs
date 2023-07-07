@@ -293,7 +293,7 @@ Suites.push({
 
 Suites.push({
     name: "TodoMVC-Angular",
-    url: "todomvc/architecture-examples/angular/projects/dist/index.html",
+    url: "todomvc/architecture-examples/angular/dist/index.html",
     tags: ["todomvc"],
     async prepare(page) {
         const element = await page.waitForElement(".new-todo");
