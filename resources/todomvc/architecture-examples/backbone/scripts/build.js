@@ -2,7 +2,7 @@ const fs = require("fs").promises;
 const path = require("path");
 
 const rootDirectory = "./";
-const sourceDirectory = "./src/";
+const sourceDirectory = "./src";
 const targetDirectory = "./dist";
 
 const htmlFile = "index.html";
@@ -44,10 +44,8 @@ const build = async () => {
     let html = await fs.readFile(path.join(targetDirectory, htmlFile), "utf8");
 
     // remove base paths from files to move
-    for (let i = 0; i < filesToMove.length; i++) {
-        const basePath = `${filesToMove[i].split("/").slice(0, -1).join("/")}/`;
-        html = html.replace(basePath, "");
-    }
+    for (let i = 0; i < filesToMove.length; i++)
+        html = html.replace(filesToMove[i], path.basename(filesToMove[i]));
 
     // remove basePath from source directory
     const basePath = `${path.basename(sourceDirectory)}/`;

@@ -8,8 +8,8 @@
     },
     "private": true,
     "scripts": {
-        "dev": "webpack serve --open --config ./webpack.dev.js",
-        "build": "webpack --config ./webpack.prod.js",
+        "dev": "webpack serve --open --config webpack.dev.js",
+        "build": "webpack --config webpack.prod.js",
         "serve": "http-server ./dist -p 7002 -c-1 --cors"
     },
     "dependencies": {
@@ -17,7 +17,6 @@
         "todomvc-common": "^1.0.5"
     },
     "devDependencies": {
-        "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.7.3",
         "css-minimizer-webpack-plugin": "^4.2.2",
         "html-webpack-plugin": "^5.5.0",
