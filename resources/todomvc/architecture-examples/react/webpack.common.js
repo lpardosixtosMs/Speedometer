@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 module.exports = {
     entry: {
@@ -10,6 +11,11 @@ module.exports = {
             template: "public/index.html",
         }),
     ],
+    output: {
+        filename: "[name].bundle.js",
+        path: path.resolve(__dirname, "dist"),
+        clean: true,
+    },
     resolve: {
         extensions: [".js", ".jsx"],
     },
