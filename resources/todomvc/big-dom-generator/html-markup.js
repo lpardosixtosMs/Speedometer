@@ -50,3 +50,28 @@ export const TODO_MVC_HTML_MARKUP = `
     </div>
 </div>
 `;
+
+export const LIT_TODO_MVC_HTML_MARKUP = `
+<div class="main-ui">
+    <div class="show-more"></div>
+    <div class="ribbon"></div>
+    <div class="top-bar"></div>
+    <div class="tree-area"></div>
+    <div class="todo-area">
+        <div class="todoholder">
+            <todo-app>
+                <section>
+                    <header class="header"></header>
+                    <main class="main">
+                        <todo-list>
+                            <input id="toggle-all" type="checkbox" class="toggle-all">
+                            <label for="toggle-all">Mark all as complete</label>
+                            <ul class="todo-list"></ul>
+                        </todo-list>
+                    </main>
+                </section>
+            </todo-app>
+        </div>
+    </div>
+</div>
+`;

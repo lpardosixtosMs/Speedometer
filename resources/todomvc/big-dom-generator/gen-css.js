@@ -1,7 +1,7 @@
 import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML, TARGETED_CLASS } from "./params.js";
 import { LCG } from "random-seedable";
 import { JSDOM } from "jsdom";
-import { ANGULAR_TODO_MVC_HTML_MARKUP, TODO_MVC_HTML_MARKUP } from "./html-markup.js";
+import { ANGULAR_TODO_MVC_HTML_MARKUP, LIT_TODO_MVC_HTML_MARKUP, TODO_MVC_HTML_MARKUP } from "./html-markup.js";
 
 const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
 
@@ -16,6 +16,8 @@ const getHtmlMarkup = (markup) => {
     switch (markup) {
         case "angular":
             return ANGULAR_TODO_MVC_HTML_MARKUP;
+        case "lit":
+            return LIT_TODO_MVC_HTML_MARKUP;
         default:
             return TODO_MVC_HTML_MARKUP;
     }
@@ -28,8 +30,18 @@ const getHtmlMarkup = (markup) => {
  *         <div class="targeted view-101"/>
  *     </li>
  * </app-todo-item>
+ *
+ * List item structure for Lit:
+ * <li class=" todo ">
+ *      <div class="view">
+ *          <input class="toggle" type="checkbox">
+ *          <label><!--?lit$0390463987$-->sasddas</label>
+ *          <button class="destroy"></button>
+ *      </div>
+ *      <input class="edit" type="text">
+ * </li>
  */
-const addTodoItems = (document, NUM_TODOS_TO_INSERT_IN_HTML, angular) => {
+const addTodoItems = (document, NUM_TODOS_TO_INSERT_IN_HTML, markup) => {
     const todoList = document.querySelector(".todo-list");
 
     for (let i = 0; i < NUM_TODOS_TO_INSERT_IN_HTML; i++) {
@@ -41,11 +53,16 @@ const addTodoItems = (document, NUM_TODOS_TO_INSERT_IN_HTML, angular) => {
 
         li.appendChild(div);
 
-        if (angular) {
+        if (markup === "angular") {
             const appTodoItem = document.createElement("app-todo-item");
 
             appTodoItem.appendChild(li);
             todoList.appendChild(appTodoItem);
+        } else if (markup === "lit") {
+            const todoItem = document.createElement("todo-item");
+
+            todoItem.appendChild(li);
+            todoList.appendChild(todoItem);
         } else {
             todoList.appendChild(li);
         }

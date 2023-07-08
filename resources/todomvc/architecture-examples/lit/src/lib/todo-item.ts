@@ -123,6 +123,9 @@ export class TodoItem extends LitElement {
     ];
 
     @property()
+        index = 0;
+
+    @property()
         todoId = "";
 
     @property()
@@ -136,13 +139,15 @@ export class TodoItem extends LitElement {
 
     override render() {
         const itemClassList = {
+            targeted: true,
+            [`li-${this.index}`]: true,
             todo: true,
             completed: this.completed ?? false,
             editing: this.isEditing,
         };
         return html`
-            <li class="${classMap(itemClassList)}">
-                <div class="view">
+            <li class=${classMap(itemClassList)}>
+                <div class="targeted view-${this.index}">
                     <input class="toggle" type="checkbox" .checked=${this.completed ?? false} @change=${this.#toggleTodo} />
                     <label @dblclick=${this.#beginEdit}> ${this.text} </label>
                     <button @click=${this.#deleteTodo} class="destroy"></button>
