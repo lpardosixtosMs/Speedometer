@@ -1,13 +1,10 @@
 const fs = require("fs").promises;
 const { JSDOM } = require("jsdom");
 const path = require("path");
-const { getHtmlContent } = require("./getHtmlContent");
 
 const TARGET_DIRECTORY = "./dist";
-
 const COMPLEX_DOM_HTML_FILE = "index.html";
 const TODO_HTML_FILE = "index.html";
-
 const CSS_FILES_TO_ADD_LINKS_FOR = ["big-dom-generator.css", "generated.css"];
 
 async function buildComplex(CALLER_DIRECTORY, SOURCE_DIRECTORY, TITLE, FILES_TO_MOVE) {
@@ -44,7 +41,7 @@ async function buildComplex(CALLER_DIRECTORY, SOURCE_DIRECTORY, TITLE, FILES_TO_
 
     const body = dom.window.document.querySelector("body");
     const htmlToInjectInTodoHolder = body.innerHTML;
-    body.innerHTML = getHtmlContent("node_modules/big-dom-generator/dist/index.html");
+    body.innerHTML = await getHtmlBody("node_modules/big-dom-generator/dist/index.html");
 
     const title = head.querySelector("title");
     title.innerHTML = TITLE;
@@ -66,6 +63,14 @@ async function buildComplex(CALLER_DIRECTORY, SOURCE_DIRECTORY, TITLE, FILES_TO_
     await fs.writeFile(path.join(TARGET_DIRECTORY, COMPLEX_DOM_HTML_FILE), dom.serialize());
 
     console.log("done!!");
+}
+
+async function getHtmlBody(filePath) {
+    let htmlContent = await fs.readFile(filePath, "utf8");
+    const bodyStartIndex = htmlContent.indexOf("<body>");
+    const bodyEndIndex = htmlContent.lastIndexOf("</body>");
+
+    return htmlContent.substring(bodyStartIndex + 6, bodyEndIndex);
 }
 
 module.exports = { buildComplex };
