@@ -16,9 +16,11 @@ class TodoItem extends HTMLElement {
         this.id = "";
         this.title = "Todo Item";
         this.completed = "false";
+        this.index = 0;
 
         const node = document.importNode(template.content, true);
         this.item = node.querySelector(".todo-item");
+        this.displayTodo = node.querySelector(".display-todo");
         this.toggleLabel = node.querySelector(".toggle-todo-label");
         this.toggleInput = node.querySelector(".toggle-todo-input");
         this.todoText = node.querySelector(".todo-item-text");
@@ -48,6 +50,12 @@ class TodoItem extends HTMLElement {
                 case "id":
                     if (this.id !== undefined)
                         this.item.id = `todo-item-${this.id}`;
+                    break;
+                case "index":
+                    if (this.index !== undefined) {
+                        this.item.classList.add(`li-${this.index}`);
+                        this.displayTodo.classList.add(`view-${this.index}`);
+                    }
                     break;
                 case "title":
                     if (this.title !== undefined) {
@@ -147,7 +155,11 @@ class TodoItem extends HTMLElement {
     }
 
     connectedCallback() {
-        this.update("id", "title", "completed");
+        const parent = this.parentNode;
+        const siblings = Array.from(parent.children);
+        this.index = siblings.indexOf(this);
+
+        this.update("id", "title", "completed", "index");
 
         this.keysListeners.push(
             useKeyListener({
