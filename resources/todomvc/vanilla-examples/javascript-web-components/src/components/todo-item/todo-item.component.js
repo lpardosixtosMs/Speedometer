@@ -110,11 +110,9 @@ class TodoItem extends HTMLElement {
 
     updateItem(event) {
         if (event.target.value !== this.title) {
-            console.log(`updateItem ${event.target.value}, ${this.id}, ${this.index}`);
             if (!event.target.value.length) {
                 this.removeItem();
             } else {
-                console.log(`updateItem ${event.target.value}, ${this.id}, ${this.index}`);
                 this.setAttribute("title", event.target.value);
                 this.dispatchEvent(
                     new CustomEvent("update-item", {
