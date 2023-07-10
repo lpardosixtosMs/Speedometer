@@ -12,6 +12,7 @@ function generateCss(markup, filePath) {
 
 generateCss("", "./generated.css");
 generateCss("angular", "./angular/generated.css");
+generateCss("javascript-web-components", "./javascript-web-components/generated.css");
 
 const html = `<!DOCTYPE html>
 <html lang="en" class="spectrum spectrum--medium spectrum--light">

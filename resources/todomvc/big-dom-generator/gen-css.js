@@ -1,7 +1,7 @@
 import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML, TARGETED_CLASS } from "./params.js";
 import { LCG } from "random-seedable";
 import { JSDOM } from "jsdom";
-import { ANGULAR_TODO_MVC_HTML_MARKUP, TODO_MVC_HTML_MARKUP } from "./html-markup.js";
+import { ANGULAR_TODO_MVC_HTML_MARKUP, TODO_MVC_HTML_MARKUP, JS_WEB_COMPONENTS_TODO_MVC_HTML_MARKUP } from "./html-markup.js";
 
 const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
 
@@ -16,6 +16,8 @@ const getHtmlMarkup = (markup) => {
     switch (markup) {
         case "angular":
             return ANGULAR_TODO_MVC_HTML_MARKUP;
+        case "javascript-web-components":
+            return JS_WEB_COMPONENTS_TODO_MVC_HTML_MARKUP;
         default:
             return TODO_MVC_HTML_MARKUP;
     }
@@ -29,7 +31,7 @@ const getHtmlMarkup = (markup) => {
  *     </li>
  * </app-todo-item>
  */
-const addTodoItems = (document, NUM_TODOS_TO_INSERT_IN_HTML, angular) => {
+const addTodoItems = (document, NUM_TODOS_TO_INSERT_IN_HTML, markup) => {
     const todoList = document.querySelector(".todo-list");
 
     for (let i = 0; i < NUM_TODOS_TO_INSERT_IN_HTML; i++) {
@@ -41,8 +43,17 @@ const addTodoItems = (document, NUM_TODOS_TO_INSERT_IN_HTML, angular) => {
 
         li.appendChild(div);
 
-        if (angular) {
+        if (markup === "angular") {
             const appTodoItem = document.createElement("app-todo-item");
+
+            appTodoItem.appendChild(li);
+            todoList.appendChild(appTodoItem);
+        } else if (markup === "javascript-web-components") {
+            const appTodoItem = document.createElement("todo-item");
+            // add classname to the li
+            li.className = `todo-item li-${i}`;
+            // add a classname to the the div
+            div.className = `display-todo view-${i}`;
 
             appTodoItem.appendChild(li);
             todoList.appendChild(appTodoItem);
