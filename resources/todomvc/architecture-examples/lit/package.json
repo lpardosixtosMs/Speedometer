@@ -1,5 +1,5 @@
 {
-    "name": "lit",
+    "name": "todomvc-lit",
     "private": true,
     "type": "module",
     "engines": {
