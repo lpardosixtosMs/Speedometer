@@ -65,9 +65,6 @@ export const JS_WEB_COMPONENTS_TODO_MVC_HTML_MARKUP = `
                 <main class="main">
                     <todo-list dir="ltr" total-items="1">
                         <ul class="todo-list" style="display: block;"></ul>
-                        <todo-list dir="ltr">
-                            <ul class="todo-list" style="display: block;"></ul>
-                        </todo-list>
                     </todo-list>
                 </main>
             </section>
