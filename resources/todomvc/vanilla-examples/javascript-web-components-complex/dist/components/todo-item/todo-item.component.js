@@ -7,7 +7,7 @@ import itemStyles from "../../styles/todo-item.constructable.js";
 
 class TodoItem extends HTMLElement {
     static get observedAttributes() {
-        return ["id", "title", "completed"];
+        return ["id", "title", "completed", "index"];
     }
 
     constructor() {
@@ -16,7 +16,6 @@ class TodoItem extends HTMLElement {
         this.id = "";
         this.title = "Todo Item";
         this.completed = "false";
-        this.index = 0;
 
         const node = document.importNode(template.content, true);
         this.item = node.querySelector(".todo-item");
@@ -111,9 +110,11 @@ class TodoItem extends HTMLElement {
 
     updateItem(event) {
         if (event.target.value !== this.title) {
+            console.log(`updateItem ${event.target.value}, ${this.id}, ${this.index}`);
             if (!event.target.value.length) {
                 this.removeItem();
             } else {
+                console.log(`updateItem ${event.target.value}, ${this.id}, ${this.index}`);
                 this.setAttribute("title", event.target.value);
                 this.dispatchEvent(
                     new CustomEvent("update-item", {
@@ -155,10 +156,6 @@ class TodoItem extends HTMLElement {
     }
 
     connectedCallback() {
-        const parent = this.parentNode;
-        const siblings = Array.from(parent.children);
-        this.index = siblings.indexOf(this);
-
         this.update("id", "title", "completed", "index");
 
         this.keysListeners.push(
