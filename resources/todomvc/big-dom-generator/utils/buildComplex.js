@@ -30,7 +30,6 @@ async function buildComplex(CALLER_DIRECTORY, SOURCE_DIRECTORY, TITLE, FILES_TO_
     }
 
     // read todo.html file
-    console.log(path.resolve(CALLER_DIRECTORY, path.join("..", "dist", TODO_HTML_FILE)));
     let html = await fs.readFile(path.resolve(CALLER_DIRECTORY, path.join("..", "dist", TODO_HTML_FILE)), "utf8");
 
     const dom = new JSDOM(html);
@@ -60,9 +59,10 @@ async function buildComplex(CALLER_DIRECTORY, SOURCE_DIRECTORY, TITLE, FILES_TO_
         head.appendChild(cssLink);
     }
 
-    await fs.writeFile(path.join(TARGET_DIRECTORY, COMPLEX_DOM_HTML_FILE), dom.serialize());
+    const destinationFilePath = path.join(TARGET_DIRECTORY, COMPLEX_DOM_HTML_FILE);
+    await fs.writeFile(destinationFilePath, dom.serialize());
 
-    console.log("done!!");
+    console.log(`The complex code for ${SOURCE_DIRECTORY} has been written to ${destinationFilePath}.`);
 }
 
 async function getHtmlBody(filePath) {
