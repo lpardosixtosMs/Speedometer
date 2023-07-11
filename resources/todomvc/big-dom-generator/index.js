@@ -1,18 +1,21 @@
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { App } from "./src/app";
-import { genCss } from "./gen-css";
+import { genCss, genWebComponentsCSS } from "./gen-css";
 
 const fs = require("fs");
 
-function generateCss(markup, filePath) {
-    const randomCss = `${genCss(markup)}\n`;
-    fs.writeFileSync(filePath, randomCss);
+function writeCss(filePath, cssText) {
+    console.log('writing css to', filePath);
+    fs.writeFileSync(filePath, `${cssText}\n`);
 }
 
-generateCss("", "./generated.css");
-generateCss("angular", "./angular/generated.css");
-generateCss("javascript-web-components", "./javascript-web-components/generated.css");
+writeCss("./generated.css", genCss(""));
+writeCss("./angular/generated.css", genCss("angular"));
+writeCss("./javascript-web-components/generated.css", genCss("javascript-web-components"));
+const webComponentsCss = genWebComponentsCSS();
+writeCss("./javascript-web-components/generated-global.css", webComponentsCss.globalCss);
+writeCss("./javascript-web-components/additional-stylesheets.constructable.js", webComponentsCss.additionalStyleSheetsScript);
 
 const html = `<!DOCTYPE html>
 <html lang="en" class="spectrum spectrum--medium spectrum--light">

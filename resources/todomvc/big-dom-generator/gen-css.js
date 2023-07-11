@@ -1,4 +1,4 @@
-import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML, TARGETED_CLASS } from "./params.js";
+import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML, TARGETED_CLASS, NUM_VARIABLE_VARIATIONS } from "./params.js";
 import { LCG } from "random-seedable";
 import { JSDOM } from "jsdom";
 import { ANGULAR_TODO_MVC_HTML_MARKUP, TODO_MVC_HTML_MARKUP, JS_WEB_COMPONENTS_TODO_MVC_HTML_MARKUP } from "./html-markup.js";
@@ -205,4 +205,37 @@ export const genCss = (markup) => {
     const allCssRules = generateCssRules(matchingSelectors.concat(nonMatchingSelectors));
     random.shuffle(allCssRules, true);
     return allCssRules.join("\n");
+};
+
+export const genWebComponentsCSS = () => {
+    const globalVariables = cssProperties.map((prop) => `--complex-${prop}-default: rgba(140, 140, 140, 0.5);`);
+    for (let i = 0; i < NUM_VARIABLE_VARIATIONS; i++) {
+        const rules = cssProperties.map((prop) => {
+            if (random.coin(0.8))
+                return `--complex-${prop}-${i}: rgba(140, 140, 140, ${i / 1000});`;
+            return null;
+        }).filter((rule) => !!rule);
+        globalVariables.push(...rules);
+    }
+
+    const globalRule =
+        `:root {
+            ${globalVariables.join("\n")}
+        }`;
+        
+    const localCSSRules = []
+    for (let i = 0; i < NUM_VARIABLE_VARIATIONS; i++) {
+        const rules =
+            `li {
+                ${cssProperties.map((prop) => `${prop}: var(--complex-${prop}-${i}, var(--complex-${prop}-default));`).join("\n")}
+            }`;
+        localCSSRules.push(rules);
+    }
+
+    const constructableStylesheetsScript =
+        `   const additionalStyleSheets = [];
+            ${localCSSRules.map((rule, index) => `additionalStyleSheets[${index}] = new CSSStyleSheet();\nadditionalStyleSheets[${index}].replaceSync(\`${rule}\`);`).join("\n")};
+            export default additionalStyleSheets;
+        `;
+    return {globalCss: globalRule, additionalStyleSheetsScript: constructableStylesheetsScript};
 };

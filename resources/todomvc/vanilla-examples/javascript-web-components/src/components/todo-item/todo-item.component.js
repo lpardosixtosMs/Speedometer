@@ -4,6 +4,7 @@ import { useKeyListener } from "../../hooks/useKeyListener.js";
 
 import globalStyles from "../../../node_modules/todomvc-css/dist/global.constructable.js";
 import itemStyles from "../../../node_modules/todomvc-css/dist/todo-item.constructable.js";
+import additionalStyleSheets from "./../../utils/additional-stylesheets.constructable.js";
 
 class TodoItem extends HTMLElement {
     static get observedAttributes() {
@@ -41,6 +42,7 @@ class TodoItem extends HTMLElement {
         this.startEdit = this.startEdit.bind(this);
         this.stopEdit = this.stopEdit.bind(this);
         this.cancelEdit = this.cancelEdit.bind(this);
+        this.maybeUpdateCss = this.maybeUpdateCss.bind(this);
     }
 
     update(...args) {
@@ -54,6 +56,7 @@ class TodoItem extends HTMLElement {
                     if (this.index !== undefined) {
                         this.item.classList.add(`li-${this.index}`);
                         this.displayTodo.classList.add(`view-${this.index}`);
+                        this.maybeUpdateCss();
                     }
                     break;
                 case "title":
@@ -151,6 +154,12 @@ class TodoItem extends HTMLElement {
 
         if (this.isConnected)
             this.update(property);
+    }
+
+    maybeUpdateCss() {
+        if (!additionalStyleSheets.length) return;
+        const styleSheetIndex = this.index % additionalStyleSheets.length;
+        this.shadow.adoptedStyleSheets = [...this.shadow.adoptedStyleSheets, additionalStyleSheets[styleSheetIndex]];
     }
 
     connectedCallback() {

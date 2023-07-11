@@ -7,7 +7,7 @@ const COMPLEX_DOM_HTML_FILE = "index.html";
 const TODO_HTML_FILE = "index.html";
 const CSS_FILES_TO_ADD_LINKS_FOR = ["big-dom-generator.css", "generated.css"];
 
-function buildComplex(CALLER_DIRECTORY, SOURCE_DIRECTORY, TITLE, FILES_TO_MOVE) {
+function buildComplex(CALLER_DIRECTORY, SOURCE_DIRECTORY, TITLE, FILES_TO_MOVE, EXTRA_CSS) {
     // remove dist directory if it exists
     fs.rmSync(path.resolve(TARGET_DIRECTORY), { recursive: true, force: true });
 
@@ -54,6 +54,13 @@ function buildComplex(CALLER_DIRECTORY, SOURCE_DIRECTORY, TITLE, FILES_TO_MOVE) 
         cssLink.rel = "stylesheet";
         cssLink.href = cssFile;
         head.appendChild(cssLink);
+    }
+
+    if (EXTRA_CSS) {
+        const extraCssLink = doc.createElement("link");
+        extraCssLink.rel = "stylesheet";
+        extraCssLink.href = EXTRA_CSS;
+        head.appendChild(extraCssLink);
     }
 
     const destinationFilePath = path.join(TARGET_DIRECTORY, COMPLEX_DOM_HTML_FILE);
