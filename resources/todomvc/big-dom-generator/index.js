@@ -1,17 +1,22 @@
 import React from "react";
+import path from "path";
+import fs from "fs";
 import { renderToStaticMarkup } from "react-dom/server";
 import { App } from "./src/app";
 import { genCss } from "./gen-css";
+import { genShadowDomVariables } from "./gen-shadow-dom-variables";
 
-const fs = require("fs");
-
-function generateCss(markup, filePath) {
-    const randomCss = `${genCss(markup)}\n`;
-    fs.writeFileSync(filePath, randomCss);
+function writeFile(filePath, text) {
+    const destinationFilePath = path.join(__dirname, "..", filePath);
+    console.log("writing file to", destinationFilePath);
+    fs.writeFileSync(destinationFilePath, `${text}\n`);
 }
 
-generateCss("", "./generated.css");
-generateCss("angular", "./angular/generated.css");
+writeFile("generated.css", genCss(""));
+writeFile("angular/generated.css", genCss("angular"));
+const webComponentsCss = genShadowDomVariables();
+writeFile("javascript-web-components/generated-variables.css", webComponentsCss.variables);
+writeFile("javascript-web-components/additional-stylesheets.constructable.js", webComponentsCss.styleSheets);
 
 const html = `<!DOCTYPE html>
 <html lang="en" class="spectrum spectrum--medium spectrum--light">
@@ -24,4 +29,4 @@ const html = `<!DOCTYPE html>
     ${renderToStaticMarkup(<App />)}
   </body>
 </html>`;
-fs.writeFileSync("dist/index.html", html);
+writeFile("dist/index.html", html);
