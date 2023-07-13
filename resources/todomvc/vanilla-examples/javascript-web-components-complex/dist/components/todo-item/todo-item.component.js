@@ -157,9 +157,10 @@ class TodoItem extends HTMLElement {
     }
 
     maybeUpdateCss() {
-        if (!additionalStyleSheets.length) return;
+        if (!additionalStyleSheets.length)
+            return;
         const styleSheetIndex = this.index % additionalStyleSheets.length;
-        this.shadow.adoptedStyleSheets = [...this.shadow.adoptedStyleSheets, additionalStyleSheets[styleSheetIndex]];
+        this.shadow.adoptedStyleSheets.push(additionalStyleSheets[styleSheetIndex]);
     }
 
     connectedCallback() {
