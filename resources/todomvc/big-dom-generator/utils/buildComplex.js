@@ -49,18 +49,12 @@ function buildComplex(CALLER_DIRECTORY, SOURCE_DIRECTORY, TITLE, FILES_TO_MOVE, 
     const todoArea = dom.window.document.querySelector(".todo-area");
     todoArea.appendChild(todoHolder);
 
-    for (const cssFile of CSS_FILES_TO_ADD_LINKS_FOR) {
+    const cssFilesToAddLinksFor = [...CSS_FILES_TO_ADD_LINKS_FOR, ...EXTRA_CSS_TO_LINK];
+    for (const cssFile of cssFilesToAddLinksFor) {
         const cssLink = doc.createElement("link");
         cssLink.rel = "stylesheet";
         cssLink.href = cssFile;
         head.appendChild(cssLink);
-    }
-
-    for (const cssFile of EXTRA_CSS_TO_LINK) {
-        const extraCssLink = doc.createElement("link");
-        extraCssLink.rel = "stylesheet";
-        extraCssLink.href = cssFile;
-        head.appendChild(extraCssLink);
     }
 
     const destinationFilePath = path.join(TARGET_DIRECTORY, COMPLEX_DOM_HTML_FILE);
