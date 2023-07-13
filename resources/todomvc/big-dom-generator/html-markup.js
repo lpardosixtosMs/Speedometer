@@ -50,25 +50,3 @@ export const TODO_MVC_HTML_MARKUP = `
     </div>
 </div>
 `;
-
-export const JS_WEB_COMPONENTS_TODO_MVC_HTML_MARKUP = `
-<div class="main-ui">
-    <div class="show-more"></div>
-    <div class="ribbon"></div>
-    <div class="top-bar"></div>
-    <div class="tree-area"></div>
-    <div class="todo-area">
-        <header class="header"></header>
-        <todo-app dir="ltr">
-            <section class="app">
-                <todo-topbar dir="ltr" total-items="1" active-items="1" completed-items="0"></todo-topbar>
-                <main class="main">
-                    <todo-list dir="ltr" total-items="1">
-                        <ul class="todo-list" style="display: block;"></ul>
-                    </todo-list>
-                </main>
-            </section>
-        </todo-app>
-    </div>
-</div>
-`;

@@ -1,21 +1,23 @@
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { App } from "./src/app";
-import { genCss, genWebComponentsCSS } from "./gen-css";
+import { genCss } from "./gen-css";
+import { genShadowDomVariables } from "./gen-shadow-dom-variables";
 
+const path = require("path");
 const fs = require("fs");
 
-function writeCss(filePath, cssText) {
-    console.log('writing css to', filePath);
-    fs.writeFileSync(filePath, `${cssText}\n`);
+function writeFile(filePath, text) {
+  const destinationFilePath = path.join(__dirname, "..", filePath);
+  console.log('writing file to', destinationFilePath);
+  fs.writeFileSync(destinationFilePath, `${text}\n`);
 }
 
-writeCss("./generated.css", genCss(""));
-writeCss("./angular/generated.css", genCss("angular"));
-writeCss("./javascript-web-components/generated.css", genCss("javascript-web-components"));
-const webComponentsCss = genWebComponentsCSS();
-writeCss("./javascript-web-components/generated-global.css", webComponentsCss.globalCss);
-writeCss("./javascript-web-components/additional-stylesheets.constructable.js", webComponentsCss.additionalStyleSheetsScript);
+writeFile("generated.css", genCss(""));
+writeFile("angular/generated.css", genCss("angular"));
+const webComponentsCss = genShadowDomVariables();
+writeFile("javascript-web-components/generated-variables.css", webComponentsCss.variables);
+writeFile("javascript-web-components/additional-stylesheets.constructable.js", webComponentsCss.styleSheets);
 
 const html = `<!DOCTYPE html>
 <html lang="en" class="spectrum spectrum--medium spectrum--light">
@@ -28,4 +30,4 @@ const html = `<!DOCTYPE html>
     ${renderToStaticMarkup(<App />)}
   </body>
 </html>`;
-fs.writeFileSync("dist/index.html", html);
+writeFile("dist/index.html", html);

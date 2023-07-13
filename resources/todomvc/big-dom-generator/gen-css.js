@@ -1,7 +1,7 @@
-import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML, TARGETED_CLASS, NUM_VARIABLE_VARIATIONS } from "./params.js";
+import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_SELECTOR_LENGTH_TO_GENERATE, NUM_TODOS_TO_INSERT_IN_HTML, TARGETED_CLASS, CSS_PROPERTIES } from "./params.js";
 import { LCG } from "random-seedable";
 import { JSDOM } from "jsdom";
-import { ANGULAR_TODO_MVC_HTML_MARKUP, TODO_MVC_HTML_MARKUP, JS_WEB_COMPONENTS_TODO_MVC_HTML_MARKUP } from "./html-markup.js";
+import { ANGULAR_TODO_MVC_HTML_MARKUP, TODO_MVC_HTML_MARKUP } from "./html-markup.js";
 
 const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
 
@@ -16,8 +16,6 @@ const getHtmlMarkup = (markup) => {
     switch (markup) {
         case "angular":
             return ANGULAR_TODO_MVC_HTML_MARKUP;
-        case "javascript-web-components":
-            return JS_WEB_COMPONENTS_TODO_MVC_HTML_MARKUP;
         default:
             return TODO_MVC_HTML_MARKUP;
     }
@@ -43,22 +41,14 @@ const addTodoItems = (document, NUM_TODOS_TO_INSERT_IN_HTML, markup) => {
 
         li.appendChild(div);
 
-        if (markup === "angular") {
-            const appTodoItem = document.createElement("app-todo-item");
-
-            appTodoItem.appendChild(li);
-            todoList.appendChild(appTodoItem);
-        } else if (markup === "javascript-web-components") {
-            const appTodoItem = document.createElement("todo-item");
-            // add classname to the li
-            li.className = `todo-item li-${i}`;
-            // add a classname to the the div
-            div.className = `display-todo view-${i}`;
-
-            appTodoItem.appendChild(li);
-            todoList.appendChild(appTodoItem);
-        } else {
-            todoList.appendChild(li);
+        switch (markup) {
+            case "angular":
+                const appTodoItem = document.createElement("app-todo-item");
+                appTodoItem.appendChild(li);
+                todoList.appendChild(appTodoItem);
+                break;
+            default:
+                todoList.appendChild(li);
         }
     }
 };
@@ -163,6 +153,7 @@ const getInitialDepth = (element) => {
     return depth;
 };
 
+const cssProperties = [...CSS_PROPERTIES]
 // Take selectors create random color styles. Same color, different opacity.
 const generateCssRules = (selectors) => {
     return selectors.map((selector, i) => {
@@ -173,8 +164,6 @@ const generateCssRules = (selectors) => {
 }`;
     });
 };
-
-const cssProperties = ["accent-color", "border-bottom-color", "border-color", "border-left-color", "border-right-color", "border-top-color", "column-rule-color", "outline-color", "text-decoration-color"];
 
 /**
  * Returns a random 200 matching selectors and 200 non-matching selectors targeted at the todoMVC items.
@@ -205,37 +194,4 @@ export const genCss = (markup) => {
     const allCssRules = generateCssRules(matchingSelectors.concat(nonMatchingSelectors));
     random.shuffle(allCssRules, true);
     return allCssRules.join("\n");
-};
-
-export const genWebComponentsCSS = () => {
-    const globalVariables = cssProperties.map((prop) => `--complex-${prop}-default: rgba(140, 140, 140, 0.5);`);
-    for (let i = 0; i < NUM_VARIABLE_VARIATIONS; i++) {
-        const rules = cssProperties.map((prop) => {
-            if (random.coin(0.8))
-                return `--complex-${prop}-${i}: rgba(140, 140, 140, ${i / 1000});`;
-            return null;
-        }).filter((rule) => !!rule);
-        globalVariables.push(...rules);
-    }
-
-    const globalRule =
-        `:root {
-            ${globalVariables.join("\n")}
-        }`;
-        
-    const localCSSRules = []
-    for (let i = 0; i < NUM_VARIABLE_VARIATIONS; i++) {
-        const rules =
-            `li {
-                ${cssProperties.map((prop) => `${prop}: var(--complex-${prop}-${i}, var(--complex-${prop}-default));`).join("\n")}
-            }`;
-        localCSSRules.push(rules);
-    }
-
-    const constructableStylesheetsScript =
-        `   const additionalStyleSheets = [];
-            ${localCSSRules.map((rule, index) => `additionalStyleSheets[${index}] = new CSSStyleSheet();\nadditionalStyleSheets[${index}].replaceSync(\`${rule}\`);`).join("\n")};
-            export default additionalStyleSheets;
-        `;
-    return {globalCss: globalRule, additionalStyleSheetsScript: constructableStylesheetsScript};
 };
