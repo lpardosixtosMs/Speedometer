@@ -19,3 +19,9 @@ fs.rename(path.join(__dirname, "..", "dist", "additional-stylesheets.constructab
       if (err)
           console.error(err);
 });
+
+// Remove the second half of generated.css
+let generatedCss = fs.readFileSync(path.resolve(__dirname, path.join("..", "dist", "generated.css")), "utf8");
+generatedCss = generatedCss.split("}\n");
+generatedCss = `${generatedCss.slice(0, generatedCss.length/2).join("}\n")}}\n`;
+fs.writeFileSync(path.resolve(__dirname, path.join("..", "dist", "generated.css")), generatedCss);
