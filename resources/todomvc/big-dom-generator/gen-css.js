@@ -42,11 +42,12 @@ const addTodoItems = (document, NUM_TODOS_TO_INSERT_IN_HTML, markup) => {
         li.appendChild(div);
 
         switch (markup) {
-            case "angular":
+            case "angular": {
                 const appTodoItem = document.createElement("app-todo-item");
                 appTodoItem.appendChild(li);
                 todoList.appendChild(appTodoItem);
                 break;
+            }
             default:
                 todoList.appendChild(li);
         }
@@ -153,7 +154,7 @@ const getInitialDepth = (element) => {
     return depth;
 };
 
-const cssProperties = [...CSS_PROPERTIES]
+const cssProperties = [...CSS_PROPERTIES];
 // Take selectors create random color styles. Same color, different opacity.
 const generateCssRules = (selectors) => {
     return selectors.map((selector, i) => {

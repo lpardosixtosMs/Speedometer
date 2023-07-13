@@ -1,16 +1,15 @@
 import React from "react";
+import path from "path";
+import fs from "fs";
 import { renderToStaticMarkup } from "react-dom/server";
 import { App } from "./src/app";
 import { genCss } from "./gen-css";
 import { genShadowDomVariables } from "./gen-shadow-dom-variables";
 
-const path = require("path");
-const fs = require("fs");
-
 function writeFile(filePath, text) {
-  const destinationFilePath = path.join(__dirname, "..", filePath);
-  console.log('writing file to', destinationFilePath);
-  fs.writeFileSync(destinationFilePath, `${text}\n`);
+    const destinationFilePath = path.join(__dirname, "..", filePath);
+    console.log("writing file to", destinationFilePath);
+    fs.writeFileSync(destinationFilePath, `${text}\n`);
 }
 
 writeFile("generated.css", genCss(""));
