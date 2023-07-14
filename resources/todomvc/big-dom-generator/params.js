@@ -13,4 +13,5 @@ export const CSS_PROPERTIES = ["accent-color", "border-bottom-color", "border-co
 
 export const MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH = 15;
 
-export const NUMBER_VARIABLE_VARIATIONS = 5;
+export const NUMBER_VARIABLE_VARIATIONS = 10;
+export const PROBABILITY_OF_DEFINED_VARIABLE = 0.75;
