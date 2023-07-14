@@ -7,7 +7,7 @@ const COMPLEX_DOM_HTML_FILE = "index.html";
 const TODO_HTML_FILE = "index.html";
 const CSS_FILES_TO_ADD_LINKS_FOR = ["big-dom-generator.css", "generated.css"];
 
-function buildComplex(CALLER_DIRECTORY, SOURCE_DIRECTORY, TITLE, FILES_TO_MOVE, EXTRA_CSS_TO_LINK, SCRIPTS_TO_LINK) {
+function buildComplex(CALLER_DIRECTORY, SOURCE_DIRECTORY, TITLE, FILES_TO_MOVE, EXTRA_CSS_TO_LINK = [], SCRIPTS_TO_LINK = []) {
     // remove dist directory if it exists
     fs.rmSync(path.resolve(TARGET_DIRECTORY), { recursive: true, force: true });
 
