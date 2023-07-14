@@ -143,7 +143,8 @@ export class TodoItem extends LitElement {
         if (!EXTRA_CSS_TO_ADOPT)
             return;
         const styleSheetIndex = this.index % EXTRA_CSS_TO_ADOPT.length;
-        this.shadowRoot?.adoptedStyleSheets.push(EXTRA_CSS_TO_ADOPT[styleSheetIndex]);
+        const styleSheetToAdopt = EXTRA_CSS_TO_ADOPT[styleSheetIndex];
+        this.shadowRoot?.adoptedStyleSheets.push(styleSheetToAdopt);
     }
 
     override render() {
@@ -156,7 +157,6 @@ export class TodoItem extends LitElement {
         };
         const divClassList = {
             targeted: true,
-            view: true,
             [`view-${this.index}`]: true,
         };
 
