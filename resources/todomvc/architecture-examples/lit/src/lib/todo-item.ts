@@ -202,12 +202,12 @@ export class TodoItem extends LitElement {
         input.value = this.text ?? "";
     }
 }
-
 declare global {
     // eslint-disable-next-line no-unused-vars
     interface HTMLElementTagNameMap {
         "todo-item": TodoItem;
     }
+    // eslint-disable-next-line no-unused-vars
     interface Window {
         extraCssToAdopt?: CSSStyleSheet[];
     }
