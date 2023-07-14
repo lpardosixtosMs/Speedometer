@@ -7,13 +7,6 @@ import { classMap } from "lit/directives/class-map.js";
 import { todoStyles } from "./todo.css.js";
 import { DeleteTodoEvent, EditTodoEvent } from "./events.js";
 
-// TODO: do this propertly
-declare global {
-    interface Window {
-        extraCssToAdopt?: CSSStyleSheet[];
-    }
-}
-
 const EXTRA_CSS_TO_ADOPT = window.extraCssToAdopt;
 @customElement("todo-item")
 export class TodoItem extends LitElement {
@@ -214,5 +207,8 @@ declare global {
     // eslint-disable-next-line no-unused-vars
     interface HTMLElementTagNameMap {
         "todo-item": TodoItem;
+    }
+    interface Window {
+        extraCssToAdopt?: CSSStyleSheet[];
     }
 }
