@@ -7,6 +7,14 @@ import { classMap } from "lit/directives/class-map.js";
 import { todoStyles } from "./todo.css.js";
 import { DeleteTodoEvent, EditTodoEvent } from "./events.js";
 
+// TODO: do this propertly
+declare global {
+    interface Window {
+        extraCssToAdopt?: CSSStyleSheet[];
+    }
+}
+
+const EXTRA_CSS_TO_ADOPT = window.extraCssToAdopt;
 @customElement("todo-item")
 export class TodoItem extends LitElement {
     static override styles = [
@@ -131,18 +139,38 @@ export class TodoItem extends LitElement {
     @property({ type: Boolean })
         completed = false;
 
+    @property({ type: Number })
+        index = 0;
+
     @state()
         isEditing: boolean = false;
+
+    maybeUpdateCss = () => {
+        if (!EXTRA_CSS_TO_ADOPT || !this.shadowRoot)
+            return;
+        const styleSheetIndex = this.index % EXTRA_CSS_TO_ADOPT.length;
+        this.shadowRoot.adoptedStyleSheets.push(EXTRA_CSS_TO_ADOPT[styleSheetIndex]);
+    };
 
     override render() {
         const itemClassList = {
             todo: true,
             completed: this.completed ?? false,
             editing: this.isEditing,
+            targeted: true,
+            [`li-${this.index}`]: true,
         };
+        const divClassList = {
+            targeted: true,
+            view: true,
+            [`view-${this.index}`]: true,
+        };
+
+        this.maybeUpdateCss();
+
         return html`
             <li class="${classMap(itemClassList)}">
-                <div class="view">
+                <div class="${classMap(divClassList)}">
                     <input class="toggle" type="checkbox" .checked=${this.completed ?? false} @change=${this.#toggleTodo} />
                     <label @dblclick=${this.#beginEdit}> ${this.text} </label>
                     <button @click=${this.#deleteTodo} class="destroy"></button>
