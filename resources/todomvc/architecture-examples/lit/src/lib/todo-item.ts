@@ -138,12 +138,13 @@ export class TodoItem extends LitElement {
     @state()
         isEditing: boolean = false;
 
-    maybeUpdateCss = () => {
-        if (!EXTRA_CSS_TO_ADOPT || !this.shadowRoot)
+    override connectedCallback() {
+        super.connectedCallback();
+        if (!EXTRA_CSS_TO_ADOPT)
             return;
         const styleSheetIndex = this.index % EXTRA_CSS_TO_ADOPT.length;
-        this.shadowRoot.adoptedStyleSheets.push(EXTRA_CSS_TO_ADOPT[styleSheetIndex]);
-    };
+        this.shadowRoot?.adoptedStyleSheets.push(EXTRA_CSS_TO_ADOPT[styleSheetIndex]);
+    }
 
     override render() {
         const itemClassList = {
@@ -158,8 +159,6 @@ export class TodoItem extends LitElement {
             view: true,
             [`view-${this.index}`]: true,
         };
-
-        this.maybeUpdateCss();
 
         return html`
             <li class="${classMap(itemClassList)}">
