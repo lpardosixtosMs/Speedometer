@@ -148,10 +148,10 @@ export class TodoItem extends LitElement {
 
     override render() {
         const itemClassList = {
+            targeted: true,
             todo: true,
             completed: this.completed ?? false,
             editing: this.isEditing,
-            targeted: true,
             [`li-${this.index}`]: true,
         };
         const divClassList = {
