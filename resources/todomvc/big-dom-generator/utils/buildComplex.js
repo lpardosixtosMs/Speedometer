@@ -1,6 +1,12 @@
 const fs = require("fs");
-const { JSDOM } = require("jsdom");
 const path = require("path");
+let JSDOM;
+try {
+    JSDOM = require("jsdom").JSDOM;
+} catch (e) {
+    console.error("Error: jsdom is not installed.");
+    process.exit(1);
+}
 
 function buildComplex(options) {
     const {
