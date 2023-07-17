@@ -6,6 +6,7 @@
  * @returns {void}
  */
 const path = require("path");
+const { execSync } = require("child_process");
 
 const COMPLEX_DIRECTORY = path.join(__dirname, "..");
 const STANDALONE_DIRECTORY = path.join(__dirname, "..", "..", "angular");
