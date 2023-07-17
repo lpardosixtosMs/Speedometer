@@ -1,9 +1,8 @@
 /**
  * Builds the TodoMVC Angular Complex DOM.
- * @param {string} SOURCE_DIRECTORY - The source directory for the TodoMVC Angular app.
- * @param {string} TITLE - The title of the generated HTML file.
- * @param {string[]} FILES_TO_MOVE - An array of file paths to move to the dist directory.
- * @returns {void}
+ * SOURCE_DIRECTORY - The source directory for the TodoMVC Angular app.
+ * TITLE - The title of the generated HTML file.
+ * FILES_TO_MOVE - An array of file paths to move to the dist directory.
  */
 const path = require("path");
 const { execSync } = require("child_process");
