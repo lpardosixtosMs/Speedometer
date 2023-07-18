@@ -166,3 +166,55 @@ Layout CSS for the UI.
     justify-self: start;
     align-self: center;
 }
+
+.ribbon > div:nth-child(1) > button:nth-child(1) {
+    background-color: #b83f45;
+}
+/* send reminder popover hover */
+.ribbon > div:nth-child(1) > div ul li:hover {
+    border-color: #db7676;
+}
+/* Modify the send popover hidden options background color */
+.ribbon > div:nth-child(1) > div ul > li + li:last-child {
+    background-color: #c18585;
+}
+/* Ellipses popover hover effect */
+.show-more > div > ul li:hover {
+    border-color: #db7676;
+}
+/* Give one of the options a special highlight */
+.show-more > div > ul li:nth-child(7) {
+    background-color: #c18585;
+}
+/* settings icon popover */
+.top-bar > .top-bar-right > div > div > ul li:hover {
+    border-color: #db7676;
+}
+/* Give one of the options a special highlight */
+.top-bar > .top-bar-right > div > div > ul li:nth-child(2) {
+    background-color: #c18585;
+}
+/* Team 1 progress in popover */
+.ribbon > div:nth-child(1) > div:nth-child(6) > div > div:nth-child(2) > div div + div div {
+    background-color: orangered;
+}
+/* Team 2 progress in popover */
+.ribbon > div:nth-child(1) > div:nth-child(6) > div > div:nth-child(3) > div div + div div {
+    background-color: orange;
+}
+/* Team 3 progress in popover */
+.ribbon > div:nth-child(1) > div:nth-child(6) > div > div:nth-child(4) > div div ~ div div {
+    background-color: greenyellow;
+}
+/* Team 4 progress bar in popover */
+.ribbon > div:nth-child(1) > div:nth-child(6) > div > div:nth-child(5) > div > div div {
+    background-color: green;
+}
+
+/* Backlog popover */
+.ribbon div div div div table label {
+	color: #484848;
+    border-top-color: rgba(140, 140, 140, 0.001);
+    border-color: rgba(140, 140, 140, 0.001);
+}
+
