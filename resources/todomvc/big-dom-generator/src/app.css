@@ -195,19 +195,19 @@ Layout CSS for the UI.
     background-color: #c18585;
 }
 /* Team 1 progress in popover */
-.ribbon > div:nth-child(1) > .team-1-progess > div div + div div {
+.ribbon > div:nth-child(1) > .spectrum-Popover .team-1-progress > div div {
     background-color: orangered;
 }
 /* Team 2 progress in popover */
-.ribbon > div:nth-child(1) > .team-2-progess > div div + div div {
+.ribbon > div:nth-child(1) > .spectrum-Popover .team-2-progress > div div {
     background-color: orange;
 }
 /* Team 3 progress in popover */
-.ribbon > div:nth-child(1) > .team-3-progess > div div ~ div div {
+.ribbon > div:nth-child(1) > .spectrum-Popover .team-3-progress > div div {
     background-color: greenyellow;
 }
 /* Team 4 progress bar in popover */
-.ribbon > div:nth-child(1) > .team-4-progess > div > div div {
+.ribbon > div:nth-child(1) > .spectrum-Popover .team-4-progress > div div {
     background-color: green;
 }
 /* Backlog popover */
