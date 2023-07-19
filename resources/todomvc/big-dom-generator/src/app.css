@@ -195,26 +195,53 @@ Layout CSS for the UI.
     background-color: #c18585;
 }
 /* Team 1 progress in popover */
-.ribbon > div:nth-child(1) > div:nth-child(6) > div > div:nth-child(2) > div div + div div {
+.ribbon > div:nth-child(1) > .team-1-progess > div div + div div {
     background-color: orangered;
 }
 /* Team 2 progress in popover */
-.ribbon > div:nth-child(1) > div:nth-child(6) > div > div:nth-child(3) > div div + div div {
+.ribbon > div:nth-child(1) > .team-2-progess > div div + div div {
     background-color: orange;
 }
 /* Team 3 progress in popover */
-.ribbon > div:nth-child(1) > div:nth-child(6) > div > div:nth-child(4) > div div ~ div div {
+.ribbon > div:nth-child(1) > .team-3-progess > div div ~ div div {
     background-color: greenyellow;
 }
 /* Team 4 progress bar in popover */
-.ribbon > div:nth-child(1) > div:nth-child(6) > div > div:nth-child(5) > div > div div {
+.ribbon > div:nth-child(1) > .team-4-progess > div > div div {
     background-color: green;
 }
-
 /* Backlog popover */
 .ribbon div div div div table label {
-	color: #484848;
+    color: #484848;
     border-top-color: rgba(140, 140, 140, 0.001);
     border-color: rgba(140, 140, 140, 0.001);
+}
+
+/* FilterPopOver */
+/* Sprint One field */
+.ribbon > div:nth-child(5) > .spectrum-Popover > div > div:nth-child(1) > div {
+    max-width: 150px;
+}
+/* Sprint one field label */
+.ribbon > div:nth-child(5) > .spectrum-Popover > div > div:nth-child(1) label {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+/* Sprints stepper label */
+.ribbon > div:nth-child(5) > .spectrum-Popover .spectrum-Stepper label {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+/* Tags in filter popover */
+.ribbon > div:nth-child(5) > .spectrum-Popover .spectrum-TagGroup div {
+    padding-right: 6px;
+}
+/* Completed springs switch */
+.ribbon > div:nth-child(5) > .spectrum-Popover > div > div:nth-child(4) > div {
+    margin-left: 20px;
+}
+/* Fixing the up and down arrows of the stepper */
+.ribbon .spectrum-Stepper span button {
+    padding-left: 3px;
 }
 
