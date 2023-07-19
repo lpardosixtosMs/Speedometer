@@ -247,3 +247,24 @@ Layout CSS for the UI.
     background-color: #c18585;
 }
 
+/* Notifications popover */
+.top-bar > .top-bar-right > div > div > div {
+    min-width: 110px;
+    padding: 5px;
+}
+
+.top-bar > .top-bar-right > div > div > div > div > div > .spectrum-FieldGroupInputLayout > label {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 4px;
+}
+/* Add some color to the notifications */
+.top-bar > .top-bar-right .spectrum-FieldGroupInputLayout > label:nth-child(1) {
+    border: 3px solid red;
+}
+.top-bar > .top-bar-right .spectrum-FieldGroupInputLayout > label:nth-child(2) {
+    border: 3px solid yellow;
+}
+.top-bar > .top-bar-right .spectrum-FieldGroupInputLayout > label:nth-child(3) {
+    border: 3px solid greenyellow;
+}
