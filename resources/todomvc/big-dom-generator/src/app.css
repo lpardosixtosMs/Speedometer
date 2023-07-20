@@ -268,3 +268,14 @@ Layout CSS for the UI.
 .top-bar > .top-bar-right .spectrum-FieldGroupInputLayout > label:nth-child(3) {
     border: 3px solid greenyellow;
 }
+.top-bar .notification-age-label {
+    font-size: 8px;
+}
+.top-bar .notification-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+.top-bar .notification-tabs > div + div {
+    border-bottom: 2px solid #b83f45;
+}
