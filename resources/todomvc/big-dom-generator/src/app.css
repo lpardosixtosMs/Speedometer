@@ -279,3 +279,7 @@ Layout CSS for the UI.
 .top-bar .notification-tabs > div + div {
     border-bottom: 2px solid #b83f45;
 }
+.top-bar .notification-actions > button {
+    width: 100px;
+    font-size: 10px;
+}
