@@ -1,0 +1,33 @@
+
+
+/* 3 */
+.high-priority > :checked ~ label {
+  color: red;
+}
+
+/* 3 */
+.high-priority:hover > :checked ~ label {
+  color: red;
+}
+
+/* 1 */
+.reminder-pop-over  [type="text"]input {
+  width: auto;
+}
+
+/* 4 */
+.reminder-pop-over > * > :nth-child(3) > div,
+.reminder-pop-over > * > :nth-child(4) > div {
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 1fr;
+}
+
+.is-invalid ~ * button {
+  visibility: hidden;
+}
+
+.reminder-pop-over {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}

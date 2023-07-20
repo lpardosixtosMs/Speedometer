@@ -1,4 +1,4 @@
-import CheckmarkIcon from "../assets/Smock_Calendar_18_N.svg";
+import CheckmarkIcon from "../assets/Smock_Checkmark_18_N.svg";
 import ArrowDownIcon from "../assets/Smock_ArrowDown_18_N.svg";
 
 export const Table = () => {
