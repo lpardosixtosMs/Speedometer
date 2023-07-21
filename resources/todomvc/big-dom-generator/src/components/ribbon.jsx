@@ -1,6 +1,7 @@
 import { ActionButton, ActionGroup } from "./action-group";
 import { DatePicker } from "./date-picker";
 import { Table } from "./table";
+import { BacklogPopOver } from "./backlog-pop-over";
 import { AnalyticsPopOver } from "./analytics-pop-over";
 import { FilterPopOver } from "./filter-pop-over";
 import { VerticalPopOver } from "./pop-over";
@@ -24,11 +25,9 @@ export const Ribbon = () => {
         <div className="ribbon">
             <ActionGroup>
                 <ActionButton Icon={ClockIcon} label={"Send Reminder"} quiet />
-                <ReminderPopOver className={classnames("is-open", "reminder-pop-over")}/>
+                <ReminderPopOver className="reminder-pop-over"/>
                 <ActionButton Icon={ViewListIcon} label={"Backlog"} quiet />
-                <VerticalPopOver>
-                    <Table />
-                </VerticalPopOver>
+                <BacklogPopOver className={classnames("is-open", "backlog-pop-over")} />
                 <ActionButton Icon={GraphTrendIcon} label={"Analytics"} quiet />
                 <AnalyticsPopOver />
             </ActionGroup>

@@ -1,17 +1,21 @@
 import { Children } from "react";
 import classnames from "classnames";
 
+export const PopOver = ({children, className}) => {
+    const popOverClassName = classnames("spectrum-Popover", "spectrum-Popover--bottom", className);
+    return <div className={popOverClassName} style={{ marginTop: "25px", padding: "5px" }}>{children}</div>;
+}
+
 export const VerticalPopOver = ({ children, className }) => {
     const actionItems = Children.toArray(children).map((child, index) =>
         <div key={index} className="spectrum-ActionGroup-item">
             {child}
         </div>
     );
-    const popOverClassName = classnames("spectrum-Popover", "spectrum-Popover--bottom", className);
     return (
-        <div className={popOverClassName} style={{ marginTop: "25px", padding: "5px" }}>
+        <PopOver className={className}>
             <div className="spectrum-ActionGroup spectrum-ActionGroup--vertical spectrum-ActionGroup--sizeS">{actionItems}</div>
-        </div>
+        </PopOver>
     );
 };
 

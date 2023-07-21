@@ -177,10 +177,6 @@ Layout CSS for the UI.
 .ribbon > div:nth-child(1) > div ul li:hover {
     border-color: #db7676;
 }
-/* Modify the send popover hidden options background color */
-.ribbon > div:nth-child(1) > div ul > li + li:last-child {
-    background-color: #c18585;
-}
 /* Team 1 progress in popover */
 .ribbon > div:nth-child(1) > .spectrum-Popover .team-1-progress > div div {
     background-color: orangered;
