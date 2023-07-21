@@ -258,15 +258,28 @@ Layout CSS for the UI.
     margin-bottom: 2px;
     padding: 4px;
 }
+.top-bar .notifications-list {
+    padding-inline-start: 0;
+    list-style-type: none;
+    margin-bottom: 0;
+}
+.top-bar .notifications-list li {
+    padding-left: 0;
+    margin-bottom: 4px;
+}
 /* Add some color to the notifications */
-.top-bar > .top-bar-right .spectrum-FieldGroupInputLayout > label:nth-child(1) {
+.top-bar .notifications-list > li {
     border: 3px solid red;
 }
-.top-bar > .top-bar-right .spectrum-FieldGroupInputLayout > label:nth-child(2) {
+.top-bar .notifications-list > li ~ li {
+    border: 3px solid greenyellow;
+}
+.top-bar .notifications-list > :nth-child(1) + li {
     border: 3px solid yellow;
 }
-.top-bar > .top-bar-right .spectrum-FieldGroupInputLayout > label:nth-child(3) {
-    border: 3px solid greenyellow;
+.top-bar .notifications-list > li div label {
+    padding-left: 4px;
+    padding-right: 4px;
 }
 .top-bar .notification-age-label {
     font-size: 8px;

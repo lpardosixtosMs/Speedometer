@@ -59,7 +59,17 @@ const Notifications = () => {
         },
         {
             title: "Notification 3",
+            age: "2 days ago",
+            checked: true,
+        },
+        {
+            title: "Notification 4",
             age: "3 days ago",
+            checked: false,
+        },
+        {
+            title: "Notification 5",
+            age: "10 days ago",
             checked: false,
         },
     ];
@@ -79,18 +89,24 @@ const Notifications = () => {
             </div>
 
             <div className="spectrum-FieldGroupInputLayout" aria-describedby="helptext-checkbox-1">
-                {notifications.map((notification, index) => {
-                    return (
-                        <label className="spectrum-Checkbox spectrum-Checkbox--sizeM spectrum-FieldGroup-item">
-                            <input type="checkbox" className="spectrum-Checkbox-input" id={`checkbox-${index}`} defaultChecked={notification.checked} />
-                            <span className="spectrum-Checkbox-box">
-                                <CheckmarkIcon className="spectrum-Icon spectrum-UIIcon-Checkmark100 spectrum-Checkbox-checkmark" />
-                            </span>
-                            <span className="spectrum-Checkbox-label">{notification.title}</span>
-                            <span className="spectrum-Checkbox-label notification-age-label">{notification.age}</span>
-                        </label>
-                    );
-                })}
+                <ul className="notifications-list">
+                    {notifications.map((notification, index) => {
+                        return (
+                            <li>
+                                <div>
+                                    <label className="spectrum-Checkbox spectrum-Checkbox--sizeM spectrum-FieldGroup-item">
+                                        <input type="checkbox" className="spectrum-Checkbox-input" id={`checkbox-${index}`} defaultChecked={notification.checked} />
+                                        <span className="spectrum-Checkbox-box">
+                                            <CheckmarkIcon className="spectrum-Icon spectrum-UIIcon-Checkmark100 spectrum-Checkbox-checkmark" />
+                                        </span>
+                                        <span className="spectrum-Checkbox-label">{notification.title}</span>
+                                        <span className="spectrum-Checkbox-label notification-age-label">{notification.age}</span>
+                                    </label>
+                                </div>
+                            </li>
+                        );
+                    })}
+                </ul>
             </div>
         </div>
     );
