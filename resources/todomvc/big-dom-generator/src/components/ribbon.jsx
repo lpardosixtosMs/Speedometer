@@ -4,6 +4,7 @@ import { Table } from "./table";
 import { BacklogPopOver } from "./backlog-pop-over";
 import { AnalyticsPopOver } from "./analytics-pop-over";
 import { FilterPopOver } from "./filter-pop-over";
+import { TimelinePopOver } from "./timeline-pop-over";
 import { VerticalPopOver } from "./pop-over";
 import classnames from "classnames";
 
@@ -27,7 +28,7 @@ export const Ribbon = () => {
                 <ActionButton Icon={ClockIcon} label={"Send Reminder"} quiet />
                 <ReminderPopOver className="reminder-pop-over"/>
                 <ActionButton Icon={ViewListIcon} label={"Backlog"} quiet />
-                <BacklogPopOver className={classnames("is-open", "backlog-pop-over")} />
+                <BacklogPopOver className="backlog-pop-over" />
                 <ActionButton Icon={GraphTrendIcon} label={"Analytics"} quiet />
                 <AnalyticsPopOver />
             </ActionGroup>
@@ -39,6 +40,7 @@ export const Ribbon = () => {
             <Divider />
             <ActionGroup>
                 <ActionButton Icon={GraphGanttIcon} label={"Timeline"} quiet />
+                <TimelinePopOver className="timeline-pop-over is-open"/>
                 <ActionButton Icon={FilterIcon} quiet />
                 <FilterPopOver />
             </ActionGroup>

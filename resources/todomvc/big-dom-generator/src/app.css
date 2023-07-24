@@ -41,6 +41,7 @@ Importing the CSS from the Spectrum CSS library.
 @import "@spectrum-css/helptext/dist/index-vars.css";
 @import "@spectrum-css/table/dist/index-vars.css";
 @import "@spectrum-css/icon/dist/index-vars.css";
+@import "@spectrum-css/steplist/dist/index-vars.css";
 
 @import "./ui-styles.css";
 
