@@ -40,7 +40,7 @@ export const Ribbon = () => {
             <Divider />
             <ActionGroup>
                 <ActionButton Icon={GraphGanttIcon} label={"Timeline"} quiet />
-                <TimelinePopOver className="timeline-pop-over is-open"/>
+                <TimelinePopOver className="timeline-pop-over"/>
                 <ActionButton Icon={FilterIcon} quiet />
                 <FilterPopOver />
             </ActionGroup>
