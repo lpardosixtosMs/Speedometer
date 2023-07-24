@@ -100,7 +100,7 @@ const Notifications = () => {
             </div>
 
             <div className="notification-actions">
-                <button>mark all as read</button>
+                <button>Mark All as Read</button>
             </div>
 
             <div className="spectrum-FieldGroupInputLayout" aria-describedby="helptext-checkbox-1">

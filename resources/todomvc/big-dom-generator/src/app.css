@@ -303,3 +303,18 @@ Layout CSS for the UI.
     width: 90px;
     font-size: 10px;
 }
+/* 2 */
+.top-bar .notification-actions > button:hover {
+    width: 90px;
+    font-size: 10px;
+    color: #b83f45;
+}
+/* 5 */
+.top-bar .notifications-list .completed > div > :checked ~ label {
+    text-decoration: line-through;
+}
+/* 2 */
+.top-bar .notifications-list li:hover {
+    background-color: lightgrey;
+    opacity: 1;
+}
