@@ -2,7 +2,6 @@ import { SearchArea } from "./search-area";
 import { ActionButton, ActionGroup } from "./action-group";
 import { OptionsPopOver, VerticalPopOver } from "./pop-over";
 
-import classnames from "classnames";
 import ProfileIcon from "./../assets/Smock_RealTimeCustomerProfile_18_N.svg";
 import SettingsIcon from "./../assets/Smock_Settings_18_N.svg";
 import BellIcon from "./../assets/Smock_Bell_18_N.svg";
@@ -16,7 +15,7 @@ const ContextualHelp = () => {
     return (
         <>
             <ActionButton Icon={HelpIcon} quiet={false} />
-            <div role="presentation" className={classnames("spectrum-Popover", "spectrum-Popover--sizeM", "spectrum-Popover--bottom-start", "spectrum-ContextualHelp-popover")}>
+            <div role="presentation" className={classNames("spectrum-Popover", "spectrum-Popover--sizeM", "spectrum-Popover--bottom-start", "spectrum-ContextualHelp-popover")}>
                 <div className="context-help-popover-body">
                     <h2 className="spectrum-ContextualHelp-heading">Todo help</h2>
                     <p className="spectrum-ContextualHelp-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -77,8 +76,8 @@ const Notifications = () => {
     ];
 
     const listItems = notifications.map((notification, index) =>
-        <li>
-            <div className={classnames("spectrum-Checkbox", "spectrum-Checkbox--sizeS")}>
+        <li className={classNames({ "completed": notification.checked })}>
+            <div className={classNames("spectrum-Checkbox", "spectrum-Checkbox--sizeS")}>
                 <input type="checkbox" className="spectrum-Checkbox-input" id={`checkbox-${index}`} defaultChecked={notification.checked} />
                 <div className="spectrum-Checkbox-box">
                     <CheckmarkIcon className={classNames("spectrum-Icon", "spectrum-UIIcon-Checkmark100", "spectrum-Checkbox-checkmark")} />
@@ -90,12 +89,12 @@ const Notifications = () => {
     );
 
     return (
-        <div className={classnames("spectrum-FieldGroup", "spectrum-FieldGroup--toplabel", "spectrum-FieldGroup--vertical", "notifications")} role="group" aria-labelledby="checkboxgroup-label-1">
+        <div className={classNames("spectrum-FieldGroup", "spectrum-FieldGroup--toplabel", "spectrum-FieldGroup--vertical", "notifications")} role="group" aria-labelledby="checkboxgroup-label-1">
             <div className="notification-tabs">
-                <div className={classnames("spectrum-FieldLabel", "spectrum-FieldLabel--sizeM")} id="checkboxgroup-label-1">
+                <div className={classNames("spectrum-FieldLabel", "spectrum-FieldLabel--sizeM")} id="checkboxgroup-label-1">
                     Messages
                 </div>
-                <div className={classnames("spectrum-FieldLabel", "spectrum-FieldLabel--sizeM")} id="checkboxgroup-label-2">
+                <div className={classNames("spectrum-FieldLabel", "spectrum-FieldLabel--sizeM")} id="checkboxgroup-label-2">
                     Notifications
                 </div>
             </div>
@@ -125,7 +124,7 @@ export const TopBar = () => {
                 <ActionGroup>
                     <ContextualHelp />
                     <ActionButton Icon={BellIcon} quiet={false} />
-                    <VerticalPopOver>
+                    <VerticalPopOver className={"is-open"}>
                         <Notifications />
                     </VerticalPopOver>
                     <ActionButton Icon={SettingsIcon} quiet={false} />
