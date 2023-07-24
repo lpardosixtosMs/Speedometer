@@ -265,11 +265,11 @@ Layout CSS for the UI.
     margin-bottom: 4px;
 }
 /* 2 */
-.top-bar .notifications-list > li {
+.top-bar .notifications-list > :first-child {
     border: 3px solid red;
 }
 /* 3 */
-.top-bar .notifications-list > li ~ li {
+.top-bar .notifications-list > :first-child ~ li {
     border: 3px solid greenyellow;
 }
 /* 3 */
@@ -286,7 +286,7 @@ Layout CSS for the UI.
     padding-right: 4px;
 }
 /* 4 */
-.top-bar .notifications-list > li :first-child + label {
+.top-bar .notifications-list > li > div > :last-child {
     font-size: 8px;
 }
 /* 3 */
@@ -312,18 +312,17 @@ Layout CSS for the UI.
 }
 /* 2 */
 .top-bar .notification-actions > button {
-    width: 90px;
+    width: 96px;
     font-size: 10px;
 }
 /* 2 */
 .top-bar .notification-actions > button:hover {
-    width: 90px;
-    font-size: 10px;
     color: #b83f45;
 }
 /* 5 */
-.top-bar .notifications-list .completed > div > :checked ~ label {
+.top-bar .notifications-list .completed > div > input:checked ~ label {
     text-decoration: line-through;
+    color: #b83f45;
 }
 /* 2 */
 .top-bar .notifications-list li:hover {

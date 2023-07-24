@@ -124,7 +124,7 @@ export const TopBar = () => {
                 <ActionGroup>
                     <ContextualHelp />
                     <ActionButton Icon={BellIcon} quiet={false} />
-                    <VerticalPopOver className={"is-open"}>
+                    <VerticalPopOver>
                         <Notifications />
                     </VerticalPopOver>
                     <ActionButton Icon={SettingsIcon} quiet={false} />
