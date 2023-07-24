@@ -169,31 +169,34 @@ Layout CSS for the UI.
     justify-self: start;
     align-self: center;
 }
+/* send reminder popover */
 
+/* 3 */
 .ribbon > div:nth-child(1) > button:nth-child(1) {
     background-color: #b83f45;
 }
-/* send reminder popover hover */
+/* 3 */
 .ribbon > div:nth-child(1) > div ul li:hover {
     border-color: #db7676;
 }
-/* Team 1 progress in popover */
+/* 2 */
 .ribbon > div:nth-child(1) > .spectrum-Popover .team-1-progress > div div {
     background-color: orangered;
 }
-/* Team 2 progress in popover */
+/* 2 */
 .ribbon > div:nth-child(1) > .spectrum-Popover .team-2-progress > div div {
     background-color: orange;
 }
-/* Team 3 progress in popover */
+/* 2 */
 .ribbon > div:nth-child(1) > .spectrum-Popover .team-3-progress > div div {
     background-color: greenyellow;
 }
-/* Team 4 progress bar in popover */
+/* 2 */
 .ribbon > div:nth-child(1) > .spectrum-Popover .team-4-progress > div div {
     background-color: green;
 }
 /* Backlog popover */
+/* 2 */
 .ribbon div div div div table label {
     color: #484848;
     border-top-color: rgba(140, 140, 140, 0.001);
@@ -205,93 +208,108 @@ Layout CSS for the UI.
 .ribbon > div:nth-child(5) > .spectrum-Popover > div > div:nth-child(1) > div {
     max-width: 150px;
 }
-/* Sprint one field label */
+/* 3 */
 .ribbon > div:nth-child(5) > .spectrum-Popover > div > div:nth-child(1) label {
     padding-top: 1px;
     padding-bottom: 1px;
 }
-/* Sprints stepper label */
+/* 2 */
 .ribbon > div:nth-child(5) > .spectrum-Popover .spectrum-Stepper label {
     margin-left: 3px;
     margin-right: 3px;
 }
-/* Tags in filter popover */
+/* 2 */
 .ribbon > div:nth-child(5) > .spectrum-Popover .spectrum-TagGroup div {
     padding-right: 6px;
 }
-/* Completed springs switch */
+/* 2 */
 .ribbon > div:nth-child(5) > .spectrum-Popover > div > div:nth-child(4) > div {
     margin-left: 20px;
 }
-/* Fixing the up and down arrows of the stepper */
+/* 2 */
 .ribbon .spectrum-Stepper span button {
     padding-left: 3px;
 }
 
-/* Ellipses popover hover effect */
+/* 3 */
 .show-more > div > ul li:hover {
     border-color: #db7676;
 }
-/* Give one of the options a special highlight */
+/* 2 */
 .show-more > div > ul li:nth-child(7) {
     background-color: #c18585;
 }
 
 /* settings icon popover */
+/* 3 */
 .top-bar > .top-bar-right > div > div > ul li:hover {
     border-color: #db7676;
 }
-/* Give one of the options a special highlight */
+/* 3 */
 .top-bar > .top-bar-right > div > div > ul li:nth-child(2) {
     background-color: #c18585;
 }
 
 /* Notifications popover */
+/* 2 */
 .top-bar > .top-bar-right > div > div > div {
     min-width: 110px;
     padding: 5px;
 }
-
+/* 2 */
 .top-bar > .top-bar-right > div > div > div > div > div > .spectrum-FieldGroupInputLayout > label {
     margin-top: 2px;
     margin-bottom: 2px;
     padding: 4px;
 }
+/* 0 */
 .top-bar .notifications-list {
     padding-inline-start: 0;
     list-style-type: none;
     margin-bottom: 0;
 }
-.top-bar .notifications-list li {
+/* 2 */
+.top-bar .notifications li {
     padding-left: 0;
     margin-bottom: 4px;
 }
-/* Add some color to the notifications */
+/* 2 */
 .top-bar .notifications-list > li {
     border: 3px solid red;
 }
+/* 3 */
 .top-bar .notifications-list > li ~ li {
     border: 3px solid greenyellow;
 }
+/* 3 */
 .top-bar .notifications-list > :nth-child(1) + li {
     border: 3px solid yellow;
 }
-.top-bar .notifications-list > li div label {
+/* 4 */
+.top-bar .notifications-list li > div > :nth-child(2) {
+    margin-left: 4px;
+}
+/* 4 */
+.top-bar .notifications-list > li > div > label {
     padding-left: 4px;
     padding-right: 4px;
 }
-.top-bar .notification-age-label {
+/* 4 */
+.top-bar .notifications-list > li label + label {
     font-size: 8px;
 }
+/* 0 */
 .top-bar .notification-tabs {
     display: flex;
     justify-content: space-around;
     margin-bottom: 5px;
 }
+/* 2 */
 .top-bar .notification-tabs > div + div {
     border-bottom: 2px solid #b83f45;
 }
+/* 2 */
 .top-bar .notification-actions > button {
-    width: 100px;
+    width: 90px;
     font-size: 10px;
 }

@@ -2,6 +2,7 @@ import { SearchArea } from "./search-area";
 import { ActionButton, ActionGroup } from "./action-group";
 import { OptionsPopOver, VerticalPopOver } from "./pop-over";
 
+import classnames from "classnames";
 import ProfileIcon from "./../assets/Smock_RealTimeCustomerProfile_18_N.svg";
 import SettingsIcon from "./../assets/Smock_Settings_18_N.svg";
 import BellIcon from "./../assets/Smock_Bell_18_N.svg";
@@ -9,12 +10,13 @@ import HelpIcon from "../assets/Smock_Help_18_N.svg";
 import CheckmarkIcon from "../assets/Smock_Checkmark_18_N.svg";
 
 import SpeedometerLogo from "./../assets/logo.png";
+import classNames from "classnames";
 
 const ContextualHelp = () => {
     return (
         <>
             <ActionButton Icon={HelpIcon} quiet={false} />
-            <div role="presentation" className="spectrum-Popover spectrum-Popover--sizeM spectrum-Popover--bottom-start spectrum-ContextualHelp-popover">
+            <div role="presentation" className={classnames("spectrum-Popover", "spectrum-Popover--sizeM", "spectrum-Popover--bottom-start", "spectrum-ContextualHelp-popover")}>
                 <div className="context-help-popover-body">
                     <h2 className="spectrum-ContextualHelp-heading">Todo help</h2>
                     <p className="spectrum-ContextualHelp-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -55,7 +57,7 @@ const Notifications = () => {
         {
             title: "Notification 2",
             age: "2 days ago",
-            checked: true,
+            checked: false,
         },
         {
             title: "Notification 3",
@@ -73,13 +75,27 @@ const Notifications = () => {
             checked: false,
         },
     ];
+
+    const listItems = notifications.map((notification, index) =>
+        <li>
+            <div className={classnames("spectrum-Checkbox", "spectrum-Checkbox--sizeS")}>
+                <input type="checkbox" className="spectrum-Checkbox-input" id={`checkbox-${index}`} defaultChecked={notification.checked} />
+                <div className="spectrum-Checkbox-box">
+                    <CheckmarkIcon className={classNames("spectrum-Icon", "spectrum-UIIcon-Checkmark100", "spectrum-Checkbox-checkmark")} />
+                </div>
+                <label className="spectrum-Checkbox-label">{notification.title}</label>
+                <label className="spectrum-Checkbox-label">{notification.age}</label>
+            </div>
+        </li>
+    );
+
     return (
-        <div className="spectrum-FieldGroup spectrum-FieldGroup--toplabel spectrum-FieldGroup--vertical notifications" role="group" aria-labelledby="checkboxgroup-label-1">
+        <div className={classnames("spectrum-FieldGroup", "spectrum-FieldGroup--toplabel", "spectrum-FieldGroup--vertical", "notifications")} role="group" aria-labelledby="checkboxgroup-label-1">
             <div className="notification-tabs">
-                <div className="spectrum-FieldLabel spectrum-FieldLabel--sizeM" id="checkboxgroup-label-1">
+                <div className={classnames("spectrum-FieldLabel", "spectrum-FieldLabel--sizeM")} id="checkboxgroup-label-1">
                     Messages
                 </div>
-                <div className="spectrum-FieldLabel spectrum-FieldLabel--sizeM" id="checkboxgroup-label-2">
+                <div className={classnames("spectrum-FieldLabel", "spectrum-FieldLabel--sizeM")} id="checkboxgroup-label-2">
                     Notifications
                 </div>
             </div>
@@ -89,23 +105,8 @@ const Notifications = () => {
             </div>
 
             <div className="spectrum-FieldGroupInputLayout" aria-describedby="helptext-checkbox-1">
-                <ul className="notifications-list">
-                    {notifications.map((notification, index) => {
-                        return (
-                            <li>
-                                <div>
-                                    <label className="spectrum-Checkbox spectrum-Checkbox--sizeM spectrum-FieldGroup-item">
-                                        <input type="checkbox" className="spectrum-Checkbox-input" id={`checkbox-${index}`} defaultChecked={notification.checked} />
-                                        <span className="spectrum-Checkbox-box">
-                                            <CheckmarkIcon className="spectrum-Icon spectrum-UIIcon-Checkmark100 spectrum-Checkbox-checkmark" />
-                                        </span>
-                                        <span className="spectrum-Checkbox-label">{notification.title}</span>
-                                        <span className="spectrum-Checkbox-label notification-age-label">{notification.age}</span>
-                                    </label>
-                                </div>
-                            </li>
-                        );
-                    })}
+                <ul className="notifications-list" role="list">
+                    {listItems}
                 </ul>
             </div>
         </div>
