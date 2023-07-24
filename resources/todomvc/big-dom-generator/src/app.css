@@ -176,24 +176,21 @@ Layout CSS for the UI.
 .ribbon > div:nth-child(1) > button:nth-child(1) {
     background-color: #b83f45;
 }
+/* Analytics popover */
 /* 3 */
-.ribbon > div:nth-child(1) > div ul li:hover {
-    border-color: #db7676;
-}
-/* 2 */
-.ribbon > div:nth-child(1) > .spectrum-Popover .team-1-progress > div div {
+.ribbon > div:nth-child(1) > .spectrum-Popover .team-1-progress > :last-child div {
     background-color: orangered;
 }
-/* 2 */
-.ribbon > div:nth-child(1) > .spectrum-Popover .team-2-progress > div div {
+/* 3 */
+.ribbon > div:nth-child(1) > .spectrum-Popover .team-2-progress > :last-child div {
     background-color: orange;
 }
-/* 2 */
-.ribbon > div:nth-child(1) > .spectrum-Popover .team-3-progress > div div {
+/* 3 */
+.ribbon > div:nth-child(1) > .spectrum-Popover .team-3-progress > :last-child div {
     background-color: greenyellow;
 }
-/* 2 */
-.ribbon > div:nth-child(1) > .spectrum-Popover .team-4-progress > div div {
+/* 3 */
+.ribbon > div:nth-child(1) > .spectrum-Popover .team-4-progress > :last-child div {
     background-color: green;
 }
 /* Backlog popover */
