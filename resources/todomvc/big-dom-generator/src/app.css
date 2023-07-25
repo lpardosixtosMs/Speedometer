@@ -45,7 +45,7 @@ Importing the CSS from the Spectrum CSS library.
 @spectrum-css overrides
 */
 
-.spectrum-TreeView-itemLink {
+.spectrum-TreeView-item, .spectrum-TreeView-itemLink {
     overflow: visible;
 }
 
