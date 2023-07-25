@@ -175,30 +175,35 @@ Layout CSS for the UI.
     align-self: center;
 }
 /* send reminder popover */
-
 /* 3 */
+/* Change the color of the send reminder button */
 .ribbon > div:nth-child(1) > button:nth-child(1) {
     background-color: #b83f45;
 }
 /* Analytics popover */
 /* 3 */
+/* Change the color of the team 1 progress bar */
 .ribbon > div:nth-child(1) > .spectrum-Popover .team-1-progress > :last-child div {
     background-color: orangered;
 }
 /* 3 */
+/* Change the color of the team 2 progess bar */
 .ribbon > div:nth-child(1) > .spectrum-Popover .team-2-progress > :last-child div {
     background-color: orange;
 }
 /* 3 */
+/* Change the color of the team 3 progress bar */
 .ribbon > div:nth-child(1) > .spectrum-Popover .team-3-progress > :last-child div {
     background-color: greenyellow;
 }
 /* 3 */
+/* Change the color of the team 4 progress bar */
 .ribbon > div:nth-child(1) > .spectrum-Popover .team-4-progress > :last-child div {
     background-color: green;
 }
 /* Backlog popover */
 /* 2 */
+/* Need to remove this rule */
 .ribbon div div div div table label {
     color: #484848;
     border-top-color: rgba(140, 140, 140, 0.001);
@@ -207,128 +212,161 @@ Layout CSS for the UI.
 
 /* FilterPopOver */
 /* Sprint One field */
+/* Set the max width for the popover */
 .ribbon > div:nth-child(5) > .spectrum-Popover > div > div:nth-child(1) > div {
     max-width: 150px;
 }
 /* 3 */
+/* Add padding to the label of the first input in this popover with the placeholder "Sprint one" */
 .ribbon > div:nth-child(5) > .spectrum-Popover > div > div:nth-child(1) label {
     padding-top: 1px;
     padding-bottom: 1px;
 }
 /* 2 */
+/* Add margins to the label for the spectrum stepper */
 .ribbon > div:nth-child(5) > .spectrum-Popover .spectrum-Stepper label {
     margin-left: 3px;
     margin-right: 3px;
 }
 /* 2 */
+/* Add some padding to the right of each of the tags */
 .ribbon > div:nth-child(5) > .spectrum-Popover .spectrum-TagGroup div {
     padding-right: 6px;
 }
 /* 2 */
+/* Add some margin to the left of the div surround the completed sprints switch */
+/* could change this to end with [div:last-child > :first-child] to increase from 2 to 3 */
 .ribbon > div:nth-child(5) > .spectrum-Popover > div > div:nth-child(4) > div {
     margin-left: 20px;
 }
 /* 2 */
+/* Add some padding to the left of the up and down arrows in the stepper */
 .ribbon .spectrum-Stepper span button {
     padding-left: 3px;
 }
-
 /* 3 */
+/* On hover effect to make it more obvious which option is currently highlighted, 
+a red line on the left side of the div */
 .show-more > div > ul li:hover {
     border-color: #db7676;
 }
 /* 2 */
+/* Highlight a option to show it is a dangerous operation */
 .show-more > div > ul li:nth-child(7) {
     background-color: #c18585;
 }
 
 /* settings icon popover */
 /* 3 */
+/* On hover effect to make it more obvious which option is currently highlighted, 
+a red line on the left side of the div */
 .top-bar > .top-bar-right > div > div > ul li:hover {
     border-color: #db7676;
 }
 /* 3 */
+/* Highlight a option to show it is a dangerous operation */
 .top-bar > .top-bar-right > div > div > ul li:nth-child(2) {
     background-color: #c18585;
 }
 
 /* Notifications popover */
 /* 0 */
+/* Put a max width on the notification list */
 .notifications-list {
     max-width: 240px;
 }
 /* 0 */
+/* Clear some styles on the notification list */
 .top-bar .notifications-list {
     padding-inline-start: 0;
     list-style-type: none;
     margin-bottom: 0;
 }
 /* 2 */
+/* styles for notification list list items */
 .top-bar .notifications li {
     padding-left: 0;
     margin-bottom: 4px;
 }
 /* 2 */
+/* Make the first notification a urgent notifcation */
 .top-bar .notifications-list > :first-child {
     border: 3px solid red;
 }
 /* 3 */
+/* make the all the notifications default for greenyellow */
 .top-bar .notifications-list > :first-child ~ li {
     border: 3px solid greenyellow;
 }
 /* 3 */
+/* make the second notification a warning */
 .top-bar .notifications-list > :first-child + li {
     border: 3px solid yellow;
 }
 /* 4 */
+/* add some margin to the left of the div surrounding the checkmark icon */
 .top-bar .notifications-list li > div > :nth-child(2) {
     margin-left: 4px;
 }
 /* 4 */
+/* add padding to the left and right of the spectrum-Checkbox-labels */
 .top-bar .notifications-list > li > div > label {
     padding-left: 4px;
     padding-right: 4px;
 }
 /* 4 */
+/* Make the last label for the notification label smaller */
 .top-bar .notifications-list > li > div > :last-child {
     font-size: 8px;
 }
 /* 3 */
+/* Make the notification a grid */
 .top-bar .notifications-list > li div {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 1fr;
 }
 /* 3 */
+/* column rules for the checkbox */
+/* Bug fix */
+/* This should be (.top-bar .notifications-list > li div :first-child) but i don't
+want to affect the numbers.
+ */
 .top-bar .notifications-list > li :first-child {
     grid-column-start: 1;
     grid-column-end: 2;
 }
 /* 0 */
+/* Make messages and Notifications headings be side by side */
 .top-bar .notification-tabs {
     display: flex;
     justify-content: space-around;
     margin-bottom: 5px;
 }
 /* 2 */
+/* Underline notifications to signify that it is currently active */
 .top-bar .notification-tabs > div + div {
     border-bottom: 2px solid #b83f45;
 }
 /* 2 */
+/* mark all as read button */
 .top-bar .notification-actions > button {
     width: 96px;
     font-size: 10px;
 }
 /* 2 */
+/* add hover effect to mark all as read button */
 .top-bar .notification-actions > button:hover {
     color: #b83f45;
 }
 /* 5 */
+/* strikethrough notification that has been marked as read */
 .top-bar .notifications-list .completed > div > input:checked ~ label {
     text-decoration: line-through;
     color: #b83f45;
 }
 /* 2 */
+/* add hover effect to each of the notifications */
 .top-bar .notifications-list li:hover {
     background-color: lightgrey;
     opacity: 1;
