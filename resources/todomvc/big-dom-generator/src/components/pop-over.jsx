@@ -1,10 +1,14 @@
 import { Children } from "react";
 import classnames from "classnames";
 
-export const PopOver = ({children, className}) => {
+export const PopOver = ({ children, className }) => {
     const popOverClassName = classnames("spectrum-Popover", "spectrum-Popover--bottom", className);
-    return <div className={popOverClassName} style={{ marginTop: "25px", padding: "5px" }}>{children}</div>;
-}
+    return (
+        <div className={popOverClassName} style={{ marginTop: "25px", padding: "5px" }}>
+            {children}
+        </div>
+    );
+};
 
 export const VerticalPopOver = ({ children, className }) => {
     const actionItems = Children.toArray(children).map((child, index) =>

@@ -6,10 +6,9 @@ import CheckmarkIcon from "../assets/CheckmarkSize100.svg";
 import EditIcon from "../assets/Smock_Edit_18_N.svg";
 import DeleteIcon from "../assets/Smock_Delete_18_N.svg";
 
-
-export const BacklogPopOver = ({className}) => {
+export const BacklogPopOver = ({ className }) => {
     const listItems = [];
-    for (let i=0; i<5; i++) {
+    for (let i = 0; i < 5; i++) {
         listItems.push(
             <li key={i}>
                 <div className={classnames("spectrum-Checkbox", "spectrum-Checkbox--sizeM")}>
@@ -21,10 +20,10 @@ export const BacklogPopOver = ({className}) => {
                     <label className="spectrum-Checkbox-label"> Age </label>
                     <ActionGroup>
                         <button className={classnames("spectrum-Button", "spectrum-Button--fill", "spectrum-Button--primary", "spectrum-Button--sizeS", "spectrum-Button--iconOnly")}>
-                            <EditIcon className={classnames("spectrum-Icon", "spectrum-Icon--sizeS")} focusable="false" aria-hidden="true"/>
+                            <EditIcon className={classnames("spectrum-Icon", "spectrum-Icon--sizeS")} focusable="false" aria-hidden="true" />
                         </button>
                         <button className={classnames("spectrum-Button", "spectrum-Button--fill", "spectrum-Button--primary", "spectrum-Button--sizeS", "spectrum-Button--iconOnly")}>
-                            <DeleteIcon className={classnames("spectrum-Icon", "spectrum-Icon--sizeS")} focusable="false" aria-hidden="true"/>
+                            <DeleteIcon className={classnames("spectrum-Icon", "spectrum-Icon--sizeS")} focusable="false" aria-hidden="true" />
                         </button>
                     </ActionGroup>
                 </div>
@@ -32,5 +31,9 @@ export const BacklogPopOver = ({className}) => {
         );
     }
 
-    return <PopOver className={className}><ul>{listItems}</ul></PopOver>;
+    return (
+        <PopOver className={className}>
+            <ul>{listItems}</ul>
+        </PopOver>
+    );
 };

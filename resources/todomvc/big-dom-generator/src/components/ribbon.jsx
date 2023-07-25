@@ -1,12 +1,9 @@
 import { ActionButton, ActionGroup } from "./action-group";
 import { DatePicker } from "./date-picker";
-import { Table } from "./table";
 import { BacklogPopOver } from "./backlog-pop-over";
 import { AnalyticsPopOver } from "./analytics-pop-over";
 import { FilterPopOver } from "./filter-pop-over";
 import { TimelinePopOver } from "./timeline-pop-over";
-import { VerticalPopOver } from "./pop-over";
-import classnames from "classnames";
 
 import DeleteIcon from "../assets/Smock_Delete_18_N.svg";
 import CutIcon from "../assets/Smock_Cut_18_N.svg";
@@ -26,7 +23,7 @@ export const Ribbon = () => {
         <div className="ribbon">
             <ActionGroup>
                 <ActionButton Icon={ClockIcon} label={"Send Reminder"} quiet />
-                <ReminderPopOver className="reminder-pop-over"/>
+                <ReminderPopOver className="reminder-pop-over" />
                 <ActionButton Icon={ViewListIcon} label={"Backlog"} quiet />
                 <BacklogPopOver className="backlog-pop-over" />
                 <ActionButton Icon={GraphTrendIcon} label={"Analytics"} quiet />
@@ -40,7 +37,7 @@ export const Ribbon = () => {
             <Divider />
             <ActionGroup>
                 <ActionButton Icon={GraphGanttIcon} label={"Timeline"} quiet />
-                <TimelinePopOver className="timeline-pop-over"/>
+                <TimelinePopOver className="timeline-pop-over" />
                 <ActionButton Icon={FilterIcon} quiet />
                 <FilterPopOver />
             </ActionGroup>
