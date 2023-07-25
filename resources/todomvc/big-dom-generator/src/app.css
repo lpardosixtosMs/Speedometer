@@ -49,6 +49,10 @@ Importing the CSS from the Spectrum CSS library.
 @spectrum-css overrides
 */
 
+.spectrum-TreeView-itemLink {
+    overflow: visible;
+}
+
 [dir="ltr"] .spectrum-TreeView-itemIndicator {
     margin-left: calc(-1 * var(--spectrum-treeview-item-affordance-size));
 }
