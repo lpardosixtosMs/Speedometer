@@ -18,7 +18,7 @@ const html = `<!DOCTYPE html>
   <head>
     <title>Big Todo App</title>
     <script src="app.bundle.js"></script>
-    <link rel="stylesheet" href="complex-app.css">
+    <link rel="stylesheet" href="big-dom-generator.css">
   </head>
   <body>
     ${renderToStaticMarkup(<App />)}
