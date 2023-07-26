@@ -11,6 +11,6 @@ buildComplex(path.resolve(__dirname), path.join("..", SOURCE_DIRECTORY), TITLE, 
 // get the name of the css file that's in dist/css
 const cssFile = fs.readdirSync(path.resolve(__dirname, "..", "dist", "css")).find((file) => file.endsWith(".css"));
 
-// overwrite the css file in the dist/css directory with the one from the big-dom-generator module 
+// overwrite the css file in the dist/css directory with the one from the big-dom-generator module
 // but keep the new name so we don't need to add a new link
 fs.copyFileSync(path.resolve(__dirname, "..", "node_modules", "big-dom-generator", "utils", "app.css"), path.resolve(__dirname, "..", "dist", "css", cssFile));
