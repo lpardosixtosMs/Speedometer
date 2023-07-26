@@ -174,12 +174,7 @@ Layout CSS for the UI.
     justify-self: start;
     align-self: center;
 }
-/* send reminder popover */
-/* 3 */
-/* Change the color of the send reminder button */
-.ribbon > div:nth-child(1) > button:nth-child(1) {
-    background-color: #b83f45;
-}
+
 /* Analytics popover */
 /* 3 */
 /* Change the color of the team 1 progress bar */
@@ -200,14 +195,6 @@ Layout CSS for the UI.
 /* Change the color of the team 4 progress bar */
 .ribbon > div:nth-child(1) > .spectrum-Popover .team-4-progress > :last-child div {
     background-color: green;
-}
-/* Backlog popover */
-/* 2 */
-/* Need to remove this rule */
-.ribbon div div div div table label {
-    color: #484848;
-    border-top-color: rgba(140, 140, 140, 0.001);
-    border-color: rgba(140, 140, 140, 0.001);
 }
 
 /* FilterPopOver */
@@ -270,13 +257,10 @@ a red line on the left side of the div */
 }
 
 /* Notifications popover */
-/* 0 */
-/* Put a max width on the notification list */
 .notifications-list {
     max-width: 240px;
 }
-/* 0 */
-/* Clear some styles on the notification list */
+
 .top-bar .notifications-list {
     padding-inline-start: 0;
     list-style-type: none;

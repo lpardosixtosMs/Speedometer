@@ -1,5 +1,10 @@
 @charset "utf-8";
 
+body {
+    min-width: 230px;
+    max-width: 800px;
+}
+
 .todo-area {
     margin: 0;
     padding: 0;
@@ -444,11 +449,11 @@
     background-color: #ccfdcc;
 }
 
-.todo-area .show-priority > li:not(.completed):not([data-priority="4"]) > div > label {
+.todo-area .show-priority > li:not(.completed):not([data-priority="4"]) {
     border-bottom-color: #ffd7d7;
 }
 
-.todo-area .show-priority > li.completed:not([data-priority="4"]) > div > label {
+.todo-area .show-priority > li.completed:not([data-priority="4"]) {
     border-bottom-color: #d7ffd7;
 }
 
