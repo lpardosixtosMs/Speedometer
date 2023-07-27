@@ -1,4 +1,4 @@
-import { ActionButton, ActionGroup } from "./action-group";
+import { ActionButton, ActionGroup, ActionItem } from "./action-group";
 import { DatePicker } from "./date-picker";
 import { BacklogPopOver } from "./backlog-pop-over";
 import { AnalyticsPopOver } from "./analytics-pop-over";
@@ -22,12 +22,18 @@ export const Ribbon = () => {
     return (
         <div className="ribbon">
             <ActionGroup>
-                <ActionButton Icon={ClockIcon} label={"Send Reminder"} quiet />
-                <ReminderPopOver className="reminder-pop-over" />
-                <ActionButton Icon={ViewListIcon} label={"Backlog"} quiet />
-                <BacklogPopOver className="backlog-pop-over" />
-                <ActionButton Icon={GraphTrendIcon} label={"Analytics"} quiet />
-                <AnalyticsPopOver />
+                <ActionItem className="reminder-group">
+                    <ActionButton Icon={ClockIcon} label="Send Reminder" quiet />
+                    <ReminderPopOver />
+                </ActionItem>
+                <ActionItem className="backlog-group">
+                    <ActionButton Icon={ViewListIcon} label="Backlog" quiet />
+                    <BacklogPopOver />
+                </ActionItem>
+                <ActionItem className="analytics-group">
+                    <ActionButton Icon={GraphTrendIcon} label="Analytics" quiet />
+                    <AnalyticsPopOver />
+                </ActionItem>
             </ActionGroup>
             <Divider />
             <ActionGroup>
@@ -36,10 +42,14 @@ export const Ribbon = () => {
             </ActionGroup>
             <Divider />
             <ActionGroup>
-                <ActionButton Icon={GraphGanttIcon} label={"Timeline"} quiet />
-                <TimelinePopOver className="timeline-pop-over" />
-                <ActionButton Icon={FilterIcon} quiet />
-                <FilterPopOver />
+                <ActionItem className="timeline-group">
+                    <ActionButton Icon={GraphGanttIcon} label="Timeline" quiet />
+                    <TimelinePopOver />
+                </ActionItem>
+                <ActionItem className="filter-group">
+                    <ActionButton Icon={FilterIcon} quiet />
+                    <FilterPopOver />
+                </ActionItem>
             </ActionGroup>
             <Divider />
             <ActionGroup>

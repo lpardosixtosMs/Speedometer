@@ -38,7 +38,7 @@ const TimelineComponent = (status) => {
 };
 
 export const TimelinePopOver = ({ className }) => {
-    const popOverClassName = classnames("spectrum-Popover", "spectrum-Popover--bottom", className);
+    const popOverClassName = classnames("spectrum-Popover", "spectrum-Popover--bottom-right", className);
     const popOverChildren = [];
     const inputValues = ["", "1", "0", "", "1"];
     inputValues.forEach((inputValue, i) => {
