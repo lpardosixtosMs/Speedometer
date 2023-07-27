@@ -438,7 +438,7 @@ body {
 }
 
 .timeline-group > .spectrum-Popover--bottom-right.is-open {
-    transform: scale(0.8) translateX(100px);
+    transform: scale(0.8) translateX(200px);
     margin-top: -25px;
 }
 
