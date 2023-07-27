@@ -12,9 +12,7 @@ buildComplex(path.resolve(__dirname), path.join("..", SOURCE_DIRECTORY), TITLE, 
 const dirPath = path.resolve(__dirname, "..", "dist", "css");
 const cssFilePattern = /^app.*\.css$/;
 
-const cssFile = fs.readdirSync(dirPath, { withFileTypes: true })
-    .find((dirent) => dirent.isFile() && cssFilePattern.test(dirent.name))
-    ?.name;
+const cssFile = fs.readdirSync(dirPath, { withFileTypes: true }).find((dirent) => dirent.isFile() && cssFilePattern.test(dirent.name))?.name;
 
 // overwrite the css file in the dist/css directory with the one from the big-dom-generator module
 // but keep the new name so we don't need to add a new link

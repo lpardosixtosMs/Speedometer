@@ -76,7 +76,7 @@ const Notifications = () => {
     ];
 
     const listItems = notifications.map((notification, index) =>
-        <li className={classNames({ "completed": notification.checked })}>
+        <li className={classNames({ completed: notification.checked })}>
             <div className={classNames("spectrum-Checkbox", "spectrum-Checkbox--sizeS")}>
                 <input type="checkbox" className="spectrum-Checkbox-input" id={`checkbox-${index}`} defaultChecked={notification.checked} />
                 <div className="spectrum-Checkbox-box">
