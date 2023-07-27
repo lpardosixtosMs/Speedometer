@@ -38,36 +38,12 @@ The generator is a nodejs script that uses `renderToStaticMarkup` to generate th
 -   Takes `MAX_DEPTH`, `TARGET_SIZE` and to randomly generate the big folder-like structure embedded in the sidebar.
 -   To generate the sidebar, each node decides if it will have children based on the `CHILD_PROB` value. Then randomly chooses a number of children between 1 and `MAX_BREADTH`.
 
-## Install
+## Install using local path
 
-In the root directory of this package, run:
-
-```bash
-$ npm link
-```
-
-This will create a symlink to the package in the global `node_modules` directory.
-
-In the project where we want to use the big-dom-generator package, run:
+In the project where we want to use the big-dom-generator package, for example, `Speedometer/resources/todomvc/architecture-examples/react-complex` run:
 
 ```bash
-$ npm link big-dom-generator --save
+$ npm install ../../big-dom-generator --save-dev
 ```
 
-This will create a symlink to the package in the local `node_modules` directory of the project. The flag `--save` will create an entry in the package.json if one doesn't already exist. Now you can use the package in the project as if it was installed from npm.
-
-## Usage
-
-To use the big-dom-generator package in a javascript project, you can import the CSS file like this:
-
-```javascript
-import "big-dom-generator/dist/big-dom-generator.css";
-```
-
-This will import the generated.css file from the big-dom-generator package and apply the styles to your web page.
-
-Alternatively, you can include the CSS file in your HTML file using a link tag:
-
-```html
-<link rel="stylesheet" href="node_modules/big-dom-generator/dist/big-dom-generator.css" />
-```
+The flag `--save-dev` will create an entry in the package.json if one doesn't already exist. Now you can use the package in the project as if it was installed from npm.
