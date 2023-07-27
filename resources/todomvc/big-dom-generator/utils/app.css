@@ -162,7 +162,11 @@ body {
     border-bottom: 1px solid #ededed;
 }
 
-.todo-area .todo-list li:last-child {
+/* 
+This correction addresses an issue in the Angular TodoMVC where not all list items were displaying botom borders as expected.
+*/
+.todo-area .todo-list > li:last-child,
+.todo-area .todo-list > :last-child > li {
     border-bottom: none;
 }
 
