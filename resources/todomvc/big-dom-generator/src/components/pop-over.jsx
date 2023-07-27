@@ -1,8 +1,8 @@
 import { Children } from "react";
 import classnames from "classnames";
 
-export const PopOver = ({ children, className }) => {
-    const popOverClassName = classnames("spectrum-Popover", "spectrum-Popover--bottom", className);
+export const PopOver = ({ children, className, startRight }) => {
+    const popOverClassName = classnames("spectrum-Popover", { "spectrum-Popover--bottom": !startRight }, { "spectrum-Popover--bottom-right": startRight }, className);
     return (
         <div className={popOverClassName} style={{ marginTop: "25px", padding: "5px" }}>
             {children}
@@ -10,20 +10,20 @@ export const PopOver = ({ children, className }) => {
     );
 };
 
-export const VerticalPopOver = ({ children, className }) => {
+export const VerticalPopOver = ({ children, className, startRight }) => {
     const actionItems = Children.toArray(children).map((child, index) =>
         <div key={index} className="spectrum-ActionGroup-item">
             {child}
         </div>
     );
     return (
-        <PopOver className={className}>
+        <PopOver className={className} startRight={startRight}>
             <div className="spectrum-ActionGroup spectrum-ActionGroup--vertical spectrum-ActionGroup--sizeS">{actionItems}</div>
         </PopOver>
     );
 };
 
-export const OptionsPopOver = ({ numOptions }) => {
+export const OptionsPopOver = ({ numOptions, className, startRight }) => {
     const options = [];
     for (let i = 0; i < numOptions; i++) {
         options.push(
@@ -32,9 +32,9 @@ export const OptionsPopOver = ({ numOptions }) => {
             </li>
         );
     }
-
+    const classNamePopOver = classnames("spectrum-Popover", { "spectrum-Popover--bottom": !startRight }, { "spectrum-Popover--bottom-right": startRight }, className);
     return (
-        <div className="spectrum-Popover spectrum-Popover--bottom" style={{ marginTop: "25px", padding: "5px" }}>
+        <div className={classNamePopOver} style={{ marginTop: "25px", padding: "5px" }}>
             <ul className="spectrum-Menu" role="menu">
                 {options}
             </ul>

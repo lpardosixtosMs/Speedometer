@@ -43,13 +43,24 @@ Importing the CSS from the Spectrum CSS library.
 @import "@spectrum-css/icon/dist/index-vars.css";
 @import "@spectrum-css/steplist/dist/index-vars.css";
 
-@import "./ui-styles.css";
-
 /*
 @spectrum-css overrides
 */
 
-.spectrum-TreeView-item, .spectrum-TreeView-itemLink {
+.spectrum-Popover.is-open {
+    z-index: 2;
+}
+
+.spectrum-Popover--bottom {
+    left: 0px;
+}
+
+.spectrum-Popover--bottom-right {
+    right: 0px;
+}
+
+.spectrum-TreeView-item,
+.spectrum-TreeView-itemLink {
     overflow: visible;
 }
 
@@ -78,6 +89,10 @@ Importing the CSS from the Spectrum CSS library.
 /*
 Layout CSS for the UI.
 */
+
+body {
+    max-width: 800px;
+}
 
 .main-ui {
     display: grid;
@@ -137,10 +152,6 @@ Layout CSS for the UI.
     height: 75%;
 }
 
-.analytics-bar {
-    width: 200px;
-}
-
 .date-picker-popover {
     position: absolute;
     width: 280px;
@@ -175,183 +186,297 @@ Layout CSS for the UI.
     align-self: center;
 }
 
-/* Analytics popover */
-/* 3 */
-/* Change the color of the team 1 progress bar */
-.ribbon > div:nth-child(1) > .spectrum-Popover .team-1-progress > :last-child div {
-    background-color: orangered;
-}
-/* 3 */
-/* Change the color of the team 2 progess bar */
-.ribbon > div:nth-child(1) > .spectrum-Popover .team-2-progress > :last-child div {
-    background-color: orange;
-}
-/* 3 */
-/* Change the color of the team 3 progress bar */
-.ribbon > div:nth-child(1) > .spectrum-Popover .team-3-progress > :last-child div {
-    background-color: greenyellow;
-}
-/* 3 */
-/* Change the color of the team 4 progress bar */
-.ribbon > div:nth-child(1) > .spectrum-Popover .team-4-progress > :last-child div {
-    background-color: green;
-}
-
-/* FilterPopOver */
-/* Sprint One field */
-/* Set the max width for the popover */
-.ribbon > div:nth-child(5) > .spectrum-Popover > div > div:nth-child(1) > div {
-    max-width: 150px;
-}
-/* 3 */
-/* Add padding to the label of the first input in this popover with the placeholder "Sprint one" */
-.ribbon > div:nth-child(5) > .spectrum-Popover > div > div:nth-child(1) label {
-    padding-top: 1px;
-    padding-bottom: 1px;
-}
-/* 2 */
-/* Add margins to the label for the spectrum stepper */
-.ribbon > div:nth-child(5) > .spectrum-Popover .spectrum-Stepper label {
-    margin-left: 3px;
-    margin-right: 3px;
-}
-/* 2 */
-/* Add some padding to the right of each of the tags */
-.ribbon > div:nth-child(5) > .spectrum-Popover .spectrum-TagGroup div {
-    padding-right: 6px;
-}
-/* 2 */
-/* Add some margin to the left of the div surround the completed sprints switch */
-/* could change this to end with [div:last-child > :first-child] to increase from 2 to 3 */
-.ribbon > div:nth-child(5) > .spectrum-Popover > div > div:nth-child(4) > div {
-    margin-left: 20px;
-}
-/* 2 */
-/* Add some padding to the left of the up and down arrows in the stepper */
-.ribbon .spectrum-Stepper span button {
-    padding-left: 3px;
-}
-/* 3 */
-/* On hover effect to make it more obvious which option is currently highlighted, 
-a red line on the left side of the div */
 .show-more > div > ul li:hover {
     border-color: #db7676;
 }
-/* 2 */
-/* Highlight a option to show it is a dangerous operation */
-.show-more > div > ul li:nth-child(7) {
-    background-color: #c18585;
+
+/* Analytics pop-over */
+/* Change color of the progress bar according to the status */
+.analytics-group [data-status="1"] > :last-child > div {
+    background-color: orangered;
 }
 
-/* settings icon popover */
-/* 3 */
-/* On hover effect to make it more obvious which option is currently highlighted, 
-a red line on the left side of the div */
-.top-bar > .top-bar-right > div > div > ul li:hover {
-    border-color: #db7676;
+.analytics-group [data-status="2"] > :last-child > div {
+    background-color: orange;
 }
-/* 3 */
-/* Highlight a option to show it is a dangerous operation */
-.top-bar > .top-bar-right > div > div > ul li:nth-child(2) {
-    background-color: #c18585;
+
+.analytics-group [data-status="3"] > :last-child > div {
+    background-color: greenyellow;
+}
+
+.analytics-group [data-status="4"] > :last-child > div {
+    background-color: green;
+}
+
+.analytics-group > div > * > div > * {
+    width: 200px;
+}
+
+/* Filter pop-over */
+.filter-group > div > div > :first-child > * {
+    max-width: 150px;
+}
+
+.filter-group > div > div > :first-child label {
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.filter-group .spectrum-Stepper > label {
+    margin-left: 3px;
+    margin-right: 3px;
+    align-self: center;
+}
+
+.filter-group .spectrum-TagGroup > div {
+    padding-right: 6px;
+}
+
+.filter-group > div > div > :last-child {
+    display: flex;
+    direction: column;
+    justify-content: flex-end;
+}
+
+.filter-group .spectrum-Stepper > span > button {
+    padding-left: 3px;
+}
+
+.filter-group .spectrum-Tag > * {
+    display: inline;
+    white-space: nowrap;
+}
+
+/* Top bar */
+.top-bar-buttons {
+    position: relative;
+}
+
+.top-bar-buttons > div > div > ul li:hover {
+    border-color: #db7676;
 }
 
 /* Notifications popover */
-.notifications-list {
-    max-width: 240px;
-}
 
-.top-bar .notifications-list {
+.notifications-group > div > * {
+    gap: 3px;
+}
+.notifications-group ul {
     padding-inline-start: 0;
     list-style-type: none;
     margin-bottom: 0;
+    margin-top: 0;
 }
-/* 2 */
-/* styles for notification list list items */
-.top-bar .notifications li {
+
+.notifications-group .notifications-list > li {
     padding-left: 0;
     margin-bottom: 4px;
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: greenyellow;
 }
-/* 2 */
-/* Make the first notification a urgent notifcation */
-.top-bar .notifications-list > :first-child {
-    border: 3px solid red;
+
+.notifications-group .notifications-list > li[data-priority="0"] {
+    border-left-color: red;
 }
-/* 3 */
-/* make the all the notifications default for greenyellow */
-.top-bar .notifications-list > :first-child ~ li {
-    border: 3px solid greenyellow;
+
+.notifications-group .notifications-list > li[data-priority="1"] {
+    border-left-color: yellow;
 }
-/* 3 */
-/* make the second notification a warning */
-.top-bar .notifications-list > :first-child + li {
-    border: 3px solid yellow;
-}
-/* 4 */
-/* add some margin to the left of the div surrounding the checkmark icon */
-.top-bar .notifications-list li > div > :nth-child(2) {
+
+.notifications-group .notifications-list li > div > :nth-child(2) {
     margin-left: 4px;
 }
-/* 4 */
-/* add padding to the left and right of the spectrum-Checkbox-labels */
-.top-bar .notifications-list > li > div > label {
+
+.notifications-group .notifications-list > li > div > label {
     padding-left: 4px;
     padding-right: 4px;
+    display: inline;
+    white-space: nowrap;
 }
-/* 4 */
-/* Make the last label for the notification label smaller */
-.top-bar .notifications-list > li > div > :last-child {
+
+.notifications-group .notifications-list > li > div > :last-child {
     font-size: 8px;
 }
-/* 3 */
-/* Make the notification a grid */
-.top-bar .notifications-list > li div {
+
+.notifications-group .notifications-list > li div {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 10% 50% 40%;
     grid-template-rows: 1fr;
+    justify-items: start;
+    align-items: center;
 }
-/* 3 */
-/* column rules for the checkbox */
-/* Bug fix */
-/* This should be (.top-bar .notifications-list > li div :first-child) but i don't
-want to affect the numbers.
- */
-.top-bar .notifications-list > li :first-child {
+
+.notifications-group .notifications-list > li div :first-child {
     grid-column-start: 1;
     grid-column-end: 2;
 }
-/* 0 */
-/* Make messages and Notifications headings be side by side */
-.top-bar .notification-tabs {
+
+.notifications-group > div > :first-child > div {
     display: flex;
     justify-content: space-around;
     margin-bottom: 5px;
 }
-/* 2 */
-/* Underline notifications to signify that it is currently active */
-.top-bar .notification-tabs > div + div {
+
+.notifications-group .notification-tabs > .is-active {
     border-bottom: 2px solid #b83f45;
 }
-/* 2 */
-/* mark all as read button */
-.top-bar .notification-actions > button {
+
+.notifications-group > div > div > button {
     width: 96px;
     font-size: 10px;
+    margin-left: 2px;
 }
-/* 2 */
-/* add hover effect to mark all as read button */
-.top-bar .notification-actions > button:hover {
+
+.notifications-group > div > div > button:hover {
     color: #b83f45;
 }
-/* 5 */
-/* strikethrough notification that has been marked as read */
-.top-bar .notifications-list .completed > div > input:checked ~ label {
+
+.notifications-group .notifications-list .completed > div > input:checked ~ label {
     text-decoration: line-through;
     color: #b83f45;
 }
-/* 2 */
-/* add hover effect to each of the notifications */
-.top-bar .notifications-list li:hover {
+
+.notifications-list > li:hover {
     background-color: lightgrey;
     opacity: 1;
+}
+
+/* Reminder pop-over */
+
+.reminder-group > div {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.reminder-group .high-priority > :checked ~ label {
+    color: red;
+}
+
+.reminder-group .high-priority:hover > :checked ~ label {
+    color: red;
+}
+
+.reminder-group [type="text"]input {
+    width: auto;
+}
+
+.reminder-group > div > * > :nth-child(3) > div,
+.reminder-group > div > * > :nth-child(4) > div {
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 1fr;
+}
+
+.reminder-group .is-invalid ~ * button {
+    visibility: hidden;
+}
+
+/* Backlog pop-over */
+
+.backlog-group > div > ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.backlog-group li > div {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr;
+    grid-template-rows: 1fr;
+}
+
+.backlog-group li > div > label {
+    display: inline;
+    white-space: nowrap;
+}
+
+.backlog-group li > div > :last-child {
+    justify-self: end;
+    line-height: var(--spectrum-checkbox-line-height);
+    margin-block-start: var(--spectrum-checkbox-top-to-text);
+    margin-inline-start: var(--spectrum-checkbox-text-to-control);
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+.backlog-group li > div > :first-child {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.backlog-group li > div > :nth-child(2) {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+.backlog-group li > div > :nth-child(3) {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.backlog-group li > div > :checked ~ label {
+    text-decoration: line-through;
+}
+
+.backlog-group li :checked ~ div > * {
+    color: white;
+}
+
+.backlog-group li :last-child button {
+    background-color: white;
+    border-color: black;
+    border-width: 1px;
+}
+
+/* Timeline pop-over */
+
+.timeline-group > div {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.timeline-group > .spectrum-Popover--bottom-right.is-open {
+    transform: scale(0.8) translateX(200px);
+    margin-top: -25px;
+}
+
+.timeline-group ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.timeline-group > div > ul > li {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 1fr;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    align-items: center;
+}
+
+.timeline-group > div > ul > li > :nth-child(2) {
+    padding-top: calc(var(--spectrum-steplist-topPadding) / 2);
+    padding-bottom: calv(var(--spectrum-steplist-bottomPadding) / 2);
+}
+
+.timeline-group input[value=""] + div {
+    opacity: 50%;
+}
+
+.timeline-group > div > ul > li > :last-child {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.timeline-group input[value=""] ~ div > button {
+    background-color: red;
+}
+
+.timeline-group input:not([value=""]) ~ div > :last-child {
+    visibility: hidden;
 }
