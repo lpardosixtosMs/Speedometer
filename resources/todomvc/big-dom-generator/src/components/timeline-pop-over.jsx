@@ -39,10 +39,9 @@ const TimelineComponent = (status) => {
 
 export const TimelinePopOver = ({ className }) => {
     const popOverClassName = classnames("spectrum-Popover", "spectrum-Popover--bottom-right", className);
-    const popOverChildren = [];
     const inputValues = ["", "1", "0", "", "1"];
-    inputValues.forEach((inputValue, i) => {
-        popOverChildren.push(
+    const popOverChildren = inputValues.map((inputValue, i) => {
+        return (
             <li key={i}>
                 <input type="text" name="field" value={inputValue} placeholder="Owner ID" />
                 <TimelineComponent />
