@@ -421,55 +421,55 @@ This correction addresses an issue in the Angular Complex TodoMVC where not all 
 
 /* priority styling */
 
-.todo-area .show-priority > li[data-priority="3"]:not(.completed) {
+.todo-area .show-priority li[data-priority="3"]:not(.completed) {
     background-color: #faf0f0;
 }
 
-.todo-area .show-priority > li[data-priority="2"]:not(.completed) {
+.todo-area .show-priority li[data-priority="2"]:not(.completed) {
     background-color: #fbeaea;
 }
 
-.todo-area .show-priority > li[data-priority="1"]:not(.completed) {
+.todo-area .show-priority li[data-priority="1"]:not(.completed) {
     background-color: #f8dddd;
 }
 
-.todo-area .show-priority > li[data-priority="0"]:not(.completed) {
+.todo-area .show-priority li[data-priority="0"]:not(.completed) {
     background-color: #fdcccc;
 }
 
-.todo-area .show-priority > li[data-priority="3"].completed {
+.todo-area .show-priority li[data-priority="3"].completed {
     background-color: #f1faf0;
 }
 
-.todo-area .show-priority > li[data-priority="2"].completed {
+.todo-area .show-priority li[data-priority="2"].completed {
     background-color: #eafbea;
 }
 
-.todo-area .show-priority > li[data-priority="1"].completed {
+.todo-area .show-priority li[data-priority="1"].completed {
     background-color: #ddf8dd;
 }
 
-.todo-area .show-priority > li[data-priority="0"].completed {
+.todo-area .show-priority li[data-priority="0"].completed {
     background-color: #ccfdcc;
 }
 
-.todo-area .show-priority > li:not(.completed):not([data-priority="4"]) {
+.todo-area .show-priority li:not(.completed):not([data-priority="4"]) {
     border-bottom-color: #ffd7d7;
 }
 
-.todo-area .show-priority > li.completed:not([data-priority="4"]) {
+.todo-area .show-priority li.completed:not([data-priority="4"]) {
     border-bottom-color: #d7ffd7;
 }
 
-.todo-area .show-priority > li:not(.completed):not([data-priority="4"]) > div > label {
+.todo-area .show-priority li:not(.completed):not([data-priority="4"]) > div > label {
     color: #250000;
 }
 
-.todo-area .show-priority > li.completed:not([data-priority="4"]) > div > label {
+.todo-area .show-priority li.completed:not([data-priority="4"]) > div > label {
     color: #87a790;
 }
 
-.todo-area .show-priority > li.completed > div > :focus,
-.todo-area .show-priority > li.completed > div > .toggle:focus + label {
+.todo-area .show-priority li.completed > div > :focus,
+.todo-area .show-priority li.completed > div > .toggle:focus + label {
     box-shadow: 0 0 2px 2px #7dcf89;
 }
