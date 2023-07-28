@@ -1,5 +1,6 @@
 import classnames from "classnames";
-import AlertIcon from "./../assets/Smock_Alert_18_N.svg";
+
+import AlertIcon from "./../../assets/Smock_Alert_18_N.svg";
 
 const TimelineComponent = (status) => {
     const classNames = classnames("spectrum-Steplist", status);

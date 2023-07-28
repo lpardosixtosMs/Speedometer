@@ -1,9 +1,9 @@
-import { VerticalPopOver } from "./pop-over";
-import { ActionButton } from "./action-group";
+import { VerticalPopOver } from "./popover";
+import { ActionButton } from "./../action-group";
 import classnames from "classnames";
 
-import ChevronUpIcon from "../assets/Smock_ChevronUp_18_N.svg";
-import ChevronDownIcon from "../assets/Smock_ChevronDown_18_N.svg";
+import ChevronUpIcon from "./../../assets/Smock_ChevronUp_18_N.svg";
+import ChevronDownIcon from "./../../assets/Smock_ChevronDown_18_N.svg";
 
 const Stepper = () => {
     return (

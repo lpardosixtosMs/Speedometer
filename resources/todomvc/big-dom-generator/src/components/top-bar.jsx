@@ -1,15 +1,14 @@
 import { SearchArea } from "./search-area";
 import { ActionButton, ActionGroup, ActionItem } from "./action-group";
-import { OptionsPopOver } from "./pop-over";
-import { NotificationsPopOver } from "./notifications-pop-over";
+import { OptionsPopOver } from "./popovers/popover";
+import { NotificationsPopOver } from "./popovers/notifications";
+import classNames from "classnames";
 
 import ProfileIcon from "./../assets/Smock_RealTimeCustomerProfile_18_N.svg";
 import SettingsIcon from "./../assets/Smock_Settings_18_N.svg";
 import BellIcon from "./../assets/Smock_Bell_18_N.svg";
-import HelpIcon from "../assets/Smock_Help_18_N.svg";
-
+import HelpIcon from "./../assets/Smock_Help_18_N.svg";
 import SpeedometerLogo from "./../assets/logo.png";
-import classNames from "classnames";
 
 const ContextualHelp = () => {
     return (

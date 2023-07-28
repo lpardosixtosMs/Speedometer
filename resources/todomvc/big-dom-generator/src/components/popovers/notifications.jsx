@@ -1,6 +1,6 @@
 import classnames from "classnames";
 
-import CheckmarkIcon from "../assets/Smock_Checkmark_18_N.svg";
+import CheckmarkIcon from "./../../assets/Smock_Checkmark_18_N.svg";
 
 export const NotificationsPopOver = () => {
     const notifications = [

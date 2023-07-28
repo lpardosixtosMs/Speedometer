@@ -1,10 +1,10 @@
-import { PopOver } from "./pop-over";
-import { ActionGroup } from "./action-group";
-
+import { PopOver } from "./popover";
+import { ActionGroup } from "./../action-group";
 import classnames from "classnames";
-import CheckmarkIcon from "../assets/CheckmarkSize100.svg";
-import EditIcon from "../assets/Smock_Edit_18_N.svg";
-import DeleteIcon from "../assets/Smock_Delete_18_N.svg";
+
+import CheckmarkIcon from "./../../assets/CheckmarkSize100.svg";
+import EditIcon from "./../../assets/Smock_Edit_18_N.svg";
+import DeleteIcon from "./../../assets/Smock_Delete_18_N.svg";
 
 export const BacklogPopOver = ({ className }) => {
     const listItems = [];

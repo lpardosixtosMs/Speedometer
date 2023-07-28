@@ -1,4 +1,4 @@
-import { VerticalPopOver } from "./pop-over.jsx";
+import { VerticalPopOver } from "./popover.jsx";
 import classnames from "classnames";
 
 const ProgressBar = ({ teamNumber, value, index }) => {

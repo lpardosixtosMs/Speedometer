@@ -1,7 +1,7 @@
 import classnames from "classnames";
 
-import CheckmarkIcon from "../assets/Smock_Checkmark_18_N.svg";
-import CheckmarkIcon75 from "../assets/CheckmarkSize75.svg";
+import CheckmarkIcon from "./../../assets/Smock_Checkmark_18_N.svg";
+import CheckmarkIcon75 from "./../../assets/CheckmarkSize75.svg";
 
 export const ReminderPopOver = ({ className }) => {
     let children = [];
