@@ -1,3 +1,4 @@
+const fs = require("fs");
 const path = require("path");
 const { buildComplex } = require("big-dom-generator/utils/buildComplex");
 
