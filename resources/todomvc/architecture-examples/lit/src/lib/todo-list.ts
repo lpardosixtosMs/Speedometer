@@ -82,7 +82,7 @@ export class TodoList extends LitElement {
                       <label for="toggle-all"> Mark all as complete </label>
                   `
         : nothing}
-            <ul class="todo-list">
+            <ul class="todo-list show-priority">
                 ${repeat(
         this.todoList?.filtered() ?? [],
         (todo) => todo.id,

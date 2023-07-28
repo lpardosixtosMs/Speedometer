@@ -8,6 +8,7 @@ import { todoStyles } from "./todo.css.js";
 import { DeleteTodoEvent, EditTodoEvent } from "./events.js";
 
 const EXTRA_CSS_TO_ADOPT = window.extraCssToAdopt;
+const EXTRA_CSS_TO_ADOPT = window.extraCssToAdopt;
 @customElement("todo-item")
 export class TodoItem extends LitElement {
     static override styles = [
@@ -132,11 +133,11 @@ export class TodoItem extends LitElement {
     @property({ type: Boolean })
         completed = false;
 
-    @property({ type: Number })
-        index = 0;
-
     @state()
         isEditing: boolean = false;
+
+    @property({ type: Number })
+        index = 0;
 
     override connectedCallback() {
         super.connectedCallback();
@@ -162,7 +163,7 @@ export class TodoItem extends LitElement {
         };
 
         return html`
-            <li class="${classMap(itemClassList)}">
+            <li class="${classMap(itemClassList)}" data-priority="${4 - (this.index % 5)}">
                 <div class="${classMap(divClassList)}">
                     <input class="toggle" type="checkbox" .checked=${this.completed ?? false} @change=${this.#toggleTodo} />
                     <label @dblclick=${this.#beginEdit}> ${this.text} </label>
