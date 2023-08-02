@@ -47,6 +47,10 @@ Importing the CSS from the Spectrum CSS library.
 @spectrum-css overrides
 */
 
+.spectrum-TreeView-itemLink.tree-area-link {
+    display: block;
+}
+
 .spectrum-Popover.is-open {
     z-index: 2;
 }

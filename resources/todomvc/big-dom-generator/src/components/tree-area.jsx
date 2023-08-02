@@ -28,7 +28,7 @@ const TreeItem = (props) => {
     const treeViewItemIsOpen = children && currentDepth < MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH ? "is-open" : "";
     return (
         <li className={`spectrum-TreeView-item ${treeViewItemIsOpen}`}>
-            <a className="spectrum-TreeView-itemLink">
+            <a className="spectrum-TreeView-itemLink tree-area-link">
                 {children
                     ? <ChevronRight className="spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon" />
                     : <TaskListIcon className="task-list-icon spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon spectrum-Icon--sizeM" />
