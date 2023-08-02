@@ -210,6 +210,156 @@ Suites.push({
 });
 
 Suites.push({
+    name: "TodoMVC-React-Complex-DOM-1000",
+    url: "todomvc/architecture-examples/react-complex/dist-1000/index.html#/home",
+    tags: ["todomvc", "complex"],
+    async prepare(page) {
+        const element = await page.waitForElement(".new-todo");
+        element.focus();
+    },
+    tests: [
+        new BenchmarkTestStep(`Adding${numberOfItemsToAdd}Items`, (page) => {
+            const newTodo = page.querySelector(".new-todo");
+            for (let i = 0; i < numberOfItemsToAdd; i++) {
+                newTodo.setValue(getTodoText(defaultLanguage, i));
+                newTodo.dispatchEvent("input");
+                newTodo.enter("keydown");
+            }
+        }),
+        new BenchmarkTestStep("CompletingAllItems", (page) => {
+            const checkboxes = page.querySelectorAll(".toggle");
+            for (let i = 0; i < numberOfItemsToAdd; i++)
+                checkboxes[i].click();
+        }),
+        new BenchmarkTestStep("DeletingAllItems", (page) => {
+            const deleteButtons = page.querySelectorAll(".destroy");
+            for (let i = numberOfItemsToAdd - 1; i >= 0; i--)
+                deleteButtons[i].click();
+        }),
+    ],
+});
+
+Suites.push({
+    name: "TodoMVC-React-Complex-DOM-2000",
+    url: "todomvc/architecture-examples/react-complex/dist-2000/index.html#/home",
+    tags: ["todomvc", "complex"],
+    async prepare(page) {
+        const element = await page.waitForElement(".new-todo");
+        element.focus();
+    },
+    tests: [
+        new BenchmarkTestStep(`Adding${numberOfItemsToAdd}Items`, (page) => {
+            const newTodo = page.querySelector(".new-todo");
+            for (let i = 0; i < numberOfItemsToAdd; i++) {
+                newTodo.setValue(getTodoText(defaultLanguage, i));
+                newTodo.dispatchEvent("input");
+                newTodo.enter("keydown");
+            }
+        }),
+        new BenchmarkTestStep("CompletingAllItems", (page) => {
+            const checkboxes = page.querySelectorAll(".toggle");
+            for (let i = 0; i < numberOfItemsToAdd; i++)
+                checkboxes[i].click();
+        }),
+        new BenchmarkTestStep("DeletingAllItems", (page) => {
+            const deleteButtons = page.querySelectorAll(".destroy");
+            for (let i = numberOfItemsToAdd - 1; i >= 0; i--)
+                deleteButtons[i].click();
+        }),
+    ],
+});
+
+Suites.push({
+    name: "TodoMVC-React-Complex-DOM-3000",
+    url: "todomvc/architecture-examples/react-complex/dist-3000/index.html#/home",
+    tags: ["todomvc", "complex"],
+    async prepare(page) {
+        const element = await page.waitForElement(".new-todo");
+        element.focus();
+    },
+    tests: [
+        new BenchmarkTestStep(`Adding${numberOfItemsToAdd}Items`, (page) => {
+            const newTodo = page.querySelector(".new-todo");
+            for (let i = 0; i < numberOfItemsToAdd; i++) {
+                newTodo.setValue(getTodoText(defaultLanguage, i));
+                newTodo.dispatchEvent("input");
+                newTodo.enter("keydown");
+            }
+        }),
+        new BenchmarkTestStep("CompletingAllItems", (page) => {
+            const checkboxes = page.querySelectorAll(".toggle");
+            for (let i = 0; i < numberOfItemsToAdd; i++)
+                checkboxes[i].click();
+        }),
+        new BenchmarkTestStep("DeletingAllItems", (page) => {
+            const deleteButtons = page.querySelectorAll(".destroy");
+            for (let i = numberOfItemsToAdd - 1; i >= 0; i--)
+                deleteButtons[i].click();
+        }),
+    ],
+});
+
+Suites.push({
+    name: "TodoMVC-React-Complex-DOM-4000",
+    url: "todomvc/architecture-examples/react-complex/dist-4000/index.html#/home",
+    tags: ["todomvc", "complex"],
+    async prepare(page) {
+        const element = await page.waitForElement(".new-todo");
+        element.focus();
+    },
+    tests: [
+        new BenchmarkTestStep(`Adding${numberOfItemsToAdd}Items`, (page) => {
+            const newTodo = page.querySelector(".new-todo");
+            for (let i = 0; i < numberOfItemsToAdd; i++) {
+                newTodo.setValue(getTodoText(defaultLanguage, i));
+                newTodo.dispatchEvent("input");
+                newTodo.enter("keydown");
+            }
+        }),
+        new BenchmarkTestStep("CompletingAllItems", (page) => {
+            const checkboxes = page.querySelectorAll(".toggle");
+            for (let i = 0; i < numberOfItemsToAdd; i++)
+                checkboxes[i].click();
+        }),
+        new BenchmarkTestStep("DeletingAllItems", (page) => {
+            const deleteButtons = page.querySelectorAll(".destroy");
+            for (let i = numberOfItemsToAdd - 1; i >= 0; i--)
+                deleteButtons[i].click();
+        }),
+    ],
+});
+
+Suites.push({
+    name: "TodoMVC-React-Complex-DOM-5000",
+    url: "todomvc/architecture-examples/react-complex/dist-5000/index.html#/home",
+    tags: ["todomvc", "complex"],
+    async prepare(page) {
+        const element = await page.waitForElement(".new-todo");
+        element.focus();
+    },
+    tests: [
+        new BenchmarkTestStep(`Adding${numberOfItemsToAdd}Items`, (page) => {
+            const newTodo = page.querySelector(".new-todo");
+            for (let i = 0; i < numberOfItemsToAdd; i++) {
+                newTodo.setValue(getTodoText(defaultLanguage, i));
+                newTodo.dispatchEvent("input");
+                newTodo.enter("keydown");
+            }
+        }),
+        new BenchmarkTestStep("CompletingAllItems", (page) => {
+            const checkboxes = page.querySelectorAll(".toggle");
+            for (let i = 0; i < numberOfItemsToAdd; i++)
+                checkboxes[i].click();
+        }),
+        new BenchmarkTestStep("DeletingAllItems", (page) => {
+            const deleteButtons = page.querySelectorAll(".destroy");
+            for (let i = numberOfItemsToAdd - 1; i >= 0; i--)
+                deleteButtons[i].click();
+        }),
+    ],
+});
+
+Suites.push({
     name: "TodoMVC-React-Redux",
     url: "todomvc/architecture-examples/react-redux/dist/index.html",
     tags: ["todomvc"],
