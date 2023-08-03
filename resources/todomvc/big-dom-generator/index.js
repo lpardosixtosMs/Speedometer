@@ -11,7 +11,6 @@ const html = `<!DOCTYPE html>
     <link rel="stylesheet" href="big-dom-generator.css">
   </head>
   <body>
-    <object data="Smock_ChevronRight_18_N.svg" type="image/svg+xml" hidden></object>
     <object data="Smock_TaskList_18_N.svg" type="image/svg+xml" hidden></object>
     ${renderToStaticMarkup(<App />)}
   </body>

@@ -3,7 +3,6 @@ import { useRef } from "react";
 import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_GENERATED_DOM_DEPTH, MAX_NUMBER_OF_CHILDREN, PROBABILITY_OF_HAVING_CHILDREN, TARGET_SIZE, MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH } from "../../params";
 
 import ChevronRight from "./../assets/Smock_ChevronRight_18_N.svg";
-import TaskListIcon from "./../assets/Smock_TaskList_18_N.svg";
 
 const FolderWrapper = (props) => {
     const { nodeCount, random, maxDepth, maxNumChildren, childProbability, currentDepth } = props;
@@ -29,20 +28,12 @@ const TreeItem = (props) => {
     return (
         <li className={`spectrum-TreeView-item ${treeViewItemIsOpen}`}>
             <a className="spectrum-TreeView-itemLink">
-                {children ? (
-                    <svg className="spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
-                        <use href="Smock_ChevronRight_18_N.svg#chevron-right" />
-                    </svg>
-                ) : (
-                    <svg className="spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon spectrum-Icon--sizeM" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
+                {children
+                    ? <ChevronRight className="spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon" />
+                    : <svg className="spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon spectrum-Icon--sizeM" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
                         <use href="Smock_TaskList_18_N.svg#task-list" />
                     </svg>
-                )}
-                {/* {children
-                    ? <ChevronRight className="spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon" />
-                    : <TaskListIcon className="task-list-icon spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon spectrum-Icon--sizeM" />
-                } */}
-
+                }
                 <span className="just-span spectrum-TreeView-itemLabel">{children ? "Sprint" : "Todo List"}</span>
             </a>
             {children}
