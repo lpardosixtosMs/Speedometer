@@ -8,7 +8,7 @@ const FILES_TO_MOVE = [
     "node_modules/big-dom-generator/utils/big-dom-generator-variables.css",
     "node_modules/big-dom-generator/utils/add-extra-css.js",
     "node_modules/big-dom-generator/dist/logo.png",
-    "node_modules/big-dom-generator/utils/app.css"
+    "node_modules/big-dom-generator/utils/app.css",
 ];
 const EXTRA_CSS_TO_LINK = ["big-dom-generator-variables.css"];
 const SCRIPTS_TO_LINK = ["add-extra-css.js"];

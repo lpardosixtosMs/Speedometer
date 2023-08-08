@@ -1,7 +1,7 @@
 :root {
     --complex-border-bottom-color-default: rgba(140, 140, 140, 0.5);
-	--complex-border-bottom-color-0: #d7ffd7;
-	--complex-border-bottom-color-1: #ffd7d7;
+    --complex-border-bottom-color-0: #d7ffd7;
+    --complex-border-bottom-color-1: #ffd7d7;
 
     --complex-background-color-default: rgba(140, 140, 140, 0.5);
     --complex-background-color-0: #ccfdcc;
@@ -12,7 +12,7 @@
     --complex-background-color-5: #faf0f0;
     --complex-background-color-6: #fbeaea;
     --complex-background-color-7: #f8dddd;
-	--complex-background-color-8: #fdcccc ;
+    --complex-background-color-8: #fdcccc;
 
     --complex-color-default: rgba(140, 140, 140, 0.5);
     --complex-color-0: #250000;
