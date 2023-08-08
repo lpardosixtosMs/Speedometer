@@ -1,13 +1,20 @@
 const additionalStyleSheets = [];
 
 additionalStyleSheets[0] = new CSSStyleSheet();
-additionalStyleSheets[0].replaceSync(`
-li.completed:not([data-priority="4"]) > div > label {
-    color: var(--complex-color-1, var(--complex-color-default));
+additionalStyleSheets[0].replaceSync(`li:not(.completed):not([data-priority="4"]) {
+    border-bottom-color: var(--complex-border-bottom-color-1);
+}
+
+li.completed:not([data-priority="4"]) {
+    border-bottom-color: var(--complex-border-bottom-color-0);
 }
 
 li:not(.completed):not([data-priority="4"]) > div > label {
     color: var(--complex-color-0, var(--complex-color-default));
+}
+
+li.completed:not([data-priority="4"]) > div > label {
+    color: var(--complex-color-1, var(--complex-color-default));
 }
 
 li.completed > div > :focus,
@@ -19,12 +26,20 @@ additionalStyleSheets[1].replaceSync(`li.completed {
     background-color: var(--complex-background-color-1, var(--complex-background-color-default));
 }
 
-li.completed:not([data-priority="4"]) > div > label {
-    color: var(--complex-color-1, var(--complex-color-default));
+li:not(.completed):not([data-priority="4"]) {
+    border-bottom-color: var(--complex-border-bottom-color-1);
+}
+
+li.completed:not([data-priority="4"]) {
+    border-bottom-color: var(--complex-border-bottom-color-0);
 }
 
 li:not(.completed):not([data-priority="4"]) > div > label {
     color: var(--complex-color-0, var(--complex-color-default));
+}
+
+li.completed:not([data-priority="4"]) > div > label {
+    color: var(--complex-color-1, var(--complex-color-default));
 }
 
 li.completed > div > :focus,
@@ -41,12 +56,20 @@ additionalStyleSheets[2].replaceSync(`li.completed {
 
 }
 
-li.completed:not([data-priority="4"]) > div > label {
-    color: var(--complex-color-1, var(--complex-color-default));
+li:not(.completed):not([data-priority="4"]) {
+    border-bottom-color: var(--complex-border-bottom-color-1);
+}
+
+li.completed:not([data-priority="4"]) {
+    border-bottom-color: var(--complex-border-bottom-color-0);
 }
 
 li:not(.completed):not([data-priority="4"]) > div > label {
     color: var(--complex-color-0, var(--complex-color-default));
+}
+
+li.completed:not([data-priority="4"]) > div > label {
+    color: var(--complex-color-1, var(--complex-color-default));
 }
 
 li.completed > div > :focus,
@@ -62,12 +85,20 @@ additionalStyleSheets[3].replaceSync(`li.completed {
     background-color: var(--complex-background-color-3, var(--complex-background-color-default));
 }
 
-li.completed:not([data-priority="4"]) > div > label {
-    color: var(--complex-color-1, var(--complex-color-default));
+li:not(.completed):not([data-priority="4"]) {
+    border-bottom-color: var(--complex-border-bottom-color-1);
+}
+
+li.completed:not([data-priority="4"]) {
+    border-bottom-color: var(--complex-border-bottom-color-0);
 }
 
 li:not(.completed):not([data-priority="4"]) > div > label {
     color: var(--complex-color-0, var(--complex-color-default));
+}
+
+li.completed:not([data-priority="4"]) > div > label {
+    color: var(--complex-color-1, var(--complex-color-default));
 }
 
 li.completed > div > :focus,
