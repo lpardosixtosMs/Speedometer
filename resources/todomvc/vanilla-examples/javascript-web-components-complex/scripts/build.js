@@ -5,24 +5,13 @@ const fs = require("fs");
 const SOURCE_DIRECTORY = "node_modules/todomvc-javascript-web-components/dist/";
 const TITLE = "TodoMVC: JavaScript Web Components Complex DOM";
 const FILES_TO_MOVE = [
-    "node_modules/big-dom-generator/dist/app.css",
-    "node_modules/big-dom-generator/generated.css",
-    "node_modules/big-dom-generator/javascript-web-components/generated-variables.css",
-    "node_modules/big-dom-generator/javascript-web-components/add-extra-css.js",
+    "node_modules/big-dom-generator/dist/big-dom-generator.css",
+    "node_modules/big-dom-generator/utils/big-dom-generator-variables.css",
+    "node_modules/big-dom-generator/utils/add-extra-css.js",
     "node_modules/big-dom-generator/dist/logo.png",
+    "node_modules/big-dom-generator/utils/app.css"
 ];
-const EXTRA_CSS_TO_LINK = ["generated-variables.css"];
-const SCRIPTS_TO_LINK = ["utils/add-extra-css.js"];
+const EXTRA_CSS_TO_LINK = ["big-dom-generator-variables.css"];
+const SCRIPTS_TO_LINK = ["add-extra-css.js"];
 
 buildComplex(path.resolve(__dirname), path.join("..", SOURCE_DIRECTORY), TITLE, FILES_TO_MOVE, EXTRA_CSS_TO_LINK, SCRIPTS_TO_LINK);
-
-fs.rename(path.join(__dirname, "..", "dist", "add-extra-css.js"), path.join(__dirname, "..", "dist", "utils", "add-extra-css.js"), (err) => {
-    if (err)
-        console.error(err);
-});
-
-// Remove the second half of generated.css
-let generatedCss = fs.readFileSync(path.resolve(__dirname, path.join("..", "dist", "generated.css")), "utf8");
-generatedCss = generatedCss.split("}\n");
-generatedCss = `${generatedCss.slice(0, generatedCss.length / 2).join("}\n")}}\n`;
-fs.writeFileSync(path.resolve(__dirname, path.join("..", "dist", "generated.css")), generatedCss);

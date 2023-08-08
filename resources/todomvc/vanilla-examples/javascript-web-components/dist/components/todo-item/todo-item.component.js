@@ -56,9 +56,8 @@ class TodoItem extends HTMLElement {
                     break;
                 case "index":
                     if (this.index !== undefined) {
-                        this.item.classList.add(`li-${this.index}`);
-                        this.displayTodo.classList.add(`view-${this.index}`);
                         this.maybeUpdateCss();
+                        this.item.setAttribute("data-priority", 4 - (this.index % 5));
                     }
                     break;
                 case "title":
