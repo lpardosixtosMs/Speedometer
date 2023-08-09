@@ -11,7 +11,7 @@ const options = {
     title: TITLE,
     filesToMove: FILES_TO_MOVE,
     cssFilePath: path.resolve(__dirname, "..", "node_modules", "big-dom-generator", "utils", "app.css"),
-    nestedFolder: "css",
+    cssFolder: "css",
     cssFileNamePattern: /^app.*\.css$/,
 };
 

@@ -9,7 +9,7 @@ function buildComplex(options) {
         title,
         filesToMove,
         cssFilePath,
-        nestedFolder = "",
+        cssFolder = "",
         cssFileNamePattern,
         extraCssToLink = [],
         scriptsToLink = [],
@@ -39,10 +39,10 @@ function buildComplex(options) {
 
     if (cssFilePath) {
         // get the name of the css file that's in the dist, we do this because the name of the css file may change
-        const cssFile = fs.readdirSync(path.join(callerDirectory, sourceDirectory, nestedFolder), { withFileTypes: true }).find((dirent) => dirent.isFile() && cssFileNamePattern.test(dirent.name))?.name;
+        const cssFile = fs.readdirSync(path.join(callerDirectory, sourceDirectory, cssFolder), { withFileTypes: true }).find((dirent) => dirent.isFile() && cssFileNamePattern.test(dirent.name))?.name;
         // overwrite the css file in the dist directory with the one from the big-dom-generator module
         // but keep the existing name so we don't need to add a new link
-        fs.copyFileSync(cssFilePath, path.resolve(targetDirectory, nestedFolder, cssFile));
+        fs.copyFileSync(cssFilePath, path.resolve(targetDirectory, cssFolder, cssFile));
     }
 
     // read todo.html file
