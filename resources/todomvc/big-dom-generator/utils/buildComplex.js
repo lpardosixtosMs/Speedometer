@@ -9,8 +9,8 @@ function buildComplex(options) {
         title,
         filesToMove,
         cssFilePath,
-        cssFolder = "",
-        cssFileNamePattern,
+        cssFolder = "", // sometimes the css file we are looking for may be nested in another folder.
+        cssFileNamePattern, // The css file name pattern is used to find the css file in the source dist directory.
         extraCssToLink = [],
         scriptsToLink = [],
         targetDirectory = "./dist",
