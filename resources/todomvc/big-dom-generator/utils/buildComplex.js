@@ -9,13 +9,14 @@ function buildComplex(options) {
         title,
         filesToMove,
         cssFilePath,
+        nestedFolder = "",
         cssFileNamePattern,
         extraCssToLink = [],
         scriptsToLink = [],
         targetDirectory = "./dist",
         complexDomHtmlFile = "index.html",
         todoHtmlFile = "index.html",
-        cssFilesToAddLinksFor = ["big-dom-generator.css"]
+        cssFilesToAddLinksFor = ["big-dom-generator.css"],
     } = options;
 
     // remove dist directory if it exists
@@ -36,12 +37,12 @@ function buildComplex(options) {
         fs.copyFileSync(sourcePath, targetPath);
     }
 
-    if (cssFilePath){
-        // get the name of the css file that's in angular dist, we do this because the name of the css file may change
-        const cssFile = fs.readdirSync(path.join(callerDirectory, sourceDirectory), { withFileTypes: true }).find((dirent) => dirent.isFile() && cssFileNamePattern.test(dirent.name))?.name;
+    if (cssFilePath) {
+        // get the name of the css file that's in the dist, we do this because the name of the css file may change
+        const cssFile = fs.readdirSync(path.join(callerDirectory, sourceDirectory, nestedFolder), { withFileTypes: true }).find((dirent) => dirent.isFile() && cssFileNamePattern.test(dirent.name))?.name;
         // overwrite the css file in the dist directory with the one from the big-dom-generator module
-        // but keep the new name so we don't need to add a new link
-        fs.copyFileSync(cssFilePath, path.resolve(targetDirectory, cssFile));
+        // but keep the existing name so we don't need to add a new link
+        fs.copyFileSync(cssFilePath, path.resolve(targetDirectory, nestedFolder, cssFile));
     }
 
     // read todo.html file
