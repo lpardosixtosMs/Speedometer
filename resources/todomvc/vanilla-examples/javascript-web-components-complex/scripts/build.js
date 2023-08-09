@@ -10,7 +10,7 @@ const FILES_TO_MOVE = [
     "node_modules/big-dom-generator/dist/logo.png",
     "node_modules/big-dom-generator/utils/app.css",
 ];
-const EXTRA_CSS_TO_LINK = ["big-dom-generator-variables.css"];
+const EXTRA_CSS_TO_LINK = ["big-dom-generator-variables.css", "app.css"];
 const SCRIPTS_TO_LINK = ["add-extra-css.js"];
 
 buildComplex(path.resolve(__dirname), path.join("..", SOURCE_DIRECTORY), TITLE, FILES_TO_MOVE, EXTRA_CSS_TO_LINK, SCRIPTS_TO_LINK);
