@@ -10,6 +10,7 @@ import "./todo-item.js";
 import { ToggleAllTodoEvent } from "./events.js";
 import { updateOnEvent } from "./utils.js";
 
+const EXTRA_CSS_TO_ADOPT = window.extraTodoListCssToAdopt;
 @customElement("todo-list")
 export class TodoList extends LitElement {
     static override styles = [
@@ -17,29 +18,6 @@ export class TodoList extends LitElement {
         css`
             :host {
                 display: block;
-            }
-            :host(.show-priority) {
-                --complex-border-bottom-color-default: #ededed;
-                --complex-border-bottom-color-0: #d7ffd7;
-                --complex-border-bottom-color-1: #ffd7d7;
-
-                --complex-background-color-default: #fff;
-                --complex-background-color-0: #ccfdcc;
-                --complex-background-color-1: #f1faf0;
-                --complex-background-color-2: #eafbea;
-                --complex-background-color-3: #ddf8dd;
-                --complex-background-color-4: #ccfdcc;
-                --complex-background-color-5: #faf0f0;
-                --complex-background-color-6: #fbeaea;
-                --complex-background-color-7: #f8dddd;
-                --complex-background-color-8: #fdcccc;
-
-                --complex-color-default: #484848;
-                --complex-color-0: #250000;
-                --complex-color-1: #87a790;
-
-                --complex-box-shadow-default: none;
-                --complex-box-shadow-0: 0 0 2px 2px #7dcf89;
             }
             :focus {
                 box-shadow: none !important;
@@ -97,6 +75,14 @@ export class TodoList extends LitElement {
     @property({ attribute: false })
         todoList?: Todos;
 
+    override connectedCallback() {
+        super.connectedCallback();
+        if (!EXTRA_CSS_TO_ADOPT)
+            return;
+
+        this.shadowRoot?.adoptedStyleSheets.push(EXTRA_CSS_TO_ADOPT);
+    }
+
     override render() {
         return html`
             ${(this.todoList?.all.length ?? 0) > 0
@@ -105,11 +91,11 @@ export class TodoList extends LitElement {
                       <label for="toggle-all"> Mark all as complete </label>
                   `
         : nothing}
-            <ul class="todo-list show-priority">
+            <ul class="todo-list">
                 ${repeat(
         this.todoList?.filtered() ?? [],
         (todo) => todo.id,
-        (todo, index) => html`<todo-item .todoId=${todo.id} .text=${todo.text} .completed=${todo.completed} .index=${index}></todo-item>`
+        (todo, index) => html`<todo-item data-priority=${4 - (index % 5)} .todoId=${todo.id} .text=${todo.text} .completed=${todo.completed}></todo-item>`
     )}
             </ul>
         `;
@@ -124,5 +110,9 @@ declare global {
     // eslint-disable-next-line no-unused-vars
     interface HTMLElementTagNameMap {
         "todo-list": TodoList;
+    }
+    // eslint-disable-next-line no-unused-vars
+    interface Window {
+        extraTodoListCssToAdopt?: CSSStyleSheet;
     }
 }

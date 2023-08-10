@@ -8,7 +8,6 @@ import { todoStyles } from "./todo.css.js";
 import { DeleteTodoEvent, EditTodoEvent } from "./events.js";
 
 const EXTRA_CSS_TO_ADOPT = window.extraCssToAdopt;
-const EXTRA_CSS_TO_ADOPT = window.extraCssToAdopt;
 @customElement("todo-item")
 export class TodoItem extends LitElement {
     static override styles = [
@@ -136,17 +135,11 @@ export class TodoItem extends LitElement {
     @state()
         isEditing: boolean = false;
 
-    @property({ type: Number })
-        index = 0;
-
     override connectedCallback() {
         super.connectedCallback();
-        if (!EXTRA_CSS_TO_ADOPT) {
-            console.log("No extra css to adopt");
+        if (!EXTRA_CSS_TO_ADOPT)
             return;
-        }
 
-        console.log("Adopting extra css");
         this.shadowRoot?.adoptedStyleSheets.push(EXTRA_CSS_TO_ADOPT);
     }
 
@@ -158,14 +151,10 @@ export class TodoItem extends LitElement {
             editing: this.isEditing,
             [`li-${this.index}`]: true,
         };
-        const divClassList = {
-            targeted: true,
-            [`view-${this.index}`]: true,
-        };
 
         return html`
-            <li class="${classMap(itemClassList)}" data-priority="${4 - (this.index % 5)}">
-                <div class="${classMap(divClassList)}">
+            <li class="${classMap(itemClassList)}">
+                <div class="view">
                     <input class="toggle" type="checkbox" .checked=${this.completed ?? false} @change=${this.#toggleTodo} />
                     <label @dblclick=${this.#beginEdit}> ${this.text} </label>
                     <button @click=${this.#deleteTodo} class="destroy"></button>
