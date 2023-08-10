@@ -1,9 +1,9 @@
 :root {
-    --complex-border-bottom-color-default: #ededed;
+    --complex-border-bottom-color-default: rgba(140, 140, 140, 0.5);
     --complex-border-bottom-color-0: #d7ffd7;
     --complex-border-bottom-color-1: #ffd7d7;
 
-    --complex-background-color-default: #fff;
+    --complex-background-color-default: rgba(140, 140, 140, 0.5);
     --complex-background-color-0: #ccfdcc;
     --complex-background-color-1: #f1faf0;
     --complex-background-color-2: #eafbea;
@@ -14,10 +14,10 @@
     --complex-background-color-7: #f8dddd;
     --complex-background-color-8: #fdcccc;
 
-    --complex-color-default: #484848;
+    --complex-color-default: rgba(140, 140, 140, 0.5);
     --complex-color-0: #250000;
     --complex-color-1: #87a790;
 
-    --complex-box-shadow-default: none;
+    --complex-box-shadow-default: 0 0 2px 2px rgba(140, 140, 140, 0.5);
     --complex-box-shadow-0: 0 0 2px 2px #7dcf89;
 }
