@@ -18,7 +18,6 @@ class TodoItem extends HTMLElement {
         this.id = "";
         this.title = "Todo Item";
         this.completed = "false";
-        this.index = 0;
 
         const node = document.importNode(template.content, true);
         this.item = node.querySelector(".todo-item");
@@ -52,12 +51,6 @@ class TodoItem extends HTMLElement {
                 case "id":
                     if (this.id !== undefined)
                         this.item.id = `todo-item-${this.id}`;
-                    break;
-                case "index":
-                    if (this.index !== undefined) {
-                        this.maybeUpdateCss();
-                        this.item.setAttribute("data-priority", 4 - (this.index % 5));
-                    }
                     break;
                 case "title":
                     if (this.title !== undefined) {
@@ -159,14 +152,13 @@ class TodoItem extends HTMLElement {
     maybeUpdateCss() {
         if (!EXTRA_CSS_TO_ADOPT)
             return;
-        const styleSheetIndex = this.index % EXTRA_CSS_TO_ADOPT.length;
-        const styleSheetToAdopt = EXTRA_CSS_TO_ADOPT[styleSheetIndex];
-        if (styleSheetToAdopt)
-            this.shadow.adoptedStyleSheets.push(styleSheetToAdopt);
+
+        this.shadow.adoptedStyleSheets.push(EXTRA_CSS_TO_ADOPT);
     }
 
     connectedCallback() {
-        this.update("id", "title", "completed", "index");
+        this.update("id", "title", "completed");
+        this.maybeUpdateCss();
 
         this.keysListeners.push(
             useKeyListener({

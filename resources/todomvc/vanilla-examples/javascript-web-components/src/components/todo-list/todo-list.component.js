@@ -4,6 +4,7 @@ import TodoItem from "../todo-item/todo-item.component.js";
 import globalStyles from "../../../node_modules/todomvc-css/dist/global.constructable.js";
 import listStyles from "../../../node_modules/todomvc-css/dist/todo-list.constructable.js";
 
+const EXTRA_CSS_TO_ADOPT = window.extraTodoListCssToAdopt;
 class TodoList extends HTMLElement {
     static get observedAttributes() {
         return ["total-items"];
@@ -29,6 +30,7 @@ class TodoList extends HTMLElement {
         const element = new TodoItem();
         Object.keys(entry).forEach((key) => element.setAttribute(key, entry[key]));
         element.index = this.#elements.length;
+        element.setAttribute("data-priority", 4 - (this.#elements.length % 5));
 
         this.#elements.push(element);
         this.listNode.append(element);
@@ -106,6 +108,13 @@ class TodoList extends HTMLElement {
         this[property] = newValue;
         if (this.isConnected)
             this.updateStyles();
+    }
+
+    maybeUpdateCss() {
+        if (!EXTRA_CSS_TO_ADOPT)
+            return;
+
+        this.shadow.adoptedStyleSheets.push(EXTRA_CSS_TO_ADOPT);
     }
 
     connectedCallback() {

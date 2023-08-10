@@ -1,8 +1,6 @@
-const additionalStyleSheets = [];
-
-additionalStyleSheets[0] = new CSSStyleSheet();
-additionalStyleSheets[0].replaceSync(`
-:host([data-priority="0"]) {
+const additionalStyleSheet = new CSSStyleSheet();
+// for loop this.
+additionalStyleSheet.replaceSync(`:host([data-priority="0"]) {
     --complex-border-bottom-color-completed: var(--complex-border-bottom-color-0, var(--complex-border-bottom-color-default));
     --complex-border-bottom-color-not-completed: var(--complex-border-bottom-color-1, var(--complex-border-bottom-color-default));
 
@@ -54,7 +52,7 @@ additionalStyleSheets[0].replaceSync(`
     --complex-box-shadow: var(--complex-box-shadow-0, var(--complex-box-shadow-default));
 }
 
-li.not(.completed) {
+li:not(.completed) {
     border-bottom-color: var(--complex-border-bottom-color-not-completed);
     background-color: var(--complex-background-color-not-completed);
 }
@@ -64,11 +62,11 @@ li.completed {
     border-bottom-color: var(--complex-border-bottom-color-completed);
 }
 
-li.not(.completed) > div > label {
+li:not(.completed) > div > label {
     color: var(--complex-color-not-completed);
 }
 
-lit.completed > div > label {
+li.completed > div > label {
     color: var(--complex-color-completed);
 }
 
@@ -76,4 +74,4 @@ li.completed > div > :focus,
 li.completed > div > .toggle:focus + label {
     box-shadow: var(--complex-box-shadow);}`);
 
-window.extraCssToAdopt = additionalStyleSheets;
+window.extraCssToAdopt = additionalStyleSheet;
