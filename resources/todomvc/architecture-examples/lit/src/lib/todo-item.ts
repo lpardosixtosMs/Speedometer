@@ -141,12 +141,13 @@ export class TodoItem extends LitElement {
 
     override connectedCallback() {
         super.connectedCallback();
-        if (!EXTRA_CSS_TO_ADOPT)
+        if (!EXTRA_CSS_TO_ADOPT) {
+            console.log("No extra css to adopt");
             return;
-        const styleSheetIndex = this.index % EXTRA_CSS_TO_ADOPT.length;
-        const styleSheetToAdopt = EXTRA_CSS_TO_ADOPT[styleSheetIndex];
-        if (styleSheetToAdopt)
-            this.shadowRoot?.adoptedStyleSheets.push(styleSheetToAdopt);
+        }
+
+        console.log("Adopting extra css");
+        this.shadowRoot?.adoptedStyleSheets.push(EXTRA_CSS_TO_ADOPT);
     }
 
     override render() {
@@ -210,6 +211,6 @@ declare global {
     }
     // eslint-disable-next-line no-unused-vars
     interface Window {
-        extraCssToAdopt?: CSSStyleSheet[];
+        extraCssToAdopt?: CSSStyleSheet;
     }
 }
