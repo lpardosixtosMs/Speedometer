@@ -60,7 +60,6 @@ class TodoItem extends HTMLElement {
                     break;
                 case "completed":
                     this.toggleInput.checked = this.completed === "true" ? true : false;
-                    // add a classname completed
                     if (this.completed === "true")
                         this.item.classList.add("completed");
                     else
