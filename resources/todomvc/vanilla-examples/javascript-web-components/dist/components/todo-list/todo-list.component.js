@@ -29,7 +29,6 @@ class TodoList extends HTMLElement {
     addItem(entry) {
         const element = new TodoItem();
         Object.keys(entry).forEach((key) => element.setAttribute(key, entry[key]));
-        element.index = this.#elements.length;
         element.setAttribute("data-priority", 4 - (this.#elements.length % 5));
 
         this.#elements.push(element);
@@ -113,7 +112,6 @@ class TodoList extends HTMLElement {
     maybeUpdateCss() {
         if (!EXTRA_CSS_TO_ADOPT)
             return;
-
         this.shadow.adoptedStyleSheets.push(EXTRA_CSS_TO_ADOPT);
     }
 

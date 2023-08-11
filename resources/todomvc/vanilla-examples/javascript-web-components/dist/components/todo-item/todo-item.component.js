@@ -6,7 +6,6 @@ import globalStyles from "../../styles/global.constructable.js";
 import itemStyles from "../../styles/todo-item.constructable.js";
 
 const EXTRA_CSS_TO_ADOPT = window.extraCssToAdopt;
-
 class TodoItem extends HTMLElement {
     static get observedAttributes() {
         return ["id", "title", "completed"];
@@ -61,10 +60,6 @@ class TodoItem extends HTMLElement {
                     break;
                 case "completed":
                     this.toggleInput.checked = this.completed === "true" ? true : false;
-                    if (this.completed === "true")
-                        this.item.classList.add("completed");
-                    else
-                        this.item.classList.remove("completed");
                     break;
             }
         });
@@ -157,7 +152,6 @@ class TodoItem extends HTMLElement {
     maybeUpdateCss() {
         if (!EXTRA_CSS_TO_ADOPT)
             return;
-
         this.shadow.adoptedStyleSheets.push(EXTRA_CSS_TO_ADOPT);
     }
 

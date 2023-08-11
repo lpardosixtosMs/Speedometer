@@ -6,7 +6,7 @@ const TITLE = "TodoMVC: JavaScript Web Components Complex DOM";
 const FILES_TO_MOVE = [
     "node_modules/big-dom-generator/dist/big-dom-generator.css",
     "node_modules/big-dom-generator/utils/big-dom-generator-variables.css",
-    "node_modules/big-dom-generator/utils/add-extra-css.js",
+    "node_modules/big-dom-generator/utils/javascript-web-components/add-extra-css.js",
     "node_modules/big-dom-generator/utils/todo-list-css.js",
     "node_modules/big-dom-generator/dist/logo.png",
 ];
