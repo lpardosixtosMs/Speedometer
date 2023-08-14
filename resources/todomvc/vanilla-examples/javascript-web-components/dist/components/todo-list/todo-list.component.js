@@ -24,8 +24,9 @@ class TodoList extends HTMLElement {
         this.htmlDirection = document.dir || "ltr";
         this.setAttribute("dir", this.htmlDirection);
         this.shadow.adoptedStyleSheets = [globalStyles, listStyles];
-        this.maybeUpdateCss();
         this.shadow.append(node);
+
+        this.maybeUpdateCss = this.maybeUpdateCss.bind(this);
     }
 
     addItem(entry) {
@@ -119,6 +120,7 @@ class TodoList extends HTMLElement {
 
     connectedCallback() {
         this.updateStyles();
+        this.maybeUpdateCss();
     }
 }
 
