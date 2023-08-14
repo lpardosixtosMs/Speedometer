@@ -15,6 +15,7 @@ class TodoList extends HTMLElement {
 
     constructor() {
         super();
+        this.classList.add("show-priority");
 
         const node = document.importNode(template.content, true);
         this.listNode = node.querySelector(".todo-list");
@@ -23,6 +24,7 @@ class TodoList extends HTMLElement {
         this.htmlDirection = document.dir || "ltr";
         this.setAttribute("dir", this.htmlDirection);
         this.shadow.adoptedStyleSheets = [globalStyles, listStyles];
+        this.maybeUpdateCss();
         this.shadow.append(node);
     }
 
