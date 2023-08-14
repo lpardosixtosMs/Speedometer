@@ -26,6 +26,8 @@ This workload embeds the todoMVC benchmark in an html page with the following ch
 
 ## How to run
 
+`npm install` - Installs the dependencies.
+
 `npm run build` - Generates the static html and corresponding css.
 
 `npm run serve` - Serves the dist folder in port 7002.
@@ -42,7 +44,7 @@ The generator is a nodejs script that uses `renderToStaticMarkup` to generate th
 
 ## Install using local path
 
-In the project where we want to use the big-dom-generator package, for example, `Speedometer/resources/todomvc/architecture-examples/react-complex` run:
+In the project where we want to use the big-dom-generator package, E.g. `Speedometer/resources/todomvc/architecture-examples/react-complex` run:
 
 ```bash
 npm install ../../big-dom-generator --save-dev
@@ -52,7 +54,7 @@ The flag `--save-dev` will create an entry in the package.json if one doesn't al
 
 ## Utils
 ### `buildComplex.js`
-This JavaScript file is used to build a complex DOM and generate an HTML file.
+This JavaScript file is used to generate an HTML file which embedds a standalone version of the TodoMVC application in the generated complex DOM.
 
 The buildComplex function takes several parameters, including the caller directory, source directory, title, files to move, extra CSS to link, and scripts to link. It removes the dist directory if it exists and generates a new index.html file in the dist directory which is the application embedded in the complex DOM.
 
@@ -60,7 +62,7 @@ The buildComplex function takes several parameters, including the caller directo
 
 ### What's so special about javascript-web-components and lit TodoMVC?
 
-The shadow dom is a special dom that is attached to a web component. This is a great feature for web components, but it also means that the css rules of the page will not affect the shadow dom of the web component. To address this we created some util modules so that we can add the additional css rules to the shadow dom of the `todo-list` and and in the `list-items`.
+The shadow dom is a special dom that is attached to a web component. This is a great feature for web components, but it also means that the css rules of the page will not affect the shadow dom of the web component. To address this we created some util modules so that we can add the additional css rules to the shadow dom of the `todo-list` and in the shadow dom of the `list-item`s.
 
 ### `add-todo-list-extra-css.js`
 This JavaScript file defines additional CSS styles for a to-do list. It creates a new CSSStyleSheet object called additionalTodoListStyleSheet and sets the styles for the :host(.show-priority) selector.
