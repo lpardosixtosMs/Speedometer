@@ -12,7 +12,8 @@ This workload embeds the todoMVC benchmark in an html page with the following ch
   - E.g. `.todo-area .show-priority li[data-priority="2"].completed`.
 - ~50 of the above rules will partially match elements added by the todoMVC benchmark (the right most selector will match).
   - E.g. `.backlog-group li > div > :checked ~ label`.
-- We added a new class `show-priority` to the todoMVC benchmark list items. We also added a attribute `data-priority`.
+- We added a new class `show-priority` to the todoMVC list `<ul>`. We also added a attribute `data-priority` to the list items `li`.
+    - In the case of Javascript-web-components and lit TodoMVC, we added the `show-priority` class to the `<todo-list>` custom element and the `data-priority` attribute to the `<todo-item>` custom element.
 
 <p align = "center">
 <img src="complex-dom-workload.png" alt="workload" width="800"/>
@@ -53,10 +54,10 @@ npm install ../../big-dom-generator --save-dev
 The flag `--save-dev` will create an entry in the package.json if one doesn't already exist. Now you can use the package in the project as if it was installed from npm.
 
 ## Utils
-### `buildComplex.js`
+### `buildComplex.js` (Update this once other PR lands to use the new buildComplex function)
 This JavaScript file is used to generate an HTML file which embedds a standalone version of the TodoMVC application in the generated complex DOM.
 
-The buildComplex function takes several parameters, including the caller directory, source directory, title, files to move, extra CSS to link, and scripts to link. It removes the dist directory if it exists and generates a new index.html file in the dist directory which is the application embedded in the complex DOM.
+The buildComplex function takes several parameters, including the caller directory, source directory, title, files to move, extra CSS to link, and scripts to link. It removes the dist directory if it exists and generates a new index.html file in the dist directory which is the application embedded in the complex DOM. 
 
 ## Additional CSS
 
