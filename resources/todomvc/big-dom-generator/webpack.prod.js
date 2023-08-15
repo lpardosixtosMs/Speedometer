@@ -19,10 +19,6 @@ module.exports = merge(common, {
                     to: "logo.png",
                 },
                 {
-                    from: "./src/assets/Smock_ChevronRight_18_N.svg",
-                    to: "Smock_ChevronRight_18_N.svg",
-                },
-                {
                     from: "./src/assets/Smock_TaskList_18_N.svg",
                     to: "Smock_TaskList_18_N.svg",
                 },
