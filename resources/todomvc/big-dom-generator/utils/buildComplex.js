@@ -2,10 +2,7 @@ const fs = require("fs");
 const { JSDOM } = require("jsdom");
 const path = require("path");
 
-const COMMON_FILES_TO_MOVE = [
-    "node_modules/big-dom-generator/dist/logo.png",
-    "node_modules/big-dom-generator/dist/Smock_TaskList_18_N.svg",
-];
+const COMMON_FILES_TO_MOVE = ["node_modules/big-dom-generator/dist/logo.png", "node_modules/big-dom-generator/dist/Smock_TaskList_18_N.svg"];
 
 function buildComplex(options) {
     const {
