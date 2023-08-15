@@ -35,7 +35,7 @@ const TreeItem = (props) => {
             <a className="spectrum-TreeView-itemLink">
                 {children
                     ? <ChevronRight className="spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon" />
-                    : <svg className="spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon spectrum-Icon--sizeM" xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 18 18" width="18">
+                    : <svg className="spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon spectrum-Icon--sizeM" viewBox="0 0 18 18">
                         <use href="Smock_TaskList_18_N.svg#task-list" />
                     </svg>
                 }
