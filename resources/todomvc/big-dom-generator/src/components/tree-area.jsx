@@ -7,7 +7,6 @@ import ChevronRight from "./../assets/Smock_ChevronRight_18_N.svg";
 const FolderWrapper = (props) => {
     const { nodeCount, random, maxDepth, maxNumChildren, childProbability, currentDepth } = props;
 
-    // prettier-ignore
     if (nodeCount.current >= TARGET_SIZE || currentDepth >= maxDepth)
         return null;
 
