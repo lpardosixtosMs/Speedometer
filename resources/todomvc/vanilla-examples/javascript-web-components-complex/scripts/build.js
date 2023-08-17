@@ -8,7 +8,7 @@ const FILES_TO_MOVE = [
     "node_modules/big-dom-generator/utils/javascript-web-components/add-todo-item-extra-css.js",
     "node_modules/big-dom-generator/utils/add-todo-list-extra-css.js",
     "node_modules/big-dom-generator/dist/logo.png",
-    "app.css"
+    "app.css",
 ];
 const EXTRA_CSS_TO_LINK = ["app.css"];
 const SCRIPTS_TO_LINK = ["add-todo-item-extra-css.js", "add-todo-list-extra-css.js"];

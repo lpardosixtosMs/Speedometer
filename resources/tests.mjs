@@ -150,7 +150,7 @@ Suites.push({
 });
 
 Suites.push({
-    name: "TodoMVC-WebComponent-Complex-DOM",
+    name: "TodoMVC-WebComponents-Complex-DOM",
     url: "todomvc/vanilla-examples/javascript-web-components-complex/dist/index.html",
     tags: ["todomvc", "webcomponents", "complex"],
     async prepare(page) {
