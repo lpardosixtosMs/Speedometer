@@ -13,4 +13,13 @@ const FILES_TO_MOVE = [
 const EXTRA_CSS_TO_LINK = ["app.css"];
 const SCRIPTS_TO_LINK = ["add-todo-item-extra-css.js", "add-todo-list-extra-css.js"];
 
-buildComplex(path.resolve(__dirname), path.join("..", SOURCE_DIRECTORY), TITLE, FILES_TO_MOVE, EXTRA_CSS_TO_LINK, SCRIPTS_TO_LINK);
+const options = {
+    callerDirectory: path.resolve(__dirname),
+    sourceDirectory: path.join("..", SOURCE_DIRECTORY),
+    title: TITLE,
+    filesToMove: FILES_TO_MOVE,
+    extraCssToLink: EXTRA_CSS_TO_LINK,
+    scriptsToLink: SCRIPTS_TO_LINK,
+};
+
+buildComplex(options);

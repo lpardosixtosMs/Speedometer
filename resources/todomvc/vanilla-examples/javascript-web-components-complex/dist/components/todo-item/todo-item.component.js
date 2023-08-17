@@ -20,6 +20,7 @@ class TodoItem extends HTMLElement {
 
         const node = document.importNode(template.content, true);
         this.item = node.querySelector(".todo-item");
+        this.displayTodo = node.querySelector(".display-todo");
         this.toggleLabel = node.querySelector(".toggle-todo-label");
         this.toggleInput = node.querySelector(".toggle-todo-input");
         this.todoText = node.querySelector(".todo-item-text");

@@ -149,7 +149,6 @@ export class TodoItem extends LitElement {
             todo: true,
             completed: this.completed ?? false,
             editing: this.isEditing,
-            [`li-${this.index}`]: true,
         };
 
         return html`
