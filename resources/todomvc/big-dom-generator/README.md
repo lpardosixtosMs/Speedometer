@@ -4,7 +4,7 @@
 
 This workload embeds the todoMVC benchmark in an html page with the following characteristics.
 
--   The page is a big static DOM with around 4000 elements.
+-   The page is a big static DOM with around 6000 elements.
 -   The page is styled using the @spectrum-css adobe library, which relies on css variables for uniform styling.
 -   The @spectrum-css rules of the page are post processed using postcss and purgecss.
 -   The page includes other ~64 complex color css rules using different kinds of css selectors and combinators.
@@ -16,7 +16,7 @@ This workload embeds the todoMVC benchmark in an html page with the following ch
     -   In the case of Javascript-web-components and lit TodoMVC, we added the `show-priority` class to the `<todo-list>` custom element and the `data-priority` attribute to the `<todo-item>` custom element.
 
 <p align = "center">
-<img src="complex-dom-workload.png" alt="workload" width="800"/>
+<img src="complex-dom-workload.jpeg" alt="workload" width="800"/>
 </p>
 
 ## Structure of the folder
