@@ -1,42 +1,40 @@
 const additionalStyleSheet = new CSSStyleSheet();
-const PRIORITY_LEVELS = 4;
+const PRIORITY_LEVELS = 5;
 
+let priorityRules = [];
 for (let i = 0; i < PRIORITY_LEVELS; i++) {
-    const selector = `:host([data-priority="${i}"])`;
-
-    additionalStyleSheet.insertRule(`
-        ${selector} {
-            --complex-border-bottom-color-completed: var(--complex-border-bottom-color-0, var(--complex-border-bottom-color-default));
-            --complex-border-bottom-color-not-completed: var(--complex-border-bottom-color-1, var(--complex-border-bottom-color-default));
-            --complex-background-color-completed: var(--complex-background-color-${4 - i}, var(--complex-background-color-default));
-            --complex-background-color-not-completed: var(--complex-background-color-${8 - i}, var(--complex-background-color-default));
-            --complex-color-completed: var(--complex-color-1, var(--complex-color-default));
-            --complex-color-not-completed: var(--complex-color-0, var(--complex-color-default));
-            --complex-box-shadow: var(--complex-box-shadow-0, var(--complex-box-shadow-default));
-        }
-    `);
+    priorityRules.push(`
+        :host([data-priority="${i}"]) > li {
+            --priority-background-color: var(--complex-todo-red-pri-${i});
+            --priority-background-color-completed: var(--complex-todo-green-pri-${i});
+        }`);
 }
+priorityRules = priorityRules.join("\n");
 
-const selectors = ["li.completed", "li:not(.completed)"];
+additionalStyleSheet.replaceSync(`
+    ${priorityRules}
 
-for (const selector of selectors) {
-    additionalStyleSheet.insertRule(`
-        ${selector} {
-            border-bottom-color: var(--complex-border-bottom-color-${selector === "li.completed" ? "completed" : "not-completed"});
-            background-color: var(--complex-background-color-${selector === "li.completed" ? "completed" : "not-completed"});
-        }
-    `);
+    .todo {
+        background-color: var(--priority-background-color, var(--complex-background-color-default));
+        border-bottom-color: var(--complex-todo-red-border, var(--complex-border-bottom-color-default));
+        box-shadow: var(--complex-box-shadow, var(--complex-box-shadow-default));
+    }
+    .todo.completed {
+        background-color: var(--priority-background-color-completed, var(--complex-background-color-default));
+        border-bottom-color: var(--complex-todo-green-border, var(--complex-border-bottom-color-default));
+        box-shadow: var(--complex-box-shadow-completed, var(--complex-box-shadow-default));
+    }
 
-    additionalStyleSheet.insertRule(`
-        ${selector} > div > label {
-            color: var(--complex-color-${selector === "li.completed" ? "completed" : "not-completed"});
-        }
-    `);
-}
+    .todo > div label {
+        color: var(--complex-todo-red-label, --complex-label-color-default);
+    }
 
-additionalStyleSheet.insertRule(`
-    ${selectors[0]} > div > :focus,
-    ${selectors[0]} > div > .toggle:focus + label {
+    .todo.completed label {
+        color: var(--complex-todo-green-label, --complex-label-color-default);
+    }
+
+    .todo > div > :focus,
+    .todo > div > .toggle:focus + label {
         box-shadow: var(--complex-box-shadow);
     }
 `);
