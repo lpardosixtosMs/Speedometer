@@ -11,7 +11,7 @@ const COMPLEX_DIRECTORY = path.join(__dirname, "..");
 const STANDALONE_DIRECTORY = path.join(__dirname, "..", "..", "angular");
 const SOURCE_DIRECTORY = "node_modules/todomvc-angular/dist/";
 const TITLE = "TodoMVC: Angular Complex DOM";
-const { execSync } = require("child_process");
+const FILES_TO_MOVE = ["node_modules/big-dom-generator/dist/big-dom-generator.css", "node_modules/big-dom-generator/dist/logo.png"];
 
 // Run npm i in big-dom-generator
 console.log("Running npm i in big-dom-generator...");
@@ -28,9 +28,7 @@ execSync("npm run build", { cwd: STANDALONE_DIRECTORY, stdio: "inherit" });
 console.log(`Running npm i in the complex directory... : ${COMPLEX_DIRECTORY}`);
 execSync("npm i", { cwd: COMPLEX_DIRECTORY, stdio: "inherit" });
 
-
 const { buildComplex } = require("big-dom-generator/utils/buildComplex");
-const FILES_TO_MOVE = ["node_modules/big-dom-generator/dist/big-dom-generator.css", "node_modules/big-dom-generator/dist/logo.png"];
 
 const options = {
     callerDirectory: path.resolve(__dirname),
