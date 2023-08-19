@@ -140,10 +140,8 @@ export class TodoItem extends LitElement {
 
     override connectedCallback() {
         super.connectedCallback();
-        if (!EXTRA_CSS_TO_ADOPT)
-            return;
-
-        this.shadowRoot?.adoptedStyleSheets.push(EXTRA_CSS_TO_ADOPT);
+        if (EXTRA_CSS_TO_ADOPT)
+            this.shadowRoot?.adoptedStyleSheets.push(EXTRA_CSS_TO_ADOPT);
     }
 
     override render() {
