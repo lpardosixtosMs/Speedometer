@@ -1,23 +1,38 @@
 # TodoMVC embedded in a complex big static DOM
 
-## The benchmark
+The complex DOM workloads embed the different TodoMVC implementations into a static page formed by a big DOM and complex CSS. Their purpose is to capture the performance impact of executing seemingly isolated actions (e.g. adding/deleting todo items) in the context of a complex website.
 
-This workload embeds the todoMVC benchmark in an html page with the following characteristics.
+The complexity of the CSS is represented by adding rules composed by complex selectors and combinators. We split the added selectors into **matching** and **non-matching** rules. All the matching selector will fully match an element added by the TodoMVC benchmark, but not elements in the UI. The non-matching selectors will partially match elements added by the TodoMVC benchmark (at least the right most selector will match), and will have a visual impact in the surrounding UI. These ensure that we capture the performance impact of the added CSS rules within the measured time.
 
--   The page is a big static DOM with around 6000 elements.
+## Workload description
+
+The static page with the following characteristics.
+
+-   The DOM has around 6000 elements.
 -   The page is styled using the @spectrum-css adobe library, which relies on css variables for uniform styling.
 -   The @spectrum-css rules of the page are post processed using postcss and purgecss.
--   The page includes other ~64 complex color css rules using different kinds of css selectors and combinators.
--   ~14 of the above rules will fully match elements added by the todoMVC benchmark, but not elements in the UI.
-    -   E.g. `.todo-area .show-priority li[data-priority="2"].completed`.
--   ~50 of the above rules will partially match elements added by the todoMVC benchmark (the right most selector will match).
+-   Additional styling is applied through ~50 non-matching CSS rules.
     -   E.g. `.backlog-group li > div > :checked ~ label`.
--   We added a new class `show-priority` to the todoMVC list `<ul>`. We also added a attribute `data-priority` to the list items `li`.
+-   The non-matching selectors were written so that elements within the todoMVC matched more than the right-most selector, for example, the `label` element in the todo items matchs the above complex selector up to the `li` simple selector. Any changes to the DOM withing the todoMVC will require us to re-evaluate these selectors.
+-   Angular uses custom elements, so the todoMVC elements might match a smaller part of the selector compared to other architectures.
+
+All TodoMVC versions now have a `show-priority` class name in the `<ul>` element and a `data-priority` attribute in the `li` elements. These are used by the matching CSS rules.
+
+-   We added ~14 matching CSS rules.
+    -   E.g. `.todo-area .show-priority li[data-priority="2"].completed`.
     -   In the case of Javascript-web-components and lit TodoMVC, we added the `show-priority` class to the `<todo-list>` custom element and the `data-priority` attribute to the `<todo-item>` custom element.
 
 <p align = "center">
 <img src="complex-dom-workload.jpeg" alt="workload" width="800"/>
 </p>
+
+### Web components based workloads
+
+The Shadow DOM isolation prevents global CSS rules to be applied to its children, hence, having matching or non-matching rules doesn't have the same impact as with the other architectures. Instead, the Complex DOM Web components and Lit workloads stress the use of CSS variables inherited though the shadow DOM boundary:
+
+-   Some default variables are defined in the `root` element.
+-   The `add-todo-list-extra-css.js` file defines a constructable stylesheet that will declare the priority colors only if the `show-priority` class is present in the host.
+-   The `add-todo-item-extra-css.js` file defines the rule to style the todo items based on their priority level.
 
 ## Structure of the folder
 
@@ -35,13 +50,12 @@ This workload embeds the todoMVC benchmark in an html page with the following ch
 
 ## The generator
 
-The generator is a nodejs script that uses `renderToStaticMarkup` to generate the static html.
+The generator is a nodejs script that uses `renderToStaticMarkup` to generate the static html. It uses a random seedable library to generate the random folder-like structure embedded in the sidebar. The generator takes the following parameters:
 
-### Dom Generator
-
--   Uses a random seedable library with a default seed for all its random operations.
--   Takes `MAX_DEPTH`, `TARGET_SIZE` and to randomly generate the big folder-like structure embedded in the sidebar.
--   To generate the sidebar, each node decides if it will have children based on the `CHILD_PROB` value. Then randomly chooses a number of children between 1 and `MAX_BREADTH`.
+-   `MAX_DEPTH` - Maximum depth of the generated DOM.
+-   `TARGET_SIZE` - Number of elements in the generated DOM.
+-   `CHILD_PROB` - Probability of each element of the sidebar to have children.
+-   `MAX_BREADTH` - Maximum number of children of each element of the sidebar.
 
 ## Install using local path
 
@@ -52,45 +66,3 @@ npm install ../../big-dom-generator --save-dev
 ```
 
 The flag `--save-dev` will create an entry in the package.json if one doesn't already exist. Now you can use the package in the project as if it was installed from npm.
-
-## Utils
-
-### `buildComplex.js` (Update this once other PR lands to use the new buildComplex function)
-
-This JavaScript file is used to generate an HTML file which embedds a standalone version of the TodoMVC application in the generated complex DOM.
-
-The buildComplex function takes several parameters, including the caller directory, source directory, title, files to move, extra CSS to link, and scripts to link. It removes the dist directory if it exists and generates a new index.html file in the dist directory which is the application embedded in the complex DOM.
-
-## Additional CSS
-
-### What's so special about javascript-web-components and lit TodoMVC?
-
-The shadow dom is a special dom that is attached to a web component. This is a great feature for web components, but it also means that the css rules of the page will not affect the shadow dom of the web component. To address this we created some util modules so that we can add the additional css rules to the shadow dom of the `todo-list` and in the shadow dom of the `list-item`s.
-
-### `add-todo-list-extra-css.js`
-
-This JavaScript file defines additional CSS styles for a to-do list. It creates a new CSSStyleSheet object called additionalTodoListStyleSheet and sets the styles for the :host(.show-priority) selector.
-
-The styles include CSS variables for border colors, background colors, text colors, and box shadows. These variables are used to define the styles for completed and not completed to-do list items based on their priority level.
-
-The additionalTodoListStyleSheet object is then assigned to the window.extraTodoListCssToAdopt property, which can be used to apply the additional styles to the to-do list.
-
-### `add-todo-item-extra-css.js`
-
-This JavaScript file defines additional CSS styles for a to-do list item. It creates a new CSSStyleSheet object called additionalStyleSheet and sets the styles for the li.completed and li:not(.completed) selectors.
-
-The styles include CSS variables for border colors, background colors, and text colors. These variables are used to define the styles for completed and not completed to-do list items.
-
-The additionalStyleSheet object is then assigned to the window.extraCssToAdopt property, which can be used to apply the additional styles to the to-do list.
-
-### There is a slight difference between `add-todo-item-extra-css.js` and `javascript-web-components/add-todo-item-extra-css.js`
-
-Given the slight structural difference between javascript-web-components & lit there are different selectors used.
-
-**Javascript-web-components** uses the following selectors:
-
--   `const selectors = [':host([completed="true"]) li', ':host([completed="false"]) li'];`
-
-**lit** uses the following selectors:
-
--   `const selectors = ["li.completed", "li:not(.completed)"];`
