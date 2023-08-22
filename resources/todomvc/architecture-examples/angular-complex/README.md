@@ -18,3 +18,12 @@ terminal
 2. pushd ../angular && npm install && npm run build && popd
 3. npm run build
 ```
+
+## Local preview
+
+```
+terminal:
+1. npm run serve
+browser:
+1. http://localhost:8080
+```

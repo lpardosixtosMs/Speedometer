@@ -49,6 +49,13 @@ The big DOM is produced by the generator in a nodejs script that uses `renderToS
 -   _dist_ - Output folder for the big static DOM generator.
 -   utils - Folder for the functions to generate the complex DOM versions of each TodoMVC implementation as well as add additional css.
 
+## Requirements
+
+The only requirement is an installation of Node, to be able to install dependencies and run scripts to serve a local server.
+
+* Node (min version: 18.13.0)
+* NPM (min version: 8.19.3)
+
 ## How to run
 
 `npm install` - Installs the dependencies.
