@@ -2,15 +2,15 @@
 
 ## Description
 
-This application embeds the Angular version of the TodoMVC application in a static UI shell that mimics a complex web page.
+This application embeds the Angular implementation of the TodoMVC application in a static UI shell that mimics a complex web page.
 
 Please refer to the [Angular README.md](../angular/README.md) for more information on the Angular TodoMVC implementation.
 
 Please refer to the [big-dom-generator README.md](../../big-dom-generator/README.md) for more information on the UI shell.
 
-## Built steps
+## Build steps
 
-It is required to build the big-dom-generator and standalone Angular TodoMVC before building the Angular Complex DOM TodoMVC.
+Big-dom-generator and standalone Angular TodoMVC need to be built before building the Angular Complex DOM TodoMVC.
 
 ```
 terminal
