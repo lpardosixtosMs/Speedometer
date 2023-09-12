@@ -4,6 +4,9 @@ export const DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR = 4212021;
 export const MAX_GENERATED_DOM_DEPTH = 40;
 export const MAX_NUMBER_OF_CHILDREN = 16;
 export const PROBABILITY_OF_HAVING_CHILDREN = 0.3;
+// The target node count for the generated DOM tree.
 export const TARGET_SIZE = 6000;
+// This constant is used to set the minimum number of branches in
+// the generated DOM tree that have a maximum depth.
 export const MIN_NUMBER_OF_MAX_DEPTH_BRANCHES = 2;
 export const MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH = 15;

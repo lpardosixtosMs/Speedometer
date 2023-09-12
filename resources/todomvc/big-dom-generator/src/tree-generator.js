@@ -8,6 +8,29 @@ const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
  * It starts with the minimum number of maximum-depth branches and randomly adds
  * children to the nodes in a breadth-first manner.
  * The weight parameters represent how many DOM nodes are generated for each type of node.
+ * @param {number} listWeight - The weight for the "list" node type.
+ * @param {number} openItemWeight - The weight for the "openItem" node type.
+ * @param {number} closedItemWeight - The weight for the "closedItem" node type.
+ * @returns {Object} The generated tree structure. Example structure:
+ * {
+ *    type: "list",
+ *    children: [
+ *        {
+ *         type: "openItem",
+ *         children: [
+ *           {
+ *             type: "list",
+ *             children: [
+ *             {
+ *               type: "closedItem",
+ *               children: []
+ *             }
+ *             ]
+ *           }
+ *         ]
+ *        }
+ *    ]
+ * }
  **/
 export const generateTreeHead = ({ listWeight, openItemWeight, closedItemWeight }) => {
     const treeHead = { type: "list", children: [] };
@@ -25,6 +48,7 @@ export const generateTreeHead = ({ listWeight, openItemWeight, closedItemWeight 
             currentDepth++;
             totalNodes += nodeWeight[type];
         }
+        // If you are the last node in the branch, you are a closed item.
         if (MAX_GENERATED_DOM_DEPTH % 2) {
             currentNode.type = "closedItem";
             totalNodes = totalNodes - nodeWeight["openItem"] + nodeWeight["closedItem"];
