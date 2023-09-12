@@ -47,7 +47,7 @@ export const generateTreeHead = ({ listWeight, expandableItemWeight, nonExpandab
             currentDepth++;
             totalNodes += nodeWeight[childType];
         }
-        // If you are the last node in the branch, you are a closed item.
+        // So these branches actually end in a todo list (nonExpandableItem) instead of a sprint folder.
         if (currentNode.type === "expandableItem") {
             currentNode.type = "nonExpandableItem";
             totalNodes = totalNodes - nodeWeight["expandableItem"] + nodeWeight["nonExpandableItem"];
