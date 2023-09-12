@@ -19,7 +19,7 @@ const TreeItem = (props) => {
     const { treeNode, currentDepth } = props;
 
     const isExpandableItem = treeNode.type === "expandableItem";
-    // We always push the first child of treeNode because we know that treeNode.children.length is 1 if there are children.
+    // We always push the first child of treeNode because we know that treeNode.children.length is 1 if the item is expandable
     const children = isExpandableItem ? <FolderWrapper treeNode={treeNode.children[0]} currentDepth={currentDepth + 1} /> : null;
     const treeViewItemIsOpen = isExpandableItem && currentDepth < MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH ? "is-open" : "";
     return (
