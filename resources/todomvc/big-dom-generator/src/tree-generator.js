@@ -10,7 +10,7 @@ const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
  * The weight parameters represent how many DOM nodes are generated for each type of node.
  * @param {number} listWeight - The weight for the "list" node type. <ul></ul>
  * @param {number} expandableItemWeight - The weight for the "expandableItem" node type. <li></li> with ChevronRight svg.
- * @param {number} nonExpandableItemWeight - The weight for the "closedItem" node type. <li></li> TaskListIcon svg.
+ * @param {number} nonExpandableItemWeight - The weight for the "nonExpandableItem" node type. <li></li> TaskListIcon svg.
  * @returns {Object} The generated tree structure. Example structure:
  * {
  *    type: "list",
@@ -59,6 +59,7 @@ export const generateTreeHead = ({ listWeight, expandableItemWeight, nonExpandab
     // reaching the target size.
     while (totalNodes < TARGET_SIZE) {
         let index = 0;
+        // All items start as closed and are marked open if the algorithm adds children.
         while (index < treeNodes.length && totalNodes < TARGET_SIZE) {
             let currentNode = treeNodes[index];
             switch (currentNode.type) {
