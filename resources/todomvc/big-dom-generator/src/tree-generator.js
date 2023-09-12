@@ -47,7 +47,7 @@ export const generateTreeHead = ({ listWeight, expandableItemWeight, nonExpandab
             currentDepth++;
             totalNodes += nodeWeight[childType];
         }
-        // So these branches actually end in a todo list (nonExpandableItem) instead of a sprint folder.
+        // Ensure the last node is not an expandableItem.
         if (currentNode.type === "expandableItem") {
             currentNode.type = "nonExpandableItem";
             totalNodes = totalNodes - nodeWeight["expandableItem"] + nodeWeight["nonExpandableItem"];
