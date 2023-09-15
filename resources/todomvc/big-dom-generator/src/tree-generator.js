@@ -71,9 +71,9 @@ export const generateTreeHead = ({ expandableItemWeight, nonExpandableItemWeight
                 case "nonExpandableItem":
                     if (random.coin(PROBABILITY_OF_HAVING_CHILDREN)) {
                         currentNode.type = "expandableItem";
-                        currentNode.children = [{ type: "list", children: [] }];
+                        currentNode.children = [{ type: "expandableItem", children: [] }];
                         totalNodes = totalNodes - nodeWeight["nonExpandableItem"] + nodeWeight["expandableItem"];
-                        totalNodes += nodeWeight["list"];
+                        totalNodes += nodeWeight["expandableItem"];
                         treeNodes.push(currentNode.children[0]);
                     }
                     break;
