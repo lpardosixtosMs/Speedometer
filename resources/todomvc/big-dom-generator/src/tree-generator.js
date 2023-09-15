@@ -8,40 +8,34 @@ const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
  * It starts with the minimum number of maximum-depth branches and randomly adds
  * children to the nodes in a breadth-first manner.
  * The weight parameters represent how many DOM nodes are generated for each type of node.
- * @param {number} listWeight - The weight for the "list" node type. <ul></ul>
  * @param {number} expandableItemWeight - The weight for the "expandableItem" node type. <li></li> with ChevronRight svg.
  * @param {number} nonExpandableItemWeight - The weight for the "nonExpandableItem" node type. <li></li> TaskListIcon svg.
  * @returns {Object} The generated tree structure. Example structure:
  * {
- *    type: "list",
+ *    type: "expandableItem",
  *    children: [
  *      {
  *         type: "expandableItem",
  *         children: [
  *           {
- *             type: "list",
- *             children: [
- *               {
- *                 type: "nonExpandableItem",
- *                 children: []
- *               }
- *             ]
+ *             type: "nonExpandableItem",
+ *             children: []
  *           }
  *         ]
  *      }
  *    ]
  * }
  **/
-export const generateTreeHead = ({ listWeight, expandableItemWeight, nonExpandableItemWeight }) => {
-    const treeHead = { type: "list", children: [] };
-    const nodeWeight = { list: listWeight, expandableItem: expandableItemWeight, nonExpandableItem: nonExpandableItemWeight };
+export const generateTreeHead = ({ expandableItemWeight, nonExpandableItemWeight }) => {
+    const treeHead = { type: "expandableItem", children: [] };
+    const nodeWeight = { expandableItem: expandableItemWeight, nonExpandableItem: nonExpandableItemWeight };
 
-    let totalNodes = listWeight;
+    let totalNodes = expandableItemWeight;
     for (let i = 0; i < MIN_NUMBER_OF_MAX_DEPTH_BRANCHES; i++) {
         let currentDepth = 0;
         let currentNode = treeHead;
         while (currentDepth < MAX_GENERATED_DOM_DEPTH) {
-            let childType = (currentDepth + 1) % 2 ? "expandableItem" : "list";
+            let childType = "expandableItem";
             currentNode.children.push({ type: childType, children: [] });
             currentNode = currentNode.children[currentNode.children.length - 1];
             currentDepth++;
@@ -64,18 +58,6 @@ export const generateTreeHead = ({ listWeight, expandableItemWeight, nonExpandab
             let currentNode = treeNodes[index];
             switch (currentNode.type) {
                 case "expandableItem":
-                    treeNodes.push(currentNode.children[0]);
-                    break;
-                case "nonExpandableItem":
-                    if (random.coin(PROBABILITY_OF_HAVING_CHILDREN)) {
-                        currentNode.type = "expandableItem";
-                        currentNode.children = [{ type: "list", children: [] }];
-                        totalNodes = totalNodes - nodeWeight["nonExpandableItem"] + nodeWeight["expandableItem"];
-                        totalNodes += nodeWeight["list"];
-                        treeNodes.push(currentNode.children[0]);
-                    }
-                    break;
-                case "list":
                     if (random.coin(PROBABILITY_OF_HAVING_CHILDREN) || currentNode.children.length) {
                         const numberOfNewChildren = random.randRange(1, MAX_NUMBER_OF_CHILDREN - currentNode.children.length + 1);
                         for (let i = 0; i < numberOfNewChildren && totalNodes < TARGET_SIZE; i++) {
@@ -84,6 +66,15 @@ export const generateTreeHead = ({ listWeight, expandableItemWeight, nonExpandab
                         }
                         random.shuffle(currentNode.children, true);
                         treeNodes.push(...currentNode.children);
+                    }
+                    break;
+                case "nonExpandableItem":
+                    if (random.coin(PROBABILITY_OF_HAVING_CHILDREN)) {
+                        currentNode.type = "expandableItem";
+                        currentNode.children = [{ type: "list", children: [] }];
+                        totalNodes = totalNodes - nodeWeight["nonExpandableItem"] + nodeWeight["expandableItem"];
+                        totalNodes += nodeWeight["list"];
+                        treeNodes.push(currentNode.children[0]);
                     }
                     break;
                 default:
