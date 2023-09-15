@@ -18,10 +18,10 @@ const FolderWrapper = (props) => {
 const TreeItem = (props) => {
     const { treeNode, currentDepth } = props;
 
-    const isExpandableItem = treeNode.type === "expandableItem";
+    const isExpandedItem = treeNode.type === "expandedItem";
     // We always push the first child of treeNode because we know that treeNode.children.length is 1 if the item is expandable
-    const children = isExpandableItem ? <FolderWrapper treeNode={treeNode.children[0]} currentDepth={currentDepth + 1} /> : null;
-    const treeViewItemIsOpen = isExpandableItem && currentDepth < MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH ? "is-open" : "";
+    const children = isExpandedItem ? <FolderWrapper treeNode={treeNode.children[0]} currentDepth={currentDepth + 1} /> : null;
+    const treeViewItemIsOpen = isExpandedItem && currentDepth < MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH ? "is-open" : "";
     return (
         <li className={`spectrum-TreeView-item ${treeViewItemIsOpen}`}>
             <a className="spectrum-TreeView-itemLink">
@@ -30,7 +30,7 @@ const TreeItem = (props) => {
                     : <ChevronRight className="spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon" />
                 }
 
-                <span className="just-span spectrum-TreeView-itemLabel">{isExpandableItem ? "Sprint" : "Todo List"}</span>
+                <span className="just-span spectrum-TreeView-itemLabel">{isExpandedItem ? "Sprint" : "Todo List"}</span>
             </a>
             {children}
         </li>
@@ -46,7 +46,7 @@ const TreeItem = (props) => {
  * To reach 1 element, the following dom structure is generated (list):
  * <ul></ul>
  *
- * To reach 5 elements, the following dom structure is generated (expandableItem, chevronRight):
+ * To reach 5 elements, the following dom structure is generated (expandedItem, chevronRight):
  * <li class="spectrum-TreeView-item is-open">
  *  <a class="spectrum-TreeView-itemLink">
  *      <svg>
@@ -71,7 +71,7 @@ const TreeItem = (props) => {
  * </li>
  */
 export const TreeArea = () => {
-    const treeOptions = { listWeight: 1, expandableItemWeight: 5, nonExpandableItemWeight: 10 };
+    const treeOptions = { listWeight: 1, expandedItemWeight: 5, nonExpandableItemWeight: 10 };
     const treeHead = generateTreeHead(treeOptions);
     return (
         <div className="tree-area">

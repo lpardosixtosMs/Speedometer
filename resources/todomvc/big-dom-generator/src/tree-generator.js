@@ -9,14 +9,14 @@ const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
  * children to the nodes in a breadth-first manner.
  * The weight parameters represent how many DOM nodes are generated for each type of node.
  * @param {number} listWeight - The weight for the "list" node type. <ul></ul>
- * @param {number} expandableItemWeight - The weight for the "expandableItem" node type. <li></li> with ChevronRight svg.
+ * @param {number} expandedItemWeight - The weight for the "expandedItem" node type. <li></li> with ChevronRight svg.
  * @param {number} nonExpandableItemWeight - The weight for the "nonExpandableItem" node type. <li></li> TaskListIcon svg.
  * @returns {Object} The generated tree structure. Example structure:
  * {
  *    type: "list",
  *    children: [
  *      {
- *         type: "expandableItem",
+ *         type: "expandedItem",
  *         children: [
  *           {
  *             type: "list",
@@ -32,25 +32,25 @@ const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
  *    ]
  * }
  **/
-export const generateTreeHead = ({ listWeight, expandableItemWeight, nonExpandableItemWeight }) => {
+export const generateTreeHead = ({ listWeight, expandedItemWeight, nonExpandableItemWeight }) => {
     const treeHead = { type: "list", children: [] };
-    const nodeWeight = { list: listWeight, expandableItem: expandableItemWeight, nonExpandableItem: nonExpandableItemWeight };
+    const nodeWeight = { list: listWeight, expandedItem: expandedItemWeight, nonExpandableItem: nonExpandableItemWeight };
 
     let totalNodes = listWeight;
     for (let i = 0; i < MIN_NUMBER_OF_MAX_DEPTH_BRANCHES; i++) {
         let currentDepth = 0;
         let currentNode = treeHead;
         while (currentDepth < MAX_GENERATED_DOM_DEPTH) {
-            let childType = (currentDepth + 1) % 2 ? "expandableItem" : "list";
+            let childType = (currentDepth + 1) % 2 ? "expandedItem" : "list";
             currentNode.children.push({ type: childType, children: [] });
             currentNode = currentNode.children[currentNode.children.length - 1];
             currentDepth++;
             totalNodes += nodeWeight[childType];
         }
-        // Ensure the last node is not an expandableItem.
-        if (currentNode.type === "expandableItem") {
+        // Ensure the last node is not an expandedItem.
+        if (currentNode.type === "expandedItem") {
             currentNode.type = "nonExpandableItem";
-            totalNodes = totalNodes - nodeWeight["expandableItem"] + nodeWeight["nonExpandableItem"];
+            totalNodes = totalNodes - nodeWeight["expandedItem"] + nodeWeight["nonExpandableItem"];
         }
     }
 
@@ -63,14 +63,14 @@ export const generateTreeHead = ({ listWeight, expandableItemWeight, nonExpandab
         while (index < treeNodes.length && totalNodes < TARGET_SIZE) {
             let currentNode = treeNodes[index];
             switch (currentNode.type) {
-                case "expandableItem":
+                case "expandedItem":
                     treeNodes.push(currentNode.children[0]);
                     break;
                 case "nonExpandableItem":
                     if (random.coin(PROBABILITY_OF_HAVING_CHILDREN)) {
-                        currentNode.type = "expandableItem";
+                        currentNode.type = "expandedItem";
                         currentNode.children = [{ type: "list", children: [] }];
-                        totalNodes = totalNodes - nodeWeight["nonExpandableItem"] + nodeWeight["expandableItem"];
+                        totalNodes = totalNodes - nodeWeight["nonExpandableItem"] + nodeWeight["expandedItem"];
                         totalNodes += nodeWeight["list"];
                         treeNodes.push(currentNode.children[0]);
                     }
