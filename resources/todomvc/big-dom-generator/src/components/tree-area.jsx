@@ -20,7 +20,7 @@ const TreeItem = (props) => {
 
                 <span className="just-span spectrum-TreeView-itemLabel">{isExpandableItem ? "Sprint" : "Todo List"}</span>
             </a>
-            {children && <ul className="spectrum-TreeView spectrum-TreeView--sizeS">{children}</ul>}
+            {isExpandableItem && <ul className="spectrum-TreeView spectrum-TreeView--sizeS">{children}</ul>}
         </li>
     );
 };

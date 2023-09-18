@@ -11,7 +11,8 @@ const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
  * @param {Object} options - The options object.
  * @param {number} options.expandableItemWeight - The weight for the "expandableItem" node type. <li></li> with ChevronRight svg.
  * @param {number} options.nonExpandableItemWeight - The weight for the "nonExpandableItem" node type. <li></li> TaskListIcon svg.
- * @returns {Object} The generated tree structure. Example structure:
+ * @returns {Object} The generated tree structure. The values for type are either "expandableItem" or "nonExpandableItem".
+ * Example structure:
  * {
  *    type: "expandableItem",
  *    children: [
@@ -57,29 +58,30 @@ export const generateTreeHead = ({ expandableItemWeight, nonExpandableItemWeight
         // All items start as closed and are marked open if the algorithm adds children.
         while (index < treeNodes.length && totalNodes < TARGET_SIZE) {
             let currentNode = treeNodes[index];
-            switch (currentNode.type) {
-                case "expandableItem":
-                    if (random.coin(PROBABILITY_OF_HAVING_CHILDREN) || currentNode.children.length) {
-                        const numberOfNewChildren = random.randRange(1, MAX_NUMBER_OF_CHILDREN - currentNode.children.length + 1);
-                        for (let i = 0; i < numberOfNewChildren && totalNodes < TARGET_SIZE; i++) {
-                            currentNode.children.push({ type: "nonExpandableItem", children: [] });
-                            totalNodes += nodeWeight["nonExpandableItem"];
-                        }
-                        random.shuffle(currentNode.children, true);
-                        treeNodes.push(...currentNode.children);
+            if (currentNode.type === "expandableItem") {
+                if (random.coin(PROBABILITY_OF_HAVING_CHILDREN) || currentNode.children.length) {
+                    const numberOfNewChildren = random.randRange(1, MAX_NUMBER_OF_CHILDREN - currentNode.children.length + 1);
+                    for (let i = 0; i < numberOfNewChildren && totalNodes < TARGET_SIZE; i++) {
+                        currentNode.children.push({ type: "nonExpandableItem", children: [] });
+                        totalNodes += nodeWeight["nonExpandableItem"];
                     }
-                    break;
-                case "nonExpandableItem":
-                    if (random.coin(PROBABILITY_OF_HAVING_CHILDREN)) {
-                        currentNode.type = "expandableItem";
-                        currentNode.children = [{ type: "expandableItem", children: [] }];
-                        totalNodes = totalNodes - nodeWeight["nonExpandableItem"] + nodeWeight["expandableItem"];
-                        totalNodes += nodeWeight["expandableItem"];
-                        treeNodes.push(currentNode.children[0]);
-                    }
-                    break;
-                default:
-                    throw new Error(`Unknown node type: ${currentNode.type}`);
+                    random.shuffle(currentNode.children, true);
+                    treeNodes.push(...currentNode.children);
+                }
+            } else if (currentNode.type === "nonExpandableItem") {
+                if (random.coin(PROBABILITY_OF_HAVING_CHILDREN)) {
+                    currentNode.type = "expandableItem";
+                    // randomly choose the child type between expandableItem and nonExpandableItem
+                    let childType = random.choice(["expandableItem", "nonExpandableItem"]);
+                    currentNode.children.push({ type: childType, children: [] });
+                    // We changed the node type so we need to update the totalNodes count.
+                    totalNodes = totalNodes - nodeWeight["nonExpandableItem"] + nodeWeight[childType];
+                    // We added a child so we need to update the totalNodes count.
+                    totalNodes += nodeWeight[childType];
+                    treeNodes.push(currentNode.children[0]);
+                }
+            } else {
+                throw new Error(`Unknown node type: ${currentNode.type}`);
             }
             index++;
         }
