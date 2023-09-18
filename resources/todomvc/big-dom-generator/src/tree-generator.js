@@ -75,7 +75,7 @@ export const generateTreeHead = ({ expandableItemWeight, nonExpandableItemWeight
                     let childType = random.choice(["expandableItem", "nonExpandableItem"]);
                     currentNode.children.push({ type: childType, children: [] });
                     // We changed the node type so we need to update the totalNodes count.
-                    totalNodes = totalNodes - nodeWeight["nonExpandableItem"] + nodeWeight[childType];
+                    totalNodes = totalNodes - nodeWeight["nonExpandableItem"] + nodeWeight["expandableItem"];
                     // We added a child so we need to update the totalNodes count.
                     totalNodes += nodeWeight[childType];
                     treeNodes.push(currentNode.children[0]);
