@@ -4,12 +4,13 @@ import { DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR, MAX_GENERATED_DOM_DEPTH, MAX_
 const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
 
 /**
- * Generates the blueprint of the tree-view side panel for the complex DOM shell.
+ * Generates the blueprint of the tree-view side panel for the complex DOM shell with expandable and non-expandable items.
  * It starts with the minimum number of maximum-depth branches and randomly adds
  * children to the nodes in a breadth-first manner.
  * The weight parameters represent how many DOM nodes are generated for each type of node.
- * @param {number} expandableItemWeight - The weight for the "expandableItem" node type. <li></li> with ChevronRight svg.
- * @param {number} nonExpandableItemWeight - The weight for the "nonExpandableItem" node type. <li></li> TaskListIcon svg.
+ * @param {Object} options - The options object.
+ * @param {number} options.expandableItemWeight - The weight for the "expandableItem" node type. <li></li> with ChevronRight svg.
+ * @param {number} options.nonExpandableItemWeight - The weight for the "nonExpandableItem" node type. <li></li> TaskListIcon svg.
  * @returns {Object} The generated tree structure. Example structure:
  * {
  *    type: "expandableItem",
