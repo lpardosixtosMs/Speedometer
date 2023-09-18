@@ -11,7 +11,7 @@ const random = new LCG(DEFAULT_SEED_FOR_RANDOM_NUMBER_GENERATOR);
  * @param {Object} options - The options object.
  * @param {number} options.expandableItemWeight - The weight for the "expandableItem" node type. <li></li> with ChevronRight svg.
  * @param {number} options.nonExpandableItemWeight - The weight for the "nonExpandableItem" node type. <li></li> TaskListIcon svg.
- * @returns {Object} The generated tree structure. The values for type are either "expandableItem" or "nonExpandableItem".
+ * @returns {Object} An object with two possible values for the "type" property: "expandableItem" or "nonExpandableItem"
  * Example structure:
  * {
  *    type: "expandableItem",
