@@ -8,17 +8,21 @@ const TreeItem = (props) => {
     const { treeNode, currentDepth } = props;
 
     const isExpandableItem = treeNode.type === "expandableItem";
-    const children = isExpandableItem ? treeNode.children.map((child) => <TreeItem treeNode={child} currentDepth={currentDepth + 1} />) : null;
     const treeViewItemIsOpen = isExpandableItem && currentDepth < MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH ? "is-open" : "";
+
     return (
-        <li className={`spectrum-TreeView-item ${treeViewItemIsOpen}`}>
+        <li className={`spectrum-TreeView-item ${treeViewItemIsOpen} nodetype-${treeNode.type}`}>
             {isExpandableItem
                 ? <>
                     <a className="spectrum-TreeView-itemLink">
                         <ChevronRight className="spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon" />
                         <span className="just-span spectrum-TreeView-itemLabel">Sprint</span>
                     </a>
-                    <ul className="spectrum-TreeView spectrum-TreeView--sizeS">{children}</ul>
+                    <ul className="spectrum-TreeView spectrum-TreeView--sizeS">
+                        {treeNode.children.map((child) =>
+                            <TreeItem treeNode={child} currentDepth={currentDepth + 1} />
+                        )}
+                    </ul>
                 </>
                 : <a className="spectrum-TreeView-itemLink">
                     <TaskListIcon className="task-list-icon spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon spectrum-Icon--sizeM" />
