@@ -52,7 +52,9 @@ const TreeItem = (props) => {
  * <li class="spectrum-TreeView-item">
  *   <a class="spectrum-TreeView-itemLink">
  *     <svg>
- *       <defs><style>.Smock_TaskList_18_N_svg__fill{fill:#464646}</style></defs>
+ *       <defs>
+ *         <style></style>
+ *       </defs>
  *       <path></path>
  *       <path></path>
  *       <rect></rect>
