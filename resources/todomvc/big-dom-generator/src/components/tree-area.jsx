@@ -12,15 +12,19 @@ const TreeItem = (props) => {
     const treeViewItemIsOpen = isExpandableItem && currentDepth < MAX_VISIBLE_TREE_VIEW_ITEM_DEPTH ? "is-open" : "";
     return (
         <li className={`spectrum-TreeView-item ${treeViewItemIsOpen}`}>
-            <a className="spectrum-TreeView-itemLink">
-                {treeNode.type === "nonExpandableItem"
-                    ? <TaskListIcon className="task-list-icon spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon spectrum-Icon--sizeM" />
-                    : <ChevronRight className="spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon" />
-                }
-
-                <span className="just-span spectrum-TreeView-itemLabel">{isExpandableItem ? "Sprint" : "Todo List"}</span>
-            </a>
-            {isExpandableItem && <ul className="spectrum-TreeView spectrum-TreeView--sizeS">{children}</ul>}
+            {isExpandableItem
+                ? <>
+                    <a className="spectrum-TreeView-itemLink">
+                        <ChevronRight className="spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon" />
+                        <span className="just-span spectrum-TreeView-itemLabel">Sprint</span>
+                    </a>
+                    <ul className="spectrum-TreeView spectrum-TreeView--sizeS">{children}</ul>
+                </>
+                : <a className="spectrum-TreeView-itemLink">
+                    <TaskListIcon className="task-list-icon spectrum-Icon spectrum-TreeView-itemIndicator spectrum-TreeView-itemIcon spectrum-Icon--sizeM" />
+                    <span className="just-span spectrum-TreeView-itemLabel">Todo List</span>
+                </a>
+            }
         </li>
     );
 };
