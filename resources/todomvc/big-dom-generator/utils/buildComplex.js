@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { execSync } = require("child_process");
 let JSDOM;
 try {
     JSDOM = require("jsdom").JSDOM;
@@ -23,7 +24,11 @@ function buildComplex(options) {
         complexDomHtmlFile = "index.html",
         todoHtmlFile = "index.html",
         cssFilesToAddLinksFor = ["big-dom-generator.css"],
+        standaloneDirectory,
+        complexDirectory
     } = options;
+
+    prepareComplex(options);
 
     // remove dist directory if it exists
     fs.rmSync(path.resolve(targetDirectory), { recursive: true, force: true });
@@ -92,6 +97,25 @@ function buildComplex(options) {
     fs.writeFileSync(destinationFilePath, dom.serialize());
 
     console.log(`The complex code for ${sourceDirectory} has been written to ${destinationFilePath}.`);
+}
+
+// a function which performs the prerequisite steps for buildComplex
+function prepareComplex(options) {
+    const { standaloneDirectory, complexDirectory } = options;
+    // Run npm i in big-dom-generator
+    console.log("Running npm i in big-dom-generator...");
+    execSync("npm i", { cwd: path.join(__dirname, ".."), stdio: "inherit" });
+
+    // Run npm i in the standalone directory
+    console.log(`Running npm i in the standalone directory... : ${standaloneDirectory}`);
+    execSync("npm i", { cwd: standaloneDirectory, stdio: "inherit" });
+
+    // Run npm run build in the standalone directory
+    console.log(`Running npm run build in the standalone directory... : ${standaloneDirectory}`);
+    execSync("npm run build", { cwd: standaloneDirectory, stdio: "inherit" });
+
+    console.log(`Running npm i in the complex directory... : ${complexDirectory}`);
+    execSync("npm i", { cwd: complexDirectory, stdio: "inherit" });
 }
 
 function getHtmlBodySync(filePath) {
