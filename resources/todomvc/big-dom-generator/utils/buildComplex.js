@@ -9,6 +9,26 @@ try {
     process.exit(1);
 }
 
+/**
+ * Builds a complex HTML file with CSS and JS links.
+ *
+ * @param {Object} options - An object containing the following properties:
+ * @param {string} options.callerDirectory - The directory of the caller file.
+ * @param {string} options.sourceDirectory - The directory of the source files.
+ * @param {string} options.title - The title of the HTML file.
+ * @param {string[]} options.filesToMove - An array of file paths to move to the target directory.
+ * @param {string} options.cssFilePath - The path to the CSS file.
+ * @param {string} [options.cssFolder=""] - The folder where the CSS file is located.
+ * @param {string} options.cssFileNamePattern - The pattern to match the CSS file name.
+ * @param {string[]} [options.extraCssToLink=[]] - An array of extra CSS files to link in the HTML file.
+ * @param {string[]} [options.scriptsToLink=[]] - An array of JS files to link in the HTML file.
+ * @param {string} [options.targetDirectory="./dist"] - The target directory to output the HTML file.
+ * @param {string} [options.complexDomHtmlFile="index.html"] - The name of the complex HTML file.
+ * @param {string} [options.todoHtmlFile="index.html"] - The name of the todo HTML file.
+ * @param {string[]} [options.cssFilesToAddLinksFor=["big-dom-generator.css"]] - An array of CSS files to add links for.
+ * @param {string} [options.standaloneDirectory] - The directory of the TodoMVC standalone version.
+ * @param {string} [options.complexDirectory] - The directory of the TodoMVC complex version.
+ */
 function buildComplex(options) {
     const {
         callerDirectory,
@@ -24,8 +44,6 @@ function buildComplex(options) {
         complexDomHtmlFile = "index.html",
         todoHtmlFile = "index.html",
         cssFilesToAddLinksFor = ["big-dom-generator.css"],
-        standaloneDirectory,
-        complexDirectory
     } = options;
 
     prepareComplex(options);
