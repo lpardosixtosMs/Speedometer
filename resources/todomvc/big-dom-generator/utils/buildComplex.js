@@ -14,8 +14,8 @@ try {
  * @param {Object} options - The options for building the complex version.
  * @param {string} options.callerDirectory - The directory of the caller.
  * @param {string} options.sourceDirectory - The directory of the source files.
- * @param {string} options.title - The title of the HTML file.
- * @param {string[]} options.filesToMove - An array of file paths to move to the target directory.
+ * @param {string} options.title - The title of the generated HTML file.
+ * @param {string[]} options.filesToMove - An array of file paths to move to the dist directory.
  * @param {string} options.cssFilePath - The path to the CSS file.
  * @param {string} [options.cssFolder=""] - The folder where the CSS file is located.
  * @param {RegExp} [options.cssFileNamePattern - The css file name pattern is used to find the css file in the source dist directory.
