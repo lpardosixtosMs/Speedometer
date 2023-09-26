@@ -18,7 +18,7 @@ try {
  * @param {string[]} options.filesToMove - An array of file paths to move to the target directory.
  * @param {string} options.cssFilePath - The path to the CSS file.
  * @param {string} [options.cssFolder=""] - The folder where the CSS file is located.
- * @param {RegExp} [options.cssFileNamePattern - The pattern to match the CSS file name.
+ * @param {RegExp} [options.cssFileNamePattern - The css file name pattern is used to find the css file in the source dist directory.
  * @param {string[]} options.extraCssToLink=[] - An array of extra CSS files to link.
  * @param {string[]} options.scriptsToLink=[] - An array of scripts to link.
  * @param {string} options.targetDirectory="./dist" - The target directory.
@@ -36,7 +36,7 @@ function buildComplex(options) {
         filesToMove,
         cssFilePath,
         cssFolder = "", // sometimes the css file we are looking for may be nested in another folder.
-        cssFileNamePattern, // The css file name pattern is used to find the css file in the source dist directory.
+        cssFileNamePattern, // This is mandatory if cssFilePath is provided.
         extraCssToLink = [],
         scriptsToLink = [],
         targetDirectory = "./dist",
