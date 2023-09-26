@@ -10,24 +10,23 @@ try {
 }
 
 /**
- * Builds a complex HTML file with CSS and JS links.
- *
- * @param {Object} options - An object containing the following properties:
- * @param {string} options.callerDirectory - The directory of the caller file.
+ * Builds the complex version of TodoMVC.
+ * @param {Object} options - The options for building the complex version.
+ * @param {string} options.callerDirectory - The directory of the caller.
  * @param {string} options.sourceDirectory - The directory of the source files.
  * @param {string} options.title - The title of the HTML file.
  * @param {string[]} options.filesToMove - An array of file paths to move to the target directory.
  * @param {string} options.cssFilePath - The path to the CSS file.
  * @param {string} [options.cssFolder=""] - The folder where the CSS file is located.
- * @param {string} options.cssFileNamePattern - The pattern to match the CSS file name.
- * @param {string[]} [options.extraCssToLink=[]] - An array of extra CSS files to link in the HTML file.
- * @param {string[]} [options.scriptsToLink=[]] - An array of JS files to link in the HTML file.
- * @param {string} [options.targetDirectory="./dist"] - The target directory to output the HTML file.
- * @param {string} [options.complexDomHtmlFile="index.html"] - The name of the complex HTML file.
- * @param {string} [options.todoHtmlFile="index.html"] - The name of the todo HTML file.
- * @param {string[]} [options.cssFilesToAddLinksFor=["big-dom-generator.css"]] - An array of CSS files to add links for.
- * @param {string} [options.standaloneDirectory] - The directory of the TodoMVC standalone version.
- * @param {string} [options.complexDirectory] - The directory of the TodoMVC complex version.
+ * @param {RegExp} [options.cssFileNamePattern - The pattern to match the CSS file name.
+ * @param {string[]} options.extraCssToLink=[] - An array of extra CSS files to link.
+ * @param {string[]} options.scriptsToLink=[] - An array of scripts to link.
+ * @param {string} options.targetDirectory="./dist" - The target directory.
+ * @param {string} options.complexDomHtmlFile="index.html" - The name of the complex HTML file.
+ * @param {string} options.todoHtmlFile="index.html" - The name of the todo HTML file.
+ * @param {string[]} options.cssFilesToAddLinksFor=["big-dom-generator.css"] - An array of CSS files to add links for.
+ * @param {string} options.standaloneDirectory - The directory of the TodoMVC standalone version.
+ * @param {string} options.complexDirectory - The directory of the TodoMVC complex version.
  */
 function buildComplex(options) {
     const {
@@ -48,18 +47,18 @@ function buildComplex(options) {
 
     prepareComplex(options);
 
-    // remove dist directory if it exists
+    // Remove dist directory if it exists
     fs.rmSync(path.resolve(targetDirectory), { recursive: true, force: true });
 
-    // re-create the directory.
+    // Re-create the directory
     fs.mkdirSync(path.resolve(targetDirectory));
 
-    // copy dist folder from javascript-es6-webpack
+    // Copy dist folder from javascript-es6-webpack
     fs.cpSync(path.join(callerDirectory, sourceDirectory), path.resolve(targetDirectory), { recursive: true });
 
-    // copy files to move
+    // Copy files to move
     for (let i = 0; i < filesToMove.length; i++) {
-        // rename app.css to big-dom-generator.css so it's unique.
+        // Rename app.css to big-dom-generator.css so it's unique
         const sourcePath = path.resolve(callerDirectory, "..", filesToMove[i]);
         const fileName = path.basename(filesToMove[i]);
         const targetPath = path.join(targetDirectory, fileName);
@@ -67,34 +66,35 @@ function buildComplex(options) {
     }
 
     if (cssFilePath) {
-        // get the name of the css file that's in the dist, we do this because the name of the css file may change
-        const cssFile = fs.readdirSync(path.join(callerDirectory, sourceDirectory, cssFolder), { withFileTypes: true }).find((dirent) => dirent.isFile() && cssFileNamePattern.test(dirent.name))?.name;
-        // overwrite the css file in the dist directory with the one from the big-dom-generator module
+        // Get the name of the CSS file that's in the dist, we do this because the name of the CSS file may change
+        const cssFolderDirectory = path.join(callerDirectory, sourceDirectory, cssFolder);
+        const cssFile = fs.readdirSync(cssFolderDirectory, { withFileTypes: true }).find((dirent) => dirent.isFile() && cssFileNamePattern.test(dirent.name))?.name;
+        // Overwrite the CSS file in the dist directory with the one from the big-dom-generator module
         // but keep the existing name so we don't need to add a new link
         fs.copyFileSync(cssFilePath, path.resolve(targetDirectory, cssFolder, cssFile));
     }
 
-    // read todo.html file
+    // Read todo.html file
     let html = fs.readFileSync(path.resolve(callerDirectory, path.join("..", "dist", todoHtmlFile)), "utf8");
 
     const dom = new JSDOM(html);
     const doc = dom.window.document;
-    const head = dom.window.document.querySelector("head");
+    const head = doc.querySelector("head");
 
     doc.documentElement.setAttribute("class", "spectrum spectrum--medium spectrum--light");
 
-    const body = dom.window.document.querySelector("body");
+    const body = doc.querySelector("body");
     const htmlToInjectInTodoHolder = body.innerHTML;
     body.innerHTML = getHtmlBodySync("node_modules/big-dom-generator/dist/index.html");
 
     const titleElement = head.querySelector("title");
     titleElement.innerHTML = title;
 
-    const todoHolder = dom.window.document.createElement("div");
+    const todoHolder = doc.createElement("div");
     todoHolder.className = "todoholder";
     todoHolder.innerHTML = htmlToInjectInTodoHolder;
 
-    const todoArea = dom.window.document.querySelector(".todo-area");
+    const todoArea = doc.querySelector(".todo-area");
     todoArea.appendChild(todoHolder);
 
     const cssFilesToAddLinksForFinal = [...cssFilesToAddLinksFor, ...extraCssToLink];
@@ -117,25 +117,36 @@ function buildComplex(options) {
     console.log(`The complex code for ${sourceDirectory} has been written to ${destinationFilePath}.`);
 }
 
-// a function which performs the prerequisite steps for buildComplex
+/**
+ * Performs the prerequisite steps for building the complex version.
+ * @param {Object} options - The options for building the complex version.
+ * @param {string} [options.standaloneDirectory] - The directory of the TodoMVC standalone version.
+ * @param {string} [options.complexDirectory] - The directory of the TodoMVC complex version.
+ */
 function prepareComplex(options) {
     const { standaloneDirectory, complexDirectory } = options;
+
     // Run npm i in big-dom-generator
     console.log("Running npm i in big-dom-generator...");
     execSync("npm i", { cwd: path.join(__dirname, ".."), stdio: "inherit" });
 
     // Run npm i in the standalone directory
-    console.log(`Running npm i in the standalone directory... : ${standaloneDirectory}`);
+    console.log(`Running npm i in the standalone directory: ${standaloneDirectory}`);
     execSync("npm i", { cwd: standaloneDirectory, stdio: "inherit" });
 
     // Run npm run build in the standalone directory
-    console.log(`Running npm run build in the standalone directory... : ${standaloneDirectory}`);
+    console.log(`Running npm run build in the standalone directory: ${standaloneDirectory}`);
     execSync("npm run build", { cwd: standaloneDirectory, stdio: "inherit" });
 
-    console.log(`Running npm i in the complex directory... : ${complexDirectory}`);
+    console.log(`Running npm i in the complex directory: ${complexDirectory}`);
     execSync("npm i", { cwd: complexDirectory, stdio: "inherit" });
 }
 
+/**
+ * Gets the HTML body from a file.
+ * @param {string} filePath - The path of the file.
+ * @returns {string} The HTML body.
+ */
 function getHtmlBodySync(filePath) {
     let htmlContent = fs.readFileSync(filePath, "utf8");
     const bodyStartIndex = htmlContent.indexOf("<body>");
