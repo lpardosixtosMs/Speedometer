@@ -1,13 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
-let JSDOM;
-try {
-    JSDOM = require("jsdom").JSDOM;
-} catch (e) {
-    console.error("Error: jsdom is not installed.");
-    process.exit(1);
-}
 
 /**
  * Builds the complex version of TodoMVC.
@@ -46,6 +39,15 @@ function buildComplex(options) {
     } = options;
 
     prepareComplex(options);
+
+    // npm ci in big-dom-generator needs to run before we import JSDOM
+    let JSDOM;
+    try {
+        JSDOM = require("jsdom").JSDOM;
+    } catch (e) {
+        console.error("Error: jsdom is not installed.");
+        process.exit(1);
+    }
 
     // Remove dist directory if it exists
     fs.rmSync(path.resolve(targetDirectory), { recursive: true, force: true });
