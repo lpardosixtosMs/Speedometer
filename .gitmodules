@@ -1,0 +1,3 @@
+[submodule "experimental/CookingWithLitAndTailwind"]
+	path = experimental/CookingWithLitAndTailwind
+	url = https://github.com/issackjohn/CookingWithLitAndTailwind.git
