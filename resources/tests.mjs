@@ -1101,6 +1101,22 @@ Suites.push({
     ],
 });
 
+Suites.push({
+    name: "Responsive-design",
+    url: "experimental/CookingWithLitAndTailwind/dist/index.html",
+    tags: ["responsive-design", "webcomponents"],
+    async prepare(page) {
+        (await page.waitForElement("#content-iframe")).focus();
+        console.log('focused');
+    },
+    tests: [
+        new BenchmarkTestStep("Reduce size", (page) => {
+            page.querySelector("#content-iframe").setWidth('480px');
+            console.log('resized');
+        }),
+    ],
+});
+
 Object.freeze(Suites);
 Suites.forEach((suite) => {
     if (!suite.tags)

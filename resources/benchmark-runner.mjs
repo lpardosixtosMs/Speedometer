@@ -140,6 +140,10 @@ class PageElement {
         this.#node.click();
     }
 
+    setWidth(width) {
+        this.#node.width = width;
+    }
+
     focus() {
         this.#node.focus();
     }
