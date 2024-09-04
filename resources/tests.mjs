@@ -1107,12 +1107,18 @@ Suites.push({
     tags: ["responsive-design", "webcomponents"],
     async prepare(page) {
         (await page.waitForElement("#content-iframe")).focus();
-        console.log('focused');
+        console.log("focused");
     },
     tests: [
+        new BenchmarkTestStep("Load chat", (page) => {
+            const iframeElement = page.querySelectorInIframe("#content-iframe");
+            const item = iframeElement.querySelectorInShadowRoot("#load-chat-btn", ["cooking-app", "chat-window"]);
+            item.click();
+            console.log("clicked load chat");
+        }),
         new BenchmarkTestStep("Reduce size", (page) => {
-            page.querySelector("#content-iframe").setWidth('480px');
-            console.log('resized');
+            page.querySelector("#content-iframe").setWidth("480px");
+            console.log("resized");
         }),
     ],
 });
