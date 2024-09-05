@@ -203,6 +203,14 @@ class PageElement {
     }
 
     /**
+     * Scrolls the element into view.
+     *
+     */
+    scrollIntoView() {
+        this.#node.scrollIntoView();
+    }
+
+    /**
      * Returns the first element found in a node of a PageElement that matches the specified selector, or group of selectors. If a shadow DOM is present in the node, the shadow DOM is used to query.
      * If no matches are found, null is returned.
      *
