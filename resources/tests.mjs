@@ -1101,6 +1101,40 @@ Suites.push({
     ],
 });
 
+Suites.push({
+    name: "Responsive-design",
+    url: "experimental/CookingWithLitAndTailwind/dist/index.html",
+    tags: ["responsive-design", "webcomponents"],
+    async prepare(page) {
+        (await page.waitForElement("#content-iframe")).focus();
+        console.log("focused");
+    },
+    tests: [
+        new BenchmarkTestStep("Load chat", (page) => {
+            const iframeElement = page.querySelectorInIframe("#content-iframe");
+            const element = iframeElement.querySelectorInShadowRoot("#load-chat-btn", ["cooking-app", "chat-window"]);
+            element.click();
+            const seeMoreBtn = iframeElement.querySelectorInShadowRoot(".show-more-btn", ["cooking-app", "main-content", "recipe-grid", "recipe-card"]);
+            seeMoreBtn.click();
+        }),
+        new BenchmarkTestStep("Reduce size", (page) => {
+            page.querySelector("#content-iframe").setWidth("480px");
+        }),
+        new BenchmarkTestStep("Open chat and send message", (page) => {
+            const iframeElement = page.querySelectorInIframe("#content-iframe");
+            const element = iframeElement.querySelectorInShadowRoot("#chat-window", ["cooking-app", "chat-window"]);
+            element.scrollIntoView();
+            const chatInput = iframeElement.querySelectorInShadowRoot("#chat-input", ["cooking-app", "chat-window"]);
+            chatInput.setValue("Please generate an image of Beef Stroganoff.");
+            chatInput.dispatchEvent("input");
+            chatInput.enter("keypress");
+        }),
+        new BenchmarkTestStep("Resize to horizontal mobile layout", (page) => {
+            page.querySelector("#content-iframe").setWidth("768px");
+        }),
+    ],
+});
+
 Object.freeze(Suites);
 Suites.forEach((suite) => {
     if (!suite.tags)
