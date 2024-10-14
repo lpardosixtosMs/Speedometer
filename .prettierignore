@@ -46,3 +46,5 @@ package-lock.json
 /resources/perf.webkit.org
 
 /resources/react-stockcharts
+# Remove later when investigating npm run format issues
+/experimental/CookingWithLitAndTailwind
