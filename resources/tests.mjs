@@ -340,6 +340,38 @@ Suites.push({
 });
 
 Suites.push({
+    name: "TodoMVC-React-Window",
+    url: "resources/todomvc/architecture-examples/react-window/dist/index.html#/home",
+    tags: ["todomvc"],
+    disabled: true,
+    async prepare(page) {
+        const element = await page.WaitForElementInChildWindow(".new-todo");
+        element.focus();
+    },
+    tests: [
+        new BenchmarkTestStep(`Adding${numberOfItemsToAdd}Items`, (page) => {
+            const newTodo = page.querySelectorInChildWindow(".new-todo");
+            for (let i = 0; i < numberOfItemsToAdd; i++) {
+                newTodo.setValue(getTodoText(defaultLanguage, i));
+                newTodo.dispatchEvent("input");
+                newTodo.enter("keydown");
+            }
+        }),
+        new BenchmarkTestStep("CompletingAllItems", (page) => {
+            const checkboxes = page.querySelectorAllInChildWindow(".toggle");
+            for (let i = 0; i < numberOfItemsToAdd; i++)
+                checkboxes[i].click();
+        }),
+        new BenchmarkTestStep("DeletingAllItems", (page) => {
+            const deleteButtons = page.querySelectorAllInChildWindow(".destroy");
+            for (let i = numberOfItemsToAdd - 1; i >= 0; i--)
+                deleteButtons[i].click();
+            page.closeChildWindow();
+        }),
+    ],
+});
+
+Suites.push({
     name: "TodoMVC-React-Complex-DOM",
     url: "resources/todomvc/architecture-examples/react-complex/dist/index.html#/home",
     tags: ["todomvc", "complex", "complex-default"],

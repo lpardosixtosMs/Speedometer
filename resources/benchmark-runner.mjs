@@ -47,6 +47,19 @@ class Page {
         });
     }
 
+    async WaitForElementInChildWindow(selector) {
+        return new Promise((resolve) => {
+            const resolveIfReady = () => {
+                const element = this.querySelectorInChildWindow(selector);
+                let callback = resolveIfReady;
+                if (element)
+                    callback = () => resolve(element);
+                window.requestAnimationFrame(callback);
+            };
+            resolveIfReady();
+        });
+    }
+
     /**
      * Returns the first element within the document that matches the specified selector, or group of selectors.
      * If no matches are found, null is returned.
@@ -71,6 +84,18 @@ class Page {
         return this._wrapElement(element);
     }
 
+    querySelectorInChildWindow(selector) {
+        const element = this._frame.contentWindow.globalThis.childWindow.document.querySelector(selector);
+
+        if (element === null)
+            return null;
+        return this._wrapElement(element);
+    }
+
+    closeChildWindow() {
+        this._frame.contentWindow.globalThis.childWindow.close();
+    }
+
     /**
      * Returns all elements within the document that matches the specified selector, or group of selectors.
      * If no matches are found, null is returned.
@@ -89,6 +114,14 @@ class Page {
     querySelectorAll(selector, path = []) {
         const lookupStartNode = this._frame.contentDocument;
         const elements = Array.from(getParent(lookupStartNode, path).querySelectorAll(selector));
+        for (let i = 0; i < elements.length; i++)
+            elements[i] = this._wrapElement(elements[i]);
+        return elements;
+    }
+
+    querySelectorAllInChildWindow(selector) {
+        const elements = Array.from(this._frame.contentWindow.globalThis.childWindow.document.querySelectorAll(selector));
+
         for (let i = 0; i < elements.length; i++)
             elements[i] = this._wrapElement(elements[i]);
         return elements;
