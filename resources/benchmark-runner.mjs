@@ -93,7 +93,8 @@ class Page {
     }
 
     closeChildWindow() {
-        this._frame.contentWindow.globalThis.childWindow.close();
+        if (this._frame.contentWindow.globalThis.childWindow)
+            this._frame.contentWindow.globalThis.childWindow.close();
     }
 
     /**
@@ -355,6 +356,8 @@ export class BenchmarkRunner {
 
     _removeFrame() {
         if (this._frame) {
+            if (this._frame.contentWindow.globalThis.childWindow)
+                this._frame.contentWindow.globalThis.childWindow.close();
             this._frame.parentNode.removeChild(this._frame);
             this._frame = null;
         }

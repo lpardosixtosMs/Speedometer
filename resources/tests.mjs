@@ -366,7 +366,6 @@ Suites.push({
             const deleteButtons = page.querySelectorAllInChildWindow(".destroy");
             for (let i = numberOfItemsToAdd - 1; i >= 0; i--)
                 deleteButtons[i].click();
-            page.closeChildWindow();
         }),
     ],
 });
