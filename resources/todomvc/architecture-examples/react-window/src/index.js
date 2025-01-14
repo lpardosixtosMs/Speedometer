@@ -7,21 +7,15 @@ import "todomvc-app-css/index.css";
 
 
 let childWindow = window.open("todo.html", "_blank", "width=800,height=600");
-let AsyncLoop = () => {
-    if (childWindow.document.getElementById("root")) {
-        render(
-            <HashRouter>
-                <Routes>
-                    <Route path="*" element={<App />} />
-                </Routes>
-            </HashRouter>,
-            childWindow.document.getElementById("root")
-        );
-    } else {
-        setTimeout(AsyncLoop, 10);
-    }
-};
+setTimeout(() => {
+    render(
+        <HashRouter>
+            <Routes>
+                <Route path="*" element={<App />} />
+            </Routes>
+        </HashRouter>,
+        childWindow.document.getElementById("root")
+    );
+}, 1);
 
 globalThis.childWindow = childWindow;
-
-AsyncLoop();
