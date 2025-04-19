@@ -71,6 +71,15 @@ class Page {
         return this._wrapElement(element);
     }
 
+    querySelectorInIframe(selector, path = []) {
+        const lookupStartNode = this._frame.contentDocument;
+        const element = getParent(lookupStartNode, path).querySelector(selector);
+
+        if (element === null)
+            return null;
+        return this._wrapElement(element.contentDocument);
+    }
+
     /**
      * Returns all elements within the document that matches the specified selector, or group of selectors.
      * If no matches are found, null is returned.
@@ -141,6 +150,10 @@ class PageElement {
         this.#node.click();
     }
 
+    setWidth(width) {
+        this.#node.width = width;
+    }
+
     focus() {
         this.#node.focus();
     }
@@ -188,6 +201,14 @@ class PageElement {
             eventOptions = Object.assign(eventOptions, options);
         const event = new contentWindow.MouseEvent(type, eventOptions);
         this.#node.dispatchEvent(event);
+    }
+
+    /**
+     * Scrolls the element into view.
+     *
+     */
+    scrollIntoView() {
+        this.#node.scrollIntoView();
     }
 
     /**
