@@ -213,6 +213,114 @@ class MemoryCacheManager {
     }
 }
 
+/**
+ * Database manager for Todo items using IndexedDB
+ */
+class TodoDatabase {
+    #db;
+    #dbName;
+    #dbVersion;
+    #storeName = 'todos';
+    #dbReadyCallback;
+    #numberOfPendingAddRequests = 0;
+    #numberOfPendingRemoveRequests = 0;
+
+    /**
+     * Creates a new TodoDatabase instance
+     * @param {string} dbName - The name of the IndexedDB database
+     * @param {number} dbVersion - The version of the database
+     * @param {Function} readyCallback - Callback to invoke when the database is ready
+     */
+    constructor(dbName = 'todosDB', dbVersion = 1, readyCallback = null) {
+        this.#dbName = dbName;
+        this.#dbVersion = dbVersion;
+        this.#dbReadyCallback = readyCallback;
+        this.initialize();
+    }
+
+    /**
+     * Initializes the IndexedDB database for storing todo items
+     */
+    initialize() {
+        // Open the database connection
+        const request = indexedDB.open(this.#dbName, this.#dbVersion);
+        
+        // Handle database upgrade or creation
+        request.onupgradeneeded = (event) => {
+            this.#db = event.target.result;
+            
+            // Create an object store for our todos if it doesn't exist
+            if (!this.#db.objectStoreNames.contains(this.#storeName)) {
+                const todoStore = this.#db.createObjectStore(this.#storeName, { keyPath: 'id', autoIncrement: true });
+                
+                // Create indexes for quick searches.
+                todoStore.createIndex('itemId', 'itemId', { unique: true });
+                todoStore.createIndex('completed', 'completed', { unique: false });
+                todoStore.createIndex('title', 'title', { unique: false });
+                todoStore.createIndex('priority', 'priority', { unique: false });
+            }
+        };
+        
+        // Handle successful database opening
+        request.onsuccess = (event) => {
+            this.#db = event.target.result;
+            console.log('IndexedDB initialized successfully');
+            
+            // Call ready callback if provided
+            if (this.#dbReadyCallback) {
+                this.#dbReadyCallback();
+            }
+        };
+        
+        // Handle errors
+        request.onerror = (event) => {
+            console.error('Error opening IndexedDB:', event.target.error);
+        };
+    }
+
+    /**
+     * Gets the database instance
+     * @returns {IDBDatabase} The IndexedDB database instance
+     */
+    get database() {
+        return this.#db;
+    }
+    
+    /**
+     * Adds a todo item to the database
+     * @param {Object} item - The todo item to add
+     * @returns {Promise<number>} A promise that resolves to the ID of the added item
+     */
+    addItem(item) {
+        return new Promise((resolve, reject) => {
+            if (!this.#db) {
+                reject(new Error("Database not initialized"));
+                return;
+            }
+            
+            try {
+                const transaction = this.#db.transaction(this.#storeName, 'readwrite');
+                const store = transaction.objectStore(this.#storeName);
+                
+                const request = store.add(item);
+
+                this.#numberOfPendingAddRequests++;
+                
+                request.onsuccess = (event) => {
+                    this.#numberOfPendingAddRequests--;
+                    console.log("Item added to database:", event.target.result);
+                    resolve(event.target.result); // Return the generated ID
+                };
+                
+                request.onerror = (event) => {
+                    reject(event.target.error);
+                };
+            } catch (error) {
+                reject(error);
+            }
+        });
+    }
+}
 
 class TodoList extends HTMLElement {
     static get observedAttributes() {
@@ -221,8 +329,9 @@ class TodoList extends HTMLElement {
 
     #elements = [];
     #route = undefined;
+    #onScreenMaxNumberOfItems = 10;
     #memoryCacheManager = new MemoryCacheManager();
-    #db;
+    #todoDatabase;
     #dbItemId = 0;
 
     constructor() {
@@ -242,20 +351,90 @@ class TodoList extends HTMLElement {
             extraAdoptedStyleSheet.replaceSync(window.extraTodoListCssToAdopt);
             this.shadow.adoptedStyleSheets.push(extraAdoptedStyleSheet);
         }
+        
+        // Initialize TodoDatabase
+        this.#initializeDatabase();
+    }
+    
+    /**
+     * Initializes the IndexedDB database for storing todo items
+     * @private
+     */
+    #initializeDatabase() {
+        // Create a new TodoDatabase instance with a callback for when DB is ready
+        this.#todoDatabase = new TodoDatabase('todosDB', 1, () => {
+            // Dispatch an event when the database is ready
+            this.dispatchEvent(new CustomEvent('db-ready'));
+        });
+    }
+    
+    /**
+     * Gets the IndexedDB database instance
+     * @returns {IDBDatabase} The IndexedDB database instance
+     */
+    get #db() {
+        return this.#todoDatabase?.database;
     }
 
+    /**
+     * Adds a todo item based on available space in different storage tiers
+     * @param {Object} entry - The todo item entry
+     */
     addItem(entry) {
         const { id, title, completed } = entry;
-        const element = new TodoItem();
-
-        element.setAttribute("itemid", id);
-        element.setAttribute("itemtitle", title);
-        element.setAttribute("itemcompleted", completed);
-
-        const elementIndex = this.#elements.length;
-        this.#elements.push(element);
-        this.listNode.append(element);
-        element.setAttribute("data-priority", 4 - (elementIndex % 5));
+        const priority = 4 - (this.#elements.length % 5);
+        
+        // Case 1: If there's space in the on-screen list, add it there
+        if (this.#elements.length < this.#onScreenMaxNumberOfItems) {
+            // Create element and add to on-screen list
+            const element = new TodoItem();
+            element.setAttribute("itemid", id);
+            element.setAttribute("itemtitle", title);
+            element.setAttribute("itemcompleted", completed);
+            element.setAttribute("data-priority", priority);
+            
+            this.#elements.push(element);
+            this.listNode.append(element);
+            this.updateView(element);
+        }
+        // Case 2: If there's space in the memory cache, create element and add to cache
+        else if (this.#memoryCacheManager.shouldAddToAfterCache()) {
+            const element = new TodoItem();
+            element.setAttribute("itemid", id);
+            element.setAttribute("itemtitle", title);
+            element.setAttribute("itemcompleted", completed);
+            element.setAttribute("data-priority", priority);
+            
+            // Add the element to the memory cache
+            this.#memoryCacheManager.addToAfterCache(element);
+        }
+        // Case 3: Add to IndexedDB as last resort
+        else {
+            this.#addItemToDatabase(entry, priority);
+        }
+    }
+    
+    /**
+     * Helper method to add an item to the IndexedDB database
+     * @private
+     */
+    #addItemToDatabase(entry, priority) {
+        const { id, title, completed } = entry;
+        const todoItem = {
+            itemId: id,
+            title,
+            completed,
+            priority,
+            createdAt: Date.now()
+        };
+        
+        this.#todoDatabase.addItem(todoItem)
+            .then(() => {
+                // Item successfully added to database
+            })
+            .catch(error => {
+                console.error("Failed to add item to database:", error);
+            });
     }
 
     addItems(items) {
