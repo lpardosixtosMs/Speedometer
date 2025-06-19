@@ -4,12 +4,29 @@ import TodoItem from "../todo-item/todo-item.component.js";
 import globalStyles from "../../../node_modules/todomvc-css/dist/global.constructable.js";
 import listStyles from "../../../node_modules/todomvc-css/dist/todo-list.constructable.js";
 
+
+const customListStyles = new CSSStyleSheet();
+customListStyles.replaceSync(`
+    .todo-list > todo-item {
+        display: block;
+    }
+
+    .todo-list[route="completed"] > [itemcompleted="false"] {
+        display: none;
+    }
+
+    .todo-list[route="active"] > [itemcompleted="true"] {
+        display: none;
+    }
+`);
+
+console.log(customListStyles);
+
 class TodoList extends HTMLElement {
     static get observedAttributes() {
         return ["total-items"];
     }
 
-    #elements = [];
     #route = undefined;
 
     constructor() {
@@ -21,7 +38,7 @@ class TodoList extends HTMLElement {
         this.shadow = this.attachShadow({ mode: "open" });
         this.htmlDirection = document.dir || "ltr";
         this.setAttribute("dir", this.htmlDirection);
-        this.shadow.adoptedStyleSheets = [globalStyles, listStyles];
+        this.shadow.adoptedStyleSheets = [globalStyles, listStyles, customListStyles];
         this.shadow.append(node);
         this.classList.add("show-priority");
 
@@ -32,18 +49,16 @@ class TodoList extends HTMLElement {
         }
     }
 
-    addItem(entry) {
+    addItem(entry, itemIndex) {
         const { id, title, completed } = entry;
         const element = new TodoItem();
 
         element.setAttribute("itemid", id);
         element.setAttribute("itemtitle", title);
         element.setAttribute("itemcompleted", completed);
+        element.setAttribute("data-priority", 4 - (itemIndex % 5));
 
-        const elementIndex = this.#elements.length;
-        this.#elements.push(element);
         this.listNode.append(element);
-        element.setAttribute("data-priority", 4 - (elementIndex % 5));
     }
 
     addItems(items) {
@@ -51,16 +66,14 @@ class TodoList extends HTMLElement {
     }
 
     removeCompletedItems() {
-        this.#elements = this.#elements.filter((element) => {
+        Array.from(this.listNode.children).forEach((element) => {
             if (element.itemcompleted === "true")
                 element.removeItem();
-
-            return element.itemcompleted === "false";
         });
     }
 
     toggleItems(completed) {
-        this.#elements.forEach((element) => {
+        Array.from(this.listNode.children).forEach((element) => {
             if (completed && element.itemcompleted === "false")
                 element.toggleInput.click();
             else if (!completed && element.itemcompleted === "true")
@@ -75,40 +88,18 @@ class TodoList extends HTMLElement {
             this.listNode.style.display = "none";
     }
 
-    updateView(element) {
-        switch (this.#route) {
-            case "completed":
-                element.style.display = element.itemcompleted === "true" ? "block" : "none";
-                break;
-            case "active":
-                element.style.display = element.itemcompleted === "true" ? "none" : "block";
-                break;
-            default:
-                element.style.display = "block";
-        }
-    }
-
-    updateElements(type = "", id = "") {
-        switch (type) {
-            case "route-change":
-                this.#elements.forEach((element) => this.updateView(element));
-                break;
-            case "toggle-item":
-            case "add-item":
-                this.#elements.forEach((element) => {
-                    if (element.itemid === id)
-                        this.updateView(element);
-                });
-                break;
-            case "remove-item":
-                this.#elements = this.#elements.filter((element) => element.itemid !== id);
-                break;
-        }
-    }
-
     updateRoute(route) {
         this.#route = route;
-        this.updateElements("route-change");
+        switch (route) {
+            case "completed":
+                this.listNode.setAttribute("route", "completed");
+                break;
+            case "active":
+                this.listNode.setAttribute("rout", "active");
+                break;
+            default:
+                this.listNode.setAttribute("route", "all");
+        }
     }
 
     attributeChangedCallback(property, oldValue, newValue) {
