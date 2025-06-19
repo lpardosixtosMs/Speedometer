@@ -4,6 +4,19 @@ import TodoItem from "../todo-item/todo-item.component.js";
 import globalStyles from "../../../node_modules/todomvc-css/dist/global.constructable.js";
 import listStyles from "../../../node_modules/todomvc-css/dist/todo-list.constructable.js";
 
+let additionalListStyles = new CSSStyleSheet();
+additionalListStyles.replaceSync(
+    `.todo-list,
+    todo-item {
+        display: block;
+    }
+
+    .todo-list > :nth-child(10) ~ todo-item,
+    .display-none {
+        display: none;
+    }
+`);
+
 class FixedSizeQueue {
     #buffer;
     #capacity;
@@ -161,8 +174,8 @@ class FixedSizeQueue {
 class MemoryCacheManager {
 
     #cacheMaxSize = 10;
-    // before cache will be used to populate whole pages of items.
-    #beforeCache = new Array();
+    pendingPromise = null;
+    hasPendingUpdate = false;
 
     // after cache will be used to load the next item in the list, we need fifo access.
     #afterCache = new FixedSizeQueue(10);
@@ -197,19 +210,30 @@ class MemoryCacheManager {
         const result = this.#afterCache.dequeue();
         return result !== undefined ? result : null;
     }
-    
-    getFromBeforeCache(numberOfItems) {
-        if (numberOfItems > this.#beforeCache.length) {
-            throw new Error("Not enough items in before cache to return.");
-        }
-        return this.#beforeCache.splice(this.#beforeCache.length - numberOfItems, numberOfItems);
+
+    /**
+     * Check if the forward cache (after cache) is empty
+     * @returns {boolean} - True if the forward cache is empty
+     */
+    isForwardCacheEmpty() {
+        return this.#afterCache.isEmpty();
     }
 
-    addToBeforeCache(elements) {
-        if (elements.length + this.#beforeCache.length > this.#cacheMaxSize) {
-            throw new Error("Before cache is full, cannot add more items.");
+    /**
+     * Retrieves a given number of elements from the forward cache (afterCache)
+     * 
+     * @param {number} count - The number of elements to retrieve
+     * @returns {Array} - The next 'count' elements from the afterCache
+     */
+    getElementsFromAfterCache(count) {
+        return this.#afterCache.dequeueMany(count);
+    }
+
+    chainToPendingPromise(promise) {
+        if(!this.pendingPromise) {
+            throw(new Error("No pending promise to chain to."));
         }
-        this.#beforeCache.push(...elements);
+        this.pendingPromise = this.pendingPromise.then(() => promise);
     }
 }
 
@@ -224,6 +248,8 @@ class TodoDatabase {
     #dbReadyCallback;
     #numberOfPendingAddRequests = 0;
     #numberOfPendingRemoveRequests = 0;
+
+    lastUsedOrderedId = 0;
 
     /**
      * Creates a new TodoDatabase instance
@@ -251,7 +277,7 @@ class TodoDatabase {
             
             // Create an object store for our todos if it doesn't exist
             if (!this.#db.objectStoreNames.contains(this.#storeName)) {
-                const todoStore = this.#db.createObjectStore(this.#storeName, { keyPath: 'id', autoIncrement: true });
+                const todoStore = this.#db.createObjectStore(this.#storeName, { keyPath: 'orderedId'});
                 
                 // Create indexes for quick searches.
                 todoStore.createIndex('itemId', 'itemId', { unique: true });
@@ -309,6 +335,7 @@ class TodoDatabase {
                 request.onsuccess = (event) => {
                     this.#numberOfPendingAddRequests--;
                     console.log("Item added to database:", event.target.result);
+                    this.lastUsedOrderedId = Math.max(this.lastUsedOrderedId, item.orderedId);
                     resolve(event.target.result); // Return the generated ID
                 };
                 
@@ -320,6 +347,57 @@ class TodoDatabase {
             }
         });
     }
+
+    /**
+     * Reads items from the database where orderedId is greater than lastUsedOrderedId
+     * and executes a callback with the results
+     * 
+     * @param {number} lastUsedOrderedId - The last orderedId that was used
+     * @param {number} count - Maximum number of items to retrieve
+     * @param {Function} callback - Callback function to execute with the retrieved items
+     */
+    readItemsAndExecuteCallback(lastUsedOrderedId, count, callback) {
+        if (!this.#db) {
+            throw(new Error("Database not initialized"));
+        }
+
+        const transaction = this.#db.transaction(this.#storeName, 'readonly');
+        const store = transaction.objectStore(this.#storeName);
+        
+        // Create a key range for orderedId > lastUsedOrderedId
+        const keyRange = IDBKeyRange.lowerBound(lastUsedOrderedId, true);
+        
+        // Open a cursor with the key range
+        const request = store.openCursor(keyRange);
+        
+        // Array to store the retrieved items
+        const items = [];
+        
+        request.onsuccess = (event) => {
+            const cursor = event.target.result;
+            
+            if (cursor && items.length < count) {
+                // Add this item to our results
+                items.push(cursor.value);
+                
+                // Move to the next item
+                cursor.continue();
+            } else {
+                // We've either reached the end of the store or collected enough items
+                console.log(items);
+                callback(items);
+            }
+        };
+        
+        request.onerror = (event) => {
+            callback(event.target.error, null);
+        };
+        
+        // Handle transaction errors
+        transaction.onerror = (event) => {
+            callback(event.target.error, null);
+        };
+    }
 }
 
 class TodoList extends HTMLElement {
@@ -327,12 +405,13 @@ class TodoList extends HTMLElement {
         return ["total-items"];
     }
 
-    #elements = [];
     #route = undefined;
     #onScreenMaxNumberOfItems = 10;
     #memoryCacheManager = new MemoryCacheManager();
     #todoDatabase;
-    #dbItemId = 0;
+    #currentPageNumber = 1;
+    #incrementalItemId = 0;
+    #elementCount = 0;
 
     constructor() {
         super();
@@ -342,7 +421,7 @@ class TodoList extends HTMLElement {
         this.shadow = this.attachShadow({ mode: "open" });
         this.htmlDirection = document.dir || "ltr";
         this.setAttribute("dir", this.htmlDirection);
-        this.shadow.adoptedStyleSheets = [globalStyles, listStyles];
+        this.shadow.adoptedStyleSheets = [globalStyles, listStyles, additionalListStyles];
         this.shadow.append(node);
         this.classList.add("show-priority");
 
@@ -376,42 +455,29 @@ class TodoList extends HTMLElement {
         return this.#todoDatabase?.database;
     }
 
+    get #elements() {
+        return Array.from(this.listNode.children);
+    }
+
     /**
      * Adds a todo item based on available space in different storage tiers
      * @param {Object} entry - The todo item entry
      */
     addItem(entry) {
         const { id, title, completed } = entry;
-        const priority = 4 - (this.#elements.length % 5);
+        const priority = 4 - (this.#elementCount++ % 5);
         
-        // Case 1: If there's space in the on-screen list, add it there
-        if (this.#elements.length < this.#onScreenMaxNumberOfItems) {
-            // Create element and add to on-screen list
-            const element = new TodoItem();
-            element.setAttribute("itemid", id);
-            element.setAttribute("itemtitle", title);
-            element.setAttribute("itemcompleted", completed);
-            element.setAttribute("data-priority", priority);
-            
-            this.#elements.push(element);
-            this.listNode.append(element);
-            this.updateView(element);
-        }
-        // Case 2: If there's space in the memory cache, create element and add to cache
-        else if (this.#memoryCacheManager.shouldAddToAfterCache()) {
-            const element = new TodoItem();
-            element.setAttribute("itemid", id);
-            element.setAttribute("itemtitle", title);
-            element.setAttribute("itemcompleted", completed);
-            element.setAttribute("data-priority", priority);
-            
-            // Add the element to the memory cache
-            this.#memoryCacheManager.addToAfterCache(element);
-        }
-        // Case 3: Add to IndexedDB as last resort
-        else {
-            this.#addItemToDatabase(entry, priority);
-        }
+        const element = new TodoItem();
+        element.setAttribute("itemid", id);
+        element.setAttribute("itemtitle", title);
+        element.setAttribute("itemcompleted", completed);
+        element.setAttribute("data-priority", priority);
+        element.orderedId = this.#incrementalItemId++;
+        
+        this.listNode.append(element);
+        this.updateView(element);
+
+        this.#addItemToDatabase(entry, priority);
     }
     
     /**
@@ -421,11 +487,11 @@ class TodoList extends HTMLElement {
     #addItemToDatabase(entry, priority) {
         const { id, title, completed } = entry;
         const todoItem = {
+            orderedId: this.#incrementalItemId++,
             itemId: id,
             title,
             completed,
-            priority,
-            createdAt: Date.now()
+            priority
         };
         
         this.#todoDatabase.addItem(todoItem)
@@ -442,7 +508,7 @@ class TodoList extends HTMLElement {
     }
 
     removeCompletedItems() {
-        this.#elements = this.#elements.filter((element) => {
+        this.#elements.forEach((element) => {
             if (element.itemcompleted === "true")
                 element.removeItem();
 
@@ -461,21 +527,25 @@ class TodoList extends HTMLElement {
 
     updateStyles() {
         if (parseInt(this["total-items"]) !== 0)
-            this.listNode.style.display = "block";
+            this.listNode.classList.remove("display-none");
         else
-            this.listNode.style.display = "none";
+            this.listNode.classList.add("display-none");
     }
 
     updateView(element) {
         switch (this.#route) {
             case "completed":
-                element.style.display = element.itemcompleted === "true" ? "block" : "none";
+                if (element.itemcompleted === "true")
+                    element.classList.remove("display-none");
+                else
+                    element.classList.add("display-none");
                 break;
             case "active":
-                element.style.display = element.itemcompleted === "true" ? "none" : "block";
+                if (element.itemcompleted === "true")
+                    element.classList.add("display-none");
+                else
+                    element.classList.remove("display-none");
                 break;
-            default:
-                element.style.display = "block";
         }
     }
 
@@ -492,7 +562,7 @@ class TodoList extends HTMLElement {
                 });
                 break;
             case "remove-item":
-                this.#elements = this.#elements.filter((element) => element.itemid !== id);
+                this.#elements.find((element) => element.itemid === id)?.remove();
                 break;
         }
     }
@@ -508,6 +578,13 @@ class TodoList extends HTMLElement {
         this[property] = newValue;
         if (this.isConnected)
             this.updateStyles();
+    }
+
+    moveToNextPage() {
+        const children = Array.from(this.listNode.children);
+        children.slice(0, this.#onScreenMaxNumberOfItems).forEach((child) => {
+            child.remove();
+        });
     }
 
     connectedCallback() {

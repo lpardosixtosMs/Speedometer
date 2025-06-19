@@ -27,6 +27,7 @@ class TodoApp extends HTMLElement {
         this.updateItem = this.updateItem.bind(this);
         this.toggleItems = this.toggleItems.bind(this);
         this.clearCompletedItems = this.clearCompletedItems.bind(this);
+        this.moveToNextPage = this.moveToNextPage.bind(this);
         this.routeChange = this.routeChange.bind(this);
 
         this.router = useRouter();
@@ -84,6 +85,10 @@ class TodoApp extends HTMLElement {
         this.list.removeCompletedItems();
     }
 
+    moveToNextPage() {
+        this.list.moveToNextPage();
+    }
+
     update(type = "", id = "") {
         const totalItems = this.#data.length;
         const activeItems = this.#data.filter((entry) => !entry.completed).length;
@@ -109,6 +114,7 @@ class TodoApp extends HTMLElement {
         this.list.listNode.addEventListener("update-item", this.updateItem);
 
         this.bottombar.addEventListener("clear-completed-items", this.clearCompletedItems);
+        this.bottombar.addEventListener("move-to-next-page", this.moveToNextPage);
     }
 
     removeListeners() {
@@ -120,11 +126,13 @@ class TodoApp extends HTMLElement {
         this.list.listNode.removeEventListener("update-item", this.updateItem);
 
         this.bottombar.removeEventListener("clear-completed-items", this.clearCompletedItems);
+        this.bottombar.removeEventListener("go-to-next-page", this.moveToNextPage);
     }
 
     routeChange(route) {
         const routeName = route.split("/")[1] || "all";
         this.list.updateRoute(routeName);
+        console.log(this.bottombar, "bottombar");
         this.bottombar.updateRoute(routeName);
         this.topbar.updateRoute(routeName);
     }

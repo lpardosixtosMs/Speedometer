@@ -35,3 +35,8 @@
 
 /resources/charts/node_modules/
 /resources/todomvc/big-dom-generator/node_modules/
+
+/resources/todomvc/vanilla-examples/todomvc-wc-indexeddb/node_modules/
+/experimental/todomvc-localstorage/node_modules/
+
+resources/todomvc/vanilla-examples/todomvc-wc-indexeddb-firt/
