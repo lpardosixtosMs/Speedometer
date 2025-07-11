@@ -18,15 +18,19 @@ customListStyles.replaceSync(`
     .todo-list[route="active"] > [itemcompleted="true"] {
         display: none;
     }
+
+    .todo-list {
+        display: block;
+    }
+
+    :host([total-items="0"]) > .todo-list {
+        display: none;
+    }
 `);
 
 console.log(customListStyles);
 
 class TodoList extends HTMLElement {
-    static get observedAttributes() {
-        return ["total-items"];
-    }
-
     #route = undefined;
 
     constructor() {
@@ -81,13 +85,6 @@ class TodoList extends HTMLElement {
         });
     }
 
-    updateStyles() {
-        if (parseInt(this["total-items"]) !== 0)
-            this.listNode.style.display = "block";
-        else
-            this.listNode.style.display = "none";
-    }
-
     updateRoute(route) {
         this.#route = route;
         switch (route) {
@@ -100,18 +97,6 @@ class TodoList extends HTMLElement {
             default:
                 this.listNode.setAttribute("route", "all");
         }
-    }
-
-    attributeChangedCallback(property, oldValue, newValue) {
-        if (oldValue === newValue)
-            return;
-        this[property] = newValue;
-        if (this.isConnected)
-            this.updateStyles();
-    }
-
-    connectedCallback() {
-        this.updateStyles();
     }
 }
 
