@@ -116,7 +116,6 @@ class TodoItem extends HTMLElement {
                 this.removeItem();
             else
                 this.setAttribute("itemtitle", event.target.value);
-
         }
 
         this.cancelEdit();
