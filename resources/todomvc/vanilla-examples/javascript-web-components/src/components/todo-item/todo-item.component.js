@@ -103,7 +103,7 @@ class TodoItem extends HTMLElement {
         // (therefore the removal has to happen after the list is updated)
         this.dispatchEvent(
             new CustomEvent("remove-item", {
-                detail: { completed: this.togglegetAtInput.checked},
+                detail: { completed: this.togglegetAtInput.checked },
                 bubbles: true,
             })
         );
@@ -112,11 +112,11 @@ class TodoItem extends HTMLElement {
 
     updateItem(event) {
         if (event.target.value !== this.itemtitle) {
-            if (!event.target.value.length) {
+            if (!event.target.value.length)
                 this.removeItem();
-            } else {
+            else
                 this.setAttribute("itemtitle", event.target.value);
-            }
+
         }
 
         this.cancelEdit();
