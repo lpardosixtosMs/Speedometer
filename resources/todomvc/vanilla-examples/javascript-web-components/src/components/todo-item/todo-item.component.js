@@ -65,7 +65,7 @@ class TodoItem extends HTMLElement {
                     }
                     break;
                 case "itemcompleted":
-                    this.toggleInput.checked = this.itemcompleted === "true" ? true : false;
+                    this.toggleInput.checked = this.itemcompleted === "true";
                     break;
             }
         });
