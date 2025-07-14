@@ -4,7 +4,6 @@ import TodoItem from "../todo-item/todo-item.component.js";
 import globalStyles from "../../styles/global.constructable.js";
 import listStyles from "../../styles/todo-list.constructable.js";
 
-
 const customListStyles = new CSSStyleSheet();
 customListStyles.replaceSync(`
     .todo-list > todo-item {
@@ -18,15 +17,17 @@ customListStyles.replaceSync(`
     .todo-list[route="active"] > [itemcompleted="true"] {
         display: none;
     }
-`);
 
-console.log(customListStyles);
-
-class TodoList extends HTMLElement {
-    static get observedAttributes() {
-        return ["total-items"];
+    .todo-list {
+        display: block;
     }
 
+    :host([total-items="0"]) > .todo-list {
+        display: none;
+    }
+`);
+
+class TodoList extends HTMLElement {
     #route = undefined;
 
     constructor() {
@@ -81,13 +82,6 @@ class TodoList extends HTMLElement {
         });
     }
 
-    updateStyles() {
-        if (parseInt(this["total-items"]) !== 0)
-            this.listNode.style.display = "block";
-        else
-            this.listNode.style.display = "none";
-    }
-
     updateRoute(route) {
         this.#route = route;
         switch (route) {
@@ -95,23 +89,11 @@ class TodoList extends HTMLElement {
                 this.listNode.setAttribute("route", "completed");
                 break;
             case "active":
-                this.listNode.setAttribute("rout", "active");
+                this.listNode.setAttribute("route", "active");
                 break;
             default:
                 this.listNode.setAttribute("route", "all");
         }
-    }
-
-    attributeChangedCallback(property, oldValue, newValue) {
-        if (oldValue === newValue)
-            return;
-        this[property] = newValue;
-        if (this.isConnected)
-            this.updateStyles();
-    }
-
-    connectedCallback() {
-        this.updateStyles();
     }
 }
 
