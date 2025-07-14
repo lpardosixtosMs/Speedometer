@@ -48,7 +48,7 @@ class TodoApp extends HTMLElement {
     }
 
     toggleItem(event) {
-        if (event.detail.completed === "true") {
+        if (event.detail.completed) {
             this.#numberOfCompletedItems++;
         } else {
             this.#numberOfCompletedItems--;
@@ -57,7 +57,7 @@ class TodoApp extends HTMLElement {
     }
 
     removeItem(event) {
-        if (event.datail.completed === "true") {
+        if (event.detail.completed) {
             this.#numberOfCompletedItems--;
         }
         this.#numberOfItems--;

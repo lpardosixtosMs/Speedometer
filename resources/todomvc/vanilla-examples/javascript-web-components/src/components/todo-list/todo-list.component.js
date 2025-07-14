@@ -28,8 +28,6 @@ customListStyles.replaceSync(`
     }
 `);
 
-console.log(customListStyles);
-
 class TodoList extends HTMLElement {
     #route = undefined;
 
@@ -92,7 +90,7 @@ class TodoList extends HTMLElement {
                 this.listNode.setAttribute("route", "completed");
                 break;
             case "active":
-                this.listNode.setAttribute("rout", "active");
+                this.listNode.setAttribute("route", "active");
                 break;
             default:
                 this.listNode.setAttribute("route", "all");
