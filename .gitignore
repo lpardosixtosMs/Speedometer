@@ -32,6 +32,11 @@
 /resources/todomvc/vanilla-examples/javascript-es6-webpack/node_modules/
 /resources/todomvc/vanilla-examples/javascript-es6-webpack-complex/node_modules/
 /resources/todomvc/vanilla-examples/javascript-web-components-complex/node_modules/
+/resources/todomvc/vanilla-examples/javascript-web-components-old/node_modules/
+/resources/todomvc/vanilla-examples/javascript-web-components-old-complex/node_modules/
 
 /resources/charts/node_modules/
 /resources/todomvc/big-dom-generator/node_modules/
+
+/resources/todomvc/vanilla-examples/todomvc-wc-indexeddb/node_modules/
+/experimental/todomvc-localstorage/node_modules/
